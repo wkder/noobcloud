@@ -1,0 +1,81 @@
+[2021-06-30 21:44:51,937][background-preinit][INFO][org.hibernate.validator.internal.util.Version:21] HV000001: Hibernate Validator 6.1.7.Final
+[2021-06-30 21:44:52,256][main][INFO][com.cmcc.noobcloud.goodservice.NoobcloudGoodServiceApplication:55] Starting NoobcloudGoodServiceApplication using Java 1.8.0_291 on DESKTOP-JASBP47 with PID 4188 (F:\workspace\noobcloud\noobcloud-good-service\target\classes started by 段维宽 in F:\workspace\noobcloud)
+[2021-06-30 21:44:52,262][main][INFO][com.cmcc.noobcloud.goodservice.NoobcloudGoodServiceApplication:675] No active profile set, falling back to default profiles: default
+[2021-06-30 21:44:54,780][main][INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate:250] Multiple Spring Data modules found, entering strict repository configuration mode!
+[2021-06-30 21:44:54,781][main][INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate:128] Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+[2021-06-30 21:44:54,791][main][INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate:188] Finished Spring Data repository scanning in 6 ms. Found 0 Elasticsearch repository interfaces.
+[2021-06-30 21:44:54,794][main][INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate:250] Multiple Spring Data modules found, entering strict repository configuration mode!
+[2021-06-30 21:44:54,794][main][INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate:128] Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+[2021-06-30 21:44:54,796][main][INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate:188] Finished Spring Data repository scanning in 2 ms. Found 0 Reactive Elasticsearch repository interfaces.
+[2021-06-30 21:44:54,809][main][INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate:250] Multiple Spring Data modules found, entering strict repository configuration mode!
+[2021-06-30 21:44:54,810][main][INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate:128] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2021-06-30 21:44:54,818][main][INFO][org.springframework.data.repository.config.RepositoryConfigurationDelegate:188] Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+[2021-06-30 21:44:55,083][main][INFO][org.springframework.cloud.context.scope.GenericScope:283] BeanFactory id=49b1a7f5-2e08-3f4a-b75f-5b2b7fbdd1a1
+[2021-06-30 21:44:55,965][main][INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer:108] Tomcat initialized with port(s): 8080 (http)
+[2021-06-30 21:44:55,980][main][INFO][org.apache.coyote.http11.Http11NioProtocol:173] Initializing ProtocolHandler ["http-nio-8080"]
+[2021-06-30 21:44:55,980][main][INFO][org.apache.catalina.core.StandardService:173] Starting service [Tomcat]
+[2021-06-30 21:44:55,980][main][INFO][org.apache.catalina.core.StandardEngine:173] Starting Servlet engine: [Apache Tomcat/9.0.45]
+[2021-06-30 21:44:55,981][main][INFO][org.apache.catalina.core.AprLifecycleListener:173] Loaded Apache Tomcat Native library [1.2.30] using APR version [1.7.0].
+[2021-06-30 21:44:55,982][main][INFO][org.apache.catalina.core.AprLifecycleListener:173] APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+[2021-06-30 21:44:55,982][main][INFO][org.apache.catalina.core.AprLifecycleListener:173] APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+[2021-06-30 21:44:55,991][main][INFO][org.apache.catalina.core.AprLifecycleListener:173] OpenSSL successfully initialized [OpenSSL 1.1.1k  25 Mar 2021]
+[2021-06-30 21:44:56,204][main][INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/goodService]:173] Initializing Spring embedded WebApplicationContext
+[2021-06-30 21:44:56,204][main][INFO][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:289] Root WebApplicationContext: initialization completed in 3641 ms
+[2021-06-30 21:44:56,313][main][INFO][com.cmcc.noobcloud.goodservice.config.DataSourceConfig:31] first数据库连接池创建中
+[2021-06-30 21:44:56,397][main][INFO][com.cmcc.noobcloud.goodservice.config.DataSourceConfig:55] second数据库连接池创建中
+[2021-06-30 21:44:59,525][main][INFO][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor:181] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-06-30 21:45:00,563][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] Loaded jar:file:/F:/Program%20Files/apache-maven-3.3.9/maven-repository/com/atomikos/transactions/4.0.6/transactions-4.0.6.jar!/transactions-defaults.properties
+[2021-06-30 21:45:00,580][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.default_max_wait_time_on_shutdown = 9223372036854775807
+[2021-06-30 21:45:00,580][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.allow_subtransactions = true
+[2021-06-30 21:45:00,580][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.recovery_delay = 10000
+[2021-06-30 21:45:00,580][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.automatic_resource_registration = true
+[2021-06-30 21:45:00,580][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.oltp_max_retries = 5
+[2021-06-30 21:45:00,580][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.client_demarcation = false
+[2021-06-30 21:45:00,580][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.threaded_2pc = false
+[2021-06-30 21:45:00,581][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.serial_jta_transactions = true
+[2021-06-30 21:45:00,581][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.log_base_dir = F:\workspace\noobcloud\transaction-logs
+[2021-06-30 21:45:00,581][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.rmi_export_class = none
+[2021-06-30 21:45:00,581][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.max_actives = 50
+[2021-06-30 21:45:00,581][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.checkpoint_interval = 500
+[2021-06-30 21:45:00,581][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.enable_logging = true
+[2021-06-30 21:45:00,581][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.log_base_name = tmlog
+[2021-06-30 21:45:00,581][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.max_timeout = 300000
+[2021-06-30 21:45:00,581][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.trust_client_tm = false
+[2021-06-30 21:45:00,581][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: java.naming.factory.initial = com.sun.jndi.rmi.registry.RegistryContextFactory
+[2021-06-30 21:45:00,581][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.tm_unique_name = 100.64.0.248.tm
+[2021-06-30 21:45:00,581][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.forget_orphaned_log_entries_delay = 86400000
+[2021-06-30 21:45:00,582][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.oltp_retry_interval = 10000
+[2021-06-30 21:45:00,582][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: java.naming.provider.url = rmi://localhost:1099
+[2021-06-30 21:45:00,582][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.force_shutdown_on_vm_exit = false
+[2021-06-30 21:45:00,582][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] USING: com.atomikos.icatch.default_jta_timeout = 10000
+[2021-06-30 21:45:00,582][main][INFO][com.atomikos.icatch.provider.imp.AssemblerImp:28] Using default (local) logging and recovery...
+[2021-06-30 21:45:03,723][main][INFO][org.springframework.data.elasticsearch.support.VersionInfo:62] Version Spring Data Elasticsearch: 4.1.8
+[2021-06-30 21:45:03,723][main][INFO][org.springframework.data.elasticsearch.support.VersionInfo:63] Version Elasticsearch Client in build: 7.9.3
+[2021-06-30 21:45:03,723][main][INFO][org.springframework.data.elasticsearch.support.VersionInfo:64] Version Elasticsearch Client used: 7.9.3
+[2021-06-30 21:45:04,841][main][INFO][org.springframework.cloud.netflix.eureka.config.DiscoveryClientOptionalArgsConfiguration:68] Eureka HTTP Client uses RestTemplate.
+[2021-06-30 21:45:05,321][main][INFO][org.springframework.cloud.netflix.eureka.InstanceInfoFactory:67] Setting initial instance status as: STARTING
+[2021-06-30 21:45:05,364][main][INFO][com.netflix.discovery.DiscoveryClient:372] Initializing Eureka in region us-east-1
+[2021-06-30 21:45:05,368][main][INFO][com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver:43] Resolving eureka endpoints via configuration
+[2021-06-30 21:45:07,161][main][INFO][com.netflix.discovery.DiscoveryClient:1007] Disable delta property : false
+[2021-06-30 21:45:07,178][main][INFO][com.netflix.discovery.DiscoveryClient:1008] Single vip registry refresh property : null
+[2021-06-30 21:45:07,178][main][INFO][com.netflix.discovery.DiscoveryClient:1009] Force full registry fetch : false
+[2021-06-30 21:45:07,178][main][INFO][com.netflix.discovery.DiscoveryClient:1010] Application is null : false
+[2021-06-30 21:45:07,179][main][INFO][com.netflix.discovery.DiscoveryClient:1011] Registered Applications size is zero : true
+[2021-06-30 21:45:07,179][main][INFO][com.netflix.discovery.DiscoveryClient:1013] Application version is -1: true
+[2021-06-30 21:45:07,179][main][INFO][com.netflix.discovery.DiscoveryClient:1097] Getting all instance registry info from the eureka server
+[2021-06-30 21:45:08,004][main][INFO][com.netflix.discovery.DiscoveryClient:1106] The response status is 200
+[2021-06-30 21:45:08,006][main][INFO][com.netflix.discovery.DiscoveryClient:1321] Starting heartbeat executor: renew interval is: 3
+[2021-06-30 21:45:08,007][main][INFO][com.netflix.discovery.InstanceInfoReplicator:60] InstanceInfoReplicator onDemand update allowed rate per min is 4
+[2021-06-30 21:45:08,044][main][INFO][com.netflix.discovery.DiscoveryClient:492] Discovery Client initialized at timestamp 1625060708034 with initial instances count: 3
+[2021-06-30 21:45:08,060][main][INFO][org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry:41] Registering application GOOD-SERVICE with eureka with status UP
+[2021-06-30 21:45:08,061][main][INFO][com.netflix.discovery.DiscoveryClient:1352] Saw local status change event StatusChangeEvent [timestamp=1625060708061, current=UP, previous=STARTING]
+[2021-06-30 21:45:08,062][DiscoveryClient-InstanceInfoReplicator-0][INFO][com.netflix.discovery.DiscoveryClient:873] DiscoveryClient_GOOD-SERVICE/169.254.128.219:8080: registering service...
+[2021-06-30 21:45:08,091][main][INFO][org.apache.coyote.http11.Http11NioProtocol:173] Starting ProtocolHandler ["http-nio-8080"]
+[2021-06-30 21:45:08,137][main][INFO][org.springframework.boot.web.embedded.tomcat.TomcatWebServer:220] Tomcat started on port(s): 8080 (http) with context path '/goodService'
+[2021-06-30 21:45:08,138][main][INFO][org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration:144] Updating port to 8080
+[2021-06-30 21:45:08,193][DiscoveryClient-InstanceInfoReplicator-0][INFO][com.netflix.discovery.DiscoveryClient:882] DiscoveryClient_GOOD-SERVICE/169.254.128.219:8080 - registration status: 204
+[2021-06-30 21:45:08,441][main][INFO][com.cmcc.noobcloud.goodservice.NoobcloudGoodServiceApplication:61] Started NoobcloudGoodServiceApplication in 18.88 seconds (JVM running for 23.265)
+[2021-06-30 21:46:02,823][http-nio-8080-exec-1][INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/goodService]:173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-06-30 21:46:02,836][http-nio-8080-exec-1][INFO][org.springframework.web.servlet.DispatcherServlet:525] Initializing Servlet 'dispatcherServlet'
+[2021-06-30 21:46:02,840][http-nio-8080-exec-1][INFO][org.springframework.web.servlet.DispatcherServlet:547] Completed initialization in 4 ms
+[2021-06-30 21:46:02,941][http-nio-8080-exec-1][INFO][com.cmcc.noobcloud.goodservice.controller.HelloController:15] Slf4j log test mark
