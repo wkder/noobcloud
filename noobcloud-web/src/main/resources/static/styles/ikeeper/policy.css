@@ -1,0 +1,162 @@
+/** 弹窗 */
+.catalogInfo,
+.policyInfo {
+    padding: 30px 15px;
+}
+
+.catalogInfo .right,
+.policyInfo .right {
+    text-align: right;
+}
+
+.catalogInfo div.col-md-3,
+.catalogInfo div.col-md-7,
+.policyInfo div.col-md-3,
+.policyInfo div.col-md-7 {
+    margin: 8px 0;
+}
+
+.catalogInfo .areaNames,
+.catalogInfo .productNames,
+.catalogInfo .orgNames {
+    cursor: pointer;
+}
+
+#catlogTable.iDataTable > thead > tr {
+    background: #f7f7f7;
+    font-size: 16px;
+    color: black;
+}
+
+#catlogTable.iDataTable > thead > tr > th {
+    border-left: 1px solid #ddd !important;
+    border-bottom: 1px solid #ddd !important;
+}
+
+#catlogTable.iDataTable > thead > tr th:first-child {
+    padding-left: 30px;
+}
+
+/** 选择产品组合 table样式 */
+.productInfo {
+    height: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.productInfo .query-row {
+    width: 100%;
+    margin: 10px 0 0 0;
+    padding: 10px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.productInfo .query-row .queryWelfareTypeId,
+.productInfo .query-row .queryProductTypeId,
+.productInfo .query-row .queryNetType,
+.productInfo .query-row .queryProductName {
+    width: 110px;
+}
+
+.productInfo .productInfoTitle {
+    height: 20px;
+    margin: 10px 0;
+}
+
+.productInfo .productInfoTitle .selectLefTitle {
+    float: left;
+    width: 40%;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.productInfo .productInfoTitle .selectMiddleTitle {
+    float: left;
+    width: 12%;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.productInfo .productInfoTitle .selectRightTitle {
+    float: right;
+    width: 40%;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 2px;
+    text-align: center;
+}
+
+.productInfo .shuttleBox {
+    margin: 5px 0 30px 0;
+    width: 100%;
+    height: 78%;
+    float: left;
+}
+
+.productInfo .shuttleBox .selectLeft {
+    width: 40%;
+    float: left
+}
+
+.productInfo .shuttleBox .selectLeft select {
+    width: 98%;
+    height: 360px;
+    border-radius: 4px;
+}
+
+.productInfo .shuttleBox .selectLeft select option {
+    margin: 4px 0;
+    cursor: pointer;
+}
+
+.productInfo .shuttleBox .selectBtn {
+    width: 12%;
+    float: left;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.productInfo .shuttleBox .selectBtn button {
+    border-radius: 2px;
+}
+
+.productInfo .shuttleBox .selectRight {
+    width: 40%;
+    float: left
+}
+
+.productInfo .shuttleBox .selectRight select {
+    width: 98%;
+    height: 360px;
+    margin-left: 0;
+    border-radius: 4px;
+}
+
+.productInfo .shuttleBox .selectRight select option {
+    margin: 4px 0;
+    cursor: pointer;
+}
+
+.productInfo .shuttleBox tr.silver {
+    background: silver;
+}
+
+/** 政策详情 */
+.policyDetailInfo {
+    height: 200px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 15px 0;
+}
+
+.moreWord {
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-decoration: none;
+}

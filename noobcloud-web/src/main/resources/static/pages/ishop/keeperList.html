@@ -1,0 +1,198 @@
+<link href="styles/ishop/keeperList.css" rel="stylesheet">
+<!--搜索栏-->
+<div class="row query-row" style="display: none;">
+    <div class="col-md-12">
+        <input id="loginUser" type="hidden">
+        <select class="form-control" id="selectQueryBaseAreas" placeholder="地市"></select>
+        <select class="form-control" id="selectQueryBase" placeholder="营业厅" style="display: none;"></select>
+        <select class="form-control" id="selectQueryScene" placeholder="业务场景"></select>
+        <input type="text" id="startTime" class="form-control startTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday: true})" readonly/>
+        <input type="text" id="endTime" class="form-control endTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday: true})" readonly/>
+        <button id="btnQuery" class="btn btn-success">
+            <i class="fa fa-search"></i>查询
+        </button>
+        <button id="exportPositionBaseButton" class="btn btn-success" style="display: none;">
+            <i class="fa fa-download"></i>导出
+        </button>
+    </div>
+</div>
+
+<!--业务累计笔数、总额-->
+<div class="row list-row" style="display: none;">
+    <div class="col-md-12">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-6">
+                <span>业务累计笔数：</span>
+                <span id="shopKeeperCount">0</span>
+            </div>
+            <div class="col-md-6">
+                <span>业务累计总额：</span>
+                <span id="shopKeeperAmount">0</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--排行榜-->
+<div class="row table-row" style="display: none;">
+    <!--地市排行榜-->
+    <div class="col-md-4 area-top">
+        <label>地市排行榜</label>
+        <div class="line"></div>
+        <table class="cityRankingTable table iDataTable table-hover">
+            <thead>
+            <tr>
+                <td>序号</td>
+                <td>地市名称</td>
+                <td>业务笔数</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>南京</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>苏州</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>无锡</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>南通</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>徐州</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>常州</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>盐城</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>扬州</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>淮安</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>连云港</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>镇江</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>宿迁</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>泰州</td>
+                <td>0</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--渠道排行榜-->
+    <div class="col-md-8 location-top">
+        <label>渠道排行榜(前10)</label>
+        <div class="line"></div>
+        <table class="channelRankingTable table iDataTable table-hover">
+            <thead>
+            <tr>
+                <td>序号</td>
+                <td>渠道名称</td>
+                <td>渠道编码</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--当前排名-->
+    <div class="col-md-12 ranking" style="display: none;">
+        <div class="col-md-10">
+            <span>当前排名：</span>
+            <span id="currentRanking">0</span>
+        </div>
+    </div>
+</div>
+
+<!--END 弹出框-->
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/ishop/keeperList.js"></script>

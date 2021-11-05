@@ -1,0 +1,324 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/ischeduling/eSmsTask.css">
+<!-- endregion 样式 -->
+
+<!-- region 搜索、列表 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12 form-inline conditionSearch">
+            <input type="text" class="form-control queryName" placeholder="任务名称">
+            <select class="form-control stats" id="status">
+                <option value="">请选择状态</option>
+                <option value="0">待审核</option>
+                <option value="1">审批拒绝</option>
+                <option value="2">审批通过</option>
+                <option value="3">执行中</option>
+                <option value="4">执行完毕</option>
+            </select>
+            <button class="searchBtn btn btn-primary"><i class="fa fa-search"></i>搜索</button>
+            <button class="addBtn btn btn-primary"><i class="fa fa-plus"></i>新增</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table class="taskTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer"
+                   width="100%" style="table-layout: fixed;"></table>
+        </div>
+    </div>
+</div>
+<!-- endregion 搜索、列表 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 新增、编辑营销任务 -->
+    <div class="marketJobEditInfo">
+        <div class="container-fluid infoConfigBody">
+            <!-- region 任务基本信息 -->
+            <div class="row userGroupInfo active">
+                <form enctype="multipart/form-data" method="post">
+
+                    <!--region 隐藏域存放id和状态-->
+                    <input  name="id" type="hidden"/>
+                    <input  name="status" type="hidden"/>
+                    <!--endregion 隐藏域存放id和状态-->
+
+                    <!-- region 任务名称 -->
+                    <div class="col-md-12 marketName">
+                        <div class="col-md-2 text-right">
+                            <strong class="must" style="color: red">*</strong><strong>任务名称:</strong>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" name="taskName" class="name form-control" title="名称由字母、下划线、中文组成"
+                                   placeholder="请输入任务名称，限制50个字数" maxlength="50" data-expression="isEmpty" data-error="任务名称由字母、下划线、中文组成"/>
+                        </div>
+                    </div>
+                    <!-- endregion 任务名称 -->
+
+                    <!-- region 导入客群 -->
+                    <div class="userGroup col-md-12">
+                        <div class="col-md-2 text-right">
+                            <strong class="must" style="color: red">*</strong><strong>导入客群:</strong>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="meatOperate">
+                                <input type="text" class="form-control" name="tableName" placeholder="客群编码" data-expression="isEmpty" data-error="请导入文件" readonly>
+
+                                <!--<input type="hidden" name="tableName">-->
+                            </div>
+                            <div class="meatOperate" style="margin-top: 10px">
+                                <input type="hidden" class="form-control" name="phoneCount" placeholder="号池数量"  readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn userGroupBtn task-button btn-sm" type="button">导入</button>
+                        </div>
+                    </div>
+                    <!-- endregion 导入客群 -->
+
+                    <!--region 短信内容-->
+                    <div class="col-md-12 sms messageInfo">
+                        <div class="col-md-2 text-right">
+                            <strong class="must" style="color: red">*</strong><strong>短信内容:</strong>
+                        </div>
+                        <div class="col-md-8">
+                        <textarea class="smsMessageContent form-control" title="请选择短信内容" rows="3" name="content"
+                                  placeholder="短信内容，字数不超过400个字" maxlength="400" ></textarea>
+                            <input class="smsContentId willHide" title="请选择短信内容"/>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="smsMessageSelectButton task-button btn-sm">选择
+                            </button>
+                        </div>
+                    </div>
+                    <!--endregion 短信内容-->
+                </form>
+            </div>
+            <!-- endregion 任务基本信息 -->
+
+            <!-- region 预览 -->
+            <div class="row auditInfo">
+                <!-- region 任务基本信息 -->
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <strong>任务基本信息</strong>
+                    </div>
+                    <!-- region 任务名称 -->
+                    <div class="col-md-2">
+                        <span>任务名称：</span>
+                    </div>
+                    <div class="col-md-9">
+                        <span class="pre_taskName" style="width: 100%;display: inline-block;word-break: break-all;"></span>
+                    </div>
+                    <!-- endregion 任务名称 -->
+
+                    <!-- region 任务描述 -->
+                    <div class="col-md-2">
+                        <span>短信内容：</span>
+                    </div>
+                    <div class="col-md-9">
+                        <span class="pre_smsContent" style="width: 100%;display: inline-block;word-break: break-all;"></span>
+                    </div>
+                    <!-- endregion 任务描述 -->
+                </div>
+                <!-- endregion 任务基本信息 -->
+
+                <!-- region 目标用户选择 -->
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <strong>目标用户选择</strong>
+                    </div>
+                    <!-- region 营销客户 -->
+                    <div class="col-md-2">
+                        <span>客群编码：</span>
+                    </div>
+                    <div class="col-md-9">
+                <span class="detail_appintUser_tableName"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+                    </div>
+                    <!-- endregion 营销客户 -->
+
+                    <!-- region 营销客户人数 -->
+                    <div class="col-md-2">
+                        <span>号池数量：</span>
+                    </div>
+                    <div class="col-md-9">
+                <span class="detail_phoneCounts"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+                    </div>
+                    <!-- endregion 营销客户人数 -->
+                </div>
+                <!-- endregion 目标用户选择 -->
+            </div>
+            <!-- endregion 预览 -->
+        </div>
+        <div class="step">
+            <span class="pre">返回</span>
+            <span class="next active">预览</span>
+            <span class="confirm">保存</span>
+            <span class="closeBtn active">关闭</span>
+        </div>
+        <div class="data" style="display: none"></div>
+    </div>
+    <!-- endregion 新增、编辑营销任务 -->
+
+    <!-- region 导入客群 -->
+    <div class="importUserGroupInfo">
+        <!-- region 用户文件导入表单 -->
+        <form class="importForm" method="post" enctype="multipart/form-data" actions="">
+            <div class="meatOperate">
+                <input class="form-control fileUploadName" type="text" placeholder="文件路径">
+                <a class="btn btn-success file" href="javascript:void(0);">选择文件
+                    <input type="file" name="file">
+                </a>
+                <div class="btn btn-success btnUpload">上传</div>
+            </div>
+            <div class="info">
+                <span>1、请导入txt文件</span>
+                <span>2、txt文件中每行存放一个账号</span>
+                <!--<span>3、宽带账号只支持零开头的11位或12位数字</span>-->
+            </div>
+        </form>
+
+        <!-- endregion 用户文件导入表单 -->
+
+        <!-- region 导入数据表格 -->
+        <div class="phoneInfo">
+            <span class="uploadMessage"></span>
+        </div>
+        <!-- endregion 导入数据表格 -->
+
+        <!-- region 隐藏域 存放弹窗句柄 -->
+        <input type="hidden" class="dialogIndex">
+        <!-- endregion 隐藏域 存放弹窗句柄 -->
+    </div>
+    <!-- endregion 导入客群 -->
+
+
+    <div class="selectTestNumberInfo">
+        <table class="testNumberTab table table-hover table-condensed table-bordered"
+               style="width: 96%;margin: 0 2%;"></table>
+    </div>
+
+    <div class="selectSmsContentInfo" style="width:96%;margin: 0 2%;">
+        <div class="col-md-12">
+            <input class="form-control qryContentInfo" placeholder="内容" style="width: 160px">
+            <input class="form-control qryKeyInfo" placeholder="关键词" style="width: 160px">
+            <button class="smsContentSearchBtn">
+                <i class="fa fa-search"></i>搜索
+            </button>
+        </div>
+        <div class="col-md-12" style="height: 390px;">
+            <table class="smsContentTab table table-hover table-condensed table-bordered" style="width:100%;"></table>
+        </div>
+    </div>
+    <!--jxh周期任务短信修改模板-->
+    <div class="jxhContent" style="display: none;">
+        <div class="col-md-12 jxhsmsMessage">
+            <div class="col-md-2 text-right">
+                <strong class="must" style="color: red">*</strong><strong>短信内容:</strong>
+            </div>
+            <div class="col-md-8">
+                        <textarea class="jxhsmsMessageContent form-control" title="请选择短信内容" rows="3"
+                                  placeholder="短信内容，字数不超过400个字" maxlength="400"></textarea>
+                <input class="jxhSmsContentId willHide" title="请选择短信内容"/>
+            </div>
+            <div class="col-md-1">
+                <button class="jxhsmsMessageSelectButton task-button btn-sm">选择</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 预览模板 -->
+<div class="iMarket_preview" style="display: none;">
+    <!-- region 营销任务预览 -->
+    <div class="row taskMgrDetailInfo">
+        <!-- region 隐藏域 存放ID -->
+        <input class="detail_id" type="hidden">
+        <!-- endregion 隐藏域 存放ID -->
+
+        <!-- region 任务基本信息 -->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>任务基本信息</strong>
+            </div>
+            <!-- region 任务名称 -->
+            <div class="col-md-3">
+                <span>任务名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskName" style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 任务名称 -->
+
+            <!-- region 任务描述 -->
+            <div class="col-md-3">
+                <span>任务内容：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_content" style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 任务描述 -->
+
+            <!-- region 创建人 -->
+            <div class="col-md-3">
+                <span>创建人：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_createUserName" style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 创建人 -->
+
+            <!-- region 创建时间 -->
+            <div class="col-md-3">
+                <span>创建时间：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_createTime" style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 创建时间 -->
+        </div>
+        <!-- endregion 任务基本信息 -->
+
+        <!-- region 目标用户选择 -->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>目标用户选择</strong>
+            </div>
+            <!-- region 营销客户 -->
+            <div class="col-md-3">
+                <span>客群编码：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_talbleName"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 营销客户 -->
+
+             <!--region 营销客户人数 -->
+            <div class="col-md-3">
+            <span>号池数量：</span>
+            </div>
+            <div class="col-md-9">
+            <span class="detail_segmentCounts"
+            style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+             <!--endregion 营销客户人数 -->
+        </div>
+        <!-- endregion 目标用户选择 -->
+    </div>
+    <!-- endregion 营销任务预览 -->
+</div>
+<!-- endregion 预览模板 -->
+
+<!--region 弹出框-->
+<div class="dialogUpLoadUsers">
+    <div id="import_userGroup_dialog" style="display: none"></div>
+</div>
+<!--endregion 弹出框-->
+
+<!-- region 脚本 -->
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/ischeduling/eSmsTask.js"></script>
+<!-- endregion 脚本 -->

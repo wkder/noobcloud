@@ -1,0 +1,178 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/iresource/woXunContent.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input type="text" class="form-control queryName" placeholder="沃讯标题">
+            <select class="form-control querySelectWoXunType"></select>
+            <button class="searchBtn"><i class="fa fa-search"></i>搜索</button>
+            <button class="addBtn"><i class="fa fa-plus"></i>新增</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table class="table iDataTable table-hover table-condensed table-bordered woXunTable"
+                   cellspacing="0">
+            </table>
+        </div>
+    </div>
+
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 新增沃讯配置 -->
+    <div class="col-md-12 woXunInfo" data-autoVerify="true">
+        <!-- region 记录操作状态 隐藏域 -->
+        <input class="operate" type="hidden">
+        <!-- endregion 记录操作状态 隐藏域 -->
+
+        <!-- region 数据ID 隐藏域 -->
+        <input name="id" type="hidden">
+        <!-- endregion 数据ID 隐藏域 -->
+
+        <!-- region 沃讯类型 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>沃讯类型:</strong>
+        </div>
+        <div class="col-md-7">
+            <select class="form-control" name="woxunType">
+            </select>
+        </div>
+        <!-- endregion 沃讯类型 -->
+
+        <!-- region 沃讯标题 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>沃讯标题:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="resTitle"
+                   placeholder="请输入沃讯标题，限制30个字数" maxlength="30"
+                   data-expression="isEmpty"
+                   data-error="沃讯标题不能为空"/>
+        </div>
+        <!-- endregion 沃讯标题 -->
+    </div>
+    <!-- endregion 新增沃讯配置 -->
+
+    <!-- region 查看资源列表 -->
+    <div class="col-md-12 resourceListInfo">
+        <div class="query-row">
+            <div class="col-md-12">
+                <select class="form-control querySelectResourceType">
+                    <option value="0">请选择资源类型</option>
+                    <option value="1">JPG</option>
+                    <option value="2">GIF</option>
+                    <option value="3">PNG</option>
+                    <option value="4">MP3</option>
+                    <option value="5">3GP</option>
+                    <option value="6">MP4</option>
+                    <option value="7">APK</option>
+                    <option value="8">TXT</option>
+                </select>
+                <button class="searchResourceBtn"><i class="fa fa-search"></i>搜索</button>
+                <button class="addResourceBtn"><i class="fa fa-plus"></i>新增</button>
+            </div>
+        </div>
+        <div class="row list-row">
+            <div class="col-md-12">
+                <table class="table iDataTable table-hover table-condensed table-bordered resourceTable"
+                       cellspacing="0">
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- endregion 查看资源列表 -->
+
+    <!-- region 新增资源配置 -->
+    <div class="col-md-12 resourceInfo" data-autoVerify="true">
+        <form class="importForm" method="post" enctype="multipart/form-data">
+            <!-- region 记录操作状态 隐藏域 -->
+            <input class="operate" type="hidden">
+            <!-- endregion 记录操作状态 隐藏域 -->
+
+            <!-- region 数据库主键Id -->
+            <input type="hidden" name="id">
+            <!-- region 数据库主键Id -->
+
+            <!-- region 资源级别 -->
+            <div class="col-md-3 right">
+                <strong class="must" style="color: red">*</strong><strong>资源级别:</strong>
+            </div>
+            <div class="col-md-7">
+                <select class="form-control" name="rank">
+                    <option value="1">一档</option>
+                    <option value="2">二挡</option>
+                </select>
+            </div>
+            <!-- endregion 资源级别 -->
+
+            <!-- region 资源类型 -->
+            <div class="col-md-3 right" data-rank="true" style="display: none;">
+                <strong class="must" style="color: red">*</strong><strong>资源类型:</strong>
+            </div>
+            <div class="col-md-7" data-rank="true" style="display: none;">
+                <select class="form-control" name="resourceType">
+                    <option value="0">请选择资源类型</option>
+                    <option value="1">JPG</option>
+                    <option value="2">GIF</option>
+                    <option value="3">PNG</option>
+                    <option value="4">MP3</option>
+                    <option value="5">3GP</option>
+                    <option value="6">MP4</option>
+                    <option value="7">APK</option>
+                    <option value="8">TXT</option>
+                </select>
+            </div>
+            <!-- endregion 资源类型 -->
+
+            <!-- region 文件上传 -->
+            <div class="col-md-3 right">
+                <strong class="must" style="color: red">*</strong><strong>选择文件:</strong>
+            </div>
+            <div class="col-md-7" style="margin-top: 6px;">
+                <div class="meatOperate">
+                    <input class="form-control fileUploadName" type="text" placeholder="文件路径">
+                    <a class="btn btn-success file" href="javascript:void(0);">选择<input type="file" name="file">
+                    </a>
+                </div>
+            </div>
+            <!-- endregion 文件上传 -->
+
+            <!-- region 文字提示 -->
+            <div class="col-md-3 right">
+            </div>
+            <div class="col-md-7">
+                <span class="levelOne">一档上传文件的格式为文本(txt)，文件最大为100KB</span>
+                <span class="levelTwo" style="display: none;">二档上传文件最大为2000KB</span>
+            </div>
+            <!-- endregion 文字提示 -->
+        </form>
+    </div>
+    <!-- endregion 新增资源配置 -->
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹出框 -->
+<div class="iMarket_Dialog">
+    <!-- region 新增、编辑沃讯配置 -->
+    <div id="addOrEdit_woXun_dialog" style="display: none"></div>
+    <!-- endregion 新增、编辑沃讯配置 -->
+
+    <!-- region 查看资源列表 -->
+    <div id="show_resource_dialog" style="display: none"></div>
+    <!-- endregion 查看资源列表 -->
+
+    <!-- region 新增资源配置 -->
+    <div id="add_resource_dialog" style="display: none"></div>
+    <!-- endregion 新增资源配置 -->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="js/iresource/woXunContent.js"></script>
+<!-- endregion 脚本 -->

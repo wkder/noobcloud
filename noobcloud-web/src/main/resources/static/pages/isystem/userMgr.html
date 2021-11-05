@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<link rel="stylesheet" href="styles/isystem/user.css">
+<script src="js/isystem/userMgr.js"></script>
+<body>
+<div class="iMarket_Body">
+    <div class="">
+        <div class="row query-row">
+            <div class="col-md-12 form-inline">
+                <input type="text" class="form-control name" placeholder="姓名" maxlength="200">
+                <input type="tel" class="form-control telephone" placeholder="手机号" maxlength="11">
+                <select class="form-control areaSearchSelect">
+                    <option value="-1">所有区域</option>
+                </select>
+                <select class="form-control roleSearchSelect">
+                    <option value="-1">所有角色</option>
+                </select>
+                <button class="searchBtn btn btn-primary"><i class="fa fa-search"></i>搜索</button>
+                <button class="addBtn btn btn-primary"><i class="fa fa-plus"></i>新增</button>
+                <button class="distributionBtn btn btn-primary"><i class="fa fa-gears"></i>分配</button>
+                <div class="userRefreshBtn" style="display: none;"></div>
+            </div>
+        </div>
+        <div class="row list-row">
+            <div class="col-md-12">
+                <table class="userTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer"
+                       width="100%" style="table-layout: fixed;width: 100%;"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="iMarket_Content" style="display: none;">
+    <div class="userInfo">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <span style="color:red">*</span>
+                    <label class="">用户名：</label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="name form-control input-sm" name="name" title="不能为空" maxlength="50"
+                           autocomplete="off"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <span style="color:red">*</span>
+                    <label class="">手机号码：</label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="telephone form-control input-sm" title="手机号为空或格式有误" maxlength="11"
+                           onkeyup="this.value=this.value.replace(/\D/g,'').replace(/^0/g,'')"
+                           onafterpaste="this.value=this.value.replace(/\D/g,'').replace(/^0/g,'')"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <span class="must" style="color:red">*</span>
+                    <label class="">密码：</label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="password" class="password form-control input-sm" name="name" title="密码至少一个数字，小写字母，大写字母和特殊字符 长度8-16位"
+                           maxlength="16" minlength="8"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <span style="color:red">*</span>
+                    <label class="">归属区域：</label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="areaName form-control input-sm" disabled/>
+                    <input type="text" class="specificHide areaId" title="不能为空"/>
+                    <input type="hidden" class="areaCode" title="不能为空"/>
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="areaSelectBtn btn btn-info btn-sm">选择</button>
+                </div>
+            </div>
+            <div class="businessHall row" style="display: none;">
+                <div class="col-sm-3 text-right">
+                    <label class="">归属营业厅：</label>
+                </div>
+                <div class="col-sm-6">
+                    <textarea class="businessHallNames form-control" disabled></textarea>
+                    <input type="text" class="specificHide businessHallIds" title="地市用户创建的用户归属营业厅不能为空"/>
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="businessHallSelectBtn btn btn-info btn-sm">选择</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <span style="color:red">*</span>
+                    <label class="">角色选择：</label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="roleNames form-control input-sm" disabled/>
+                    <input type="text" class="specificHide roleIds" title="不能为空"/>
+                    <input type="hidden" class="roleType"/>
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="roleSelectBtn btn btn-info btn-sm">选择</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <span style="color:red">*</span>
+                    <label class="">指定首页：</label>
+                </div>
+                <div class="col-sm-6">
+                    <select class="form-control homePageSelect"></select>
+                </div>
+            </div>
+            <div class="modelAudit row">
+                <div class="col-sm-3 text-right">
+                    <label class="">模型审批人：</label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="auditNames segmentAuditNames form-control input-sm" disabled/>
+                    <input type="hidden" class="auditUserDetail segmentAuditUsers"/>
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="auditUserBtn auditModel btn btn-info btn-sm">选择</button>
+                </div>
+            </div>
+<!--            <div class="tagAudit row">
+                <div class="col-sm-3 text-right">
+                    <label class="">标签审批人：</label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="auditNames tagAuditNames form-control input-sm" disabled/>
+                    <input type="hidden" class="auditUserDetail tagAuditUsers"/>
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="auditUserBtn auditTag btn btn-info btn-sm">选择</button>
+                </div>
+            </div>-->
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <span style="color:red">*</span>
+                    <label class="">营销任务审批人：</label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="auditNames marketAuditNames form-control input-sm" disabled/>
+                    <input type="text" class="specificHide auditUserDetail marketingAuditUsers" title="不能为空"/>
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="auditUserBtn auditMarketJob btn btn-info btn-sm">选择</button>
+                </div>
+            </div>
+            <div class="row messagePushAuditDiv">
+                <div class="col-sm-3 text-right">
+                    <label class="">推送任务审批人：</label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="auditNames messagePushAuditNames form-control input-sm" disabled/>
+                    <input type="text" class="specificHide auditUserDetail messagePushAuditUsers" title="不能为空"/>
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="auditUserBtn auditMessagePush btn btn-info btn-sm">选择</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <label class="">邮箱：</label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="email" class="email form-control input-sm" title="邮箱格式有误" maxlength="50"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <label class="">备注：</label>
+                </div>
+                <div class="col-sm-6">
+                    <textarea class="remarks form-control" rows="4"></textarea>
+                </div>
+            </div>
+            <div class="userHandleBtn"></div>
+        </form>
+    </div>
+
+    <div class="distributionUserRoleInfo">
+        <div class="container-fluid">
+            <div class="row distributionSearch form-inline query-row">
+                <select class="areaSelect form-control" disabled>
+                    <option value="-1">请选择地区</option>
+                </select>
+                <select class="subAdminSelect form-control">
+                    <option value="-1">请选择子管理员</option>
+                </select>
+                <select class="businessHallTypeSelect form-control">
+                    <option value="-1">请选择营业厅类型</option>
+                </select>
+            </div>
+            <div class="row form-inline distributionBox">
+                <div class="willBusinessHallList">
+                    <div>可选营业厅</div>
+                    <ul class="unDistributionData"></ul>
+                </div>
+                <div class="changeBtn">
+                    <button class="right btn btn-block"><i class="fa fa-chevron-right"></i></button>
+                    <button class="left btn btn-block"><i class="fa fa-chevron-left"></i></button>
+                </div>
+                <div class="doneBusinessHall">
+                    <div>归属营业厅</div>
+                    <ul class="onDistributionData"></ul>
+                </div>
+            </div>
+            <div class="distributionBtn" style="display:none;"></div>
+        </div>
+    </div>
+
+    <div class="auditUserSelectInfo">
+        <div class="container-fluid">
+            <div class="row">
+                <table class="auditUserTab table table-striped cell-border"
+                       style="margin: 10px;width:95%;text-align: center;">
+                    <thead>
+                    <tr>
+                        <td width="25%">审批级别</td>
+                        <td width="45%">审批人</td>
+                        <td width="30%">操作</td>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr><td colspan="3">
+                            <div style="font-size: 13px;color: #00b38b;font-weight: bold;margin-top: 20px;">
+                                ------------------- 终极审批人可以跳过其他审批流程实现一键审批 -------------------
+                            </div></td></tr>
+                        <tr class="auditCt">
+                            <td width="25%" ><span class='order' order-val='0'>终</span>极审批</td>
+                            <td width="45%">
+                                <input type='text' class='auditUserName'value=''/>
+                                <input type='text' class='specificHide auditUserId'value='' title='请选择审批人' style='position: relative;top: -20px;'/>
+                            </td>
+                            <td width="30%" style="text-align: left;"><a type='button' class='deleteBtn btn btn-danger btn-xs' href='#' onclick=''><i class='fa fa-trash-o'></i></a></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

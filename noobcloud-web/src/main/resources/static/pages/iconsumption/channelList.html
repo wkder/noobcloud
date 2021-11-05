@@ -1,0 +1,27 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/scenecenter.css" rel="stylesheet">
+<link href="styles/iscene/positionBaseConfig.css" rel="stylesheet">
+<link href="ext/simplePagination.css" rel="stylesheet">
+<link href="styles/iconsumption/channelList.css" rel="stylesheet">
+<div id="userList">
+    <!--搜索栏-->
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input class="form-control channelName" id="channelName" placeholder="渠道名称">
+            <button id="queryChannel" class="btn btn-success">
+                <i class="fa fa-search"></i>查询
+            </button>
+        </div>
+    </div>
+    <!--列表栏-->
+    <div class="row list-row"
+         style="padding: 0px 10px;">
+        <div class="col-md-12">
+            <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+                   width="100%">
+            </table>
+        </div>
+    </div>
+</div>
+<script src="js/ishop/jquery.pagination.js"></script>
+<script src="js/iconsumption/channelList.js"></script>

@@ -1,0 +1,196 @@
+<link href="styles/isystem/monitorConfig.css" rel="stylesheet">
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="目标服务地址">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered" cellspacing="0"></table>
+    </div>
+</div>
+
+
+<div class="cmTableContent" id="cmTableContent" style="display:none;" data-autoVerify="true">
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>目标服务地址：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="serverIp" maxlength="15" placeholder="目标服务地址" name="serverIp">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>端口：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="port" name="port" placeholder="端口" maxlength="6" data-expression="isNumber" data-error="端口要为数字">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>服务账号：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="serverAccount" name="serverAccount" placeholder="服务账号" maxlength="80" data-expression="isEmpty" data-error="服务账号不为空">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>服务密码：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="serverPassWord" name="serverPassWord" placeholder="服务密码" maxlength="18">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>类型：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <select id="selType" class="form-control">
+                    <option value="1" selected="selected">FTP</option>
+                    <option value="2">MySQL</option>
+                    <option value="3">GP</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>预期字段：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <textarea id="expected" name="expected" maxlength="1500" data-expression="isEmpty" data-error="预期字段不为空"></textarea>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <strong>拼接字符串：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="format" placeholder="拼接字符串" maxlength="40" name="format">
+                <span style="color:red;padding-top: 6px;font-size: 15px;">例:yyyy-MM-dd hh:mm:ss</span>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>间隔时间(分钟)：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="timeTick" placeholder="间隔时间"  name="timeTick" data-expression="isNumber" data-error="间隔时间要为数字">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>库名：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="dataBaseName" placeholder="库名" maxlength="40" name="dataBaseName">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>下发通知内容：</strong>
+            </td>
+            <td colspan="3" class="td-content" maxlength="1500">
+                <textarea id="messageContent" name="messageContent" data-expression="isEmpty" data-error="下发通知内容不为空"></textarea>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <strong>邮箱：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input type="button" value="导入邮箱" id="updateEmail" class="upload">
+                <input type="text" value="" id="txtEmail" disabled="disabled" style="width: 70%"/>
+                <button id="btnEmail" class="upload" onclick="monitorConfig.evtShowEmail()">查看</button>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <strong>号码：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input type="button" value="导入号码" id="updatePhone" class="upload">
+                <input type="text" value="" id="txtPhone" disabled="disabled" style="width: 70%"/>
+                <button id="btnPhone" class="upload" onclick="monitorConfig.evtShowPhone()">查看</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="cmTableContent" id="cmTableEmail" style="display:none;">
+    <button id="btnAddEmail" class="upload" style="margin-top: 10px" onclick="monitorConfig.evtOnAddorEditEmail()">新增
+    </button>
+    <table id="dataTableEmail" class="table iDataTable table-hover table-condensed table-bordered" cellspacing="0" style="border: 1px solid #ddd;"></table>
+</div>
+
+<div class="cmTableContent" id="cmEmailDetail" style="display:none;" data-autoVerify="true">
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>邮件：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="email" maxlength="40" placeholder="邮件地址" name="email" data-expression="isEMail" data-error="邮件地址格式不对">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="cmTableContent row list-row" id="cmTablePhone" style="display:none;">
+    <button id="btnAddPhone" class="upload" style="margin-top: 10px" onclick="monitorConfig.evtOnAddorEditPhone()">新增
+    </button>
+    <table id="dataTablePhone" class="table iDataTable table-hover table-condensed table-bordered" cellspacing="0" style="border: 1px solid #ddd;"></table>
+</div>
+
+<div class="cmTableContent" id="cmPhoneDetail" style="display:none;" data-autoVerify="true">
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>号码：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="phone" maxlength="11" placeholder="号码" name="phone" data-expression="isPhone" data-error="号码格式不对">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="uploadPross" style="display:none;">
+    <div>
+        <span class="title"></span>
+        <span class="proess"></span>
+        <span class="wordloading">加载中...</span>
+    </div>
+</div>
+<script src="ext/plupload/plupload.full.min.js"></script>
+<script src="js/isystem/monitorConfig.js"></script>

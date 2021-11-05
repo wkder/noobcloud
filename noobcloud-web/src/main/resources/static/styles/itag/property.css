@@ -1,0 +1,75 @@
+#txtProperty, #txtTable, #txtColumn, #txtCreater {
+    width: 150px;
+}
+
+#selTable {
+    width: 300px;
+    display: inline;
+}
+
+#divProperty input {
+    width: 153px;
+    display: inline;
+    height: 32px;
+    border-radius: 2px;
+}
+
+#divProperty input[type='checkbox'] {
+    width: auto;
+    height: auto;
+    display: inline;
+}
+
+#propertyDataTable > thead > tr > th {
+    border-bottom-width: 1px;
+    border-right-width: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#propertyDataTable > tbody > tr > td {
+    border-right-width: 0;
+    vertical-align: middle;
+}
+
+#propertyDataTable_wrapper > div:nth-child(3) {
+    margin: 10px 0;
+}
+
+/*弹窗*/
+.layerInput {
+    width: 82% !important;
+    display: inline !important;
+}
+
+.layerBtn {
+    float: right;
+    width: 70px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 8px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 4px;
+    text-transform: none;
+    overflow: visible;
+    -webkit-appearance: button;
+}
+
+.layerBtn i {
+    margin-right: 4px;
+}

@@ -1,0 +1,42 @@
+<style type="text/css">
+    td.marketActivity {
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+</style>
+<body>
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input class="form-control qrtaskName" id="marketingName" placeholder="营销活动名称" maxlength="100"/>
+        <!--<input class="form-control qrbaseName" id="modelName" placeholder="模型名称" />-->
+        <!--<select class="form-control create_type qryBaseAreas" id="qryBaseAreas" style="width: 152px">-->
+        <!--</select>-->
+        <input type="text" id="dateTime" class="form-control startTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD'})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+        <span style="margin: 0 4px;">至</span>
+        <input type="text" id="endTime" class="form-control endTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday: true})" readonly
+               style="border: 1px solid #ccc;background: #fff;"/>
+        <button id="queryButton" class="btn btn-success">
+            <i class="fa fa-search"></i>查询
+        </button>
+        <button id="exportBaseButton" class="btn btn-success">
+            <i class="fa fa-download"></i>导出
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               width="100%">
+        </table>
+    </div>
+</div>
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/istatistics/messageMarketingResult.js"></script>

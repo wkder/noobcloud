@@ -1,0 +1,146 @@
+﻿#txtGroupName, #txtUrlName, #txtUrl {
+    width: 150px;
+    display: initial;
+}
+
+#popurlist {
+    margin: 6px 10px 6px 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    border-top: 3px solid #08A1EF;
+}
+
+#popurlist .col-md-12 #btnAddUrl{
+    width: initial;
+    margin-right: 0;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    text-transform: none;
+    overflow: visible;
+    -webkit-appearance: button;
+}
+
+#popurlist > div:nth-child(1) {
+    margin-top: 14px;
+    margin-bottom: -4px;
+}
+
+#popupAddOrEditUrl {
+    margin: 0 auto;
+}
+
+#url-list {
+    width: 100% !important;
+}
+
+#url-list_wrapper {
+    padding-top: 10px;
+}
+
+#url-list_wrapper .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#url-list_wrapper .row:nth-child(3) {
+    margin: 20px 0;
+}
+
+#phoneTools {
+    margin: 10px 0 0 0;
+    padding: 10px 0;
+    border-top: 1px solid #bbb;
+    background-color: #F6F6F6;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: right;
+}
+
+#phoneTools > button {
+    margin-right: 10px;
+}
+
+.pro {
+    position: fixed;
+    bottom: 50px;
+    width: 98%;
+    display: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/*进度条样式*/
+#uploadPross {
+    width: 288px;
+    height: 50px;
+}
+
+#uploadPross div {
+    margin-top: 20px;
+    margin-left: 12px;
+    width: 255px;
+    height: 24px;
+    /*border: 1px solid;*/
+    -moz-box-shadow: -1px 2px 1px #565656 inset; /* 老的 Firefox */
+    box-shadow: -1px 2px 1px #565656 inset;
+    -webkit-box-shadow: -1px 2px 1px #565656 inset;
+    border-radius: 16px;
+    background-color: #C6C6C6;
+}
+
+#uploadPross div .proess {
+    background-color: #72C83F;
+    width: 0%;
+    height: 24px;
+    border-radius: 16px;
+}
+
+#uploadPross .title {
+    width: 200px;
+    position: absolute;
+    top: 22px;
+    margin-left: 10%;
+    font-weight: 600;
+    color: white;
+}
+
+#uploadPross .wordloading {
+    font-size: 12px;
+    font-weight: 600;
+    color: #999;
+    position: static;
+    width: 56px;
+    margin-bottom: -10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.query-row .col-md-12 button {
+    width: auto;  !important;
+    margin-right: 10px;  !important;
+}
+
+/*.col-md-12 {*/
+    /*padding-right: 0;*/
+/*}*/

@@ -1,0 +1,53 @@
+.productSelectBtn {
+    width: 90px;
+    font-size: 16px;
+    font-weight: 400;
+    -ms-touch-action: manipulation;
+    cursor: pointer;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 6px 12px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+}
+
+.layerBtn {
+    float: left;
+    width: 70px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 8px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 4px;
+    text-transform: none;
+    overflow: visible;
+    -webkit-appearance: button;
+}
+
+.layerBtn i {
+    margin-right: 4px;
+}
+
+.fold, .unfold {
+    color: #00B38B;
+    font-size: 14px;
+    cursor: pointer;
+}

@@ -1,0 +1,111 @@
+<link href="styles/istatistics/insightAnalysis.css" rel="stylesheet"/>
+
+<style>
+    div.iMarket_StockUserIncome_Body div.incomeTable table tr td , div.incomeTable table tr th{padding: 3px; text-align: center}
+</style>
+
+<div class="iMarket_StockUserIncome">
+    <div class="iMarket_StockUserIncome_Body">
+        <div class="meatOperate">
+            <div class="extensionalBtn downloadIncomeSituation"><i class="fa fa-download"></i>下载</div>
+            <div class="downloadFrame">
+                <iframe name="frameName" style="display:none;"></iframe>
+                <form action="downloadIncomeSituation.view" method="post" target="frameName"
+                      style="display: none;"></form>
+            </div>
+        </div>
+        <div class="incomeTable">
+            <table class="tableOne" cellspacing="0" border="0" cellpadding="3" width="100%"
+                   style="background: #fff;">
+                <thead>
+                <tr>
+                    <th>业务类型</th>
+                    <th colspan="6">2G</th>
+                    <th colspan="6">3G</th>
+                </tr>
+                <tr>
+                    <th>拍照/观察月</th>
+                    <th>出账收入</th>
+                    <th>出账用户</th>
+                    <th>ARPU</th>
+                    <th>其中:合约用户出账收入</th>
+                    <th>合约用户出账用户数</th>
+                    <th>合约用户ARPU</th>
+                    <th>出账收入</th>
+                    <th>出账用户</th>
+                    <th>ARPU</th>
+                    <th>其中:合约用户出账收入</th>
+                    <th>合约用户出账用户数</th>
+                    <th>合约用户ARPU</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <table class="tableTwo" cellspacing="0" border="0" cellpadding="3" width="100%"
+                   style="background: #fff; ">
+                <thead>
+                <tr>
+                    <th>业务类型</th>
+                    <th colspan="6">4G</th>
+                    <th colspan="6">全业务</th>
+                </tr>
+                <tr>
+                    <th>拍照/观察月</th>
+                    <th>出账收入</th>
+                    <th>出账用户</th>
+                    <th>ARPU</th>
+                    <th>其中:合约用户出账收入</th>
+                    <th>合约用户出账用户数</th>
+                    <th>合约用户ARPU</th>
+                    <th>出账收入</th>
+                    <th>出账用户</th>
+                    <th>ARPU</th>
+                    <th>其中:合约用户出账收入</th>
+                    <th>合约用户出账用户数</th>
+                    <th>合约用户ARPU</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="iMarket_StockUserIncome_Template" style="display: none;">
+        <script id="stockUserIncomeTemplate" type="text/html">
+            {{each list as incomeData index}}
+            <tr>
+                <td>{{incomeData.month}}</td>
+                {{if display == 'TableOne'}}
+                <td>{{incomeData.income2G}}</td>
+                <td>{{incomeData.userCounts2G}}</td>
+                <td>{{incomeData.ARPU2G}}</td>
+                <td>{{incomeData.contractIncome2G}}</td>
+                <td>{{incomeData.contractUserCounts2G}}</td>
+                <td>{{incomeData.contractARPU2G}}</td>
+                <td>{{incomeData.income3G}}</td>
+                <td>{{incomeData.userCounts3G}}</td>
+                <td>{{incomeData.ARPU3G}}</td>
+                <td>{{incomeData.contractIncome3G}}</td>
+                <td>{{incomeData.contractUserCounts3G}}</td>
+                <td>{{incomeData.contractARPU3G}}</td>
+                {{/if}}
+                {{if display == 'TableTwo'}}
+                <td>{{incomeData.income4G}}</td>
+                <td>{{incomeData.userCounts4G}}</td>
+                <td>{{incomeData.ARPU4G}}</td>
+                <td>{{incomeData.contractIncome4G}}</td>
+                <td>{{incomeData.contractUserCounts4G}}</td>
+                <td>{{incomeData.contractARPU4G}}</td>
+                <td>{{incomeData.incomeWhole}}</td>
+                <td>{{incomeData.userCountsWhole}}</td>
+                <td>{{incomeData.ARPUWhole}}</td>
+                <td>{{incomeData.contractIncomeWhole}}</td>
+                <td>{{incomeData.contractUserCountsWhole}}</td>
+                <td>{{incomeData.contractARPUWhole}}</td>
+                {{/if}}
+            </tr>
+            {{/each}}
+        </script>
+    </div>
+</div>
+<script src="ext/template.js"></script>
+<script src="js/istatistics/stockUserIncome.js"></script>

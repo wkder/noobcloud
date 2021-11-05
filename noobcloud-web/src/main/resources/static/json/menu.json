@@ -1,0 +1,474 @@
+[
+    {
+        "moduleId": "0000",
+        "parentId": "0",
+        "fullName": "首页",
+        "icon": "fa fa-home",
+        "location": "index.html",
+        "sort": "1"
+    },
+    {
+        "moduleId": "1000",
+        "parentId": "0",
+        "fullName": "价值中心",
+        "icon": "fa fa-dashboard",
+        "location": "",
+        "sort": "2"
+    },
+    {
+        "moduleId": "10001",
+        "parentId": "1000",
+        "fullName": "价值预测",
+        "icon": "",
+        "location": "clvCalculate.html",
+        "sort": "1"
+    },
+    {
+        "moduleId": "10002",
+        "parentId": "1000",
+        "fullName": "价值分析",
+        "icon": "",
+        "location": "demo.html",
+        "sort": "2"
+    },
+    {
+        "moduleId": "2000",
+        "parentId": "0",
+        "fullName": "标签中心",
+        "icon": "fa fa-shield",
+        "location": "",
+        "sort": "3"
+    },
+    {
+        "moduleId": "20001",
+        "parentId": "2000",
+        "fullName": "标签管理",
+        "icon": "",
+        "location": "tabMgr.html",
+        "sort": "1"
+    },
+    {
+        "moduleId": "20002",
+        "parentId": "2000",
+        "fullName": "分类管理",
+        "icon": "",
+        "location": "",
+        "sort": "2"
+    },
+    {
+        "moduleId": "20003",
+        "parentId": "2000",
+        "fullName": "元数据",
+        "icon": "",
+        "location": "",
+        "sort": "3"
+    },
+    {
+        "moduleId": "200031",
+        "parentId": "20003",
+        "fullName": "属性管理",
+        "icon": "",
+        "location": "propertyList.html",
+        "sort": "1"
+    },
+    {
+        "moduleId": "200032",
+        "parentId": "20003",
+        "fullName": "维度管理",
+        "icon": "",
+        "location": "weiduList.html",
+        "sort": "2"
+    },
+    {
+        "moduleId": "200033",
+        "parentId": "20003",
+        "fullName": "数据源管理",
+        "icon": "",
+        "location": "source.html",
+        "sort": "3"
+    },
+    {
+        "moduleId": "3000",
+        "parentId": "0",
+        "fullName": "模型中心",
+        "icon": "fa fa-qrcode",
+        "location": "",
+        "sort": "4"
+    },
+    {
+        "moduleId": "30001",
+        "parentId": "3000",
+        "fullName": "模型管理",
+        "icon": "",
+        "location": "",
+        "sort": "1"
+    },
+    {
+        "moduleId": "300011",
+        "parentId": "30001",
+        "fullName": "营销模型",
+        "icon": "",
+        "location": "modelList.html",
+        "sort": "1"
+    },
+    {
+        "moduleId": "300012",
+        "parentId": "30001",
+        "fullName": "待审核模型",
+        "icon": "",
+        "location": "preModelList.html",
+        "sort": "2"
+    },
+    {
+        "moduleId": "300013",
+        "parentId": "30001",
+        "fullName": "分类管理",
+        "icon": "",
+        "location": "",
+        "sort": "3"
+    },
+    {
+        "moduleId": "30002",
+        "parentId": "3000",
+        "fullName": "数据监控",
+        "icon": "",
+        "location": "dataAnalysis.html",
+        "sort": "2"
+    },
+    {
+        "moduleId": "30003",
+        "parentId": "3000",
+        "fullName": "黑白名单",
+        "icon": "",
+        "location": "",
+        "sort": "3"
+    },
+    {
+        "moduleId": "4000",
+        "parentId": "0",
+        "fullName": "场景中心",
+        "icon": "fa fa-shield",
+        "location": "",
+        "sort": "5"
+    },
+    {
+        "moduleId": "40001",
+        "parentId": "4000",
+        "fullName": "短信场景配置",
+        "icon": "",
+        "location": "",
+        "sort": "1"
+    },
+    {
+        "moduleId": "400011",
+        "parentId": "40001",
+        "fullName": "短信发送配置",
+        "icon": "",
+        "location": "channelSms.html",
+        "sort": "1"
+    },
+    {
+        "moduleId": "400012",
+        "parentId": "40001",
+        "fullName": "场景规则配置",
+        "icon": "",
+        "location": "channelSince.html",
+        "sort": "2"
+    },
+    {
+        "moduleId": "40002",
+        "parentId": "4000",
+        "fullName": "导航场景配置",
+        "icon": "",
+        "location": "",
+        "sort": "2"
+    },
+    {
+        "moduleId": "400021",
+        "parentId": "40002",
+        "fullName": "导航形态",
+        "icon": "",
+        "location": "pilotShape.html",
+        "sort": "1"
+    },
+    {
+        "moduleId": "400022",
+        "parentId": "40002",
+        "fullName": "网址分类",
+        "icon": "",
+        "location": "pilotWebsites.html",
+        "sort": "2"
+    },
+    {
+        "moduleId": "400023",
+        "parentId": "40002",
+        "fullName": "区域管理",
+        "icon": "",
+        "location": "pilotArea.html",
+        "sort": "3"
+    },
+    {
+        "moduleId": "400024",
+        "parentId": "40002",
+        "fullName": "全局控制",
+        "icon": "",
+        "location": "pilotGlobal.html",
+        "sort": "4"
+    },
+    {
+        "moduleId": "40003",
+        "parentId": "4000",
+        "fullName": "位置场景配置",
+        "icon": "",
+        "location": "",
+        "sort": "3"
+    },
+    {
+        "moduleId": "400031",
+        "parentId": "40003",
+        "fullName": "基站配置",
+        "icon": "",
+        "location": "jizhanList.html",
+        "sort": "1"
+    },
+    {
+        "moduleId": "400032",
+        "parentId": "40003",
+        "fullName": "规则配置",
+        "icon": "",
+        "location": "channelWeizhi.html",
+        "sort": "2"
+    },
+    {
+        "moduleId": "400033",
+        "parentId": "40003",
+        "fullName": "场景统计配置",
+        "icon": "",
+        "location": "weizhisince.html",
+        "sort": "3"
+    },
+    {
+        "moduleId": "400034",
+        "parentId": "40003",
+        "fullName": "城市任务汇总统计",
+        "icon": "",
+        "location": "weizhiAnalysis.html",
+        "sort": "4"
+    },
+    {
+        "moduleId": "40004",
+        "parentId": "4000",
+        "fullName": "场景分类",
+        "icon": "",
+        "location": "SceneConType.html",
+        "sort": "4"
+    },
+    {
+        "moduleId": "5000",
+        "parentId": "0",
+        "fullName": "渠道中心",
+        "icon": "fa fa-shopping-cart",
+        "location": "",
+        "sort": "6"
+    },
+    {
+        "moduleId": "50001",
+        "parentId": "5000",
+        "fullName": "触点反馈",
+        "icon": "",
+        "location": "",
+        "sort": "1"
+    },
+    {
+        "moduleId": "500011",
+        "parentId": "50001",
+        "fullName": "KPI指标统计",
+        "icon": "",
+        "location": "",
+        "sort": "1"
+    },
+    {
+        "moduleId": "500012",
+        "parentId": "50001",
+        "fullName": "触点营销评估",
+        "icon": "",
+        "location": "",
+        "sort": "2"
+    },
+    {
+        "moduleId": "500013",
+        "parentId": "50001",
+        "fullName": "渠道偏好评估",
+        "icon": "",
+        "location": "",
+        "sort": "3"
+    },
+    {
+        "moduleId": "50002",
+        "parentId": "5000",
+        "fullName": "触点管理",
+        "icon": "",
+        "location": "",
+        "sort": "2"
+    },
+    {
+        "moduleId": "500021",
+        "parentId": "50002",
+        "fullName": "触点策略",
+        "icon": "",
+        "location": "chudianMgr.html",
+        "sort": "1"
+    },
+    {
+        "moduleId": "500022",
+        "parentId": "50002",
+        "fullName": "触点配置",
+        "icon": "",
+        "location": "",
+        "sort": "2"
+    },
+    {
+        "moduleId": "6000",
+        "parentId": "0",
+        "fullName": "资源管理",
+        "icon": "fa fa-edit",
+        "location": "",
+        "sort": "7"
+    },
+    {
+        "moduleId": "60001",
+        "parentId": "6000",
+        "fullName": "话术管理",
+        "icon": "",
+        "location": "contentList.html",
+        "sort": "1"
+    },
+    {
+        "moduleId": "60002",
+        "parentId": "6000",
+        "fullName": "产品管理",
+        "icon": "",
+        "location": "productList.html",
+        "sort": "2"
+    },
+    {
+        "moduleId": "60003",
+        "parentId": "6000",
+        "fullName": "活动案例",
+        "icon": "",
+        "location": "active.html",
+        "sort": "3"
+    },
+    {
+        "moduleId": "7000",
+        "parentId": "0",
+        "fullName": "调度中心",
+        "icon": "fa fa-tasks",
+        "location": "",
+        "sort": "8"
+    },
+    {
+        "moduleId": "70001",
+        "parentId": "7000",
+        "fullName": "任务管理",
+        "icon": "",
+        "location": "",
+        "sort": "1"
+    },
+    {
+        "moduleId": "700011",
+        "parentId": "70001",
+        "fullName": "使用中的任务",
+        "icon": "",
+        "location": "taskList.html",
+        "sort": "1"
+    },
+    {
+        "moduleId": "700012",
+        "parentId": "70001",
+        "fullName": "待审核的任务",
+        "icon": "",
+        "location": "pretaskList.html",
+        "sort": "2"
+    },
+    {
+        "moduleId": "700013",
+        "parentId": "70001",
+        "fullName": "被拒绝的任务",
+        "icon": "",
+        "location": "refusetaskList.html",
+        "sort": "3"
+    },
+    {
+        "moduleId": "70002",
+        "parentId": "7000",
+        "fullName": "营销反馈",
+        "icon": "",
+        "location": "",
+        "sort": "2"
+    },
+    {
+        "moduleId": "700021",
+        "parentId": "70002",
+        "fullName": "KPI指标统计",
+        "icon": "",
+        "location": "",
+        "sort": "1"
+    },
+    {
+        "moduleId": "700022",
+        "parentId": "70002",
+        "fullName": "模型评估",
+        "icon": "",
+        "location": "",
+        "sort": "2"
+    },
+    {
+        "moduleId": "700023",
+        "parentId": "70002",
+        "fullName": "场景评估",
+        "icon": "",
+        "location": "",
+        "sort": "3"
+    },
+    {
+        "moduleId": "700024",
+        "parentId": "70002",
+        "fullName": "渠道偏好评估",
+        "icon": "",
+        "location": "",
+        "sort": "4"
+    },
+    {
+        "moduleId": "8000",
+        "parentId": "0",
+        "fullName": "系统管理",
+        "icon": "fa fa-fw fa-file",
+        "location": "",
+        "sort": "9"
+    },
+    {
+        "moduleId": "80001",
+        "parentId": "8000",
+        "fullName": "权限管理",
+        "icon": "",
+        "location": "",
+        "sort": "1"
+    },
+    {
+        "moduleId": "80002",
+        "parentId": "8000",
+        "fullName": "栏目管理",
+        "icon": "",
+        "location": "",
+        "sort": "2"
+    },
+    {
+        "moduleId": "80003",
+        "parentId": "8000",
+        "fullName": "系统配置",
+        "icon": "",
+        "location": "",
+        "sort": "3"
+    }
+]

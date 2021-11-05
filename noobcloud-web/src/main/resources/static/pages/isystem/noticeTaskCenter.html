@@ -1,0 +1,40 @@
+<!--搜索栏-->
+<div class="iMarket_body">
+    <div class="row query-row">
+        <div class="col-md-12 form-inline conditionSearch">
+            <input type="text" class="form-control queryTaskName" placeholder="任务名称" maxlength="200">
+            <!--<span>创建时间：</span>-->
+            <!--<input type="text" id="dateTime" class="form-control dateTime"-->
+                   <!--onclick="laydate({istime: false, format: 'YYYY-MM',isclear:false})" readonly-->
+                   <!--style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>-->
+            <span>执行时间：</span>
+            <input type="text" id="executeTime" class="form-control dateTime"
+                   onclick="laydate({istime: false, format: 'YYYY-MM',isclear:false})" readonly
+                   style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+            <select id="areaSelect" class="form-control areaSelect"></select>
+            <span>任务状态：</span>
+            <select class="form-control querySelectType">
+                <option value="99999">全部</option>
+                <option value="2">待执行</option>
+                <option value="20">执行中</option>
+                <option value="21">已执行</option>
+                <option value="22">执行失败</option>
+            </select>
+
+            <button class="searchBtn btn btn-primary"><i class="fa fa-search"></i>搜索</button>
+        </div>
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/iflow/batchOpenCenter.js"></script>

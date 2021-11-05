@@ -1,0 +1,174 @@
+<style>
+    .iMarket_groupImport_Popup .importForm a.file input{
+        position: absolute;
+        font-size: 100px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+        width: 180px;
+        margin: 0 5px;
+        outline: none;
+        border-radius: 2px !important;
+    }
+
+    .iMarket_groupImport_Popup .importForm a.file{
+        position: relative;
+        top: 0;
+        overflow: hidden;
+        text-indent: 0;
+        margin-right: 10px;
+        background: #00B38B;
+        border: none;
+        border-radius: 2px;
+        font-size: 16px;
+    }
+
+    .iMarket_groupImport_Popup .col-md-12,.iMarket_taskAssign_Popup .col-md-12{
+        margin-top: 4px;
+        margin-bottom: 4px;
+        font-size: 16px;
+    }
+
+    .iMarket_taskAssign_Popup  .list-row{
+        border: 0;
+    }
+
+
+</style>
+<div class="iMarket_body">
+    <div class="row query-row">
+        <div class="col-md-12 form-inline conditionSearch">
+            <span>创建时间：</span>
+            <input type="text" id="dateTime" class="form-control dateTime"
+                   onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false})" readonly
+                   style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+
+            <span>来源：</span>
+            <select class="form-control querySelectType">
+                <option value="all">全部</option>
+                <option value="jxhscene">精细化平台</option>
+                <option value="sms">自导入群组</option>
+            </select>
+
+            <button class="searchBtn btn btn-primary"><i class="fa fa-search"></i>搜索</button>
+            <button class="groupExport btn btn-primary" id="groupExport" style="padding-right: 105px">批开群组导入</button>
+        </div>
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+<!--批开群组导入-->
+<div class="iMarket_groupImport_Popup importDialog" style="display: none">
+    <form class="importForm" method="post" enctype="multipart/form-data">
+        <div class="col-md-12">
+            <div class="col-md-3 text-right">
+                <span>活动名称：</span>
+            </div>
+            <div class="col-md-9">
+                <input type="text" id="taskName" name="taskName" placeholder="请输入活动名称" maxlength="100">
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-3 text-right">
+                <span>导入群组：</span>
+            </div>
+            <div class="col-md-9">
+                <a class="btn btn-success file" href="javascript:void(0);">选择文件
+                    <input type="file" name="file">
+                </a>
+                <span>[</span><span class="file_name"></span><span>]</span><span style="color: red">（txt文件，仅1列号码形式）</span>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-3"></div>
+            <div class="col-md-9"><span style="color: red">单次导入文件最大不能超过80万行</span></div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-3 text-right">
+                <span>用户群名称：</span>
+            </div>
+            <div class="col-md-9">
+                <input type="text" id="modelName" name = "modelName" placeholder="请输入用户群名称" maxlength="100">
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-3 text-right">
+                <span>用户群描述：</span>
+            </div>
+            <div class="col-md-9">
+                <textarea id="modelDesc" name = "modelDesc" placeholder="请输入用户群描述" maxlength="1000"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--批开任务配置-->
+<div class="iMarket_taskAssign_Popup" style="display: none">
+    <div class="row list-row">
+        <div class="col-md-12">
+            <div class="col-md-3">
+                <span>活动名称：</span>
+            </div>
+            <div class="col-md-8 taskName"></div>
+        </div>
+        <div class="col-md-12">
+            <span>选择产品：</span>
+            <label>（按产品选择顺序叠加）</label>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-3">
+                <span>产品1：</span>
+            </div>
+            <div class="col-md-8">
+                <select  id="selectQueryProduct1" class="form-control productSelect"></select>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-3">
+                <span>产品2：</span>
+            </div>
+            <div class="col-md-8">
+                <select id="selectQueryProduct2" class="form-control productSelect"></select>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-3">
+                <span>产品3：</span>
+            </div>
+            <div class="col-md-8">
+                <select id="selectQueryProduct3" class="form-control productSelect"></select>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-3">
+                <span>执行时间：</span>
+            </div>
+            <div class="col-md-8">
+                <input type="text" id="executeTime" class="form-control dateTime" placeholder="年/月/日"
+                       onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false,min: laydate.now()})" readonly
+                       style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <input type="checkbox" class="isSendSms" value="">
+            <span>下发通知短信（批开任务完成后，针对成功用户下发短信通知）</span>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="js/iflow/batchOpenTask.js"></script>
+<script src="js/icommon/dateUtil.js"></script>

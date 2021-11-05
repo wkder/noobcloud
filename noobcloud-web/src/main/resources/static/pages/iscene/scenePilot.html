@@ -1,0 +1,247 @@
+<link href="ext/zyupload/skins/zyupload-1.0.0.css" rel="stylesheet">
+<link href="styles/iscene/imghover/imagehover.css" rel="stylesheet"/>
+<link href="styles/iscene/scenePilot.css" rel="stylesheet"/>
+<link href="ext/tageditor/jquery.tag-editor.css" rel="stylesheet"/>
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写任务名称">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+        <button id="btnRefresh">
+            <i class="fa fa fa-refresh"></i>刷新
+        </button>
+    </div>
+</div>
+
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered" cellspacing="0"></table>
+    </div>
+</div>
+
+<!--弹出框-->
+<!--<div id="popupAddOrEdit" style="display:none;">-->
+<!--</div>-->
+<div class="cmTableContent" id="cmTableContent" style="display: none" data-autoVerify="true" >
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>任务名称：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="taskName" name="name" placeholder="任务名称"  maxlength="50" data-expression="isEmpty" data-error="任务名称不为空">
+            </td>
+        </tr>
+        <!--<tr class="tdBg">-->
+        <!--<td class="td-title">-->
+        <!--<strong>导航链接：</strong>-->
+        <!--</td>-->
+        <!--<td colspan="3" class="td-content">-->
+        <!--<input class="form-control" type="text" id="pilotUrl" disabled="true" placeholder="导航链接">-->
+        <!--</td>-->
+        <!--</tr>-->
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>触发形态：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <img src="images/navdefault.png" id="chooseSceneImg"/>
+                <input type="button" class="help-block alert alert-info SelectBtn" value="选择触发形态" id="btnSelect" onclick="scenePilot.evtOnSceneInit()"/>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>投放间隔(秒)：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="intervarTime" name="intervarTime"  maxlength="11" placeholder="投放间隔(秒)" data-expression="isNumber" data-error="投放间隔要为数字">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>每日开始：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="onLineTm" class="form-control" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'onLineTm\')}',dateFmt:'HH:mm'})" cvalidate="yes" cexpression="NotNull" err="每日开始">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>每日结束：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="offLineTm" class="form-control" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'offLineTm\')}',dateFmt:'HH:mm'})" cvalidate="yes" cexpression="NotNull" err="每日结束">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <strong>刷选模式：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <select id="selBlockMode" class="form-control">
+                    <option value="0">白名单</option>
+                    <option value="1">黑名单</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="tdbg" id="additionTr">
+            <td class="td-title">
+                <strong>限制条件：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <textarea id="addition" class="form-control" rows="3" placeholder="限制条件" data-rules=""></textarea>
+                <div class="help-block alert alert-info" role="alert">点击编辑限制条件</div>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>网址分类：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <div id="urlGroupsDiv"></div>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>区域：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <div id="locationGroupsDiv"></div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <input type="hidden" id="id">
+</div>
+
+<!--弹出框 图片选择-->
+<div id="selectNavigation" class="row"></div>
+
+<!--限制条件 说明框-->
+<div id="popupHelp" class="row" style="display:none;">
+
+    <div class="col-md-12" style="margin-top:10px;">
+        <label>说明</label>
+        <div class="top-less">
+            <p>限制条件针对整个任务生效，当限制条件表达式成立，任务会自动停止。</p>
+        </div>
+    </div>
+
+    <div class="col-md-12 top-less">
+        <label>优先级</label>
+        <div class="top-less">
+            <p>表达式的运算符有优先级关系，小括号具有最高优先级，其他运算符的优先级优先级关系如下，同级别运算符优先级从左往右依次运算，第一排优先级最高。</p>
+            <p>1、乘(*)、除(/)</p>
+            <p>2、加(+)、减(-)</p>
+            <p>3、大于(>)、小于(&lt;)、大于等于(>=)、小于等于(<=)、等于(==、=)</p>
+            <p>4、且(&&)</p>
+            <p>5、或(||)</p>
+        </div>
+    </div>
+
+    <div class="col-md-12 top-less">
+        <label>注意</label>
+        <div class="top-less">
+            <p>当表达式中包含逻辑运算时（且、或）,参与逻辑运算的运算数不等于0则视为真值（True），否则为假值（False），逻辑运算的结果会转化为数字，真值转化为1，假值转化为0。</p>
+        </div>
+    </div>
+
+    <div class="col-md-12 top-less bottom-less">
+        <label>示例</label>
+        <div class="top-less">
+            <p>1、1 且 2>1</p>
+            <p>优先级为先计算2>1再进行 且 运算，2>1判定为真，局部结果为1，下次计算的表达式为 1 且 1，两边都不为零，相当于“真 且 真”，最终结果为1，表达式成立。</p>
+            <p>2、(曝光量/曝光用户数) >= 2</p>
+            <p>当曝光量超过曝光用户数的两倍时，表达式成立，任务自动停止。</p>
+        </div>
+    </div>
+
+</div>
+
+<!--添加和编辑限制条件弹出框-->
+<div id="popupAddition" class="row" style="display:none;">
+    <div class="cmTableTr">
+        <table class="table table-hover table-bordered cmtable" style="margin: 15px auto">
+            <tbody>
+            <tr class="tdbg">
+                <td class="td-title" style="width:75px;">
+                    <strong>规则：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <div id="tagEditer"></div>
+                </td>
+            </tr>
+            <tr class="tdbg">
+                <td class="td-title">
+                    <strong>运算符：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <div class="col-md-12 operation">
+                        <div class="col-md-1">
+                            <span class="rulesword">(</span>
+                        </div>
+                        <div class="col-md-1">
+                            <span class="rulesword">)</span>
+                        </div>
+                        <div class="col-md-1">
+                            <span class="rulesword">+</span>
+                        </div>
+                        <div class="col-md-1">
+                            <span class="rulesword">-</span>
+                        </div>
+                        <div class="col-md-1">
+                            <span class="rulesword">*</span>
+                        </div>
+                        <div class="col-md-1">
+                            <span class="rulesword">/</span>
+                        </div>
+                        <div class="col-md-1">
+                            <span class="rulesword">||</span>
+                        </div>
+                        <div class="col-md-1">
+                            <span class="rulesword">&&</span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="tdbg">
+                <td class="td-title">
+                    <strong>条件：</strong>
+                </td>
+                <td id="rules" colspan="3" class="td-content"></td>
+            </tr>
+            <tr class="tdbg">
+                <td colspan="4">
+                    <button class="btn btn-primary" id="btnHelp" style="float: right;" onclick="scenePilot.evtOnHelp()">说明</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--<div class="cmButtonTr ruleTr">-->
+        <!--<button class="btn btn-primary" id="btnHelp">说明</button>-->
+        <!--<button class="btn btn-primary" id="btnAddlAddition">确定</button>-->
+        <!--<button class="btn btn-default btnRight" id="btnCancelAddition">取消</button>-->
+    <!--</div>-->
+</div>
+
+<script src="ext/cmtable/js/cmtable.js"></script>
+<script src="ext/My97DatePicker/WdatePicker.js"></script>
+<script src="js/iscene/scenePilot.js"></script>
+<script src="ext/tageditor/jquery.caret.min.js"></script>
+<script src="ext/tageditor/jquery.tag-editor.js"></script>
+<script src="js/iscene/common/calc.js"></script>

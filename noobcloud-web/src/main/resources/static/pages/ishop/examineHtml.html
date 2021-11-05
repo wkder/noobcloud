@@ -1,0 +1,161 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/scenecenter.css" rel="stylesheet">
+<link href="styles/iscene/positionBaseConfig.css" rel="stylesheet">
+<link href="ext/simplePagination.css" rel="stylesheet">
+<link href="styles/ishop/examineHtml.css" rel="stylesheet">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input class="form-control qrybaseId" id="qrybaseId" style="display: none" placeholder="基站ID">
+        <input class="form-control qrybaseName" id="qrybaseName" placeholder="营业厅名称">
+        <button id="positonBaseButton" class="btn btn-success">
+            <i class="fa fa-search"></i>查询
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               width="100%">
+            <thead>
+            <tr>
+                <th>营业厅类型</th>
+                <th>营业厅名称</th>
+                <th>营业厅编码</th>
+                <th>营业厅电话</th>
+                <th>营业厅地址</th>
+                <th class="centerColumns">状态</th>
+                <th class="centerColumns">操作</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<!--审核弹框 start-->
+<div id="auditAreaLayer">
+    <input type="text" name="baseId" style="display: none">
+    <div class="rows"><span class="title">炒店名称:</span>
+        <div class="enterArea">
+            <label name="baseName"></label>
+        </div>
+    </div>
+    <div class="rows"><span class="title">审批决定:</span>
+        <div class="enterArea">
+            <select name="status">
+                <option value="1">通过</option>
+                <option value="3">未通过</option>
+            </select>
+        </div>
+    </div>
+    <div class="rows"><span class="title">原因:</span>
+        <div class="enterArea">
+            <textarea name="remark" maxlength="400" placeholder="原因"></textarea>
+        </div>
+    </div>
+</div>
+<!--审核弹框 end-->
+
+<div id="myShopList">
+    <!--预览区域弹框 start-->
+    <div class="layerPreview">
+        <div class="content">
+            <div class="rows"><span class="title"><span>*</span>营业厅名称:</span>
+                <div class="enterArea">
+                    <label name="baseName">暂无信息</label>
+                </div>
+            </div>
+            <div class="rows">
+                <span class="title">任务发送配额:</span>
+                <div class="enterArea">
+                    <label name="quotaNumber">50000</label>
+                </div>
+            </div>
+            <div class="rows">
+                <span class="title"><span>*</span>营业厅地址:</span>
+                <div class="enterArea"><label name="address">暂无信息</label></div>
+            </div>
+            <div class="rows">
+                <span class="title">营业厅电话:</span>
+                <div class="enterArea"><label name="fixedTelePhone">暂无信息</label></div>
+            </div>
+            <div class="rows">
+                <span class="title"><span>*</span>渠道编码:</span>
+                <div class="enterArea" style="width: 494px">
+                    <label name="businessHallCode">暂无信息</label>
+                    <label class="explain">营业厅开户及业务办理的唯一渠道编码</label>
+                </div>
+            </div>
+            <div class="rows">
+                <span class="title"><span>*</span>所属区县:</span>
+                <div class="enterArea">
+                    <label name="cityDistrict">暂无信息</label>
+                </div>
+            </div>
+            <div class="rows">
+                <span class="title"><span>*</span>类型:</span>
+                <div class="enterArea">
+                    <label name="locationTypeName">暂无信息</label>
+                </div>
+            </div>
+
+            <div class="rows">
+                <span class="title"><span>*</span>短信签名:</span>
+                <div class="enterArea"><label name="messageAutograph"></label></div>
+            </div>
+            <div class="rows">
+                <span class="title"><span>*</span>营业厅位置:</span>
+                <div class="enterArea">
+                    <span class="lngTitle">经度:</span>
+                    <label class="lngValue" name="lng">118.791</label>
+                    <span class="latTitle">纬度:</span>
+                    <label class="latValue" name="lat">32.048</label>
+                </div>
+                <div class="radius">
+                    <span class="title"><span>*</span>半径(米):</span>
+                    <div class="enterArea">
+                        <label name="radius">500米</label>
+                    </div>
+                </div>
+            </div>
+            <div class="rows">
+                <span class="title"></span>
+                <div class="enterArea" style="width: 676px">
+                    <div id="mapAreaShow" class="mapArea"></div>
+                </div>
+            </div>
+            <div class="rows">
+
+            </div>
+        </div>
+        <div class="reviewArea">
+            <ul>
+                <li>审批决定：</li>
+                <li>
+                    <select name="status">
+                        <option value="1">通过</option>
+                        <option value="3">未通过</option>
+                    </select>
+                </li>
+                <li class="split-line">原因：</li>
+                <li class="split-line">
+                    <input type="text" name="remark" maxlength="400">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--预览区域弹框 end-->
+
+</div>
+<script src="js/icommon/googleUtil.js"></script>
+<script src="js/icommon/gpsUtil.js"></script>
+<script src="js/ishop/jquery.pagination.js"></script>
+<script src="js/icommon/baiduMap.js"></script>
+<script src="js/ishop/examineHtml.js"></script>
+
+
+<!--<script src="js/ishop/myShopList.js"></script>-->

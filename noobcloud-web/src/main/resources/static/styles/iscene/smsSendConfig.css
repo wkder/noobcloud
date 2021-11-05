@@ -1,0 +1,18 @@
+[name="sendBeginTime"], [name="sendPauseBeginTime"] {
+    width: 48%;
+    display: inline;
+}
+
+[name="sendEndTime"], [name="sendPauseEndTime"] {
+    width: 49%;
+    display: inline;
+}
+
+.cmTable .tdBg .td-title {
+    width: 154px;
+}
+
+.cmTable .tdBg .td-title strong:first-child {
+    color: red;
+    vertical-align: middle;
+}

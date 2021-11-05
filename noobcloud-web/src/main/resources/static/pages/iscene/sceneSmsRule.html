@@ -1,0 +1,211 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/scenecenter.css" rel="stylesheet">
+<link href="ext/simplePagination.css" rel="stylesheet">
+
+<body>
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="qryscenceName" class="form-control name" placeholder="场景规则名称">
+        <select class="form-control create_type" id="qryscenceStau">
+            <option value="">全部</option>
+            <option value="1">生效</option>
+            <option value="0">失效</option>
+        </select>
+        <button id="scenceRuleButton" class="btn btn-success">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="createScenceRuleButton" class="btn btn-success">
+            <i class="fa fa-plus"></i>新增
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>场景规则名称</th>
+                <th>类别</th>
+                <th>渠道类型</th>
+                <th class="centerColumns">匹配客户端</th>
+                <th class="centerColumns">匹配关键字</th>
+                <th class="centerColumns">匹配位置</th>
+                <th class="centerColumns">匹配网站</th>
+                <th class="centerColumns">匹配终端</th>
+                <th class="centerColumns">状态</th>
+                <th class="centerColumns">操作</th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+<!--弹出窗口-->
+<div class="iMarket_Scenesms_Dialog">
+    <div id="createScenceRuleDialog" style="display: none"></div>
+    <div id="createScenceClientDialog" style="display: none"></div>
+    <div id="createScenceTerminalDialog" style="display: none"></div>
+</div>
+
+<!--模板定义-->
+<div class="iMarket_Scenesms_EditHtml" style="display: none">
+    <div class="createScenceSegment">
+        <div class="addscenceId" style="display: none">
+            <input type="text" class="id">
+        </div>
+        <div class="addscenceName">
+            <span class="label"><span class="must" style="color: red">*</span><span>场景规则名称</span></span>
+            <input type="text" class="sceneRuleName" placeholder="限制30个字数" title="不能为空"/>
+        </div>
+
+        <div class="addAccessNum">
+            <span class="label"><span class="must" style="color: red">*</span><span>发送次数</span></span>
+            <input type="text" class="accessNums" style="width:240px" placeholder="请输入正整数"/>
+        </div>
+
+        <div>
+            <span class="label"><span class="must" style="color: red">*</span><span>开始时间</span></span>
+            <input class="addBeginTime" type="time" value="09:00" style="width:240px;height: 34px"
+                   placeholder="请输入开始时间">
+        </div>
+
+        <div>
+            <span class="label"><span class="must" style="color: red">*</span><span>结束时间</span></span>
+            <input class="addendTime" type="time" value="18:00" style="width:240px;height: 34px" placeholder="请输入结束时间">
+        </div>
+
+        <div class="addscenceType">
+            <span class="label"><span class="must" style="color: red">*</span><span>场景类型</span></span>
+            <select class="select scenceTypeSelect" style="width:258px">
+            </select>
+        </div>
+
+        <div class="addmatchClient">
+            <span class="label"><span>是否匹配客户端</span></span>
+            <span class="needAuto">
+                <i class="fa fa-check-square-o"></i>
+            </span>
+        </div>
+
+        <div class="addclientIdElement">
+            <span class="label"><span>客户端</span></span>
+            <input class="addclientIds" type="text" readonly="readonly" hidden/>
+            <input class="addclientNames" type="text" readonly="readonly"/>
+            <div class="extensionalBtn clientIdsSelectBtn">选择</div>
+        </div>
+
+        <div class="addmatchkeywords">
+            <span class="label"><span>是否匹配关键字</span></span>
+            <span class="needAuto">
+                <i class="fa fa-check-square-o"></i>
+            </span>
+        </div>
+
+        <div class="addkeywords">
+            <span class="label"><span>关键字</span></span>
+            <input type="text" class="keywords" placeholder="多个关键字之间请以英文逗号分隔，字数限制在100个字符内"/>
+        </div>
+
+        <div class="addmatchPosition">
+            <span class="label"><span>是否匹配位置</span></span>
+            <span class="needAuto">
+                <i class="fa fa-check-square-o"></i>
+            </span>
+        </div>
+
+        <div class="addpositionsElement">
+            <span class="label"><span>位置选择</span></span>
+            <input type="text" class="positions" placeholder="多个位置之间请以英文逗号分隔，字数限制在100个字符内"/>
+        </div>
+
+        <div class="addmatchSite">
+            <span class="label"><span>是否匹配网站</span></span>
+            <span class="needAuto">
+                <i class="fa fa-check-square-o"></i>
+            </span>
+        </div>
+
+        <div class="addwebSits">
+            <span class="label"><span>网站</span></span>
+            <input type="text" class="webSits" placeholder="网站域名请以英文逗号分隔，字数限制在100个字符内"/>
+        </div>
+
+        <div class="addmatchTerminal">
+            <span class="label"><span>是否匹配终端</span></span>
+            <span class="needAuto">
+                <i class="fa fa-check-square-o"></i>
+            </span>
+        </div>
+
+        <div class="addterminalElement">
+            <span class="label"><span>终端</span></span>
+            <input class="addterminals" type="text" readonly="readonly" hidden/>
+            <input class="addterminalNames" type="text" readonly="readonly"/>
+            <div class="extensionalBtn terminalSelectBtn">选择</div>
+        </div>
+
+        <div class="addscenceStatus">
+            <span class="label"><span class="must" style="color: red">*</span><span>是否生效</span></span>
+            <select class="select scenceStatusSelect" style="width:110px">
+                <option value="1">生效</option>
+                <option value="0">失效</option>
+            </select>
+        </div>
+    </div>
+    <div class="createScenceClientSegment">
+        <div class="conditionSearch1" status="ready">
+            <input type="text" class="name" id="d-sceneClientName" placeholder="客户端名称">
+            <select class="create_type" id="d-sceneClientType">
+                <option value='-1'>全部</option>
+            </select>
+            <select class="create_type" id="d-sceneClientType-2">
+                <option value='-1'>全部</option>
+            </select>
+            <div class="searchButton extensionalBtn" id=""><i class="fa fa-search"></i>搜索</div>
+        </div>
+        <div class="clientinfo">
+            <table class="iTable" cellspacing="0" border="0" style="width: 94%;">
+                <tbody>
+                <!--模板填充这里-->
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="9" style="border-radius: 0 0 8px 8px;">
+                        <div class="pagination"></div>
+                        <input type="hidden" name="refreshAllMarketJob">
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="createScenceTerminalSegment">
+        <div class="conditionSearch1" status="ready">
+            <input type="text" class="name" id="d-sceneTerminalName" placeholder="终端名称">
+            <div class="searchButton extensionalBtn"><i class="fa fa-search"></i>搜索</div>
+        </div>
+        <div class="terminalinfo">
+            <table class="iTable" cellspacing="0" border="0" style="width: 94%;">
+                <tbody>
+                <!--模板填充这里-->
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="9" style="border-radius: 0 0 8px 8px;">
+                        <div class="pagination"></div>
+                        <input type="hidden" name="refreshAllMarketJob">
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="js/iscene/sceneSmsRule.js"></script>
+<script src="ext/jquery.simplePagination.js"></script>

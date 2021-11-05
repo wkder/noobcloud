@@ -1,0 +1,100 @@
+/* 搜索栏**/
+.query-row .col-md-12 input, .query-row .col-md-12 select {
+    width: 110px;
+    background: #fff;
+}
+
+#selectQueryScene, #selectQueryBaseAreas {
+    width: 150px;
+}
+
+#selectQueryBase {
+    width: 200px;
+}
+
+/* 业务累计笔数、总额**/
+.list-row > div:nth-child(1) > div:nth-child(1) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.list-row > div:nth-child(1) > div:nth-child(1) > div {
+    text-align: center;
+}
+
+.list-row > div:nth-child(1) > div:nth-child(1) > div > span:nth-child(1) {
+    color: #666;
+}
+
+.list-row > div:nth-child(1) > div:nth-child(1) > div > span:nth-child(2) {
+    font-size: 26px;
+    color: #00B38B;
+}
+
+/* 排行榜**/
+.table-row {
+    margin: 20px 0;
+}
+
+.table-row .area-top, .table-row .location-top {
+    padding-bottom: 15px;
+    background-color: #fff;
+    border: 1px solid #dbd9e1;
+    border-radius: 2px;
+}
+
+.table-row .area-top label, .table-row .location-top label {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    text-align: center;
+    display: inherit;
+    color: #515151;
+}
+
+.table-row .area-top div.line, .table-row .location-top div.line {
+    width: 100%;
+    height: 1px;
+    margin-bottom: 20px;
+    background-color: #ececec;
+}
+
+.table-row .area-top table, .table-row .location-top table {
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.table-row .area-top table thead, .table-row .location-top table thead {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.table-row .area-top {
+    width: 33%;
+}
+
+.table-row .location-top {
+    width: 65%;
+    margin-left: 2%;
+}
+
+.table-row .ranking {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #515151;
+}
+
+.table-row .ranking .col-md-10 {
+    padding-left: 0;
+}
+
+.table-row .ranking .col-md-10 span:nth-child(2) {
+    color: red;
+}
+
+.active {
+    color: red;
+}

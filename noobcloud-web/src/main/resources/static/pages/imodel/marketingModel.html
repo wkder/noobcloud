@@ -1,0 +1,352 @@
+<link href="ext/loadmore/css/loadmore.css" rel="stylesheet">
+<link href="styles/icommon/multiRule.css" rel="stylesheet">
+<link href="ext/choose/css/jquery.chosen.css" rel="stylesheet">
+<link href="ext/simplePagination/css/simplePagination.css" rel="stylesheet">
+<link href="ext/iSelectBox/iSelectBox.css" rel="stylesheet">
+<link href="styles/imodel/marketingModel.css" rel="stylesheet">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-10">
+        <input class="form-control" id="txtName" type="text" placeholder="模型名称">
+        <input class="form-control" id="txtCreater" type="text" placeholder="创建人">
+        <input class="form-control" id="txtCatalog" type="text" placeholder="当前选择目录">
+        <select class="form-control" id="selRule">
+            <option value="all">全部</option>
+            <option value="rule">规则创建</option>
+            <option value="localImport">本地导入创建</option>
+            <!--<option value="remoteImport">远程导入创建</option>-->
+        </select>
+        <button id="btnQuery"><i class="fa fa-search"></i>搜索</button>
+        <button id="btnAdd"><i class="fa fa-plus"></i>新增</button>
+    </div>
+    <div class="switchShowBtn col-md-2">
+        <div class="i-div"><i class="fa fa-table fa-2x" style="color:#00B38B;"></i></div>
+        <div class="i-div"><i class="fa fa-list fa-2x" style="color:#3e3737;"></i></div>
+    </div>
+</div>
+<!--END 搜索栏-->
+
+
+<!--内容块 List-->
+<div class="row" data-switch="table" style="overflow: scroll;">
+    <div class="col-md-12"></div>
+
+    <!--加载更多按钮-->
+    <!--<div class=" col-md-12 js-load-more" style="display: none;">加载更多...</div>-->
+</div>
+<!--END List-->
+
+<div class="updateTimeTable" style="display: none;">
+    <!-- region 查看更新时间 -->
+    <div class="refreshUpdateTime" style="width:96%;margin: 0;">
+        <div class="col-md-12" style="height: 390px;">
+            <table class="table updateTimeTable table-hover table-condensed table-bordered" style="width:100%;"></table>
+        </div>
+    </div>
+    <!--endregion 查看更新时间-->
+</div>
+
+<!--内容块 Table-->
+<div class="row list-row" data-switch="list" style="display: none;">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-bordered" style="table-layout: fixed; width: 100%;">
+
+        </table>
+    </div>
+</div>
+<!--END Table-->
+
+<div id="divQueryCatlog" style="display: none;">
+    <div class="cmTableContent">
+    </div>
+</div>
+
+<!--弹出框客户群-->
+<div id="divModel" data-autoVerify="true" style="display:none;">
+    <div class="cmTableContent">
+        <form id="localFileForm" method="post">
+            <table class="table table-hover table-bordered cmTable">
+                <tbody>
+                <!--客户群名称-->
+                <tr class="tdBg">
+                    <td class="td-title">
+                        <span style="color: red">*</span><strong>客户群名称：</strong>
+                    </td>
+                    <td colspan="3" class="td-content">
+                        <input type="text" class="form-control" name="name" placeholder="客户群名称" maxlength="40"
+                               data-expression="isEmpty" data-error="客户群名称不能为空">
+                    </td>
+                </tr>
+                <!--目录分类-->
+                <tr class="tdBg">
+                    <td class="td-title">
+                        <span style="color: red">*</span><strong>目录分类：</strong>
+                    </td>
+                    <td colspan="3" class="td-content">
+                        <input type="text" class="form-control layerInput" name="catalogName" placeholder="目录分类"
+                               readonly="readonly" data-expression="isEmpty" data-error="目录分类不能为空">
+                        <input type="hidden" name="catalogId" value="1">
+                        <button id="btnChooseCatalog" class="layerBtn">选择</button>
+                    </td>
+                </tr>
+                <!--用户可见性-->
+                <tr class="tdBg">
+                    <td class="td-title">
+                        <strong>角色可见性：</strong>
+                    </td>
+                    <td colspan="3" class="td-content">
+                        <label class="radio-inline padding-radio">
+                            <input type="radio" name="radioSpecifiedRoleIds" value="1" autoCheck="true" checked> 全部角色
+                        </label>
+                        <label class="radio-inline padding-radio">
+                            <input type="radio" name="radioSpecifiedRoleIds" value="0" autoCheck="false"> 指定角色
+                        </label>
+                    </td>
+                </tr>
+                <!--指定用户 默认隐藏-->
+                <tr class="tdBg" data-visibleUser="1" style="display: none;">
+                    <td class="td-title">
+                        <strong>指定角色：</strong>
+                    </td>
+                    <td colspan="3" class="td-content">
+                        <textarea class="form-control layerTextArea" name="specifiedRoleIds" rows="2"
+                                  readonly="readonly"></textarea>
+                        <button id="btnChooseUsers" class="layerBtn">选择</button>
+                    </td>
+                </tr>
+                <!--发送短信-->
+                <tr class="tdBg sendNotifySmsChoose" style="display: none;">
+                    <td class="td-title">
+                        <strong>发送短信：</strong>
+                    </td>
+                    <td colspan="3" class="td-content">
+                        <label class="radio-inline padding-radio">
+                            <input type="radio" name="isNeedSendNotifySms" autoCheck="true" value="1" checked> 是
+                        </label>
+                        <label class="radio-inline padding-radio">
+                            <input type="radio" name="isNeedSendNotifySms" autoCheck="false" value="0"> 否
+                        </label>
+                    </td>
+                </tr>
+                <!--创建方式-->
+                <tr class="tdBg">
+                    <td class="td-title">
+                        <strong>创建方式：</strong>
+                    </td>
+                    <td colspan="3" class="td-content">
+                        <select class="form-control" name="createType">
+                            <option value="rule" selected>规则创建</option>
+                            <option value="import">本地文件导入</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <!--导入创建 默认隐藏-->
+
+                <!--导入方式-->
+                <!--<tr class="tdBg" data-createType="1" data-importType="local" style="display: none;">
+                    <td class="td-title">
+                        <strong>导入方式：</strong>
+                    </td>
+                    <td colspan="3" class="td-content">
+                        <label class="radio-inline padding-radio">
+                            <input type="radio" name="importType" autoCheck="true" value="remoteImport" > 远程文件导入
+                        </label>
+                        <label class="radio-inline padding-radio">
+                            <input type="radio" name="importType" autoCheck="false" value="localImport" checked> 本地文件导入
+                        </label>
+                    </td>
+                </tr>-->
+                <!--服务器连接-->
+                <!--<tr class="tdBg" data-createType="1" data-importType="remote" style="display: none;">
+                    <td class="td-title">
+                        <strong>服务器连接：</strong>
+                    </td>
+                    <td colspan="2" class="td-content">
+                        <select name="remoteServerId" class="form-control layerSelect">
+                        </select>
+                        <input type="hidden" id="remoteServerName">
+                        <button id="btnAddConnection" class="layerBtn">新增</button>
+                    </td>
+                </tr>-->
+                <!--文件路径-->
+                <tr class="tdBg" data-createType="1" data-importType="local" style="display: none;">
+                    <td class="td-title">
+                        <span class="fileMust" style="color: red">*</span><strong>文件路径：<div>(txt文件)&nbsp;&nbsp;</div></strong>
+                    </td>
+                    <td colspan="3" class="td-content">
+                        <input name="remoteFile" type="text" class="form-control form-control layerInput" max="50" placeholder="文件路径" disabled="disabled">
+                        <button id="btnChooseFile" class="layerBtn">选择</button>
+                        <input id="fileUpload" type="file" name="file" style="display: none;">
+                    </td>
+                </tr>
+                <!--读取时间-->
+                <!--<tr class="tdBg" data-createType="1" data-importType="remote" style="display: none;">
+                    <td class="td-title">
+                        <strong>读取时间：</strong>
+                    </td>
+                    <td colspan="3" class="td-content">
+
+                        <input id="txtExecuteTime" name="executeTime" type="text" class="form-control layerInput"
+                               placeholder="读取时间"
+                               onclick="laydate({istime: false, format: 'YYYY-MM-DD hh:mm:ss',istoday: true})">
+                        <label>
+                            <input name="isNeedDelete" type="checkbox" value="1">
+                            读取后删除
+                        </label>
+                    </td>
+                </tr>-->
+                <!--时间间隔-->
+                <!--<tr class="tdBg" data-createType="1" data-importType="remote" style="display: none;">
+                    <td class="td-title">
+                        <strong>时间间隔：</strong>
+                    </td>
+                    <td colspan="3" class="td-content">
+                        <input name="intervalTime" type="number" class="form-control layerInput" maxlength="8"
+                               placeholder="时间间隔">
+                        <select name="intervalType" class="form-control"
+                                style="display: inline;width:70px ;float: right;">
+                            <option value="d">天</option>
+                            <option value="w">周</option>
+                            <option value="m">月</option>
+                        </select>
+                    </td>
+                </tr>-->
+                <!--备注-->
+                <tr class="tdBg">
+                    <td class="td-title">
+                        <strong>备注：</strong>
+                    </td>
+                    <td colspan="3" class="td-content">
+                        <textarea class="form-control" name="remarks" rows="3" maxlength="50"></textarea>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <input type="hidden" name="id">
+        </form>
+    </div>
+</div>
+<!--END 弹出框客户群-->
+
+<!--弹出框目录分类-->
+<div id="divCatalog" style="display: none;">
+    <div class="cmTableContent">
+        <div id="divCatalogTree">
+        </div>
+    </div>
+</div>
+<!--END 弹出框目录分类-->
+
+<!--弹出框指定用户-->
+<div id="divAssignUsers" style="display: none;">
+    <div class="cmTableContent">
+        <div id="divBlockAssignUsers" class="col-md-12" style="margin: 20px 0;padding: 0 4px;"></div>
+    </div>
+</div>
+<!--END 弹出框指定用户-->
+
+<!--弹出框远程服务器-->
+<div id="divRemoteServer" style="display: none;">
+    <div class="cmTableContent">
+        <table class="table table-hover table-bordered cmTable">
+            <tbody>
+            <!--服务器名称-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>服务器名称：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" name="name" class="form-control" maxlength="20" placeholder="服务器名称">
+                </td>
+            </tr>
+            <!--主机IP-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>主机IP：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" name="serverIp" class="form-control" maxlength="15" placeholder="主机IP">
+                </td>
+            </tr>
+            <!--连接方式-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>连接方式：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select name="connectType" class="form-control">
+                        <option value="sftp">SFTP</option>
+                        <option value="ftp">FTP</option>
+                    </select>
+                </td>
+            </tr>
+            <!--端口号-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>端口号：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" name="port" class="form-control" maxlength="8" placeholder="端口号">
+                </td>
+            </tr>
+            <!--用户名-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>用户名：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" name="serverUser" class="form-control" maxlength="20" placeholder="用户名">
+                </td>
+            </tr>
+            <!--密码-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>密码：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" name="password" class="form-control" maxlength="20" placeholder="密码">
+                </td>
+            </tr>
+            <!--备注-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>备注：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <textarea name="remarks" class="form-control" rows="3" maxlength="50" placeholder="备注"></textarea>
+                </td>
+            </tr>
+            <!--测试连接-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>测试连接：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <button id="btnTestConnection" class="layerBtn" style="float: left;">连接</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--END 弹出框远程服务器-->
+
+<!--弹出框属性-->
+<div id="divProperty" style="display: none;height:100%;">
+    <div class="col-md-4" style="height: 100%;overflow: auto;border-right: 2px solid #85ecd5;">
+        <ul id="propertyTree" class="ztree"></ul>
+    </div>
+    <div class="col-md-8" style="height: 100%;overflow: auto;padding: 0 5px;">
+        <div class="ruleRight" style="height: 100%;overflow: auto;"></div>
+    </div>
+</div>
+<!--END 弹出框属性-->
+
+<script src="ext/loadmore/js/loadmore.js"></script>
+<script src="ext/simplePagination/js/jquery.simplePagination.js"></script>
+<script src="ext/choose/js/jquery.chosen.js"></script>
+<script src="ext/iSelectBox/iSelectBox.js"></script>
+<script src="js/icommon/multiRule.js"></script>
+<script src="js/imodel/marketingModel.js"></script>

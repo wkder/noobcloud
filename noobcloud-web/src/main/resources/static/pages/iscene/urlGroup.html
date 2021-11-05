@@ -1,0 +1,111 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/urlgroup.css?version=2.0" rel="stylesheet"/>
+
+
+<div class="row query-row">
+    <div class="col-md-12">
+        <input type="text" id="txtGroupName" class="form-control" placeholder="请填写分类名称" maxlength="200">
+        <input type="text" id="txtUrlName" class="form-control" placeholder="请填写网址名称" maxlength="200">
+        <input type="text" id="txtUrl" class="form-control" placeholder="请填写网址" maxlength="200">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+        <button id="upload">
+            <i class="fa fa-file-text-o"></i>导入分类
+        </button>
+        <button id="btnRefresh">
+            <i class="fa fa-refresh"></i>刷新
+        </button>
+    </div>
+</div>
+
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+
+
+<!--popurlist弹出框-->
+<div id="popurlist" style="display:none;">
+    <div class="col-md-12">
+        <button id="btnAddUrl">
+            <i class="fa fa-plus"></i>新增
+        </button>
+    </div>
+    <div class="col-md-12">
+        <table id="url-list" class="table table-hover table-condensed table-bordered" cellspacing="0"></table>
+    </div>
+    <!--<div id="phoneTools" class="col-md-12">-->
+    <!--<button class="btn btn-default" id="btnCancelUrl">取消</button>-->
+    <!--</div>-->
+</div>
+
+<!--弹出框：添加或编辑 分类-->
+<!--<div id="popupAddOrEdit"  style="display: none;"></div>-->
+
+<div class="cmTableContent" id="popupAddOrEdit" style="display: none;" data-autoVerify="true">
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title"><strong>分类名称：</strong></td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="txtName" name="groupName" class="form-control" placeholder="分类名称"
+                       data-expression="isEmpty"
+                       data-error="分类名称不为空"
+                        maxlength="45"/>
+
+                <div class="help-block alert alert-warning" role="alert">分类名称不能为空</div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--弹出框：添加Url-->
+<!--<div id="popupAddOrEditUrl" style="display:none;"></div>-->
+
+<div id="popupAddOrEditUrl" class="cmTableContent" style="display:none;" data-autoVerify="true">
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title"><strong>网址：</strong></td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="txtAddUrl" name="url" class="form-control"
+                                                      placeholder="网址" data-expression="isEmpty" data-error="网址不能为空或中文">
+
+                <div class="help-block alert alert-warning" role="alert">网址不能为空或中文</div>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title"><strong>网址中文名称：</strong></td>
+            <td colspan="3" class="td-content">
+                    <input type="text" id="txtAddName" name="urlName" class="form-control"
+                                                      placeholder="网址中文名称" data-expression="isEmpty"
+                                                      data-error="网址中文名称不能为空">
+                <div class="help-block alert alert-warning" role="alert">网址中文名称不能为空</div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div id="uploadPross" style="display:none;">
+    <div>
+        <span class="title"></span>
+        <span class="proess"></span>
+        <span class="wordloading">加载中...</span>
+    </div>
+</div>
+
+<!--隐藏值 保存分类ID-->
+<input id="GroupId" type="hidden" value="0"/>
+
+<script src="ext/plupload/plupload.full.min.js"></script>
+<!--<script src="ext/cmtable/js/cmtable.js"></script>-->
+<script src="js/iscene/urlGroup.js?version=2.0" charset="UTF-8"></script>

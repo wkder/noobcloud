@@ -1,0 +1,351 @@
+<style rel="stylesheet">
+    .shopTaskDetailInfo {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin: 15px 0;
+    }
+
+    .shopTaskDetailInfo > div.row {
+        margin-bottom: 20px;
+    }
+
+    .shopTaskDetailInfo > div.row div.col-md-12 {
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    .shopTaskDetailInfo > div.row div.col-md-3, .shopTaskDetailInfo > div.row div.col-md-9 {
+        margin-bottom: 4px;
+    }
+
+    .taskMgrDetailInfo {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin: 15px 0;
+    }
+
+    .taskMgrDetailInfo > div.row {
+        margin-bottom: 20px;
+    }
+
+    .taskMgrDetailInfo > div.row div.col-md-12 {
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    .taskMgrDetailInfo > div.row div.col-md-3, .taskMgrDetailInfo > div.row div.col-md-9 {
+        margin-bottom: 6px;
+    }
+</style>
+
+<div class="iMarket_shopTaskDetail_Dialog">
+    <div id="shopTaskDetailDialog" style="display: none"></div>
+</div>
+
+<!--模板-->
+<div class="iMarket_shopTaskDetail_Content" style="display: none;">
+    <div class="row shopTaskDetailInfo">
+        <!--隐藏域 存放ID-->
+        <input class="detail_id" type="hidden">
+        <!--炒店基本信息-->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>任务基本信息</strong>
+            </div>
+            <!--任务名称-->
+            <div class="col-md-3">
+                <span>任务名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskName"></span>
+            </div>
+            <!--任务名称-->
+            <div class="col-md-3">
+                <span>业务类型：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_businessName"></span>
+            </div>
+            <!--任务 开始时间 结束时间-->
+            <div class="col-md-3">
+                <span>任务开始时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_startTime"></span>
+            </div>
+            <div class="col-md-3">
+                <span>任务结束时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_stopTime"></span>
+            </div>
+            <!--炒店区域、炒店炒店类型-->
+            <div class="col-md-3">
+                <span>炒店区域：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_baseAreaId"></span>
+            </div>
+            <div class="col-md-3">
+                <span>炒店类型：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_baseAreaType"></span>
+            </div>
+            <!--营业厅-->
+            <div class="col-md-3">
+                <span>营业厅：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_baseName"></span>
+                <input class="detail_baseId" type="hidden">
+            </div>
+            <!--任务描述-->
+            <div class="col-md-3">
+                <span>任务描述：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskDesc"
+                      style="word-break: break-all;display: -webkit-box;overflow: hidden;-webkit-line-clamp: 6;-webkit-box-orient: vertical;"></span>
+            </div>
+        </div>
+
+        <!--目标用户选择-->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>目标用户选择信息</strong>
+            </div>
+            <!--营销客户群-->
+            <div class="col-md-3 detail_segment_row" style="display: none;">
+                <span>营销客户群：</span>
+            </div>
+            <div class="col-md-9 detail_segment_row" style="display: none;">
+                <span class="detail_segmentNames"></span>
+            </div>
+            <!--优先目标用户-->
+            <div class="col-md-3">
+                <span class="detail_marketUserText">优先目标用户：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_targetUser"></span>
+                <span class="detail_targetUserNum" style="display: none;"></span>
+            </div>
+            <!--指定用户-->
+            <div class="col-md-3 detail_appointUser_row">
+                <span>指定用户：</span>
+            </div>
+            <div class="col-md-9 detail_appointUser_row">
+                <span class="detail_appointUser"></span>
+            </div>
+            <!--免打扰用户-->
+            <div class="col-md-3 detail_blackUser_row">
+                <span>免打扰用户：</span>
+            </div>
+            <div class="col-md-9 detail_blackUser_row">
+                <span class="detail_blackUser"></span>
+            </div>
+        </div>
+
+        <!--客户接触渠道-->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>客户接触渠道信息</strong>
+            </div>
+            <!--接入号选择-->
+            <div class="col-md-3">
+                <span>接入号选择：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_accessNumber"></span>
+            </div>
+            <!--营销内容-->
+            <div class="col-md-3">
+                <span class="detail_marketContent">营销内容：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_marketContentText"
+                      style="word-break: break-all;display: -webkit-box;overflow: hidden;-webkit-line-clamp: 6;-webkit-box-orient: vertical;"></span>
+            </div>
+            <!--触发营销间隔-->
+            <div class="col-md-3">
+                <span>触发营销间隔：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_sendInterval"></span>
+            </div>
+            <!--任务发送配额-->
+            <div class="col-md-3">
+                <span>任务发送配额：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_marketLimit"></span>
+                <span>（当任务发送配额为0时，该任务的任务发送配额不生效）</span>
+            </div>
+            <!--接收任务发送报告-->
+            <div class="col-md-3">
+                <span>接收任务发送报告：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_isSendReport"></span>
+            </div>
+            <!--接收报告号码-->
+            <div class="col-md-3 row_detail_report" style="display: none;">
+                <span>接收报告号码：</span>
+            </div>
+            <div class="col-md-3 row_detail_report" style="display: none;">
+                <span class="detail_reportPhone"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="iMarket_taskMgrDetail_Dialog">
+    <div id="taskMgrDetailDialog" style="display: none"></div>
+</div>
+
+<div class="iMarket_taskMgrDetail_Content" style="display: none;">
+    <div class="row taskMgrDetailInfo">
+        <!--隐藏域 存放ID-->
+        <input class="detail_id" type="hidden">
+        <!--用户群筛选-->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>用户群筛选</strong>
+            </div>
+            <!--活动名称-->
+            <div class="col-md-3">
+                <span>活动名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskName"></span>
+            </div>
+            <!--营销地区-->
+            <div class="col-md-3">
+                <span>营销地区：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_areaNames"></span>
+            </div>
+            <!--营销客户-->
+            <div class="col-md-3">
+                <span>营销客户：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_segmentNames"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <div class="col-md-3">
+                <span>限制人数：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_number"></span>
+            </div>
+            <!--备注-->
+            <div class="col-md-3">
+                <span>备注：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_remarks"></span>
+            </div>
+        </div>
+
+        <!--触点选择-->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>触点选择</strong>
+            </div>
+            <!--营销方式-->
+            <div class="col-md-3">
+                <span>营销方式：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_marketType"></span>
+            </div>
+            <!--接入号-->
+            <div class="col-md-3">
+                <span>接入号：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_AccessNumber"></span>
+            </div>
+            <!--场景规则-->
+            <div class="col-md-3 marketTypeValue">
+                <span>场景规则：</span>
+            </div>
+            <div class="col-md-9 marketTypeValue">
+                <span class="detail_marketTypeValue"></span>
+            </div>
+            <!--场景选择-->
+            <div class="col-md-3 scenePilot">
+                <span>场景选择：</span>
+            </div>
+            <div class="col-md-9 scenePilot">
+                <span class="detail_scenePilot"></span>
+            </div>
+            <!--优先级选择-->
+            <div class="col-md-3 scenePilotSort">
+                <span>优先级选择：</span>
+            </div>
+            <div class="col-md-9 scenePilotSort">
+                <span class="detail_scenePilotSort"></span>
+            </div>
+            <!--短信内容-->
+            <div class="col-md-3 content">
+                <span>短信内容：</span>
+            </div>
+            <div class="col-md-9 content">
+                <span class="detail_Content"></span>
+            </div>
+            <!--测试号-->
+            <div class="col-md-3 testPhones">
+                <span>测试号：</span>
+            </div>
+            <div class="col-md-9 testPhones">
+                <span class="detail_TestPhones"></span>
+            </div>
+        </div>
+
+        <!--任务策略配置-->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>任务策略配置</strong>
+            </div>
+            <!--开始时间-->
+            <div class="col-md-3">
+                <span>开始时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_startTime"></span>
+            </div>
+            <!--结束时间-->
+            <div class="col-md-3">
+                <span>结束时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_endTime"></span>
+            </div>
+            <!--调度类型-->
+            <div class="col-md-3">
+                <span>调度类型：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_timerSelect"></span>
+            </div>
+            <!--时间间隔-->
+            <div class="col-md-3">
+                <span>时间间隔：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_intervalInSeconds"></span>
+            </div>
+            <!--剔除策略-->
+            <div class="col-md-3">
+                <span>剔除策略：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_repeatStrategy"></span>
+            </div>
+        </div>
+    </div>
+</div>

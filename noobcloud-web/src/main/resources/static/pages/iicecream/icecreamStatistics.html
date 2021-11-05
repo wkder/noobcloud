@@ -1,0 +1,99 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/iicecream/icecreamStatistics.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12 form-inline">
+            <div>
+                <input type="text" class="form-control queryYear"
+                       onkeyup="this.value=this.value.replace(/\D/g,'')"
+                       onafterpaste="this.value=this.value.replace(/\D/g,'')"
+                       autocomplete="off" maxlength="4"/>
+            </div>
+            <div>
+                <select class="form-control queryMonth">
+                    <option value="01">一月</option>
+                    <option value="02">二月</option>
+                    <option value="03">三月</option>
+                    <option value="04">四月</option>
+                    <option value="05">五月</option>
+                    <option value="06">六月</option>
+                    <option value="07">七月</option>
+                    <option value="08">八月</option>
+                    <option value="09">九月</option>
+                    <option value="10">十月</option>
+                    <option value="11">十一月</option>
+                    <option value="12">十二月</option>
+                </select>
+            </div>
+            <form style="display: none" method="post" enctype="multipart/form-data" id="form">
+                <input type="hidden" name="start">
+                <input type="hidden" name="length">
+            </form>
+            <div class="inputPhone">
+                <input type="phone" class="form-control queryPhone" maxlength="11" placeholder="输入手机号码" id="queryPhone">
+            </div>
+            <button class="btn btn-success searchBtn" type="button"><i class="fa fa-search"></i>搜索</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0">
+            </table>
+        </div>
+        <div class="col-md-6" style="padding: 0">
+            <div class="funnel" style="height: 450px"></div>
+            <div class="funnel-empty-data" style="display: none">暂无相关数据</div>
+        </div>
+        <div class="col-md-6">
+            <div class="pie" style="height: 450px;"></div>
+            <div class="pie-empty-data" style="display: none">暂无相关数据</div>
+        </div>
+    </div>
+</div>
+<!-- endregion 页面主体 -->
+
+<!--region 弹框内容-->
+<div class="iModalContent" style="display: none">
+    <div class="detailInfo">
+        <div class="title">
+            <div class="phone">
+                <span>手机号:</span>
+            </div>
+            <div class="address">
+                <span>ip地址:</span>
+            </div>
+            <div class="action">
+                <span>操作行为:</span>
+            </div>
+            <div class="time">
+                <span>时间:</span>
+            </div>
+        </div>
+        <div class="dataContainer">
+            <div class='data'>
+                <div class='phone'>13813365722</div>
+                <div class='address'>sajfsfa</div>
+                <div class='action'>发送验证码</div>
+                <div class='time'>2018-05-03 15:30:30</div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--endregion 弹框内容-->
+
+<!--region 弹出框-->
+<div class="iceCream_Dialog">
+    <div id="container" style="display: none;"></div>
+</div>
+<!--endregion 弹出框-->
+
+<!-- region 脚本 -->
+<script src="js/icommon/dateUtil.js"></script>
+<script src="ext/echarts/echarts4.0.min.js"></script>
+<script src="js/iicecream/icecreamStatistics.js"></script>
+<!-- endregion 脚本 -->

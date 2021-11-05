@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--<link rel="stylesheet" href="styles/isystem/role.css">-->
+    <style type="text/css">
+        .modelDownloadSettingInfo{width: 900px;margin: auto;}
+        .metaProperties{border: 1px solid silver;height: 350px;overflow: auto;border-radius: 4px;}
+        .selectedPropertyList{border: 1px solid silver;height: 350px;overflow: auto;border-radius: 4px;}
+        .modelList{width: 100%;padding: 4px 5px;font-size: 14px;}
+        .modelDownloadSettingInfo >div.row{margin-top: 10px;margin-bottom: 10px;}
+        .modelDownloadSettingInfo .remarks{height: 65px;}
+        .modelDownloadSettingInfo .selectedProperties{padding: 0;}
+        .modelDownloadSettingInfo .selectedProperties li{padding: 5px;background: #F5F5F5; margin: 3px 5px;}
+        .modelDownloadSettingInfo .selectedProperties .propertyName{display: inline-block;width: 70%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;vertical-align: middle;}
+        .modelDownloadSettingInfo .selectedProperties .propertyOperate{display: inline-block;width: 30%;}
+        .modelDownloadSettingInfo .selectedProperties .propertyOperate a{margin: 0 5px;width: 24px;}
+    </style>
+    <script src="js/imodel/modelDownloadSetting.js"></script>
+</head>
+<body>
+<div class="iMarket_Body">
+    <div class="">
+        <div class="row query-row">
+            <div class="col-md-12 form-inline conditionSearch text-right">
+                <button class="modelDownloadSettingAddBtn btn btn-primary "><i class="fa fa-plus"></i>新增</button>
+                <div class="modelDownloadSettingRefreshBtn" style="display: none;"></div>
+            </div>
+        </div>
+        <div class="row list-row">
+            <div class="col-md-12">
+                <table class="modelDownloadSettingTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer"
+                       width="100%"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="iMarket_Content" style="display:none;">
+    <div class="modelDownloadSettingInfo">
+        <div class="row">
+            <div class="col-md-2 text-right"><label>模型选择：</label></div>
+            <div class="col-md-9">
+                <select class="modelList form-control">
+                    <option value="-1">--- 请选择模型 ---</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 text-right"><label>下载字段：</label></div>
+            <div class="col-md-4">
+                <div class="metaProperties">
+                    <ul id="modelDownloadSettingPropertyTree" class="ztree"></ul>
+                </div>
+            </div>
+            <div class="col-md-5" style="padding-left: 0;">
+                <div class="selectedPropertyList">
+                    <ul class="selectedProperties"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 text-right"><label>备&nbsp;&nbsp;注:</label></div>
+            <div class="col-md-9">
+                <textarea class="remarks"></textarea>
+            </div>
+        </div>
+        <div class="modelDownloadSettingHandel" style="display: none;"></div>
+    </div>
+</div>
+</body>
+</html>

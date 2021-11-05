@@ -1,0 +1,56 @@
+#preview_dialog {
+    padding: 15px;
+}
+
+.templateDetailInfo {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 15px 0;
+}
+
+.templateDetailInfo > div.row:nth-of-type(1) {
+    margin-bottom: 20px;
+}
+
+.templateDetailInfo > div.row div.col-md-12 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.templateDetailInfo > div.row div.col-md-3,
+.templateDetailInfo > div.row div.col-md-9 {
+    margin-bottom: 6px;
+}
+
+.cmTable {
+    margin-bottom: 0;
+}
+
+.btn-preview {
+
+}
+
+.templateDetailInfo div.preBox {
+    height: 190px;
+}
+
+.templateDetailInfo div.preBox h3 {
+    float: left;
+    width: 80px;
+    border-right: 1px dashed #ccc;
+    height: 100%;
+    margin: 0;
+    padding: 40px 20px 0;
+    text-align: center;
+}
+
+.templateDetailInfo div.preBox .preHtml {
+    height: 100%;
+    margin-left: 27%;
+}
+
+.templateDetailInfo div.preBox .preHtml > div {
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+}

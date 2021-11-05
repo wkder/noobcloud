@@ -1,0 +1,159 @@
+/*日期筛选器*/
+.laydate_table {
+    display: none;
+}
+
+.laydate_top {
+    margin-bottom: 15px !important;
+}
+
+.AllotProductInfoDialog {
+    height: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.query-row {
+    height: 70px !important;
+}
+
+.AllotProductInfoDialog .baseInfoDesc {
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.AllotProductInfoDialog .baseInfoDesc .selectLeftDesc {
+    float: left;
+    width: 40%;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.AllotProductInfoDialog .baseInfoDesc .selectMiddleDesc {
+    float: left;
+    width: 12%;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.AllotProductInfoDialog .baseInfoDesc .selectRightDesc {
+    float: right;
+    width: 40%;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 2px;
+    text-align: center;
+}
+
+.AllotProductInfoDialog .baseInfo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 78%;
+    float: left;
+}
+
+.AllotProductInfoDialog .baseInfo .selectLeft {
+    width: 40%;
+    float: left
+}
+
+.AllotProductInfoDialog .baseInfo .selectLeft select {
+    width: 98%;
+    height: 360px;
+    border-radius: 4px;
+}
+
+.AllotProductInfoDialog .baseInfo .selectLeft select option {
+    margin: 4px 0;
+    cursor: pointer;
+}
+
+.AllotProductInfoDialog .baseInfo .selectBtn {
+    width: 12%;
+    float: left;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.AllotProductInfoDialog .baseInfo .selectBtn button {
+    border-radius: 2px;
+}
+
+.AllotProductInfoDialog .baseInfo .selectRight {
+    width: 40%;
+    float: left
+}
+
+.AllotProductInfoDialog .baseInfo .selectRight select {
+    width: 98%;
+    height: 360px;
+    margin-left: 0;
+    border-radius: 4px;
+}
+
+.AllotProductInfoDialog .baseInfo .selectRight select option {
+    margin: 4px 0;
+    cursor: pointer;
+}
+
+.AllotProductInfoDialog .baseInfo tr.silver, .contentInfoSegment .contentInfo tr.silver {
+    background: silver;
+}
+
+.AllotProductInfoDialog div.hide {
+    display: none;
+}
+
+.AllotProductInfoDialog div.chooseContent {
+    margin: 10px 7px;
+}
+
+.AllotProductInfoDialog div.chooseContent textarea.chooseBaseName {
+    margin-left: 0;
+    border-radius: 2px !important;
+    line-height: 20px;
+    letter-spacing: 1px;
+    background-color: #fff;
+}
+
+#fileDownDialog .content {
+    padding: 30px 20px;
+}
+
+#fileDownDialog .content p {
+    font-size: 16px;
+    color: #ff0000;
+}
+
+#fileDownDialog .content label:first-child {
+    margin-right: 40px;
+}
+
+#fileDownDialog .content label {
+    font-size: 18px;
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 40px;
+    width: 100px;
+}
+
+#fileDownDialog .content label.last-label input {
+    left: 54px !important;
+}
+
+#fileDownDialog .content label input {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 40px;
+    margin: auto;
+    display: block;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}

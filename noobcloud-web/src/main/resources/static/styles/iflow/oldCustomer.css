@@ -1,0 +1,591 @@
+/** 步骤 */
+div.flowStepContainer {
+    height: 90px;
+    border-bottom: 1px solid silver;
+}
+
+div.flowStepContainer div.flowLine {
+    height: 8px;
+    margin-top: 30px;
+    position: absolute;
+    background: silver;
+    width: 78%;
+    margin-left: 10%;
+}
+
+div.flowStepContainer div.flowStep {
+    height: 100%;
+    margin-left: 20%;
+}
+
+div.flowStepContainer div.flowStep > div {
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    margin-top: 31px;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepB {
+    margin-left: 18%;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepC {
+    margin-left: 36%;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepD {
+    margin-left: 54%;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepNumber {
+    display: inline-block;
+    width: 28px;
+    height: 9px;
+    position: absolute;
+    z-index: 2;
+    background: 0;
+    line-height: 9px;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: -12px;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepNumber.active {
+    color: #fff;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepIcon {
+    background: url("../../images/icon_gray.png") no-repeat;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    margin-top: -12px;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepIcon.active {
+    background: url("../../images/icon_green.png") no-repeat;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepDesc {
+    display: inline-block;
+    position: absolute;
+    top: 25px;
+    left: 17px;
+    width: 100px;
+    margin-left: -50px;
+    font-size: 14px;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepDesc.active {
+    color: #0847a6;
+}
+
+div.marketJobEditInfo div.row {
+    display: none;
+}
+
+div.marketJobEditInfo div.row.active {
+    display: block;
+}
+
+div.marketJobEditInfo div.config {
+    display: none;
+}
+
+div.marketJobEditInfo div.step {
+    height: 60px;
+    border-top: 1px solid silver;
+    padding-top: 12px;
+    text-align: center;
+}
+
+div.marketJobEditInfo div.step > span.active {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+    color: white;
+    background-color: #00B38B;
+    cursor: pointer;
+}
+
+div.marketJobEditInfo div.step > span.pre.active {
+    color: #333;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+div.marketJobEditInfo div.step > span {
+    display: none;
+}
+
+div.marketJobEditInfo div.step span.closeBtn {
+    color: #333;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: 100px;
+    height: 30px;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/** 弹窗内容 */
+div.marketJobEditInfo {
+    overflow: hidden;
+}
+
+div.marketJobEditInfo div.infoConfigBody {
+    min-height: 390px;
+    height: 390px;
+    padding-top: 30px;
+    padding-left: 30px;
+    overflow: auto;
+}
+
+div.marketJobEditInfo div.infoConfigBody .taskBaseInfo .col-md-12,
+div.marketJobEditInfo div.infoConfigBody .userInfo .col-md-12,
+div.marketJobEditInfo div.infoConfigBody .channelInfo .col-md-12,
+div.marketJobEditInfo div.infoConfigBody .auditInfo .col-md-12 {
+    margin: 7.5px 0;
+}
+
+/** 任务用户信息 */
+div.marketJobEditInfo div.infoConfigBody .userInfo .col-md-12 .targetUser {
+    padding-left: 0;
+}
+
+div.marketJobEditInfo div.infoConfigBody .userInfo .col-md-12 .targetUser-province {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+div.marketJobEditInfo div.infoConfigBody .userInfo .col-md-12 .targetUser-city {
+    margin-top: 0;
+}
+
+div.marketJobEditInfo div.infoConfigBody .userInfo .col-md-12 .targetUser-city .col-md-12 label.checkbox-inline {
+    margin-top: 4px;
+}
+
+div.marketJobEditInfo div.infoConfigBody .userInfo .col-md-12 .targetUser-city .col-md-12 label.checkbox-inline:first-child {
+    margin-top: 0;
+    margin-left: 10px;
+}
+
+div.marketJobEditInfo div.infoConfigBody .userInfo .col-md-12 .targetUser-city .col-md-12 {
+    padding-left: 8px;
+    margin: 0;
+}
+
+div.marketJobEditInfo div.infoConfigBody .userInfo .appointUser
+div.marketJobEditInfo div.infoConfigBody .userInfo .blockUser {
+    margin-top: 0;
+}
+
+div.marketJobEditInfo div.infoConfigBody .userInfo .appointUser input,
+div.marketJobEditInfo div.infoConfigBody .userInfo .blockUser input {
+    width: 320px;
+    display: inline-block;
+}
+
+div.marketJobEditInfo div.infoConfigBody .userInfo .appointUser button,
+div.marketJobEditInfo div.infoConfigBody .userInfo .blockUser button,
+div.marketJobEditInfo div.infoConfigBody .channelInfo .col-md-12 .channel-offline .col-md-12 button {
+    width: 60px;
+    margin-right: 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 4px;
+    text-transform: none;
+    overflow: visible;
+    -webkit-appearance: button;
+}
+
+div.marketJobEditInfo div.infoConfigBody .userInfo .appointUser button:hover,
+div.marketJobEditInfo div.infoConfigBody .userInfo .appointUser button:focus,
+div.marketJobEditInfo div.infoConfigBody .userInfo .appointUser button:active,
+div.marketJobEditInfo div.infoConfigBody .userInfo .blockUser button:hover,
+div.marketJobEditInfo div.infoConfigBody .userInfo .blockUser button:focus,
+div.marketJobEditInfo div.infoConfigBody .userInfo .blockUser button:active,
+div.marketJobEditInfo div.infoConfigBody .channelInfo .col-md-12 .channel-offline .col-md-12 button:hover,
+div.marketJobEditInfo div.infoConfigBody .channelInfo .col-md-12 .channel-offline .col-md-12 button:focus,
+div.marketJobEditInfo div.infoConfigBody .channelInfo .col-md-12 .channel-offline .col-md-12 button:active {
+    color: #FFFFFF;
+    background-color: #0CCEA2;
+    border: none;
+    outline: none;
+}
+
+/** 营销接触渠道 */
+div.marketJobEditInfo div.infoConfigBody .channelInfo .col-md-12 .col-md-9 {
+    padding-left: 0;
+}
+
+div.marketJobEditInfo div.infoConfigBody .channelInfo .col-md-12 .channel-online {
+    margin-top: 0;
+}
+
+div.marketJobEditInfo div.infoConfigBody .channelInfo .col-md-12 .channel-offline .col-md-12 .txtOffline {
+    width: 320px;
+    margin-top: 8px;
+    display: inline-block;
+}
+
+/** 预览 */
+div.marketJobEditInfo div.oldCustomerDetailInfo {
+    margin: -25px 0 10px 0 !important;
+    display: block;
+}
+
+div.marketJobEditInfo div.oldCustomerDetailInfo div.col-md-12 {
+    display: block;
+}
+
+/** 导入用户弹窗 */
+.importSegmentInfo ,.importAppointInfo{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.importSegmentInfo .importForm .meatOperate ,.importAppointInfo .importForm .meatOperate{
+    margin-left: 25px;
+}
+
+.importSegmentInfo .importForm .meatOperate .fileUploadName ,.importAppointInfo .importForm .meatOperate .fileUploadName{
+    width: 220px;
+    display: inline;
+    border: 1px solid #ccc;
+}
+
+.importSegmentInfo .importForm .meatOperate a.file,
+.importSegmentInfo .importForm .meatOperate div.btnUpload ,
+.importAppointInfo .importForm .meatOperate a.file,
+.importAppointInfo .importForm .meatOperate div.btnUpload{
+    margin-right: 10px;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+.importSegmentInfo .importForm .meatOperate a.file ,.importAppointInfo .importForm .meatOperate a.file{
+    position: relative;
+    top: 0;
+    overflow: hidden;
+    text-indent: 0;
+}
+
+.importSegmentInfo .importForm .meatOperate a.file input ,.importAppointInfo .importForm .meatOperate a.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    width: 180px;
+    margin: 0 5px;
+    outline: none;
+    border-radius: 2px !important;
+}
+
+.importSegmentInfo .importForm .meatOperate div.btnUpload ,.importAppointInfo .importForm .meatOperate div.btnUpload{
+    width: 80px;
+}
+
+.importSegmentInfo .importForm .meatOperate a.templateBtn , .importAppointInfo .importForm .meatOperate a.templateBtn{
+    border-radius: 2px;
+    background: #00B38B;
+    border: none;
+    font-size: 16px;
+}
+
+.importSegmentInfo .importForm .info , .importAppointInfo .importForm .info{
+    margin-top: 20px;
+    margin-left: 26px;
+}
+
+.importSegmentInfo .importForm .info span , .importAppointInfo .importForm .info span{
+    display: block;
+    color: red;
+    line-height: 24px;
+}
+
+.importSegmentInfo .phoneInfo,
+.importSegmentInfo .historyInfo , .importAppointInfo .phoneInfo,.importAppointInfo .historyInfo{
+    margin-top: 20px;
+    margin-left: 20px;
+    height: 350px;
+}
+
+.importSegmentInfo .phoneInfo .row {
+    height: 100%;
+}
+
+.importSegmentInfo .phoneInfo .row .col-md-12 {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.importSegmentInfo .phoneInfo .row .col-md-12 table {
+    border-top: 1px solid silver;
+    width: 94%;
+    margin: 10px 7px;
+    border-radius: 8px;
+}
+
+.importSegmentInfo .phoneInfo .row .col-md-12 table thead {
+    background: #e4e4e4;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.importSegmentInfo .phoneInfo .row .col-md-12 table thead tr:first-child th:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.importSegmentInfo .phoneInfo .row .col-md-12 table thead tr:first-child th:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+.importSegmentInfo .phoneInfo .row .col-md-12 table tfoot tr:last-child td:first-child {
+    border-radius: 0 0 8px 8px
+}
+
+.importSegmentInfo .phoneInfo .row .col-md-12 table tr > td:first-child,
+.importSegmentInfo .phoneInfo .row .col-md-12 table.iTable thead tr > th:first-child {
+    border-left: 1px solid silver;
+}
+
+.importSegmentInfo .phoneInfo .row .col-md-12 table td,
+.importSegmentInfo .phoneInfo .row .col-md-12 table th {
+    border-bottom: 1px solid silver;
+    border-right: 1px solid silver;
+    word-break: break-all;
+    word-wrap: break-word;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 14px;
+    font-family: 'microsoft yahei', 'Helvetica', simhei, simsun, sans-serif;
+}
+
+.importSegmentInfo .phoneInfo .row .col-md-12 table tfoot tr td {
+    border-radius: 0 0 8px 8px;
+}
+
+.importSegmentInfo .historyInfo {
+    height: 100px;
+    overflow-y: scroll;
+}
+
+.importSegmentInfo .historyInfo .row.text-center span {
+    font-weight: bold;
+    color: red;
+}
+
+/** 导入营业厅弹窗 */
+.importBusinessInfo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.importBusinessInfo .importForm .meatOperate {
+    margin-left: 25px;
+}
+
+.importBusinessInfo .importForm .meatOperate .fileUploadName {
+    width: 220px;
+    display: inline;
+    border: 1px solid #ccc;
+}
+
+.importBusinessInfo .importForm .meatOperate a.file,
+.importBusinessInfo .importForm .meatOperate div.btnUpload {
+    margin-right: 10px;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+.importBusinessInfo .importForm .meatOperate a.file {
+    position: relative;
+    top: 0;
+    overflow: hidden;
+    text-indent: 0;
+}
+
+.importBusinessInfo .importForm .meatOperate a.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    width: 180px;
+    margin: 0 5px;
+    outline: none;
+    border-radius: 2px !important;
+}
+
+.importBusinessInfo .importForm .meatOperate div.btnUpload {
+    width: 80px;
+}
+
+.importBusinessInfo .importForm .meatOperate a.templateBtn {
+    border-radius: 2px;
+    background: #00B38B;
+    border: none;
+    font-size: 16px;
+}
+
+.importBusinessInfo .importForm .info {
+    margin-top: 20px;
+    margin-left: 26px;
+}
+
+.importBusinessInfo .importForm .info span {
+    display: block;
+    color: red;
+    line-height: 24px;
+}
+
+.importBusinessInfo .businessInfo,
+.importBusinessInfo .historyInfo {
+    margin-top: 20px;
+    margin-left: 20px;
+    height: 350px;
+}
+
+.importBusinessInfo .businessInfo .row {
+    height: 100%;
+}
+
+.importBusinessInfo .businessInfo .row .col-md-12 {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.importBusinessInfo .businessInfo .row .col-md-12 table {
+    border-top: 1px solid silver;
+    width: 94%;
+    margin: 10px 7px;
+    border-radius: 8px;
+}
+
+.importBusinessInfo .businessInfo .row .col-md-12 table thead {
+    background: #e4e4e4;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.importBusinessInfo .businessInfo .row .col-md-12 table thead tr:first-child th:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.importBusinessInfo .businessInfo .row .col-md-12 table thead tr:first-child th:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+.importBusinessInfo .businessInfo .row .col-md-12 table tfoot tr:last-child td:first-child {
+    border-radius: 0 0 8px 8px
+}
+
+.importBusinessInfo .businessInfo .row .col-md-12 table tr > td:first-child,
+.importBusinessInfo .businessInfo .row .col-md-12 table.iTable thead tr > th:first-child {
+    border-left: 1px solid silver;
+}
+
+.importBusinessInfo .businessInfo .row .col-md-12 table td,
+.importBusinessInfo .businessInfo .row .col-md-12 table th {
+    border-bottom: 1px solid silver;
+    border-right: 1px solid silver;
+    word-break: break-all;
+    word-wrap: break-word;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 14px;
+    font-family: 'microsoft yahei', 'Helvetica', simhei, simsun, sans-serif;
+}
+
+.importBusinessInfo .businessInfo .row .col-md-12 table tfoot tr td {
+    border-radius: 0 0 8px 8px;
+}
+
+.importBusinessInfo .historyInfo {
+    height: 100px;
+    overflow-y: scroll;
+}
+
+.importBusinessInfo .historyInfo .row.text-center span {
+    font-weight: bold;
+    color: red;
+}
+
+/** 预览 */
+.oldCustomerDetailInfo {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 15px 0;
+}
+
+.oldCustomerDetailInfo > div.col-md-12 {
+    margin-bottom: 20px;
+}
+
+.oldCustomerDetailInfo > div.col-md-12 div.col-md-12 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.oldCustomerDetailInfo > div.col-md-12 div.col-md-3,
+.oldCustomerDetailInfo > div.col-md-12 div.col-md-9 {
+    margin-bottom: 4px;
+}
+
+/** 审批 */
+.cmTable {
+    margin-bottom: 0;
+}
+
+/** 查询项 */
+.queryTaskName, .querySelectType, .querySelectArea {
+    width: 150px !important;
+}
+
+.layui-layer-tips div.layui-layer-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+span.detail_remark,span.detail_marketContent{
+    word-break: break-all;
+    word-wrap: break-word;
+}
+

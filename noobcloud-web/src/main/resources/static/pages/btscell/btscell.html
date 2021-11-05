@@ -1,0 +1,797 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/btscell/btscell.css" rel="stylesheet">
+<link href="ext/simplePagination.css" rel="stylesheet">
+
+<!-- region 搜索栏 -->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input class="form-control cellId" id="cellId" placeholder="cellId" style="display: none;">
+        <input class="form-control ncgi" id="ncgi" placeholder="ncgi">
+        <input class="form-control btsName" id="btsName" placeholder="基站名">
+        <input class="form-control cellName" id="cellName" placeholder="小区名">
+        <select class="form-control type" id="type">
+            <option value="0">请选择</option>
+            <option value="1">宏站</option>
+            <option value="2">室分</option>
+        </select>
+        <select class="form-control apart" id="apart">
+            <option value="0">请选择</option>
+            <option value="1">鼓楼</option>
+            <option value="2">玄武</option>
+            <option value="2">建邺</option>
+            <option value="2">秦淮</option>
+            <option value="2">栖霞</option>
+            <option value="2">雨花</option>
+            <option value="2">浦口</option>
+            <option value="2">六合</option>
+            <option value="2">江宁</option>
+            <option value="2">溧水</option>
+            <option value="2">高淳</option>
+        </select>
+        <button id="BtsCellButton" class="btn btn-success">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="createBtsCellButton" class="btn btn-success">
+            <i class="fa fa-plus"></i>新增
+        </button>
+        <button id="exportBtsCellButton" class="btn btn-success">
+            <i class="fa fa-download"></i>导出
+        </button>
+    </div>
+</div>
+<!-- endregion 搜索栏 -->
+
+<!-- region 列表栏 -->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               width="100%">
+
+        </table>
+    </div>
+</div>
+<!-- endregion 列表栏 -->
+
+<!-- region 弹窗 -->
+<div class="btsCell_Dialog">
+    <div id="createnetworkDialog" style="display: none"></div>
+    <div id="shopBaseInfoDialog" style="height:100%;display: none;"></div>
+    <div id="btsCellDetailDialog" style="display: none"></div>
+    <div id="numberSmsContentDialog" style="display: none"></div>
+    <div id="importAppointDialog" style="display: none"></div>
+    <div id="importBlackDialog" style="display: none"></div>
+    <div id="executeTaskDialog" style="display: none">
+        <div id="viewPanel" style="height: 300px;overflow-y: auto"></div>
+        <div id="executePanel" style="height: 100px">
+            <div></div>
+        </div>
+    </div>
+</div>
+<!-- region 弹窗 -->
+
+<div class="iMarket_Shop_Template" style="display: none">
+    <script id="contentInfo" type="text/html">
+        {{each list as order index}}
+        <tr>
+            <td class="content" width="45%">{{order.content}}</td>
+            <td class="createUserTelePhone" width="30%">{{order.createUserTelePhone}}</td>
+            <td class="id" width="30%" hidden>{{order.id}}</td>
+            <td class="createUserName" width="20%">{{order.createUserName}}</td>
+        </tr>
+        {{/each}}
+    </script>
+    <script id="numberSmsContentInfo" type="text/html">
+        {{each list as order index}}
+        <tr>
+            <td class="id" width="15%">{{order.woxunId}}</td>
+            <td class="type" width="25%">{{order.woxunTypeName}}</td>
+            <td class="content" width="60%">{{order.resTitle}}</td>
+        </tr>
+        {{/each}}
+    </script>
+</div>
+
+<!-- region 模板 -->
+<div id="btsCellId" class="btsCell_Detail_Content" style="display: none;">
+    <!-- region 新建炒店任务 -->
+    <div class="networkInfo">
+        <div class="flowStepContainer">
+            <div class="flowLine"></div>
+            <div class="flowStep">
+                <div class="flowStepA" refDiv="userGroupInfo">
+                    <span class="stepNumber active">1</span>
+                    <span class="stepIcon active"></span>
+                    <span class="stepDesc active">任务基本信息</span>
+                </div>
+                <div class="flowStepB" refDiv="channelInfo">
+                    <span class="stepNumber">2</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">目标用户选择</span>
+                </div>
+                <div class="flowStepC" refDiv="jobConfigureInfo">
+                    <span class="stepNumber">3</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">客户接触渠道</span>
+                </div>
+                <div class="flowStepD" refDiv="auditInfo">
+                    <span class="stepNumber">4</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">预览</span>
+                </div>
+            </div>
+        </div>
+        <div class="infoConfigBody">
+            <!-- region 任务基本信息 -->
+            <div class="config taskBaseInfo active">
+                <!-- region 任务名称 -->
+                <div class="row taskNamePanel" style="margin-top: 30px">
+                    <div class="col-sm-3 text-right">
+                        <strong class="must" style="color: red">*</strong>
+                        <strong>任务名称：</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="id" hidden/>
+                        <input type="text" class="form-control taskName" placeholder="请输入任务名称，限制20个字数" title="不能为空或特殊字符"
+                               maxlength="20"
+                               style="width: 490px; border: 1px solid #ccc;"/>
+                    </div>
+                </div>
+                <!-- endregion 任务名称 -->
+
+                <!-- region 业务类型 -->
+                <div class="row businessPanel">
+                    <div class="col-sm-3 text-right">
+                        <strong class="must" style="color: red">*</strong>
+                        <strong>业务类型：</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <select class="select form-control businessId"
+                                style="display: inline; width: 180px;border-radius: 2px;"></select>
+                        <span style="margin: 10px 5px 0 5px;color: red;">（同一业务类型一个月仅触发一次）</span>
+                    </div>
+                </div>
+                <!-- endregion 业务类型 -->
+
+                <!-- region 任务开始、结束时间 -->
+                <div class="row taskTimePanel">
+                    <div class="col-sm-3 text-right">
+                        <strong class="must" style="color: red">*</strong>
+                        <strong>任务开始时间：</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control startTime"
+                               onclick="laydate({min: laydate.now(), format: 'YYYY-MM-DD'})" title="不能为空"
+                               style="display: inline;border: 1px solid #ccc;background: #fff;"
+                               readonly="readonly"/>
+                        <strong class="must" style="color: red;margin-left: 37px">*</strong>
+                        <strong>结束时间：</strong>
+                        <input type="text" class="form-control stopTime"
+                               onclick="laydate({min: laydate.now(),format: 'YYYY-MM-DD'})" title="不能为空"
+                               style="display: inline;border: 1px solid #ccc;background: #fff;width: 175px;"
+                               readonly="readonly"/>
+                    </div>
+                </div>
+                <!-- endregion 任务开始、结束时间 -->
+
+                <!-- region 炒店区域 -->
+                <div class="row basePanel">
+                    <div class="col-sm-3 text-right">
+                        <strong class="must" style="color: red">*</strong>
+                        <strong>炒店区域：</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <select class="select form-control baseAreaId"
+                                style="display: inline; width: 180px;border-radius: 2px;"></select>
+                    </div>
+                </div>
+                <!-- endregion 炒店区域 -->
+
+                <!-- region 监控营业厅 -->
+                <div class="row basePanel">
+                    <div class="col-sm-3 text-right">
+                        <strong>营业厅：</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <textarea class="form-control baseName" placeholder="请选择要监控的营业厅"
+                                  style="height: 50px;width: 494px;border-radius: 2px !important;cursor: pointer;"
+                                  title="不能为空" readonly="readonly"></textarea>
+                        <p class="baseMessage" style="margin: 10px 5px 0 5px;color: red;">注：（不选择营业厅默认对全市营销）</p>
+                        <input class="baseId" type="text" style="display: none">
+                        <input class="locationTypeId" type="hidden">
+                    </div>
+                </div>
+                <!-- endregion 监控营业厅 -->
+
+                <!-- region 任务描述 -->
+                <div class="row taskDescPanel">
+                    <div class="col-sm-3 text-right">
+                        <strong>任务描述：</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <textarea class="form-control taskDesc" placeholder="请输入任务描述，限制200个字数" maxlength="200"
+                                  style="height: 50px;width: 494px;border-radius: 2px !important;"></textarea>
+                    </div>
+                </div>
+                <!-- endregion 任务描述 -->
+            </div>
+            <!-- endregion 任务基本信息 -->
+
+            <!-- region 目标用户选择 -->
+            <div class="config marketUserInfo">
+                <!-- region 营销客户群 -->
+                <div class="row segmentPanel" style="margin: 20px;display: none;">
+                    <div class="col-sm-3 text-right">
+                        <span class="bold">营销客户群：</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control segmentNames" placeholder="请选择营销客户群"
+                               disabled="disabled" style="width: 360px"/>
+                        <button class="btn btn-success templateBtn segmentBtn"
+                                style="float: right;margin-top: -35px;margin-right: 50px;border-radius:4px">选择
+                        </button>
+                        <input class="segmentIds" type="hidden"/>
+                        <p style="color: red;margin:10px 0 0 4px;">营销客户群不选择，默认在全网用户中匹配监控范围附近的常驻和流动用户</p>
+                    </div>
+                </div>
+                <!-- endregion 营销客户群 -->
+
+                <!-- region 监控类型 -->
+                <div class="row monitorTypePanel" style="margin: 20px;display: none;">
+                    <div class="col-sm-3 text-right">
+                        <span class="bold">监控类型：</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="checkbox" style="margin-top: 0; margin-left: 5px;">
+                            <label>
+                                <input type="checkbox" value="1" data="1" checked> 常驻用户
+                            </label>
+                            <label style="margin-left: 30px;">
+                                <input type="checkbox" value="2" data="2" checked> 流动拜访用户
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- endregion 监控类型 -->
+
+                <!-- region 目标用户 -->
+                <div class="row marketUserPanel" style="margin: 20px;">
+                    <div class="col-sm-3 text-right">
+                        <span class="bold">优先目标用户：</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="checkbox" style="margin-top: 0; margin-left: 5px;">
+                            <label>
+                                <input type="checkbox" value="1" data="1" checked>
+                                常驻用户
+                            </label>
+                            <span style="margin-left: 40px;display: none;">用户数：<i class="perUserNum"></i></span>
+                        </div>
+                        <div class="checkbox" style="margin-left: 5px;">
+                            <label>
+                                <input type="checkbox" value="2" data="2" checked>
+                                流动拜访用户
+                            </label>
+                        </div>
+                        <div class="checkbox" style="margin-left: 5px;margin-bottom: 0;">
+                            <label>
+                                <input type="checkbox" value="5" data="5" checked>
+                                本店老客户
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- endregion 目标用户 -->
+
+                <!-- region 指定用户 -->
+                <div class="row appointUsersPanel" style="margin: 20px;">
+                    <div class="col-sm-3 text-right">
+                        <span class="bold">指定用户：</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control appointUserNum" placeholder="请导入指定用户文件"
+                               style="width: 360px;border: 1px solid #ccc;border-radius: 2px;"/>
+                        <button class="btn btn-success templateBtn appointButton"
+                                style="float: right;margin-top: -35px;margin-right: 50px;border-radius:4px">导入
+                        </button>
+                        <input class="appointUsers" type="hidden"/>
+                    </div>
+                </div>
+                <!-- endregion 指定用户 -->
+
+                <!-- region 免打扰用户 -->
+                <div class="row blackUsersPanel" style="margin: 20px;">
+                    <div class="col-sm-3 text-right">
+                        <span class="bold" style="color: red">免打扰用户：</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control blackUserNum" placeholder="请导入免打扰用户文件"
+                               style="width: 360px;border: 1px solid #ccc;border-radius: 2px;"/>
+                        <button class="btn btn-success templateBtn blackButton"
+                                style="float: right;margin-top: -35px;margin-right: 50px;border-radius:4px">导入
+                        </button>
+                        <input class="blackUsers" type="hidden"/>
+                    </div>
+                </div>
+                <!-- endregion 免打扰用户 -->
+            </div>
+            <!-- endregion 目标用户选择 -->
+
+            <!-- region 客户接触渠道 -->
+            <div class="config marketChannelInfo">
+                <!-- region Tab页签 -->
+                <div class="row contactPanel" style="margin-top: 20px">
+                    <div class="col-sm-10 user-select contact" style="text-align: center;margin-left: 60px">
+                        <span class="active" data-type="sms"
+                              style="border-radius: 18px 0 0 18px;width:180px">短信</span><span
+                            data-type="numberSms"
+                            style="border-right: none;width: 180px">数字短信</span><span data-type="phoneCall"
+                                                                                     style="border-radius: 0 18px 18px 0;width: 180px">话+</span>
+                    </div>
+                </div>
+                <!-- endregion Tab页签 -->
+
+                <!-- region 接入号选择 -->
+                <div class="row accessNumberPanel">
+                    <div class="col-sm-3 text-right">
+                        <span class="bold">接入号选择：</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <select class="select accessNumber form-control" style="width: 170px" disabled>
+                            <option value="100001">100001</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- endregion 接入号选择 -->
+
+                <!-- region 营销内容 -->
+                <div class="row marketContentTextPanel">
+                    <div class="col-sm-3 text-right">
+                        <span class="must" style="color: red">*</span><span class="bold">营销内容：</span>
+                    </div>
+                    <div class="col-sm-9">
+                         <textarea class="marketContentText" placeholder="触发营销术语，字数不超过200个字" maxlength="200"
+                                   title="不能为空"
+                                   style="height: 68px;width: 400px"></textarea>
+                        <button class="btn btn-success templateBtn marketContentButton"
+                                style="float: right;margin-top: 9px;margin-right: 20px;border-radius:4px">模板<br/>选择
+                        </button>
+                        <input class="marketUrl" type="text" style="display: none">
+                        <input class="marketContentId" type="hidden"/>
+                    </div>
+                </div>
+                <!-- endregion 营销内容 -->
+
+                <!-- region 数字短信营销内容 -->
+                <div class="row numberSmsContentPanel" style="display: none;">
+                    <div class="col-sm-3 text-right">
+                        <span class="must" style="color: red">*</span><span class="bold">营销内容：</span>
+                    </div>
+                    <div class="col-sm-9">
+                         <textarea class="numberSmsContentText" placeholder="触发营销术语，字数不超过200个字" maxlength="200"
+                                   title="不能为空"
+                                   style="height: 68px;width: 400px"></textarea>
+                        <button class="btn btn-success templateBtn numberSmsContentBtn"
+                                style="float: right;margin-top: 9px;margin-right: 20px;border-radius:4px">模板<br/>选择
+                        </button>
+                        <input class="numberSmsContentId" type="hidden"/>
+                    </div>
+                </div>
+                <!-- endregion 数字短信营销内容 -->
+
+                <!-- region 短信内容额外信息 -->
+                <div class="row marketContentExtend">
+                    <div class="col-sm-3 text-right">
+                        <span class="must" style="color: red">*</span><span class="bold">设置替换元素：</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="checkbox" class="setReplaceText"/>
+                        <div class="replaceTextBox">
+                            <input type="text" class="replaceText replaceText-1" placeholder="替换字段1" maxlength="20"/>;
+                            <input type="text" class="replaceText replaceText-2" placeholder="替换字段2" maxlength="20"/>;
+                            <input type="text" class="replaceText replaceText-3" placeholder="替换字段3" maxlength="20"/>;
+                            <input type="text" class="replaceText replaceText-4" placeholder="替换字段4" maxlength="20"/>;
+                            <input type="text" class="replaceText replaceText-5" placeholder="替换字段5" maxlength="20"/>;
+                            <input type="text" class="replaceText replaceText-6" placeholder="替换字段6" maxlength="20"/>;
+                        </div>
+                    </div>
+                </div>
+                <!-- endregion 短信内容额外信息 -->
+
+                <!-- region 短信签名 -->
+                <div class="row smsSignaturePanel">
+                    <div class="col-sm-3 text-right">
+                        <span class="must" style="color: red">*</span><span class="bold">短信签名：</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <label class="radio-inline" style="margin: 0 5px;">
+                            <input type="radio" name="radioAutograph" id="autographTure" value="1" checked="checked"> 是
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="radioAutograph" id="autographFalse" value="0" disabled="disabled">
+                            否
+                        </label>
+                    </div>
+                </div>
+                <!-- endregion 短信签名 -->
+
+                <!-- region 触发营销间隔 -->
+                <div class="row">
+                    <div class="col-sm-3 text-right">
+                        <span class="must" style="color: red">*</span><span class="bold">触发营销间隔：</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control sendInterval" title="请输入正整数"
+                               style="width: 100px;display: inline-block;"/>
+                        <span>天</span><span style="margin: 10px 5px 0 5px;color: red;"> （任务生成的时间间隔）</span>
+                    </div>
+                </div>
+                <!-- endregion 触发营销间隔 -->
+
+                <!-- region 任务发送配额 -->
+                <div class="row">
+                    <div class="col-sm-3 text-right">
+                        <span class="must" style="color: red">*</span><span class="bold">任务发送配额：</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control marketLimit" title="不能为空"
+                               style="width: 100px;display: inline-block"
+                               value="10000" disabled="disabled"/>
+                        <span style="color: red;">（当任务发送配额为0时，该任务的任务发送配额不生效）</span>
+                    </div>
+                </div>
+                <!-- endregion 任务发送配额 -->
+
+                <!-- region 接收任务发送报告 -->
+                <div class="row reportPhonePanel">
+                    <div class="col-sm-3 text-right">
+                        <span class="must" style="color: red">*</span><span class="bold">接收任务发送报告：</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <select class="form-control select isSendReport" style="width: 101px;display: inline-block;">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                        <div class="reportPhonelabel" style="display: inline-block;margin-left: 87px">
+                            <span class="must" style="color: red">*</span><span class="bold">接收报告号码：</span>
+                            <input type="text" class="form-control reportPhone" placeholder="请输入手机号码"
+                                   title="输入的手机号码格式错误"
+                                   style="width: 165px;display: inline-block;"/>
+                        </div>
+                    </div>
+                </div>
+                <!-- endregion 接收任务发送报告 -->
+            </div>
+            <!-- endregion 客户接触渠道 -->
+
+            <!-- region 监控 -->
+            <div class="config marketViewInfo"></div>
+            <!-- endregion 监控 -->
+        </div>
+        <div class="step">
+            <span class="pre">返回</span>
+            <span class="next active">下一步</span>
+            <span class="confirm">确定</span>
+            <span class="edit">返回修改</span>
+            <span class="closeBtn">关闭</span>
+        </div>
+        <div class="data" style="display: none"></div>
+    </div>
+    <!-- endregion 新建炒店任务 -->
+
+    <!-- region 选择炒店 弹窗 -->
+    <div class="shopBaseInfoSegment">
+        <div class="query-row conditionSearch" status="ready">
+            <div class="col-md-12">
+                <select class="select form-control baseAreaType"
+                        style="display: inline;width: 176px;margin-left: 5px;border-radius: 2px;"></select>
+                <input type="text" class="form-control name" id="d-baseId" placeholder="营业厅编码" style="display: none;">
+                <input type="text" class="form-control name" id="d-baseName" placeholder="营业厅名称">
+                <button class="searchButton extensionalBtn "><i class="fa fa-search"></i>搜索</button>
+            </div>
+        </div>
+
+        <div class="baseInfoDesc">
+            <div class="selectLeftDesc">
+                可选营业厅
+            </div>
+            <div class="selectMiddleDesc"></div>
+            <div class="selectRightDesc">
+                已选营业厅
+            </div>
+        </div>
+        <div class="baseInfo">
+            <div class="selectLeft">
+                <select name="from[]" class="js-multiselect form-control" size="8" multiple="multiple"></select>
+            </div>
+
+            <div class="selectBtn">
+                <button id="btnRightAll" class="btn btn-block">
+                    <i class="fa fa-forward"></i>
+                </button>
+                <button id="btnRightSign" class="btn btn-block">
+                    <i class="fa fa-chevron-right"></i></button>
+                <button id="btnLeftSign" class="btn btn-block">
+                    <i class="fa fa-chevron-left"></i></button>
+                <button id="btnLeftAll" class="btn btn-block">
+                    <i class="fa fa-backward"></i>
+                </button>
+            </div>
+
+            <div class="selectRight">
+                <select name="to[]" id="multiselectRight" class="form-control" size="8" multiple="multiple"></select>
+            </div>
+        </div>
+    </div>
+    <!-- endregion 选择炒店 弹窗 -->
+
+    <!-- region 选择短信内容 弹窗 -->
+    <div class="contentInfoSegment">
+        <div class="contentInfo">
+            <div class="row query-row" style="margin:20px 0 10px 20px;">
+                <div class="col-md-12">
+                    <input class="form-control qryContentInfo" placeholder="内容" style="width: 160px">
+                    <input class="form-control qryKeyInfo" placeholder="号码" style="width: 160px">
+                    <button id="contentInfoButton" class="btn btn-success">
+                        <i class="fa fa-search"></i>搜索
+                    </button>
+                </div>
+            </div>
+            <div class="row" style="margin:0 auto;padding-left: 15px;padding-right: 15px;height: 380px;">
+                <table class="iTable" cellspacing="0" border="0" style="width: 98%;">
+                    <thead>
+                    <tr>
+                        <td class="content" width="45%">内容名称</td>
+                        <td class="createUserTelePhone" width="30%">号码</td>
+                        <td class="id" hidden>id</td>
+                        <td class="createUserName" width="20%">创建人</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--模板填充这里-->
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="3" style="border-radius: 0 0 8px 8px;">
+                            <div class="pagination"></div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- endregion 选择短信内容 弹窗 -->
+
+    <!-- region 选择数字短信内容 弹窗 -->
+    <div class="numberSmsContentInfoSegment">
+        <div class="contentInfo">
+            <div class="row query-row" style="margin:20px 0 10px 20px;">
+                <div class="col-md-12">
+                    <input class="form-control qryContentInfo" placeholder="沃讯标题" style="width: 160px">
+                    <button id="numberSmsContentInfoBtn" class="btn btn-success">
+                        <i class="fa fa-search"></i>搜索
+                    </button>
+                </div>
+            </div>
+            <div class="row" style="margin:0 auto;padding-left: 15px;padding-right: 15px;height: 380px;">
+                <table class="iTable" cellspacing="0" border="0" style="width: 98%;">
+                    <thead>
+                    <tr>
+                        <td class="id" width="15%">沃讯Id</td>
+                        <td class="type" width="25%">沃讯类型</td>
+                        <td class="content" width="60%">沃讯标题</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--模板填充这里-->
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="3" style="border-radius: 0 0 8px 8px;">
+                            <div class="pagination"></div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- endregion 选择数字短信内容 弹窗 -->
+
+    <!-- region 导入用户 弹窗 -->
+    <div class="importPhoneSegment">
+        <form class="importForm" method="post" enctype="multipart/form-data">
+            <div class="meatOperate" style="margin-left: 25px">
+                <input type="text" id="fileUploadName" class="form-control"
+                       style="width: 220px;display: inline;border: 1px solid #ccc;" placeholder="文件路径">
+                <a href="javascript:void(0);" class="file">选择文件
+                    <input type="file" name="file">
+                </a>
+                <div class="extensionalBtn execlInit">上传</div>
+                <a class="btn btn-success templateBtn" href="excelTemplate/PHONE_MODEL.xlsx">模板下载</a>
+            </div>
+            <div class="info">
+                <span>1、下载模板，导入xlsx文件</span>
+                <span>2、请按照要求填写文件，无值为空</span>
+                <span>3、指定用户最多导入500个</span>
+            </div>
+        </form>
+        <div class="container-fluid phoneInfo" style="height: 200px;">
+            <div class="row" style="height: 100%;">
+                <div class="col-md-12" style="height: 100%;overflow-y:auto;">
+                    <table class="iTable" cellspacing="0" border="0" style="width: 94%;">
+                        <tbody>
+                        <!--模板填充这里-->
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="4" style="border-radius: 0 0 8px 8px;">
+                                <div class="pagination"></div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid historyInfo">
+            <div class="row text-center">
+                <span style="font-weight: bold;color: red">历史导入数据</span>
+            </div>
+        </div>
+    </div>
+    <!-- endregion 导入用户 弹窗 -->
+
+    <!-- region 执行炒店任务 弹窗 -->
+    <div class="executeTaskSegment">
+        <div class="excuteTaskInfo">
+            <table id="excuteTaskTable" class="table table-bordered" cellspacing="0" border="0">
+            </table>
+        </div>
+    </div>
+    <!-- endregion 执行炒店任务 弹窗 -->
+
+    <!--预览区域弹框 start-->
+    <div class="viewBtsCellDetailInfo">
+        <div id="mapBtsCellShow" class="mapArea"></div>
+        <!--隐藏域 存放CELL-ID-->
+        <input class="cellId" type="hidden">
+        <table class="table table-hover table-bordered cmTable">
+            <tbody>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>GNODEB-ID：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="gnodebId"></span>
+                </td>
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>NCGI：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="ncgi"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>覆盖半径：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="radius"></span>
+                </td>
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>标准基站名称：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="btsName"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>基站类型：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="type"></span>
+                </td>
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>标准小区名称：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="cellName"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>TAC：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="tac"></span>
+                </td>
+                <td class="td-title">
+                    <strong>PCI：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="pci"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>经度：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="longitude"></span>
+                </td>
+                <td class="td-title">
+                    <strong>纬度：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="latitude"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>天线角度：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="bore"></span>
+                </td>
+                <td class="td-title">
+                    <strong>天线高度：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="high"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>生产厂家：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="manufaer"></span>
+                </td>
+                <td class="td-title">
+                    <strong>所属区县：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="apart"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>管理IP：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="ip"></span>
+                </td>
+                <td class="td-title">
+                    <strong>主覆盖率：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="coverRate"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <!--预览区域弹框 end-->
+</div>
+<!-- endregion 模板 -->
+<script src="ext/zTree/jquery.ztree.all-3.5.min.js"></script>
+<script src="ext/multiselect/dist/js/multiselect.js"></script>
+<script src="ext/jquery.simplePagination.js"></script>
+<script src="ext/template.js"></script>
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/icommon/googleUtil.js"></script>
+<script src="js/icommon/gpsUtil.js"></script>
+<script src="js/btscell/btscell.js"></script>
+
+
+

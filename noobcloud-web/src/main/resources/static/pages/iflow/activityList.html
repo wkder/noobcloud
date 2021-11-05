@@ -1,0 +1,62 @@
+<style type="text/css">
+    .activityListInfo .col-md-12{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <span>创建时间：</span>
+        <input type="text" id="dateTime" class="form-control dateTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM',isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+        <input type="text" id="activityListName" class="form-control activityListName" placeholder="活动名称"/>
+        <button id="activityListQueryBtn" class="btn btn-success"><i class="fa fa-search"></i>查询</button>
+
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+<!--弹窗-->
+<div class="popUpTable" style="display: none"></div>
+
+<!--上线弹窗-->
+<div class="activityListPopUp" style="display: none">
+    <div class="col-md-12 activityListInfo">
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>活动ID：</strong></div>
+            <div class="col-md-10"><span class="activityId"></span></div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>活动名称：</strong></div>
+            <div class="col-md-10"><span class="activityName"></span></div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>活动产品：</strong></div>
+            <div class="col-md-10"><span class="activityProduct"></span></div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>关联业务</strong></div>
+            <div class="col-md-10"><select class="relatingActivity"></select></div>
+        </div>
+    </div>
+</div>
+
+<script src="js/iflow/activityList.js"></script>
+<script src="js/icommon/dateUtil.js"></script>
+
+

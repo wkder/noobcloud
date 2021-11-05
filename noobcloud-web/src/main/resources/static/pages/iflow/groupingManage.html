@@ -1,0 +1,114 @@
+<style type="text/css">
+    .groupingManageInfo .col-md-12{
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+</style>
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+
+        <input type="text" id="groupingManageGroupName" class="form-control groupingManageGroupName" maxlength="200" placeholder="组名称"/>
+
+        <button id="groupingManageQueryBtn" class="btn btn-success"><i class="fa fa-search"></i>查询</button>
+        <button id="groupingManageAddPopUp" class="btn btn-primary"><i class="fa fa-plus"></i>新增</button>
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+<!--新增修改弹窗-->
+<div class="popUpTable" style="display: none"></div>
+
+
+<!--分组管理新增或修改弹窗内容-->
+<div class="groupingManageAddOrEditBtnPopUp" style="display: none">
+    <div class="col-md-12 groupingManageInfo">
+
+        <div class="col-md-12">
+            <div class="col-md-2">
+                <strong>组名称：</strong>
+            </div>
+            <div class="col-md-10">
+                <input class="queryGroupName" type="text" title="组名称不能为空" maxlength="200">
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>归属地市</strong></div>
+            <div class="col-md-10"><select class="queryBelongingArea"></select></div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>关联渠道：</strong></div><div class="col-md-10"></div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <table class="groupingManageTable iDataTable dataTable table-bordered table-hover table-condensed table-bordered">
+                    <tr>
+                        <td><input class="groupingManageTableAll"  type="checkbox">全部</td>
+                        <td>类型编号</td>
+                        <td>类型名称</td>
+                    </tr>
+                    <tr>
+                        <td><input class="groupingManageTable" name="groupingManage" type="checkbox" value="60001"></td>
+                        <td>60001</td>
+                        <td>自营厅</td>
+                    </tr>
+                    <tr>
+                        <td><input class="groupingManageTable" name="groupingManage" type="checkbox" value="60002"></td>
+                        <td>60002</td>
+                        <td>黄埔厅</td>
+                    </tr>
+                    <tr>
+                        <td><input class="groupingManageTable" name="groupingManage" type="checkbox" value="60003"></td>
+                        <td>60003</td>
+                        <td>社区店</td>
+                    </tr>
+                    <tr>
+                        <td><input class="groupingManageTable" name="groupingManage" type="checkbox" value="60004"></td>
+                        <td>60004</td>
+                        <td>校园厅</td>
+                    </tr>
+                    <tr>
+                        <td><input class="groupingManageTable" name="groupingManage" type="checkbox" value="60005"></td>
+                        <td>60005</td>
+                        <td>集团渠道</td>
+                    </tr>
+                    <tr>
+                        <td><input class="groupingManageTable" name="groupingManage" type="checkbox" value="60006"></td>
+                        <td>60006</td>
+                        <td>连锁渠道</td>
+                    </tr>
+                    <tr>
+                        <td><input class="groupingManageTable" name="groupingManage" type="checkbox" value="60007"></td>
+                        <td>60007</td>
+                        <td>普通合作渠道</td>
+                    </tr>
+                    <tr>
+                        <td><input class="groupingManageTable" name="groupingManage" type="checkbox" value="60008"></td>
+                        <td>60008</td>
+                        <td>代理渠道</td>
+                    </tr>
+                    <tr>
+                        <td><input class="groupingManageTable" name="groupingManage" type="checkbox" value="99999"></td>
+                        <td>99999</td>
+                        <td>其他渠道</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="js/iflow/groupingManage.js"></script>

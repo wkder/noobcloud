@@ -1,0 +1,55 @@
+<style>
+    #dataTable_info {
+        padding-right: 300px
+    }
+    #queryBtn{
+        margin-left: 20px;
+    }
+</style>
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <span>查询月份：</span>
+        <input type="text" id="queryMonth" class="form-control queryMonth"/>
+        <button id="queryBtn" class="btn btn-success"><i class="fa fa-search"></i>查询</button>
+        <button id="downloadList" class="btn btn-success"><i class="fa fa-download"></i>导出</button>
+        <button id="queryDesc" class="btn btn-success"><i class="fa fa-question-circle-o"></i>指标</button>
+    </div>
+</div>
+
+
+    <!--dataTable-->
+    <div class="col-md-12" style="background-color: white">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               style="width: 100%;margin-top: 0;border-radius: 0;">
+            <thead>
+            <tr align="center" valign="middle" style="vertical-align:middle !important">
+                <td rowspan="2" width="10%" class="vertical" style="vertical-align: middle">日期</td>
+                <td colspan="8">流量包销售量</td>
+            </tr>
+            <tr align="center" valign="middle">
+                <td width="7%">日包</td>
+                <td width="7%">月包</td>
+                <td width="7%">叠加包</td>
+                <td width="7%">闲时包</td>
+                <td width="7%">定向包</td>
+                <td width="7%">半年包</td>
+                <td width="7%">国际包</td>
+                <td width="7%">小计</td>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+    <!--指标说明-->
+    <div class="dialogDescription"
+         style="font-size: 14px;font-family: 'microsoft yahei','Helvetica',simhei,simsun,sans-serif;">
+    </div>
+
+</div>
+
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="ext/My97DatePicker/WdatePicker.js"></script>
+<script src="js/istatistics/flowOperationDaily.js"></script>
+

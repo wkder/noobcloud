@@ -1,0 +1,45 @@
+<style type="text/css">
+    div#dialogDescription div.txt{padding: 5px 15px 5px 15px;}
+    span.title{font-size: 16px;font-family:'Microsoft Yahei', 'Open Sans', sans-serif;}
+    div.txt1{width: 120px;padding: 0;margin:0;display: inline-block}
+    span.content{font-size: 14px;padding-left: 15px;}
+</style>
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <select class="form-control queryMonth"></select>
+        <select class="form-control queryCity"></select>
+        <button id="tdcmQueryBtn" class="btn btn-success" style="width: 110px"><i class="fa fa-search"></i>查询</button>
+        <button id="exportBaseButton" class="btn btn-success" style="width: 110px"><i class="fa fa-download"></i>导出</button>
+        <button id="btnDescription" class="btn btn-success">
+            <i class="fa fa-question-circle-o"></i>指标
+        </button>
+    </div>
+</div>
+
+
+<!--列表栏-->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               width="100%">
+        </table>
+    </div>
+</div>
+
+
+<div id="dialogDescription" style="display: none">
+    <div class="txt"><div class="txt1"><span class="title">地市:</span></div><span class="content">江苏省13个地市</span></div>
+    <div class="txt"><div class="txt1"><span class="title">ARPU:</span></div><span class="content">该地市本月用户平均出账费用 单位：元</span></div>
+    <div class="txt"><div class="txt1"><span class="title">MOU:</span></div><span class="content">该地市本月用户平均通话分钟数</span></div>
+    <div class="txt"><div class="txt1"><span class="title">DOU:</span></div><span class="content">该地市本月用户流量使用值 单位：MB</span></div>
+    <div class="txt"><div class="txt1"><span class="title">4G登网率:</span></div><span class="content">本月产生4G使用用户数/本月在网4G总用户数*100%</span></div>
+    <div class="txt"><div class="txt1"><span class="title">停机率:</span></div><span class="content">停机用户数/(开机用户数+停机用户数)*100%</span></div>
+    <div class="txt"><div class="txt1"><span class="title">已首充停机率:</span></div><span class="content">有过首次充值的停机用户数/(有过首次充值的开机用户数+有过首次充值的停机用户数)*100%</span></div>
+    <div class="txt"><div class="txt1"><span class="title">离网率:</span></div><span class="content">销户用户数/(开机用户数+停机用户数+销户用户数)*100%</span></div>
+    <div class="txt"><div class="txt1"><span class="title">已首充离网率:</span></div><span class="content">有过首次充值的销户用户数/（有过首次充值的开机用户数+有过首次充值的停机用户数+有过首次充值的销户用户数)*100%</span></div>
+</div>
+
+<script src="js/istatistics/tdcmCityReport.js"></script>

@@ -1,0 +1,88 @@
+div.forecastTitle{
+    border-bottom: 1px solid silver;
+    margin: 0 -15px;
+}
+div.forecastTitle h3{
+    margin-left: 15px;
+}
+div.forecastItems div.row >div{
+    padding: 0 5px;
+}
+div.forecastItems >div.row{
+    margin: 10px 0;
+}
+
+div.forecastItem{
+    border: 1px solid silver;
+    height: 120px;
+    text-align: center;
+}
+
+div.forecastItem div.item-userCount{
+    height: 50px;
+    display: table;
+    width: 100%;
+}
+div.forecastItem div.item-userCount h2{
+    margin: 0;
+    vertical-align: bottom;
+    display: table-cell;
+}
+div.forecastItem div.item-type{
+    height: 30px;
+    line-height: 30px;
+}
+div.forecastItem div.item-title{
+    height: 38px;
+    line-height: 38px;
+    background: #eee;
+}
+.shopTaskInfo > .row {
+    margin: 6px;
+    font-size: 15px;
+}
+div.forecastButton{
+    background: #eee;
+    height: 28px;
+    line-height: 28px;
+    margin: 10px 5px;
+    text-align: center;
+}
+div.forecastButton >div{
+    width: 100px;
+    margin: auto;
+    cursor: pointer;
+}
+div.forecastButton span.showBtn{
+    width: 16px;
+    height: 15px;
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+div.forecastButton span.showBtn.up{
+    background: url("/images/up.png") no-repeat;
+}
+div.forecastButton span.showBtn.down{
+    background: url("/images/down.png") no-repeat;
+}
+.taskBtnGroup >div{
+    display: inline-block;
+    margin: 0 3px;
+}
+
+div.detailShow .taskBtnGroup >div.active a{
+    color: #f60;
+}
+div.detailShow .taskBtnGroup >div.active span{
+    background-color: #f00;
+}
+
+div.detailShow div.taskBtnGroup >div >a{
+    font-size: 16px;
+    padding-right: 2px;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}

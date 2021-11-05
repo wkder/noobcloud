@@ -1,0 +1,127 @@
+<link href="styles/iscene/userblacklist.css" rel="stylesheet"/>
+
+<div id="main" class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写手机号" maxlength="11">
+        <button id="btnQuery" class="btn btn-primary"><i class="fa fa-search"></i>搜索</button>
+        <button id="btnRefresh"><i class="fa fa-refresh"></i>刷新</button>
+        <button id="btnAdd"><i class="fa fa-plus"></i>新增</button>
+    </div>
+</div>
+
+<!--页面表-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+
+<!--导航任务弹出框-->
+<div id="popTasklist" class="row" style="display: none;">
+    <div class="row">
+        <div id="taskListMain" class="col-md-12">
+            <div class="col-md-1">
+                <a type="button" id="btnConfirm" class="btn btn-primary">确认选择</a>
+            </div>
+            <div class="col-md-10 col-md-offset-1">
+                <input id="txtQueryNav" class="form-control" placeholder="任务名称">
+                <a type="button" id="btnQuerySecond" class="btn btn-primary"><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+        <div class="col-md-12" style="margin-top:10px">
+            <table id="taskdatatable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0"></table>
+        </div>
+    </div>
+</div>
+
+<!--新增弹出框-->
+<div id="popupAddOrEdit" class="row layui-layer-wrap" style="display: none;" data-autoVerify="true">
+    <input id="navid" type="hidden" value="">
+
+    <div class="cmTableTr">
+        <table class="table table-hover table-bordered cmTable">
+            <tbody>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>屏蔽类型：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select id="shieldtype" class="form-control">
+                        <option value="1">周期屏蔽</option>
+                        <option value="2">间隔屏蔽</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>手机号：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" id="txtmob" class="form-control"
+                           placeholder="手机号" maxlength="11" name="phone"
+                           data-expression="isMob" data-error="手机号码格式错误">
+                    <div id="checkPhone" class="help-block alert alert-warning" role="alert">手机号不能为空</div>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>任务屏蔽：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select id="selIsShielding" class="form-control">
+                        <option value="0">屏蔽所有任务</option>
+                        <option value="1">屏蔽选择任务</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="tdBg" id="trTimeShielding">
+                <td class="td-title">
+                    <strong>周期屏蔽：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select id="shieldtime" class="form-control">
+                        <option value="1">1个月</option>
+                        <option value="2">2个月</option>
+                        <option value="3">6个月</option>
+                        <option value="4">1年</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="tdBg" id="trStartTime" style="display: none;">
+                <td class="td-title">
+                    <strong>起始时间：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" id="d4311" class="form-control"
+                           onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4312\')||\'2099-12-01 00:00:00\'}',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+                </td>
+            </tr>
+            <tr class="tdBg" id="trEndTime" style="display: none;">
+                <td class="td-title">
+                    <strong>结束时间：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" id="d4312" class="form-control"
+                           onfocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',maxDate:'2099-10-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+                </td>
+            </tr>
+            <tr class="tdBg" id="trTask" style="display: none;">
+                <td class="td-title">
+                    <strong>场景任务：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <textarea id="navname" class="form-control" rows="4" placeholder="场景任务"></textarea>
+                    <div class="help-block alert alert-info" role="alert">点击场景任务输入框选择场景</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="js/iscene/userBlackList.js"></script>
+<script src="ext/My97DatePicker/WdatePicker.js"></script>
+
+

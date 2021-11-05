@@ -1,0 +1,66 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet"/>
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写模型名称">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+        <button id="btnRefresh">
+            <i class="fa fa fa-refresh"></i>刷新
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered" cellspacing="0"></table>
+    </div>
+</div>
+
+<!--弹出框-->
+<div class="cmTableContent" id="cmTableContent" style="display: none" data-autoVerify="true" >
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>模型名称：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="txtName" name="typeName" maxlength="20" placeholder="模型名称" data-expression="isEmpty" data-error="模型名称不为空">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>模型脚本：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="txtJs" name="typeJS" placeholder="模型脚本" maxlength="20" data-expression="isEmpty" data-error="模型脚本不为空">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>多图模式：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <select id="selMulti" class="form-control">
+                    <option value="2"selected="selected">单图模式</option>
+                    <option value="1">多图模式</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <input type="hidden" id="id">
+</div>
+
+<script src="ext/cmtable/js/cmtable.js"></script>
+<script src="js/iscene/templetype.js"></script>

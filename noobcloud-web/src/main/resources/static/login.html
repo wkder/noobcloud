@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="login-alone">
+<head>
+    <title>核心网数据运维智能中台</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="ext/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="ext/layer/skin/layer.css">
+    <link rel="stylesheet" href="styles/icommon/login.css?v=2.0">
+</head>
+<body>
+<div class="login-browser" style="display: none">
+    <div class="brower_info">
+        <div class="notice_info">
+            <p>您的浏览器版本过低，可能导致网站不能正常访问！<br>为了您能正常使用网站功能，请使用这些浏览器。</p>
+        </div>
+        <div class="browser_list">
+            <span><a href="http://www.google.cn/chrome/" target="_blank"><img
+                    src="images/login/chrome.png"><br>Chrome</a></span>
+            <span><a href="http://ie.sogou.com/" target="_blank"><img src="images/login/sougou.png"><br>搜狗</a></span>
+            <span><a href="http://se.360.cn/" target="_blank"><img src="images/login/safe.png"><br>360</a></span>
+            <span><a href="https://support.apple.com/downloads/safari" target="_blank"><img
+                    src="images/login/safari.png"><br>Safari</a></span>
+        </div>
+    </div>
+</div>
+<div class="login-head">
+    <div class="login-logo"></div>
+    <div class="login-title">核心网数据运维智能中台</div>
+</div>
+<div id="app" class="login-main">
+    <div class="container-fluid login-table lg-account show">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <span class="login-table-title">账号登录</span>
+                <img class="login-change-icon" loginType="name" src="images/login_phone.png" style="display: none;"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <input id="loginName" type="text" class="form-control" placeholder="请输入手机号"
+                       onkeyup="this.value=this.value.replace(/\D/g,'')" autocomplete="off" title="请输入手机号"
+                       onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <input id="password" type="password" class="form-control" placeholder="请输入密码" title="密码不能为空"
+                       maxlength="20"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-7 col-xs-7">
+                <input type="text" class="form-control verificationText" placeholder="请输入图片校验码" title="图片校验码不能为空"
+                       maxlength="4"
+                       onafterpaste="this.value=this.value.replace(/[^\d\w]/g,'')" autocomplete="off"
+                       onkeyup="this.value=this.value.replace(/[^\d\w]/g,'')"/>
+            </div>
+            <div class="col-sm-5 col-xs-5 text-right">
+                <img class="vCodeImg" src="consumer/getVerifyCode">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <button type="submit" class="login btn btn-default" onclick="login()" style="width: 100%;">登录</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="login-footer">
+    <div>
+        <span class="aft">copyright©2017 中国移动<span class="province"></span>江苏分公司 版权所有</span>
+    </div>
+</div>
+
+<script src="ext/jquery-1.11.3.min.js"></script>
+<script src="ext/layer/layer.js"></script>
+<script src="js/icommon/common.js?v=2.0"></script>
+<script src="js/icommon/request.js?v=2.0"></script>
+<script src="js/icommon/login.js?v=2.0"></script>
+</body>
+</html>

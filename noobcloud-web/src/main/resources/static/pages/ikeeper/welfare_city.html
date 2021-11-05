@@ -1,0 +1,201 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/ikeeper/welfare.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12 form-inline conditionSearch">
+            <input type="text" class="form-control queryName" placeholder="福利名称">
+            <button class="searchBtn"><i class="fa fa-search"></i>搜索</button>
+            <button class="addBtn"><i class="fa fa-plus"></i>新增</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0">
+            </table>
+        </div>
+    </div>
+
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 新增福利 -->
+    <div class="col-md-12 welfareInfo" data-autoVerify="true">
+        <!-- region 记录操作状态 隐藏域 -->
+        <input class="operate" type="hidden">
+        <!-- endregion 记录操作状态 隐藏域 -->
+
+        <!-- region 福利Id 隐藏域 -->
+        <input name="welfareId" type="hidden">
+        <!-- endregion 福利Id 隐藏域 -->
+
+        <!-- region 福利类型 隐藏域 -->
+        <input name="typeId" type="hidden">
+        <!-- endregion 福利类型 隐藏域 -->
+
+        <!-- region 福利名称 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>福利名称:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control productName" name="welfareName"
+                   placeholder="请输入福利名称，限制20个字数" maxlength="20"
+                   data-expression="isEnglishChineseNumber"
+                   data-error="名称由字母、下划线、中文组成"/>
+        </div>
+        <!-- endregion 福利名称 -->
+
+        <!-- region 产品网别 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>产品网别:</strong>
+        </div>
+        <div class="col-md-7">
+            <select class="form-control netType" name="netType">
+                <option value="BSS">BSS</option>
+                <option value="CBSS">CBSS</option>
+            </select>
+        </div>
+        <!-- endregion 产品网别 -->
+
+        <!-- region 产品组合 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>产品组合:</strong>
+        </div>
+        <div class="col-md-7">
+            <textarea class="form-control productNames" name="productNames" readonly
+                      placeholder="请点击选择产品组合"
+                      data-expression="isEmpty"
+                      data-error="产品组合不能为空"></textarea>
+            <input type="hidden" class="productIds" name="productIds">
+        </div>
+        <!-- endregion 产品组合 -->
+
+        <!-- region 归属小组 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>归属小组:</strong>
+        </div>
+        <div class="col-md-7">
+            <textarea class="form-control orgNames" name="orgNames" readonly
+                      placeholder="请点击选择归属小组"
+                      data-expression="isEmpty"
+                      data-error="归属小组不能为空"></textarea>
+            <input type="hidden" class="orgIds" name="orgIds">
+        </div>
+        <!-- endregion 归属小组 -->
+
+        <!-- region 开始时间、结束时间 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>开始时间:</strong>
+        </div>
+        <div class="col-md-3" style="width: 23%;">
+            <input type="text" class="form-control effDate" name="effDate"
+                   onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"
+                   title="开始时间不能为空 "/>
+        </div>
+        <div class="col-md-2 right" style="margin: 8px 0;width: 12.3%;padding:0;">
+            <strong class="must" style="color: red">*</strong><strong>结束时间:</strong>
+        </div>
+        <div class="col-md-3" style="width: 23%;">
+            <input type="text" class="form-control expDate" name="expDate"
+                   onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"
+                   title="结束时间不能为空 "/>
+        </div>
+        <!-- endregion 开始时间、结束时间 -->
+
+        <!-- region 福利介绍 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>福利介绍:</strong>
+        </div>
+        <div class="col-md-7">
+            <textarea type="text" class="form-control comments" name="comments"
+                      placeholder="请输入福利介绍，限制200个字数" maxlength="200"
+                      data-expression="isEmpty"
+                      data-error="福利介绍不能为空"></textarea>
+        </div>
+        <!-- endregion 福利介绍 -->
+
+        <!-- region 短信模板 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>短信模板:</strong>
+        </div>
+        <div class="col-md-7">
+            <textarea class="form-control smsTemplate" name="smsContent" rows="3"
+                      placeholder="请输入短信模板，限制200个字数" maxlength="200"
+                      data-expression="isEmpty"
+                      data-error="短信模板不能为空"></textarea>
+        </div>
+        <!-- endregion 短信模板 -->
+    </div>
+    <!-- endregion 新增福利 -->
+
+    <!-- region 选择产品组合 -->
+    <div class="col-md-12 productInfo">
+        <div class="query-row">
+            <div class="col-md-12">
+                <select class="form-control queryWelfareTypeId">
+                    <option value="1">生日维系</option>
+                    <option value="2">2转4维系</option>
+                    <option value="3">场景关怀</option>
+                    <option value="4">优惠到期</option>
+                    <option value="5">普通福利</option>
+                </select>
+                <select class="form-control queryProductTypeId"></select>
+                <!--<select class="form-control queryNetType">-->
+                <!--<option value="bss">BSS</option>-->
+                <!--<option value="cbss">CBSS</option>-->
+                <!--</select>-->
+                <input type="text" class="form-control queryProductName" placeholder="产品名称">
+                <button class="queryBtn"><i class="fa fa-search"></i>搜索</button>
+            </div>
+        </div>
+        <div class="productInfoTitle">
+            <div class="selectLefTitle">可选产品</div>
+            <div class="selectMiddleTitle"></div>
+            <div class="selectRightTitle">已选产品</div>
+        </div>
+        <div class="shuttleBox">
+            <div class="selectLeft">
+                <select name="from[]" class="form-control multiLeftSelect" size="8" multiple="multiple">
+                    <option>111</option>
+                    <option>222</option>
+                </select>
+            </div>
+
+            <div class="selectBtn">
+                <button class="btn btn-block rightAll"><i class="fa fa-forward"></i></button>
+                <button class="btn btn-block rightSign"><i class="fa fa-chevron-right"></i></button>
+                <button class="btn btn-block leftSign"><i class="fa fa-chevron-left"></i></button>
+                <button class="btn btn-block leftAll"><i class="fa fa-backward"></i></button>
+            </div>
+
+            <div class="selectRight">
+                <select name="to[]" class="form-control multiRightSelect" size="8" multiple="multiple"></select>
+            </div>
+        </div>
+
+    </div>
+    <!-- endregion 选择产品组合 -->
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹出框 -->
+<div class="iMarket_Dialog">
+    <!-- region 新增、编辑福利 -->
+    <div id="addOrEdit_welfare_dialog" style="display: none"></div>
+    <!-- endregion 新增、编辑福利 -->
+
+    <!-- region 选择产品组合 -->
+    <div id="select_product_dialog" style="display: none"></div>
+    <!-- endregion 选择产品组合 -->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="ext/multiselect/dist/js/multiselect.js"></script>
+<script src="js/ikeeper/welfare_city.js"></script>
+<!-- endregion 脚本 -->

@@ -1,0 +1,178 @@
+/**
+ * Created by Frank on 2017/1/17.
+ */
+body {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.login-head {
+    height: 120px;
+}
+
+.login-logo {
+    height: 100%;
+    width: 212px;
+    float: left;
+    background-size: 25%;
+    background: url("../../images/logo.jpg") no-repeat;
+    background-position-y: center;
+    margin: 15px 10px 0 20px;
+}
+
+.login-title {
+    height: 100%;
+    float: left;
+    line-height: 150px;
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.login-main {
+    background: url("../../images/login-background.png") no-repeat center;
+    height: 72%;
+}
+
+.login-table {
+    width: 350px;
+    background: rgba(255, 255, 255, 0.5);
+    /*height: 260px;*/
+    position: absolute;
+    right: 15%;
+    top: 32%;
+    border-radius: 12px;
+}
+
+.login-table-title {
+    display: inline-block;
+    font-size: 25px;
+    color: #fff;
+    padding: 15px 0 5px 0;
+    width: 100%;
+    border-bottom: 2px solid #47C0E9;
+}
+
+.login-table.container-fluid .row {
+    margin: 12px 0;
+}
+
+.login-table.container-fluid .row button,
+.login-table.container-fluid .row input {
+    padding: 8px 14px;
+    height: auto;
+}
+
+.login-table.container-fluid .row button {
+    background: #00aaff;
+    border-color: #00aaff;
+    color: #fff;
+}
+
+.login-footer {
+    text-align: center;
+    position: absolute;
+    bottom: 2%;
+    width: 100%;
+    margin-bottom: 12px;
+    color: #666666;
+}
+
+div.login-main > div.login-table {
+    display: none;
+}
+
+div.login-main > div.show.login-table {
+    display: block;
+}
+
+img.login-change-icon {
+    position: absolute;
+    bottom: 6px;
+    left: 80%;
+    cursor: pointer;
+}
+
+img.vCodeImg {
+    cursor: pointer;
+}
+
+.login-browser {
+    position: absolute;
+    width: 100%;
+    opacity: 0.8;
+    background-color: #F6F6B4;
+    color: #000;
+    font-size: 15px;
+    height: 90px;
+}
+
+.login-browser .brower_info {
+    padding-top: 17px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+
+.login-browser .brower_info .notice_info {
+    float: left;
+    margin-top: 5px;
+    position: relative;
+}
+
+.login-browser .brower_info .notice_info p {
+    display: inline-block;
+    line-height: 25px;
+    text-align: left;
+    width: 360px;
+}
+
+.login-browser .browser_list {
+    float: left;
+    position: relative;
+}
+
+.login-browser .browser_list span {
+    display: inline-block;
+    text-align: center;
+    width: 80px;
+}
+
+.login-browser .browser_list span a {
+    color: #495d64;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.login-browser .browser_list img {
+    height: 40px;
+    width: 40px;
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.slideInDown {
+    animation-name: slideInDown;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translate3d(0, -100%, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+    }
+}

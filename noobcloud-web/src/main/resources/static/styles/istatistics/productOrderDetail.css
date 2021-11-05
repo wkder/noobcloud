@@ -1,0 +1,72 @@
+
+/*一级弹窗 和 二级弹窗 */
+.showErrorContentInfo div.col-md-12 ，showUserInfo div.col-md-12{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 0;
+}
+
+.showErrorContentInfo div.col-md-12 .qryContentInfo, .showErrorContentInfo div.col-md-12 .qryKeyInfo ,
+.showUserInfo div.col-md-12 .qryContentInfo, .showUserInfo div.col-md-12 .qryKeyInfo
+{
+    display: inline; !important;
+    margin-right: 10px;
+    border-radius: 2px;
+}
+
+table.dataTable.table-condensed .sorting:after, table.dataTable.table-condensed .sorting_asc:after, table.dataTable.table-condensed .sorting_desc:after {
+    top: 16px;
+    right: 20px;
+}
+
+.showErrorContentInfo div.col-md-12 .errorLogSearchBtn ,
+.showErrorContentInfo div.col-md-12 .errorLogDownloadBtn ,
+.showUserInfo div.col-md-12 .userInfoSearchBtn
+{
+    width: 80px;
+    margin-right: 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    text-transform: none;
+    overflow: visible;
+    -webkit-appearance: button;
+}
+
+
+.errorLogTab ,.userInfoTab{
+    border: 1px solid silver;
+}
+
+.errorLogTab thead tr ,.userInfoTab thead tr{
+    background-color: #e4e4e4 !important;
+}
+
+.errorLogTab thead tr th ,.userInfoTab thead tr th{
+    padding: 8px 0;
+    border: 1px solid silver;
+    border-bottom-width: 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+.errorLogTab tbody tr td ,.userInfoTab tbody tr td {
+    border: 1px solid silver;
+}

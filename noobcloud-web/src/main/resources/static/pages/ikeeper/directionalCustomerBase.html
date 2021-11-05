@@ -1,0 +1,148 @@
+<link rel="stylesheet" href="styles/ikeeper/directionalCustomerBase.css">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input type="text" class="form-control queryUserPhone" placeholder="用户号码">
+        <input type="text" class="form-control queryMaintainUserPhone" placeholder="维系号码">
+        <select class="form-control querySelectArea"></select>
+        <button id="btnQuery" class="btn btn-success" style="width: 110px"><i class="fa fa-search"></i>查询</button>
+        <button id="btnAdd" class="btn btn-success" style="width: 110px"><i class="fa fa-plus"></i>新增</button>
+        <button id="btnUpload" class="btn btn-success" style="width: 110px"><i class="fa fa-upload"></i>导入</button>
+    </div>
+</div>
+
+
+<!--列表栏-->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               width="100%">
+        </table>
+    </div>
+</div>
+
+<!--导入弹窗-->
+<div id="importDialog" style="display: none"></div>
+
+<!--导入模板-->
+<div class="importContent" style="display: none">
+    <div class="importDirectionalCustomer" >
+        <form class="importForm" method="post" enctype="multipart/form-data">
+            <div class="meatOperate">
+                <input class="form-control fileUploadName" type="text" placeholder="文件路径"/>
+                <a class="btn btn-success file" href="javascript:void(0);">选择文件
+                    <input type="file" name="file">
+                </a>
+                <div class="btn btn-success btnUpload">上传</div>
+                <a class="btn btn-success templateBtn" href="excelTemplate/用户维系关系模板.xlsx">模板下载</a>
+            </div>
+            <div class="info">
+                <span>1、请导入xls或xlsx文件</span>
+                <span>2、每次最多导入5000条用户信息</span>
+                <span>3、数据导入后会进行加密处理</span>
+            </div>
+            <div class="form-control retMessage">
+                <span class="message"></span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!--弹窗-->
+<div class="iMarket_Content" data-autoVerify="true" style="display: none">
+    <div class="container-fluid infoConfigBody">
+        <div class="row col-md-12 userMaintain">
+            <div class="col-md-3 text-left">
+                <span class="userMaintainText">用户维系关系:</span>
+            </div>
+        </div>
+        <div class="row col-md-12">
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt"><strong style="color: red">*</strong>姓名:</span>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="userName form-control" placeholder="姓名" title="请输入中文姓名" maxlength="20">
+            </div>
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt"><strong style="color: red">*</strong>手机号码:</span>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="userPhone form-control" placeholder="手机号码" title="请输入正确格式的手机号码" maxlength="13">
+            </div>
+        </div>
+        <div class="row col-md-12">
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt"><strong style="color: red">*</strong>地市:</span>
+            </div>
+            <div class="col-md-4">
+                <select class="city form-control"></select>
+            </div>
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt"><strong style="color: red">*</strong>用户编码:</span>
+            </div>
+            <div class="col-md-4">
+                <input class="userCode form-control" type="text">
+                <input class="userId form-control" type="text" style="display: none">
+            </div>
+        </div>
+        <div class="row col-md-12">
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt"><strong style="color: red">*</strong>维系用户:</span>
+            </div>
+            <div class="col-md-4">
+                <input class="maintainUser form-control" type="text">
+                <input class="maintainUserId" style="display: none">
+            </div>
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt"><strong style="color: red">*</strong>维系号码:</span>
+            </div>
+            <div class="col-md-4">
+                <input class="maintainPhone form-control" type="text" placeholder="手机号码" title="请输入正确格式的手机号码" maxlength="13">
+            </div>
+        </div>
+        <div class="row col-md-12" style="border-bottom: 1px solid #ccc"></div>
+        <div class="row col-md-12 userMaintain">
+            <div class="col-md-3 text-left">
+                <span class="userMaintainText">用户社交关系:</span>
+            </div>
+        </div>
+        <div class="row col-md-12">
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt">微信号:</span>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="userWeiXin form-control" placeholder="微信号" title="请输入正确格式的微信号" maxlength="20">
+            </div>
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt">QQ号:</span>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="userQQ form-control" placeholder="QQ号" title="请输入正确格式的QQ号" maxlength="20">
+            </div>
+        </div>
+        <div class="row col-md-12">
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt">微博号:</span>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="userWeiBo form-control" placeholder="微博号" title="请输入正确格式的微博号" maxlength="20">
+            </div>
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt">旺旺号:</span>
+            </div>
+            <div class="col-md-4">
+                <input class="userWangWang form-control" type="text" placeholder="旺旺号" title="请输入正确格式的旺旺号" maxlength="20">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="js/ikeeper/directionalCustomerBase.js"></script>
+
+
+

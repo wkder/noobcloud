@@ -1,0 +1,301 @@
+<link rel="stylesheet" href="styles/ikeeper_school/studentInfoMgr.css">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input type="text" class="form-control queryUserPhone" placeholder="用户号码">
+        <input type="text" class="form-control queryMaintainUserPhone" placeholder="维系号码">
+        <select class="form-control querySelectArea"></select>
+        <button id="btnQuery"><i class="fa fa-search"></i>查询</button>
+        <button id="btnUpload"><i class="fa fa-upload"></i>导入</button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               width="100%">
+        </table>
+    </div>
+</div>
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 编辑学生信息 -->
+    <div class="col-md-12 studentInfo" data-autoVerify="true">
+        <!-- region 数据Id 隐藏域 -->
+        <input name="id" type="hidden">
+        <!-- endregion 数据Id 隐藏域 -->
+
+        <!-- region 学生姓名 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>姓名:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="name"
+                   placeholder="请输入姓名" maxlength="10"
+                   data-expression="isEmpty"
+                   data-error="姓名不能为空"/>
+        </div>
+        <!-- endregion 学生姓名 -->
+
+        <!-- region 身份证号码 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>身份证号码:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="certificateID"
+                   placeholder="请输入身份证号码" maxlength="18" minlength="15"
+                   data-expression="isIdCard"
+                   data-error="身份证号码为空或格式有误"/>
+        </div>
+        <!-- endregion 身份证号码 -->
+
+        <!-- region 手机号码 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>手机号码:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="userPhone"
+                   placeholder="请输入手机号码" maxlength="11"
+                   data-expression="isMob"
+                   data-error="手机号码为空或格式有误"/>
+        </div>
+        <!-- endregion 手机号码 -->
+
+        <!-- region 校园 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>校园:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="schoolName"
+                   placeholder="请输入校园" maxlength="50"
+                   data-expression="isEmpty"
+                   data-error="校园不能为空"/>
+        </div>
+        <!-- endregion 校园 -->
+
+        <!-- region 院系 -->
+        <div class="col-md-3 right">
+            <strong>院系:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="departmentName" maxlength="50"/>
+        </div>
+        <!-- endregion 院系 -->
+
+        <!-- region 班级 -->
+        <div class="col-md-3 right">
+            <strong>班级:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="className" maxlength="20"/>
+        </div>
+        <!-- endregion 班级 -->
+
+        <!-- region 宿舍号 -->
+        <div class="col-md-3 right">
+            <strong>宿舍号:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="dormName" maxlength="20"/>
+        </div>
+        <!-- endregion 宿舍号 -->
+
+        <!-- region 有无宽带 -->
+        <div class="col-md-3 right">
+            <strong>有无宽带:</strong>
+        </div>
+        <div class="col-md-7">
+            <select class="form-control" name="hasBroadband">
+                <option value="否">否</option>
+                <option value="是">是</option>
+            </select>
+        </div>
+        <!-- endregion 有无宽带 -->
+
+        <!-- region 宽带地址 -->
+        <div class="col-md-3 right">
+            <strong>宽带地址:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="broadbandAddr" maxlength="50"/>
+        </div>
+        <!-- endregion 宽带地址 -->
+
+        <!-- region 入学时间、毕业时间 -->
+        <div class="col-md-12">
+            <div class="col-md-3 right">
+                <strong>入学时间:</strong>
+            </div>
+            <div class="col-md-3" style="width: 23%;padding-left: 6px;">
+                <input type="text" class="form-control" name="enrollmentDate"
+                       onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"/>
+            </div>
+            <div class="col-md-2 right" style="margin: 8px 0;width: 12.3%;padding: 0;">
+                <strong>毕业时间:</strong>
+            </div>
+            <div class="col-md-3" style="width: 23%;padding-right: 6px;">
+                <input type="text" class="form-control" name="graduationDate"
+                       onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"/>
+            </div>
+        </div>
+        <!-- endregion 入学时间、毕业时间 -->
+
+        <!-- region 暑假放假及开学时间 -->
+        <div class="col-md-12">
+            <div class="col-md-3 right">
+                <strong>暑假开学时间:</strong>
+            </div>
+            <div class="col-md-3" style="width: 23%;padding-left: 6px;">
+                <input type="text" class="form-control" name="swVacationDate"
+                       onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"/>
+            </div>
+            <div class="col-md-2 right" style="margin: 8px 0;width: 13%;padding: 0;">
+                <strong>暑假放假时间:</strong>
+            </div>
+            <div class="col-md-3" style="width: 23%;padding-right: 8px;">
+                <input type="text" class="form-control" name="ssVacationDate"
+                       onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"/>
+            </div>
+        </div>
+        <!-- endregion 暑假放假及开学时间 -->
+
+        <!-- region 寒假放假及开学时间 -->
+        <div class="col-md-12">
+            <div class="col-md-3 right">
+                <strong>寒假开学时间:</strong>
+            </div>
+            <div class="col-md-3" style="width: 23%;padding-left: 6px;">
+                <input type="text" class="form-control" name="ewVacationDate"
+                       onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"/>
+            </div>
+            <div class="col-md-2 right" style="margin: 8px 0;width: 13%;padding: 0;">
+                <strong>寒假放假时间:</strong>
+            </div>
+            <div class="col-md-3" style="width: 23%;padding-right: 8px;">
+                <input type="text" class="form-control" name="esVacationDate"
+                       onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"/>
+            </div>
+        </div>
+        <!-- endregion 寒假放假及开学时间 -->
+
+    </div>
+    <!-- endregion 编辑学生信息 -->
+</div>
+<!-- endregion 页面内容 -->
+
+<!--导入弹窗-->
+<div id="importDialog" style="display: none"></div>
+
+<!--导入模板-->
+<div class="importContent" style="display: none">
+    <div class="importDirectionalCustomer">
+        <form class="importForm" method="post" enctype="multipart/form-data">
+            <div class="meatOperate">
+                <input class="form-control fileUploadName" type="text" placeholder="文件路径"/>
+                <a class="btn btn-success file" href="javascript:void(0);">选择文件
+                    <input type="file" name="file">
+                </a>
+                <div class="btn btn-success btnUpload">上传</div>
+                <a class="btn btn-success templateBtn" href="excelTemplate/学生维系关系模板.xlsx">模板下载</a>
+            </div>
+            <div class="info">
+                <span>1、请导入xls或xlsx文件</span>
+                <span>2、每次最多导入5000条用户信息</span>
+                <span>3、数据导入后会进行加密处理</span>
+            </div>
+            <div class="form-control retMessage">
+                <span class="message"></span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--弹窗-->
+<div class="iMarket_Content" data-autoVerify="true" style="display: none">
+    <div class="container-fluid infoConfigBody">
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <span><strong style="color: red">*</strong>姓名:</span>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="userName form-control" placeholder="姓名" title="请输入中文姓名" maxlength="20">
+            </div>
+            <div class="col-md-2 text-right">
+                <span><strong style="color: red">*</strong>手机号码:</span>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="userPhone form-control" placeholder="手机号码" title="请输入正确格式的手机号码"
+                       maxlength="13">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt"><strong style="color: red">*</strong>地市:</span>
+            </div>
+            <div class="col-md-4">
+                <select class="city form-control"></select>
+            </div>
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt"><strong style="color: red">*</strong>用户编码:</span>
+            </div>
+            <div class="col-md-4">
+                <input class="userCode form-control" type="text">
+                <input class="userId form-control" type="text" style="display: none">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt"><strong style="color: red">*</strong>维系用户:</span>
+            </div>
+            <div class="col-md-4">
+                <input class="maintainUser form-control" type="text">
+                <input class="maintainUserId" style="display: none">
+            </div>
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt"><strong style="color: red">*</strong>维系号码:</span>
+            </div>
+            <div class="col-md-4">
+                <input class="maintainPhone form-control" type="text" placeholder="手机号码" title="请输入正确格式的手机号码"
+                       maxlength="13">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt">微信号:</span>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="userWeiXin form-control" placeholder="微信号" title="请输入正确格式的微信号" maxlength="20">
+            </div>
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt">QQ号:</span>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="userQQ form-control" placeholder="QQ号" title="请输入正确格式的QQ号" maxlength="20">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt">微博号:</span>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="userWeiBo form-control" placeholder="微博号" title="请输入正确格式的微博号" maxlength="20">
+            </div>
+            <div class="col-md-2 text-right">
+                <span class="maintainTxt">旺旺号:</span>
+            </div>
+            <div class="col-md-4">
+                <input class="userWangWang form-control" type="text" placeholder="旺旺号" title="请输入正确格式的旺旺号"
+                       maxlength="20">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/ikeeper_school/studentInfoMgr.js"></script>
+
+
+

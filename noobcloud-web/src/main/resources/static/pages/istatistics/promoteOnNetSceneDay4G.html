@@ -1,0 +1,53 @@
+<style type="text/css">
+    div#dialogDescription div.txt{padding: 5px 15px 5px 15px;}
+    span.title{font-size: 16px;font-family:'Microsoft Yahei', 'Open Sans', sans-serif;}
+    div.txt1{width: 140px;padding: 0;margin:0;display: inline-block}
+    span.content{font-size: 14px;padding-left: 15px;}
+
+    thead th {
+        text-align:center;
+    }
+    tbody tr td{
+        text-align: center;
+    }
+</style>
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <span>开始时间：</span>
+        <input id="startTime" class="startTime" type="text" placeholder="开始时间" onclick="laydate()"/>
+        <span>结束时间：</span>
+        <input id="endTime" class="endTime" type="text" placeholder="结束时间" onclick="laydate()"/>
+        <button id="btnQuery" class="btn btn-success" style="width: 110px"><i class="fa fa-search"></i>查询</button>
+        <button id="btnDescription" class="btn btn-success">
+            <i class="fa fa-question-circle-o"></i>指标
+        </button>
+    </div>
+</div>
+
+
+<!--列表栏-->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               width="100%">
+        </table>
+    </div>
+</div>
+
+
+<div id="dialogDescription" style="display: none">
+    <div class="txt"><div class="txt1"><span class="title">持2G终端:</span></div><span class="content">目标用户判断持续1个月均为2G终端</span></div>
+    <div class="txt"><div class="txt1"><span class="title">持TD终端:</span></div><span class="content">目标用户判断：连续3个月最高登网没有3、4G</span></div>
+    <div class="txt"><div class="txt1"><span class="title">持4G终端:</span></div><span class="content">判断30天自然天（连续）不登录4G网络</span></div>
+    <div class="txt"><div class="txt1"><span class="title"></span></div><span class="content"></span></div>
+    <div class="txt"><div class="txt1"><span class="title">短信营销用户数:</span></div><span class="content">获取场景满足促登网目标用户数</span></div>
+    <div class="txt"><div class="txt1"><span class="title">捕捉4G登网用户数:</span></div><span class="content">促登网目标池用户当日捕捉4G登网，包含所有已通知目标用户</span></div>
+    <div class="txt"><div class="txt1"><span class="title">产品赠送用户数:</span></div><span class="content">捕捉4G登网用户成功赠送产品包的用户数</span></div>
+    <div class="txt"><div class="txt1"><span class="title">短信通知用户数:</span></div><span class="content">产品赠送用户数通过短信下发通知用户数</span></div>
+</div>
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/istatistics/promoteOnNetSceneDay4G.js"></script>

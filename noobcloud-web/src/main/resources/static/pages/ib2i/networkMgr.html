@@ -1,0 +1,53 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="ext/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css">
+<link rel="stylesheet" href="styles/ib2i/networkMgr.css">
+<!-- endregion 样式 -->
+
+<!-- region 搜索栏 -->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input type="text" class="form-control queryDate"
+               onclick="laydate({isclear:false, format: 'YYYY-MM-DD'})"/>
+        <button id="btnQuery"><i class="fa fa-search"></i>查询</button>
+        <button id="btnUpload"><i class="fa fa-upload"></i>导入</button>
+    </div>
+</div>
+<!-- endregion 搜索栏 -->
+
+<!-- region 列表栏 -->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               width="100%">
+        </table>
+    </div>
+</div>
+<!-- endregion 列表栏 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_networkMgr_content" style="display: none;">
+    <!-- region 导入弹窗 -->
+    <div class="importNetworkMgr">
+        <div class="info">
+            <span>1、请导入csv文件</span>
+            <span>2、单个文件最大不能超过300M</span>
+            <span>3、数据导入后会进行加密处理</span>
+        </div>
+    </div>
+    <!-- endregion 导入弹窗 -->
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹窗 -->
+<div id="importDialog"></div>
+<!-- endregion 弹窗 -->
+
+<!-- region 脚本 -->
+<script src="js/icommon/dateUtil.js"></script>
+<script src="ext/plupload/plupload.full.min.js"></script>
+<script src="ext/plupload/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+<script src="js/ib2i/networkMgr.js"></script>
+<!-- endregion 脚本 -->
+
+

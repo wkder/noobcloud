@@ -1,0 +1,33 @@
+<style>
+    #dataTable_info {
+        padding-right: 300px
+    }
+
+    #queryBtn {
+        margin-left: 20px;
+    }
+</style>
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <span>查询月份：</span>
+        <input type="text" id="queryMonth" class="form-control queryMonth"/>
+        <button id="queryBtn" class="btn btn-success"><i class="fa fa-search"></i>查询</button>
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="ext/My97DatePicker/WdatePicker.js"></script>
+<script src="js/istatistics/wangCardMonthly.js"></script>
+

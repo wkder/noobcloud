@@ -1,0 +1,100 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/scenecenter.css" rel="stylesheet">
+<link href="styles/iscene/positionBaseConfig.css" rel="stylesheet">
+<link href="ext/simplePagination.css" rel="stylesheet">
+<link href="styles/iconsumption/productList.css" rel="stylesheet">
+<div id="productList">
+    <!--搜索栏-->
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input class="form-control qrybaseId" id="qrybaseId" placeholder="档位id" style="display: none">
+            <input class="form-control projectName" id="projectName" placeholder="档位名称">
+            <select class="form-control create_type qryBaseAreas" id="qryBaseAreas"></select>
+            <select class="form-control create_type qryWaveCount" id="qryWaveCount"></select>
+            <select class="form-control create_type qryProductType" id="qryProductType">
+                <option value="">全部类型</option>
+                <option value="流量">流量</option>
+                <option value="话费">话费</option>
+            </select>
+            <input type="text" id="updateDateTime" class="form-control"
+                   onclick="laydate({isdate: true, format: 'YYYYMM',istoday: false})" title="更新时间"
+                   readonly placeholder="更新时间" style="background: #ffffff;"/>
+            <button id="queryProduct" class="btn btn-success">
+                <i class="fa fa-search"></i>查询
+            </button>
+            <button class="btn btn-success" id="AllotProduct" style="display: none">
+                <i class="fa fa-plus"></i>分配
+            </button>
+        </div>
+    </div>
+    <!--列表栏-->
+    <div class="row list-row"
+         style="padding: 0px 10px;">
+        <div class="col-md-12">
+            <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+                   width="100%">
+            </table>
+        </div>
+    </div>
+    <!--产品分配 弹窗-->
+    <div id="AllotProductInfoDialog" class="AllotProductInfoDialog" style="display: none">
+        <div class="query-row conditionSearch" status="ready">
+            <div class="col-md-12">
+                <select id="AllotCitySelect" class="select form-control CitySelect"
+                        style="display: inline;width: 176px;margin-left: 5px;border-radius: 2px;"></select>
+                <select id="ProductTypeSelect" class="select form-control ProductTypeSelect"
+                        style="display: inline;width: 176px;margin-left: 5px;border-radius: 2px;">
+                    <option value="流量">流量</option>
+                    <option value="话费">话费</option>
+                </select>
+                <button id="QueryAllotProduct" class="searchButton extensionalBtn "><i class="fa fa-search"></i>搜索
+                </button>
+            </div>
+        </div>
+
+        <div class="baseInfoDesc">
+            <div class="selectLeftDesc">
+                可选档位
+            </div>
+            <div class="selectMiddleDesc"></div>
+            <div class="selectRightDesc">
+                已选档位
+            </div>
+        </div>
+        <div class="baseInfo">
+            <div class="selectLeft">
+                <select name="from[]" class="js-multiselect form-control" size="8" multiple="multiple"></select>
+            </div>
+
+            <div class="selectBtn">
+                <button id="btnRightAll" class="btn btn-block">
+                    <i class="fa fa-forward"></i>
+                </button>
+                <button id="btnRightSign" class="btn btn-block">
+                    <i class="fa fa-chevron-right"></i></button>
+                <button id="btnLeftSign" class="btn btn-block">
+                    <i class="fa fa-chevron-left"></i></button>
+                <button id="btnLeftAll" class="btn btn-block">
+                    <i class="fa fa-backward"></i>
+                </button>
+            </div>
+
+            <div class="selectRight">
+                <select name="to[]" id="multiselectRight" class="form-control" size="8" multiple="multiple"></select>
+            </div>
+        </div>
+    </div>
+    <!--文件下载选择弹窗-->
+    <div id="fileDownDialog" style="display: none">
+        <div class="content">
+            <p>请选择需要文件的系统类型</p>
+            <label for="BSS">BSS
+                <input id="BSS" value="BSS" type="radio" name="systemType" checked/></label>
+            <label for="CBSS" class="last-label">CBSS
+                <input id="CBSS" type="radio" value="CBSS" name="systemType"/></label>
+        </div>
+    </div>
+</div>
+<script src="ext/multiselect/dist/js/multiselect.js"></script>
+<script src="js/ishop/jquery.pagination.js"></script>
+<script src="js/iconsumption/productList.js"></script>

@@ -1,0 +1,657 @@
+/***** common 配置 *****/
+div {
+    padding: 0;
+    margin: 0
+}
+
+select, textarea, input[type=text], input[type=password], input[type=time], input[type=file] {
+    width: 180px;
+    margin: 0 5px;
+    outline: none;
+    border-radius: 2px !important;
+}
+
+textarea {
+    height: 100px;
+    width: 461px
+}
+
+select:focus, input:focus, textarea:focus {
+    border-color: #48ADEE;
+}
+
+select {
+    padding: 5px 8px;
+    line-height: 24px;
+}
+
+textarea {
+    height: 140px;
+    margin-bottom: -.2em;
+    resize: none;
+}
+
+input[type=radio] {
+    width: 15px;
+}
+
+ul, li, a {
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+i.fa {
+    font-size: 16px;
+}
+
+span.label {
+    display: inline-block;
+    text-align: right;
+    margin-right: 5px;
+    width: 90px;
+    font-size: 14px;
+    color: black
+}
+
+.margin-top35 {
+    margin-top: 35px
+}
+
+input.specificHide {
+    position: absolute;
+    width: 0;
+    border: 0;
+    outline: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#createTime {
+    width: 110px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+#networkId, #networkName, #assetCode, #location, #status {
+    width: 150px;
+}
+
+#taskType {
+    width: 150px;
+}
+
+#businessId {
+    width: 150px;
+}
+
+div.iMarket_Shade.on {
+    width: 100%;
+    height: 100%;
+    z-index: 19891042;
+    background-color: #000;
+    opacity: 0.3;
+    top: 0;
+    position: absolute;
+}
+
+div.iMarket_Shade.off {
+    display: none;
+}
+
+.bold {
+    font-weight: bold
+}
+
+.needAuto {
+    margin-left: 30px
+}
+
+div.flowStepContainer {
+    height: 90px;
+    border-bottom: 1px solid silver;
+}
+
+div.flowStepContainer div.flowLine {
+    height: 8px;
+    margin-top: 30px;
+    position: absolute;
+    background: silver;
+    width: 72%;
+    margin-left: 13%;
+}
+
+div.flowStepContainer div.flowStep {
+    height: 100%;
+    margin-left: 20%;
+}
+
+div.flowStepContainer div.flowStep > div {
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    margin-top: 31px;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepB {
+    margin-left: 18%;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepC {
+    margin-left: 36%;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepD {
+    margin-left: 54%;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepE {
+    margin-left: 72%;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepNumber {
+    display: inline-block;
+    width: 28px;
+    height: 9px;
+    position: absolute;
+    z-index: 2;
+    background: 0;
+    line-height: 9px;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: -12px;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepNumber.active {
+    color: #fff;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepIcon {
+    background: url("../../images/icon_gray.png") no-repeat;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    margin-top: -12px;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepIcon.active {
+    background: url("../../images/icon_green.png") no-repeat;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepDesc {
+    display: inline-block;
+    position: absolute;
+    top: 25px;
+    left: 17px;
+    width: 100px;
+    margin-left: -50px;
+    font-size: 14px;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepDesc.active {
+    color: #0847a6;
+}
+
+div.shopTaskInfo div.infoConfigBody {
+    height: 390px;
+    overflow: auto;
+}
+
+div.infoConfigBody .row {
+    margin: 16px;
+}
+
+div.infoConfigBody .row div {
+    /*margin-left: -25px*/
+}
+
+div.infoConfigBody .element {
+    margin-left: -49px
+}
+
+div.infoConfigBody .element div {
+    display: inline-block;
+    width: 48%
+}
+
+div.shopTaskInfo div.marketMark textarea {
+    height: 100px;
+}
+
+div.shopTaskInfo div.config {
+    display: none;
+}
+
+div.shopTaskInfo div.config > div span.numberLimit {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 7px;
+    cursor: pointer;
+}
+
+{
+    display: none
+;
+}
+div.shopTaskInfo div.config > div input.numberLimit {
+    padding-left: 30px;
+    padding-right: 6px;
+    visibility: hidden;
+}
+
+div.shopTaskInfo div.config.active {
+    display: block;
+}
+
+div.shopTaskInfo div.channelInfo div.messageInfo textarea {
+    height: 120px;
+}
+
+div.shopTaskInfo div.marketTypeOptionBody > div {
+    display: none;
+}
+
+div.shopTaskInfo div.marketTypeOptionBody > div.active {
+    display: block;
+}
+
+div.shopTaskInfo div.timerOptionBody > div {
+    display: none;
+}
+
+div.shopTaskInfo div.timerOptionBody > div.active {
+    display: block;
+}
+
+div.shopTaskInfo div.step {
+    height: 55px;
+    border-top: 1px solid silver;
+    padding-top: 12px;
+    text-align: center;
+}
+
+div.shopTaskInfo div.step > span.active {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+    color: white;
+    background-color: #00B38B;
+    cursor: pointer;
+}
+
+div.shopTaskInfo div.step > span.pre.active {
+    color: #333;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+div.shopTaskInfo div.step > span {
+    display: none;
+}
+
+div.user-select span {
+    padding: 2px 12px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    background: #fff;
+    cursor: pointer;
+    color: #666;
+    height: 30px;
+    line-height: 24px;
+    font-size: 15px;
+    border: 1px solid #00B38B;
+    width: 140px;
+    cursor: pointer;
+}
+
+div.user-select span.active {
+    background: #00B38B;
+    color: #fff;
+}
+
+/** 导入用户弹窗*/
+.importPhoneSegment {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.importPhoneSegment .info {
+    margin-top: 20px;
+    margin-left: 26px;
+}
+
+.importPhoneSegment .info span {
+    display: block;
+    color: red;
+    line-height: 24px;
+}
+
+.importPhoneSegment .phoneInfo, .importPhoneSegment .historyInfo {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.importPhoneSegment .historyInfo {
+    height: 100px;
+    overflow-y: scroll;
+}
+
+/*表格*/
+table.iTable {
+    border-top: 1px solid silver;
+    width: 99%;
+    margin: 10px 7px;
+    border-radius: 8px;
+}
+
+table.iTable thead {
+    background: #e4e4e4;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+table.iTable thead tr:first-child th:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+table.iTable thead tr:first-child th:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+table.iTable tfoot tr:last-child td:first-child {
+    border-radius: 0 0 8px 8px
+}
+
+table.iTable tr > td:first-child, table.iTable thead tr > th:first-child {
+    border-left: 1px solid silver;
+}
+
+table.iTable td, table.iTable th {
+    border-bottom: 1px solid silver;
+    border-right: 1px solid silver;
+    word-break: break-all;
+    word-wrap: break-word;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 14px;
+    font-family: 'microsoft yahei', 'Helvetica', simhei, simsun, sans-serif;
+}
+
+div .conditionSearch {
+    width: 100%;
+    margin: 10px 0 0 0;
+    padding: 10px 0;
+    font-size: 14px;
+    display: inline-block;
+}
+
+div .conditionSearch div select, div .conditionSearch div input {
+    width: 140px !important;
+}
+
+.extensionalBtn {
+    width: 80px;
+    margin-right: 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    text-transform: none;
+    overflow: visible;
+}
+
+.extensionalBtn:hover {
+    color: #FFFFFF;
+    background-color: #0CCEA2;
+    border: none;
+    outline: none;
+}
+
+.templateBtn {
+    border-radius: 2px;
+    background: #00B38B;
+    border: none;
+    font-size: 16px;
+}
+
+.templateBtn:hover {
+    color: #FFFFFF;
+    background-color: #0CCEA2;
+    border: none;
+    outline: none;
+}
+
+.shopBaseInfoSegment {
+    height: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.shopBaseInfoSegment .baseInfoDesc {
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.shopBaseInfoSegment .baseInfoDesc .selectLeftDesc {
+    float: left;
+    width: 40%;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.shopBaseInfoSegment .baseInfoDesc .selectMiddleDesc {
+    float: left;
+    width: 12%;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.shopBaseInfoSegment .baseInfoDesc .selectRightDesc {
+    float: right;
+    width: 40%;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 2px;
+    text-align: center;
+}
+
+.shopBaseInfoSegment .baseInfo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 78%;
+    float: left;
+}
+
+.shopBaseInfoSegment .baseInfo .selectLeft {
+    width: 40%;
+    float: left
+}
+
+.shopBaseInfoSegment .baseInfo .selectLeft select {
+    width: 98%;
+    height: 360px;
+    border-radius: 4px;
+}
+
+.shopBaseInfoSegment .baseInfo .selectLeft select option {
+    margin: 4px 0;
+    cursor: pointer;
+}
+
+.shopBaseInfoSegment .baseInfo .selectBtn {
+    width: 12%;
+    float: left;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.shopBaseInfoSegment .baseInfo .selectBtn button {
+    border-radius: 2px;
+}
+
+.shopBaseInfoSegment .baseInfo .selectRight {
+    width: 40%;
+    float: left
+}
+
+.shopBaseInfoSegment .baseInfo .selectRight select {
+    width: 98%;
+    height: 360px;
+    margin-left: 0;
+    border-radius: 4px;
+}
+
+.shopBaseInfoSegment .baseInfo .selectRight select option {
+    margin: 4px 0;
+    cursor: pointer;
+}
+
+.shopBaseInfoSegment .baseInfo tr.silver, .contentInfoSegment .contentInfo tr.silver {
+    background: silver;
+}
+
+.shopBaseInfoSegment div.hide {
+    display: none;
+}
+
+.shopBaseInfoSegment div.chooseContent {
+    margin: 10px 7px;
+}
+
+.shopBaseInfoSegment div.chooseContent textarea.chooseBaseName {
+    margin-left: 0;
+    border-radius: 2px !important;
+    line-height: 20px;
+    letter-spacing: 1px;
+    background-color: #fff;
+}
+
+.file {
+    position: relative;
+    top: 13px;
+    margin-right: 10px;
+    display: inline-block;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    padding: 6px 12px;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 1.42857143;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.file:hover {
+    color: #FFFFFF;
+    background-color: #0CCEA2;
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
+
+.executeTaskSegment {
+    width: 98%;
+    margin: 15px auto;
+    margin-bottom: 50px;
+    padding: 8px;
+}
+
+.excuteTaskInfoHidden {
+    display: none !important;
+}
+
+.layui-layer-content {
+    overflow-y: hidden;
+}
+
+div.pageInfo {
+    padding: 5px 5px !important;
+}
+
+.simple-pagination ul {
+    padding: 0 5px !important;
+}
+
+#treePrimary {
+    height: 400px;
+}
+
+.replaceTextBox {
+    border: 1px solid silver;
+    margin-left: 5px;
+    margin-right: 20px;
+    visibility: hidden;
+    padding-left: 30px;
+    height: 30px;
+}
+
+.setReplaceText {
+    position: absolute;
+    margin-left: 5px !important;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.setReplaceText:checked {
+    margin-top: 25px !important;
+    margin-left: 12px !important;
+}
+
+.setReplaceText:checked+ .replaceTextBox {
+    visibility: visible;
+    height: auto;
+}
+
+.replaceText {
+    height: 30px;
+    padding: 3px 6px;
+    font-size: 14px;
+    width: 145px !important;
+    border: 0;
+    margin: 0 0 0 -5px !important;
+}
+
+.silver {
+    background-color: silver;
+}

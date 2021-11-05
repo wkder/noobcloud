@@ -1,0 +1,563 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/ikeeper/keeperTask.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input type="text" class="form-control queryTaskName" placeholder="任务名称">
+            <select class="form-control create_type queryBaseAreas" style="width: 110px;">
+            </select>
+            <button class="searchBtn"><i class="fa fa-search"></i>搜索</button>
+            <button class="addBtn"><i class="fa fa-plus"></i>新增</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   width="100%"></table>
+        </div>
+    </div>
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 新增、修改维系任务 -->
+    <div class="taskFramework">
+        <!-- region header -->
+        <div class="flowStepContainer">
+            <div class="flowLine"></div>
+            <div class="flowStep">
+                <div class="flowStepA" refDiv="taskInfo">
+                    <span class="stepNumber active">1</span>
+                    <span class="stepIcon active"></span>
+                    <span class="stepDesc active">维系任务</span>
+                </div>
+                <div class="flowStepB" refDiv="userInfo">
+                    <span class="stepNumber">2</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">客群选择</span>
+                </div>
+                <div class="flowStepC" refDiv="taskTypeInfo">
+                    <span class="stepNumber">3</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">维系策略</span>
+                </div>
+                <div class="flowStepD" refDiv="configInfo">
+                    <span class="stepNumber">4</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">接触渠道</span>
+                </div>
+                <div class="flowStepE" refDiv="auditInfo">
+                    <span class="stepNumber">5</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">任务预览</span>
+                </div>
+            </div>
+        </div>
+        <!-- endregion header -->
+
+        <!-- region body -->
+        <div class="container-fluid infoConfigBody">
+            <!-- region 维系任务 -->
+            <div class="row taskInfo active">
+                <!-- region 任务名称 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>任务名称:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control taskName" title="名称由字母、下划线、中文组成"
+                               placeholder="请输入任务名称，限制50个字数" maxlength="50"/>
+                    </div>
+                </div>
+                <!-- endregion 任务名称 -->
+
+                <!-- region 业务类型 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>业务类型:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-control taskType">
+                        </select>
+                    </div>
+                </div>
+                <!-- endregion 业务类型 -->
+
+                <!-- region 开始时间、结束时间-->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>开始时间:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control effDate"
+                               onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"
+                               title="开始时间不能为空"/>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>结束时间:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control expDate"
+                               onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"
+                               title="结束时间不能为空"/>
+                    </div>
+                </div>
+                <!-- endregion 开始时间、结束时间-->
+
+                <!-- region 业务归属 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>业务归属:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="form-control orgNames" readonly
+                                  placeholder="请点击选择业务归属"
+                                  title="请点击选择业务归属"></textarea>
+                    </div>
+                    <input type="hidden" class="orgIds">
+                </div>
+                <!-- endregion 业务归属 -->
+
+                <!-- region 任务描述 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong>任务描述:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="form-control comments" maxlength="200"
+                                  placeholder="请输入任务描述，限制200个字符"></textarea>
+                    </div>
+                </div>
+                <!-- endregion 任务描述 -->
+            </div>
+            <!-- endregion 维系任务 -->
+
+            <!-- region 客群选择 -->
+            <div class="row userInfo">
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right" style="padding-left: 0;">
+                        <strong>指定维系用户:</strong>
+                    </div>
+                    <div class="col-md-8 appointUser">
+                        <input type="text" class="form-control txtAppointUser" placeholder="请导入指定维系用户"/>
+                        <button class="btn btn-primary btnAppointUser">导入</button>
+                        <input class="appointUserIds" type="hidden"/>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <label style="color: red;">您导入的客户群将和已分配的数据源做交集，同时满足才可触发</label>
+                    </div>
+                </div>
+            </div>
+            <!-- endregion 客群选择 -->
+
+            <!-- region 维系策略 -->
+            <div class="row taskTypeInfo">
+                <!-- region 维系提醒规则 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right" style="padding-left: 0;">
+                        <strong class="must" style="color: red">*</strong><strong>维系提醒规则:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-control taskRemind"></select>
+                    </div>
+                </div>
+                <!-- endregion 维系提醒规则 -->
+
+                <!-- region 场景关怀-场景失效规则 -->
+                <div class="col-md-12 pkgFlowRule" style="display: none;">
+                    <div class="col-md-2 text-right" style="padding-left: 0;">
+                        <strong class="must" style="color: red">*</strong><strong>场景失效规则:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-control pkgFlowRule_loseEfficacy"></select>
+                    </div>
+                </div>
+                <!-- endregion 场景关怀-场景失效规则 -->
+
+                <!-- region 优惠到期-时间参数 -->
+                <div class="col-md-12 discountExpiryRule" style="display: none;">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>时间参数:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control discountExpiryRule_time" readonly>
+                    </div>
+                </div>
+                <!-- endregion 优惠到期-时间参数 -->
+
+                <!-- region 维系福利 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>维系福利:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="form-control taskRemindProductNames" title="请选择维系福利" readonly
+                                  placeholder="请选择维系福利" maxlength="50"></textarea>
+                        <input type="hidden" class="taskRemindProductIds" title="请选择维系福利"/>
+                    </div>
+                </div>
+                <!-- endregion 维系福利 -->
+            </div>
+            <!-- endregion 维系策略 -->
+
+            <!-- region 接触渠道 -->
+            <div class="row configInfo">
+                <!-- region 短信渠道推送 -->
+                <div class="col-md-12">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" class="smsCheckbox" value="1"> <strong>短信渠道推送</strong>
+                    </label>
+                </div>
+                <!-- endregion 短信渠道推送-->
+
+                <!-- region 营销内容 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>营销内容:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="form-control smsContent" title="营销内容不能为空"
+                                  placeholder="营销内容限制1000个字数" maxlength="1000" rows="3"></textarea>
+                        <input type="hidden" class="smsContentIds" title="营销内容不能为空"/>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn smsBtn">模板<br>选择</button>
+                    </div>
+                </div>
+                <!-- endregion 营销内容-->
+
+                <!-- region 话+外呼渠道推送 -->
+                <div class="col-md-12">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" class="phoneCheckbox" value="2"> <strong>话+ 外呼渠道推送</strong>
+                    </label>
+                </div>
+                <!-- endregion 话+外呼渠道推送 -->
+
+                <!-- region 外呼号码 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>外呼号码:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-control externalPhone"></select>
+                    </div>
+                </div>
+                <!-- endregion 外呼号码 -->
+
+                <!-- region 外呼频次 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>外呼频次:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <!--<select class="form-control callCount"></select>-->
+                        <!--外呼频次设置为用户可输入模式-->
+                        <input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" class="form-control callCount" title="外呼频次为正整数,最大次数为20"
+                               placeholder="请输入外呼频次，须为正整数" maxlength="2"/>
+                    </div>
+                </div>
+                <!-- endregion 外呼频次 -->
+
+                <!-- region 话术脚本 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>话术脚本:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="form-control phoneContent" title="话术脚本不能为空"
+                                  placeholder="话术脚本限制1000个字数" maxlength="1024" rows="3"></textarea>
+                        <input type="hidden" class="phoneContentIds" title="话术脚本不能为空"/>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn phoneBtn">模板<br>选择</button>
+                    </div>
+                </div>
+                <!-- endregion 话术脚本 -->
+
+                <!-- region 互联网社交 -->
+                <div class="col-md-12">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" class="socialCheckbox" value="3" disabled="disabled">
+                        <strong>互联网社交(建议微信，QQ)</strong>
+                    </label>
+                </div>
+                <!-- endregion 互联网社交 -->
+
+            </div>
+            <!-- endregion 接触渠道 -->
+
+            <!-- region 预览 -->
+            <div class="row auditInfo"></div>
+            <!-- endregion 预览 -->
+
+
+            <div class="row finishInfo">
+                <div class="col-md-12">
+                    <strong>审批已完成</strong>
+                </div>
+            </div>
+        </div>
+        <!-- endregion body -->
+
+        <!-- region footer -->
+        <div class="step">
+            <span class="pre">返回</span>
+            <span class="next active">继续</span>
+            <span class="audit">提交审核</span>
+            <span class="confirm">确定</span>
+            <span class="edit">返回修改</span>
+            <span class="closeBtn">关闭</span>
+        </div>
+        <!-- endregion footer -->
+
+        <!-- region 记录操作状态 -->
+        <input type="hidden" class="data">
+        <!-- endregion 记录操作状态 -->
+    </div>
+    <!-- endregion 新增、修改维系任务 -->
+
+    <!-- region 导入指定用户 -->
+    <div class="importAppointInfo">
+        <!-- region 指定用户文件导入表单 -->
+        <form class="importForm" method="post" enctype="multipart/form-data">
+            <div class="meatOperate">
+                <input class="form-control fileUploadName" type="text" placeholder="文件路径">
+                <a class="btn btn-success file" href="javascript:void(0);">选择文件
+                    <input type="file" name="file">
+                </a>
+                <div class="btn btn-success btnUpload">上传</div>
+            </div>
+            <div class="info">
+                <span>1、请导入txt文件</span>
+                <span>2、txt文件中每行存放一个指定用户手机号码</span>
+                <span>3、数据导入后会进行加密处理</span>
+            </div>
+        </form>
+        <!-- endregion 指定用户文件导入表单 -->
+
+        <!-- region 导入数据表格 -->
+        <div class="container-fluid phoneInfo">
+            <span class="uploadMessage"></span>
+        </div>
+        <!-- endregion 导入数据表格 -->
+
+        <!-- region 隐藏域 存放弹窗句柄 -->
+        <input type="hidden" class="dialogIndex">
+        <!-- endregion 隐藏域 存放弹窗句柄 -->
+    </div>
+    <!-- endregion 导入用户 -->
+
+    <!-- region 选择产品组合 -->
+    <div class="col-md-12 productInfo">
+        <table class="table table-condensed table-bordered dataTableProduct"
+               cellspacing="0" width="100%">
+        </table>
+    </div>
+    <!-- endregion 选择产品组合 -->
+
+    <!-- region 营销内容 -->
+    <div class="col-md-12 contentInfo">
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input class="form-control qryContentInfo" placeholder="内容" style="width: 160px">
+            <input class="form-control qryKeyInfo" placeholder="关键词" style="width: 160px">
+            <button class="contentInfoBtn"><i class="fa fa-search"></i>搜索</button>
+        </div>
+    </div>
+    <div class="row" style="margin-left: 0;height: 380px;">
+        <table class="table table-condensed table-bordered contentTable"
+               cellspacing="0" width="98%"></table>
+    </div>
+</div>
+    <!-- endregion 营销内容 -->
+
+    <!-- region 预览 -->
+    <div class="taskDetailInfo">
+        <!-- region 维系任务 -->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>维系任务</strong>
+            </div>
+            <!-- region 任务名称 -->
+            <div class="col-md-3">
+                <span>任务名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskName"></span>
+            </div>
+            <!-- endregion 任务名称 -->
+
+            <!-- region 业务类型 -->
+            <div class="col-md-3">
+                <span>业务类型：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskType"></span>
+            </div>
+            <!-- endregion 业务类型 -->
+
+            <!-- region 开始时间 -->
+            <div class="col-md-3">
+                <span>开始时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_startTime"></span>
+            </div>
+            <!-- endregion 开始时间 -->
+
+            <!-- region 结束时间 -->
+            <div class="col-md-3">
+                <span>结束时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_endTime"></span>
+            </div>
+            <!-- endregion 结束时间 -->
+
+            <!-- region 维系区域 -->
+            <div class="col-md-3">
+                <span>业务归属：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_orgNames"></span>
+            </div>
+            <!-- endregion 维系区域 -->
+
+            <!-- region 指定维系用户 -->
+            <div class="col-md-3">
+                <span>指定维系用户：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_appointUser"></span>
+            </div>
+            <!-- endregion 指定维系用户 -->
+        </div>
+        <!-- endregion 维系任务 -->
+
+        <!-- region 维系策略 -->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>维系策略</strong>
+            </div>
+            <!-- region 维系提醒规则 -->
+            <div class="col-md-3">
+                <span>维系提醒规则：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskRemind"></span>
+            </div>
+            <!-- endregion 维系提醒规则 -->
+
+            <!-- region 维系产品 -->
+            <div class="col-md-3">
+                <span>维系产品：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_productName"></span>
+            </div>
+            <!-- endregion 维系产品 -->
+
+            <!-- region 维系动作 -->
+            <div class="col-md-3">
+                <span>维系动作：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_action"></span>
+            </div>
+            <!-- endregion 维系动作 -->
+
+            <!-- region 营销内容 -->
+            <div class="col-md-3 sms_content_column">
+                <span>营销内容：</span>
+            </div>
+            <div class="col-md-9 sms_content_column">
+                <span class="detail_content"></span>
+            </div>
+            <!-- endregion 营销内容 -->
+
+            <!-- region 话术脚本 -->
+            <div class="col-md-3 phone_content_column">
+                <span>话术脚本：</span>
+            </div>
+            <div class="col-md-9 phone_content_column">
+                <span class="detail_phoneContent"></span>
+            </div>
+            <!-- endregion 话术脚本 -->
+        </div>
+        <!-- endregion 维系策略 -->
+    </div>
+    <!-- endregion 预览 -->
+
+    <!-- region 选择审核人 -->
+    <div class="auditUserInfo">
+        <div class="row">
+            <div class="col-md-12 auditItem">
+
+            </div>
+        </div>
+    </div>
+    <!-- endregion 选择审核人 -->
+
+    <!-- region 查看回访记录-->
+    <div class="qryRevisitInfo">
+        <div class="col-md-12">
+            <div class="row query-row">
+                <div class="col-md-12">
+                    <input class="form-control qryDetailByPhone" placeholder="用户号码" style="width: 160px">
+                    <button class="qryDetailByPhoneBtn"><i class="fa fa-search"></i>搜索</button>
+                </div>
+            </div>
+            <div class="row" style="margin-left: 0;height: 380px;">
+                <table class="table table-condensed table-bordered revisitTable"
+                       cellspacing="0" width="98%"></table>
+            </div>
+        </div>
+    </div>
+    <!-- endregion 查看回访记录-->
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹出框 -->
+<div class="iMarket_Dialog">
+    <!-- region 新增、修改维系任务 -->
+    <div id="addOrEdit_task_dialog" style="display: none"></div>
+    <!-- endregion 新增、修改维系任务 -->
+
+    <!-- region 导入指定用户 -->
+    <div id="import_appoint_dialog" style="display: none"></div>
+    <!-- endregion 导入指定用户 -->
+
+    <!-- region 选择产品组合 -->
+    <div id="select_product_dialog" style="display: none"></div>
+    <!-- endregion 选择产品组合 -->
+
+    <!-- region 选择营销内容 -->
+    <div id="select_content_dialog" style="display: none"></div>
+    <!-- endregion 选择营销内容 -->
+
+    <!-- region 预览 -->
+    <div id="preview_dialog" style="display: none"></div>
+    <!-- endregion 预览 -->
+
+    <!-- region 选择审核人 -->
+    <div id="audit_dialog" style="display: none"></div>
+    <!-- endregion 选择审核人 -->
+
+    <!-- region 查看回访记录-->
+    <div id="query_revisit_dialog" style="display: none"></div>
+    <!-- endregion 查看回访记录-->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/ikeeper/keeperTask.js"></script>
+<!-- endregion 脚本 -->

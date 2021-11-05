@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div.personalInfo {
+            background: #fff;
+            padding: 10px 0;
+            margin-top: 30px;
+        }
+        div.iMarket_PersonalInfo_Body div.personalDetail >div.row{
+            margin: 10px;
+            color: #333333;
+        }
+        div.iMarket_PersonalInfo_Body div.personalDetail >div.row input.value{
+            width:100%;
+            border: 0;
+            padding: 5px 8px;
+        }
+        div.iMarket_PersonalInfo_Body div.personalDetail.editing >div.row .value{
+            color: #999999;
+        }
+        div.iMarket_PersonalInfo_Body div.personalDetail >div.row span.text{
+            color: #333333;
+            padding: 5px;
+            display: inline-block;
+        }
+        div.iMarket_PersonalInfo_Body div.personalDetail >div.row input.value.editAble{
+            border: 1px solid #ccc !important;
+            border-radius: 4px !important;
+        }
+        div.iMarket_PersonalInfo_Body div.personalDetail >div.row div.remarks{
+            width: 100%;
+            height: 60px;
+            color: #333;
+            padding: 5px 8px;
+        }
+        div.btnGroup button{
+            margin:3px 5px;
+            border: 0;
+            outline: 0;
+            padding: 5px 20px;
+        }
+        div.btnGroup button.editPersonalInfoBtn,
+        div.btnGroup button.savePersonalInfoBtn{
+            background: #00B38B;
+            color: #fff;
+        }
+        div.btnGroup button.editPersonalInfoBtn:hover,
+        div.btnGroup button.savePersonalInfoBtn:hover{
+            background: #09CA9E;
+        }
+    </style>
+    <script src="js/icommon/personalInfo.js"></script>
+</head>
+<body>
+<div class="iMarket_PersonalInfo">
+    <div class="iMarket_PersonalInfo_Body container-fluid">
+        <div class="row">
+            <div class="personalInfoContent col-md-6 col-xs-12">
+
+            </div>
+        </div>
+    </div>
+    <div class="iMarket_PersonalInfo_EditHtml" style="display: none;">
+        <div class="personalInfo">
+            <div class="personalDetail">
+                <div class="row detailUserName">
+                    <div class="col-md-4 col-xs-5 text-right">
+                        <span class="text"><span>用户名：</span></span>
+                    </div>
+                    <div class="col-md-7 col-xs-7">
+                        <input class="userName value" type="text" value="" readonly="readonly"/>
+                    </div>
+                </div>
+                <div class="row editUserPassword" style="display: none;">
+                    <div class="col-md-4 col-xs-5 text-right">
+                        <span class="text"><span>新密码：</span></span>
+                    </div>
+                    <div class="col-md-7 col-xs-7">
+                        <input class="newUserPassword value editAble" type="password" value="" readonly="readonly"/>
+                    </div>
+                </div>
+                <div class="row editUserPassword" style="display: none;">
+                    <div class="col-md-4 col-xs-5 text-right">
+                        <span class="text"><span>确认密码：</span></span>
+                    </div>
+                    <div class="col-md-7 col-xs-7">
+                        <input class="makeSureUserPassword value editAble" type="password" value="" readonly="readonly"/>
+                    </div>
+                </div>
+                <div class="row detailUserArea">
+                    <div class="col-md-4 col-xs-5 text-right">
+                        <span class="text"><span>归属区域：</span></span>
+                    </div>
+                    <div class="col-md-7 col-xs-7">
+                        <input class="userArea value" type="text" value="" readonly="readonly"/>
+                    </div>
+                </div>
+                <div class="row detailUserPhone">
+                    <div class="col-md-4 col-xs-5 text-right">
+                        <span class="text"><span>手机号码：</span></span>
+                    </div>
+                    <div class="col-md-7 col-xs-7">
+                        <input class="userPhone value" type="text" title="" value="" readonly="readonly"/>
+                    </div>
+                </div>
+                <div class="row detailUserEmail">
+                    <div class="col-md-4 col-xs-5 text-right">
+                        <span class="text"><span>E - Mail：</span></span>
+                    </div>
+                    <div class="col-md-7 col-xs-7">
+                        <input class="email value" type="text" title="" value="" readonly="readonly"/>
+                    </div>
+                </div>
+                <div class="row detailSegmentAuditUser">
+                    <div class="col-md-4 col-xs-5 text-right">
+                        <span class="text"><span>模型审批人：</span></span>
+                    </div>
+                    <div class="col-md-7 col-xs-7">
+                        <input class="segmentAuditUsersDetail value" type="text" value="" readonly="readonly"/>
+                    </div>
+                </div>
+<!--                <div class="row detailTagAuditUser">
+                    <div class="col-md-4 col-xs-5 text-right">
+                        <span class="text"><span>标签审批人：</span></span>
+                    </div>
+                    <div class="col-md-7 col-xs-7">
+                        <input class="tagAuditUsersDetail value" type="text" value="" readonly="readonly"/>
+                    </div>
+                </div>-->
+                <div class="row detailMarketingAuditUser">
+                    <div class="col-md-4 col-xs-5 text-right">
+                        <span class="text"><span>营销审批人：</span></span>
+                    </div>
+                    <div class="col-md-7 col-xs-7">
+                        <input class="marketingAuditUsersDetail value" type="text" value="" readonly="readonly"/>
+                    </div>
+                </div>
+                <div class="row detailRemarks">
+                    <div class="col-md-4 col-xs-5 text-right">
+                        <span class="text"><span>备注：</span></span>
+                    </div>
+                    <div class="col-md-7 col-xs-7">
+                        <div class="remarks value"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-xs-12 text-center btnGroup">
+                    <button class="editPersonalInfoBtn btn btn-default">编辑</button>
+                    <button class="savePersonalInfoBtn btn btn-default" style="display: none;">保存</button>
+                    <button class="cancelPersonalInfoBtn btn btn-default" style="display: none;background: #ccc;color: #333333;">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

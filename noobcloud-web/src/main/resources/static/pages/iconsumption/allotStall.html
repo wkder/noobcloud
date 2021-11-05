@@ -1,0 +1,128 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/scenecenter.css" rel="stylesheet">
+<link href="styles/iscene/positionBaseConfig.css" rel="stylesheet">
+<link href="ext/simplePagination.css" rel="stylesheet">
+<link href="styles/iconsumption/allotStall.css" rel="stylesheet">
+<div id="allotStallPage" style="display: none;">
+    <!--搜索栏-->
+    <div class="row query-row">
+        <div class="col-md-12">
+            <select class="form-control create_type queryTeam" id="queryActivitySelect" style="display: none;"></select>
+            <select class="form-control create_type queryTeam" id="queryTeamSelect" style="display: none;"></select>
+            <input type="text" id="activityStatus" style="display: none;"/>
+            <select class="form-control create_type queryStallType" id="queryStallTypeSelect">
+                <option value="0">流量</option>
+                <option value="1">语音</option>
+            </select>
+            <input type="text" id="updateDateTime" class="form-control"
+                   onclick="laydate({isdate: true, format: 'YYYYMM',istoday: false})" title="更新时间"
+                   readonly placeholder="更新时间" style="background: #ffffff;"/>
+            <button id="queryStall" class="btn btn-success">
+                <i class="fa fa-search"></i>查询
+            </button>
+            <button class="btn btn-success" id="allotStall" style="width: 120px;display: none;">
+                <i class="fa fa-plus"></i>开始分配
+            </button>
+            <button class="btn btn-edit" id="exitAllotStall" style="width: 120px;display: none;">
+                <i class="fa fa-power-off"></i>重置
+            </button>
+            <p class="tip">
+                <span class="green">绿色</span>&nbsp;表示可分配、
+                <span class="bold green">绿色加粗并打钩
+                <img style="width: 18px;" src="../../images/pay_select_bg.png"></span>&nbsp;表示已经选中、
+                <span class="gray">灰色</span>&nbsp;表示已经分配或无法分配</p>
+        </div>
+    </div>
+    <!--统计数据-->
+    <div class="statistics-panel">
+        <div class="count-item">
+            <div class="item">
+                <p>总用户数：<span class="total">0</span></p>
+            </div>
+            <div class="item">
+                <p>线下分配用户数：<span class="totalAllocateOffline">0</span></p>
+            </div>
+            <div class="item">
+                <p>线上待分配用户数：<span class="totalUnallocateOnline">0</span></p>
+            </div>
+            <div class="item">
+                <p>线上分配用户数：<span class="totalAllocateOnline">0</span></p>
+            </div>
+        </div>
+        <div id="btnArea" class="btn-area" style="display: none;">
+            <!--线下---一键通知地市管理员-->
+            <div id="noticeCityManager" class="notice-city-manager">
+                <span>一键通知地市管理员领取档位</span>
+            </div>
+            <!--线下---锁定地市产品档位-->
+            <div id="LockStall" class="notice-city-manager">
+                <span>锁定地市产品档位</span>
+            </div>
+            <!--线下---线下确认分配-->
+            <div id="offlineConfirmAllot" class="notice-city-manager">
+                <span>确认分配</span>
+            </div>
+            <!--线下---推送给话+-->
+            <div id="offlinePushToHua" class="notice-city-manager">
+                <span>推送给话+</span>
+            </div>
+            <!--线上---线上确认分配-->
+            <div id="onlineConfirmAllot" class="notice-city-manager">
+                <span>确认分配</span>
+            </div>
+            <!--线上---推送给话+-->
+            <div id="onlinePushToHua" class="notice-city-manager">
+                <span>推送给话+</span>
+            </div>
+            <!--一键通知风雷-->
+            <div id="noticeFl" class="notice-fl" style="display: none;">
+                <span>一键通知风雷</span>
+            </div>
+        </div>
+    </div>
+    <!--分配数据-->
+    <div class="allotstall-panel">
+        <div class="title">
+            <p>低消产品档位表（低消送流量）</p>
+        </div>
+        <div class="data-panel">
+            <table width="100%" class="table">
+                <thead class="thead">
+                <tr>
+                    <th>档位</th>
+                    <th>南京</th>
+                    <th>苏州</th>
+                    <th>无锡</th>
+                    <th>常州</th>
+                    <th>扬州</th>
+                    <th>镇江</th>
+                    <th>南通</th>
+                    <th>徐州</th>
+                    <th>泰州</th>
+                    <th>盐城</th>
+                    <th>淮安</th>
+                    <th>连云港</th>
+                    <th>宿迁</th>
+                </tr>
+                </thead>
+                <tbody id="TableData">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--弹窗-->
+    <div id="dialog" class="dialog">
+        <div class="dialog-push-view"></div>
+    </div>
+    <!--弹窗模板-->
+    <div id="templete" class="templete" style="display: none;">
+        <div class="push-view-info" style="padding: 20px">
+            <p><label>本月线上低消总数：</label><span class="online-total-count">0</span>人</p>
+            <p>已经分配：<span class="already-allot">0</span>人&nbsp;&nbsp;未分配：<span class="not-allot">0</span>人</p>
+            <p style="margin-top: 20px"><label>其中本次分配操作</label></p>
+            <div class="item-list" style="height: 300px;overflow-y: auto;"></div>
+            <p style="color: #ff0000;margin-top: 20px;">* 确认后该操作不可逆</p>
+        </div>
+    </div>
+</div>
+<script src="js/iconsumption/allotStall.js"></script>

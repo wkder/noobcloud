@@ -1,0 +1,175 @@
+#allotStallPage {
+}
+
+/*日期筛选器*/
+.laydate_table {
+    display: none;
+}
+
+.laydate_top {
+    margin-bottom: 15px !important;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.green {
+    color: #00B83F;
+}
+
+.gray {
+    color: #919293;
+}
+
+.query-row .tip {
+    font-size: 15px;
+    margin: 10px 0 0 6px;
+}
+
+.statistics-panel {
+    width: 100%;
+    padding: 0 22px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    background-color: #ffffff;
+}
+
+.statistics-panel > .btn-area {
+    display: flex;
+    border-top: 1px solid #DDDDDD;
+}
+
+.statistics-panel > .btn-area > .notice-city-manager {
+    text-align: center;
+    font-size: 15px;
+    background-color: #00B38B;
+    color: #ffffff;
+    width: 300px;
+    padding: 8px;
+    border-radius: 20px;
+    margin: 10px auto;
+    display: none;
+    cursor: pointer;
+}
+
+.statistics-panel > .btn-area > .notice-fl {
+    text-align: center;
+    font-size: 15px;
+    background-color: #00B38B;
+    color: #ffffff;
+    width: 300px;
+    padding: 8px;
+    border-radius: 20px;
+    margin: 10px auto;
+}
+
+.statistics-panel .count-item {
+    display: flex;
+    margin: 6px;
+}
+
+.statistics-panel .count-item .item {
+    flex: 0 0 25%;
+}
+
+.statistics-panel .count-item .item:first-child {
+    flex: 0 0 25%;
+}
+
+.statistics-panel .count-item .item p {
+    padding-top: 20px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.statistics-panel .count-item .item p span {
+    color: #00B83F;
+}
+
+.allotstall-panel {
+    background-color: #ffffff;
+    padding: 6px;
+    margin-top: 10px;
+    overflow-x: auto;
+}
+
+.allotstall-panel .title {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+.allotstall-panel .title p {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.allotstall-panel .data-panel {
+    overflow-x: auto;
+}
+
+.allotstall-panel .data-panel table {
+    table-layout: fixed;
+    width: auto;
+    min-width: 100%;
+}
+
+.allotstall-panel .data-panel table thead {
+    border: 0;
+}
+
+.allotstall-panel .data-panel table thead tr th {
+    text-align: center;
+    padding: 12px 0;
+}
+
+.allotstall-panel .data-panel table thead tr th {
+    border-bottom: 1px solid #ddd !important;
+}
+
+.allotstall-panel .data-panel table thead tr th:first-child, .allotstall-panel .data-panel table tbody tr td:first-child {
+    border-left: 1px solid #DDDDDD;
+}
+
+.allotstall-panel .data-panel table thead tr th:not(:first-child), .allotstall-panel .data-panel table tbody tr td:not(:first-child) {
+    border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+}
+
+.allotstall-panel .data-panel table tbody {
+    border-bottom: 1px solid #ddd !important;
+}
+
+.allotstall-panel .data-panel table tbody tr td {
+    text-align: center;
+    padding: 12px 0;
+    min-width: 100px;
+}
+
+/*可以分配样式*/
+.allotstall-panel .data-panel table tbody tr td.canAllot {
+    color: #00B83F;
+    cursor: pointer;
+}
+
+.allotstall-panel .data-panel table tbody tr td.canAllot:hover {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/*不可分配样式*/
+.allotstall-panel .data-panel table tbody tr td.notCanAllot {
+    color: #919293;
+    background-color: #F0F0F0;
+    cursor: not-allowed;
+}
+
+/*已经选中的样式*/
+.allotstall-panel .data-panel table tbody tr td.haveCanAllot {
+    background: #ffffff url(../../images/pay_select_bg.png) no-repeat right bottom;
+    background-size: 20px 20px;
+    color: #00B83F;
+    font-weight: 600;
+}

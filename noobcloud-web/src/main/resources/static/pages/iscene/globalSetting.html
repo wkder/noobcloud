@@ -1,0 +1,41 @@
+<link href="styles/iscene/globalsetting.css?version=2.0" rel="stylesheet">
+
+<div class="row query-row">
+    <div class="col-md-12">
+        <button id="btnRefresh">
+            <i class="fa fa-refresh"></i>刷新
+        </button>
+    </div>
+</div>
+
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+
+<!--弹出框-->
+<!--<div id="popupAddOrEdit" style="display:none;"></div>-->
+<div id="popupAddOrEdit" style="display: none;" class="cmTableContent" data-autoVerify="true">
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title"><strong>类型：</strong></td>
+            <td colspan="3" class="td-content"><input type="text" id="globaltype" class="form-control"
+                                                      placeholder="类型" disabled="disabled"></td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title"><strong>参数值：</strong></td>
+            <td colspan="3" class="td-content"><input type="text" id="globalnum" name="globalSettingNum" class="form-control"
+                                                      placeholder="参数值" data-expression="isNumber" data-error="请输入正整数" maxlength="20">
+                <div class="help-block alert alert-warning" role="alert">参数值必须为正整数</div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!--<script src="ext/cmtable/js/cmtable.js" charset="UTF-8"></script>-->
+<script src="js/iscene/globalsetting.js?version=2.0" charset="UTF-8"></script>

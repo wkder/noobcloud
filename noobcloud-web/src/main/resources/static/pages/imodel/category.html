@@ -1,0 +1,82 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet"/>
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写栏目名称">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+        <button id="btnBack">
+            <i class="fa fa-chevron-left"></i>返回
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+
+<!--弹出框-->
+<!--<div id="popupAddOrEdit" style="display:none;">-->
+<!--</div>-->
+
+<div class="cmTableContent" id="cmTableContent" style="display:none;" data-autoVerify="true">
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>栏目级别：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <select id="selLevel" class="form-control">
+                    <option value="-1">请选择</option>
+                    <option value="0">一级栏目</option>
+                    <option value="1">二级栏目</option>
+                    <option value="2">三级栏目</option>
+                    <option value="3">四级栏目</option>
+                    <option value="4">五级栏目</option>
+                    <option value="5">六级栏目</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title"><strong>父级栏目：</strong></td>
+            <td colspan="3" class="td-content">
+                <select id="selParent" class="form-control">
+                    <option value="0">请选择...</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>栏目名称：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="txtName" class="form-control" placeholder="栏目名称" maxlength="50" name="name" data-expression="isEmpty" data-error="栏目名称不为空">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>备注：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <textarea id="txtMarks" class="form-control" rows="8" placeholder="备注" maxlength="100" name="marks" data-expression="isEmpty" data-error="备注不为空"></textarea>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="ext/cmtable/js/cmtable.js"></script>
+<script src="js/imodel/category.js"></script>

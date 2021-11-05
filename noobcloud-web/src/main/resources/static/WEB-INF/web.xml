@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+    <display-name></display-name>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>reLoginUrl</param-name>
+        <param-value>login.html</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- 登录过滤器开始-->
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.axon.market.web.filter.LoginFilter</filter-class>
+        <init-param>
+            <param-name>redirectUrl</param-name>
+            <param-value>login.html</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>*.view</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>*.requestHtml</url-pattern>
+    </filter-mapping>
+    <!-- 登录过滤器结束 -->
+
+    <!-- 菜单请求过滤器开始 -->
+    <filter>
+        <filter-name>HtmlAuthFilter</filter-name>
+        <filter-class>com.axon.market.web.filter.AuthPageFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HtmlAuthFilter</filter-name>
+        <url-pattern>/index.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>HtmlAuthFilter</filter-name>
+        <url-pattern>*.requestHtml</url-pattern>
+    </filter-mapping>
+    <!-- 菜单请求过滤器结束 -->
+
+    <!-- 数据权限请求过滤器开始 -->
+    <filter>
+        <filter-name>dataAuthFilter</filter-name>
+        <filter-class>com.axon.market.web.filter.AuthDataFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>dataAuthFilter</filter-name>
+        <url-pattern>*.view</url-pattern>
+    </filter-mapping>
+    <!-- 数据权限请求过滤器开始 -->
+
+    <filter>
+        <filter-name>keeperAppFilter</filter-name>
+        <filter-class>com.axon.market.web.filter.KeeperAppFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>keeperAppFilter</filter-name>
+        <url-pattern>*.app</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:applicationServlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UploadCommon</servlet-name>
+        <servlet-class>com.axon.market.web.servlet.UploadCommonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadCommon</servlet-name>
+        <url-pattern>/uploadCommon.view</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Init</servlet-name>
+        <servlet-class>com.axon.market.web.servlet.InitSystemServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Init</servlet-name>
+        <url-pattern>/init</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>JAX-WS endpoint</description>
+        <display-name>WSServlet</display-name>
+        <servlet-name>WSServlet</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>4</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>WSServlet</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>120</session-timeout>
+    </session-config>
+
+</web-app>

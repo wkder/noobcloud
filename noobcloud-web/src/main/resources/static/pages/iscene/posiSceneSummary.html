@@ -1,0 +1,91 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/scenecenter.css" rel="stylesheet">
+<style type="text/css">
+    .search_title{display: inline-block}
+    .day_report,.survey_deep{border-radius:6px 0px 0px 6px}
+    .month_report,.survey_task{border-radius:0px 6px 6px 0px}
+    .chart{width:100%;height: 298px;}
+    .chart_title{padding-top: 10px;padding-left: 20px}
+    .chart_title span,.conditionSearch span{padding: 2px 12px;text-align: center;display: inline-block;vertical-align: top;background: #fff;cursor: pointer;color: #666;height: 35px;line-height: 30px;font-size: 15px;border:1px solid #00B38B}
+    .chart_title span.active,.conditionSearch span.active{background: #00B38B;color: #fff}
+    .table_element,.chart_element{border:1px solid silver;margin-top:6px}
+    .table_element_head,.chart_element_head{background-color:#F0F0F0;height: 18px;padding: 10px 10px 25px 10px}
+    .table_element_head span,.chart_element_head span{font-weight:bolder}
+    .table_element_body table.iTable{width: 100%;margin: 0px;border-radius: 0px}
+</style>
+<body>
+<div class="iMarket_PosiSummary_Body">
+    <!--搜索栏-->
+    <div class="row query-row">
+        <div class="col-md-12">
+            <div class="conditionSearch" status="ready">
+                统计日期：<input type="text" id="executeTime" class="executeTime" onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday: true})" readonly/>
+                <span class="day_report active">查询日报</span><span class="month_report">查询月报</span>
+            </div>
+        </div>
+    </div>
+    <div class="chart_element">
+        <div class="chart_element_head">
+            <span>地市整体概况</span>
+        </div>
+        <div class="chart_element_body"  style="background-color: #fff">
+            <div class="chart_title">
+                <span class="survey_deep active">渗透率概况</span><span class="survey_task">任务营销概况</span>
+            </div>
+            <div class="chart_deep chart active" id="chart_deep"></div>
+            <div class="chart_task chart" id="chart_task" style="display: none"></div>
+        </div>
+    </div>
+    <!--列表栏-->
+    <div class="table_element">
+        <div class="table_element_head">
+            <span>地市统计分析</span>
+        </div>
+        <div class="table_element_body"  style="background-color: #fff">
+            <table id="dataTable" class="iDataTable iTable" cellspacing="0" border="0">
+                <thead>
+                <tr>
+                    <td class="title"  width="10%" rowspan="2" colspan="1">地市</td>
+                    <td rowspan="1" colspan="2">经分中活跃渠道</td>
+                    <td class="confhall"  width="10%" rowspan="2" colspan="1">配置网点数</td>
+                    <td class="seep" width="10%" rowspan="2" colspan="1">渗透率</td>
+                    <td class="taskNum" width="10%" rowspan="2" colspan="1">任务量</td>
+                    <td class="smsSendNum"   width="10%" rowspan="2" colspan="1">短信推送量</td>
+                    <td class="smsArriveNum"   width="10%" rowspan="2" colspan="1">短信到达量</td>
+                    <td class="smsArriveRate"   width="10%" rowspan="2" colspan="1">到达率</td>
+                </tr>
+                <tr>
+                    <td class="zyhall"  width="10%" rowspan="1" colspan="1">自有营业厅</td>
+                    <td class="hzhall" width="10%" rowspan="1" colspan="1">合作营业厅</td>
+                </tr>
+                </thead>
+                <tbody>
+                <!--模板填充这里-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="iMarket_PosiSummary_Template" style="display: none">
+    <script id="posiSummary" type="text/html">
+        {{each list as order index}}
+        <tr>
+            <td class="title"  width="10%" >{{order.name}}</td>
+            <td class="zyhall"  width="10%" >{{order.zyhall}}</td>
+            <td class="hzhall" width="10%" >{{order.hzhall}}</td>
+            <td class="confhall"  width="10%" >{{order.confhall}}</td>
+            <td class="seep" width="10%" >{{order.seep}}%</td>
+            <td class="taskNum" width="10%" >{{order.taskNum}}</td>
+            <td class="smsSendNum"   width="10%" >{{order.smsSendNum}}</td>
+            <td class="smsArriveNum"   width="10%" >{{order.smsArriveNum}}</td>
+            <td class="smsArriveRate"   width="10%" >{{order.smsArriveRate}}%</td>
+        </tr>
+        {{/each}}
+    </script>
+</div>
+
+<script src="ext/template.js"></script>
+<script src="js/icommon/dateUtil.js"></script>
+<script src="ext/echarts/echarts.js" type="text/javascript"></script>
+<script src="js/icommon/common-charts.js" type="text/javascript"></script>
+<script src="js/iscene/posiSceneSummary.js"></script>

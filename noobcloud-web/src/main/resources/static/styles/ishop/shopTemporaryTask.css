@@ -1,0 +1,730 @@
+/*内容区域背景框 start*/
+#shopTempTask div:first-child {
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+}
+
+/*内容区域背景框 end*/
+
+#shopTempTask .markBackGroundColor {
+    background-color: #F8F8F8 !important;
+}
+
+/*超链接鼠标悬浮 start*/
+#shopTempTask a:hover {
+    text-decoration: none;
+}
+
+/*超链接鼠标悬浮 end*/
+
+#shopTempTask i:hover {
+    text-decoration: none;
+}
+
+#shopTempTask i:focus {
+    text-decoration: none;
+}
+
+/*控件禁用 strat*/
+#shopTempTask [disabled="disabled"] {
+    background-color: #ebebe4;
+}
+
+/*控件禁用 end*/
+
+/*文字颜色 start*/
+#shopTempTask .greenFont {
+
+    color: green !important;
+}
+
+#shopTempTask .redFont {
+
+    color: red !important;
+}
+
+#shopTempTask .orangeFont {
+
+    color: orange !important;
+}
+
+/*文字颜色 end*/
+
+/*按钮边框颜色 start*/
+#shopTempTask .greenBorderC {
+    border-color: #39ca39 !important;
+}
+
+#shopTempTask .redBorderC {
+
+    border-color: #ff7171 !important;
+}
+
+#shopTempTask .orangeBorderC {
+
+    border-color: #ffb020 !important;
+}
+
+/*按钮边框颜色 end*/
+
+/*页面内容区域 start*/
+
+#shopTempTask .contentListArea {
+
+    margin: 0;
+
+    overflow: hidden;
+
+    padding: 0;
+}
+
+#shopTempTask .contentListArea .rows {
+    list-style: none;
+    width: 22%;
+    min-width: 326px;
+    background-color: white;
+    margin: 23px;
+    border: 0.2px solid #eaeaea;
+    border-radius: 6px;
+    box-shadow: 4px 6px 7px 2px #b3b2b2;
+    float: left;
+    display: block;
+    overflow: hidden;
+    height: 346px;
+}
+
+#shopTempTask .contentListArea .rows span {
+
+    display: block;
+
+    float: left;
+
+    font-size: 17px;
+
+    color: #636363;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+#shopTempTask .contentListArea .rows .addButton {
+
+    width: 168px;
+
+    height: 168px;
+
+    display: block;
+
+    margin: auto;
+
+    border-radius: 121px;
+
+    border: 8px solid #cccccc;
+
+    text-align: center;
+
+    line-height: 168px;
+
+    margin-top: 88px;
+}
+
+#shopTempTask .contentListArea .rows .addButton i {
+
+    font-size: 149px;
+
+    font-weight: bold;
+
+    color: #cccccc;
+
+    height: 132px;
+
+    line-height: 127px;
+
+    display: block;
+
+    overflow: hidden;
+
+    padding: 0;
+
+    margin: 0;
+
+    box-sizing: border-box;
+}
+
+#shopTempTask .contentListArea .rows .addButton i:hover {
+    color: #cccccc !important;
+}
+
+#shopTempTask .contentListArea .rows .title {
+
+    height: 54px;
+
+    border-bottom: 0.2px solid #eaeaea;
+
+    line-height: 54px;
+
+    text-align: center;
+
+    font-size: 21px;
+
+    letter-spacing: 1px;
+
+    color: black;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    cursor: default;
+
+    width: 100%;
+}
+
+#shopTempTask .contentListArea .rows .contentArea {
+
+    margin-top: 12px;
+
+    display: block;
+
+    overflow: hidden;
+}
+
+#shopTempTask .contentListArea .rows .contentArea .rows {
+
+    margin-top: 13px;
+
+    display: block;
+
+    overflow: hidden;
+}
+
+#shopTempTask .contentListArea .rows .contentArea .rows .title {
+    width: 145px;
+    box-sizing: border-box;
+    padding-left: 43px;
+}
+
+#shopTempTask .contentListArea .rows .contentArea .rows .value {
+
+    width: 9em;
+
+    cursor: default;
+}
+
+#shopTempTask .contentListArea .rows .buttonArea {
+    overflow: hidden;
+    margin-top: 11px;
+}
+
+#shopTempTask .contentListArea .rows .buttonArea .button {
+
+    display: block;
+
+    overflow: hidden;
+
+    width: 112px;
+
+    height: 34px;
+
+    line-height: 34px;
+
+    border: 1px solid;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    border-radius: 7px;
+
+    color: #636363;
+
+    margin: 24px auto;
+}
+
+#shopTempTask .contentListArea .rows .buttonArea .prev {
+    float: left;
+    margin-left: 15%;
+}
+
+#shopTempTask .contentListArea .rows .buttonArea :nth-child(2) {
+    float: left;
+    margin-left: 8%;
+}
+
+/*页面内容区域 end*/
+
+/*新增或编辑弹框 start*/
+#shopTempTask .layerAddOrUpdate {
+
+    display: none;
+
+    width: 100%;
+
+    padding-top: 9px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+#shopTempTask .layerAddOrUpdate:last-child {
+    margin-bottom: 12px;
+}
+
+#shopTempTask .layerAddOrUpdate .rows {
+
+    margin-top: 6px;
+
+    padding-left: 60px;
+
+    overflow: hidden;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .title {
+
+    overflow: hidden;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color: #000000;
+
+    float: left;
+
+    display: block;
+
+    width: 116px;
+
+    text-align: right;
+
+    height: 24px;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .title span {
+    color: red;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea {
+
+    float: left;
+
+    padding-left: 12px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .radius {
+
+    float: left;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .radius .title {
+
+    overflow: hidden;
+
+    font-size: 17px;
+
+    color: #636363;
+
+    float: left;
+
+    display: block;
+
+    text-align: right;
+
+    height: 24px;
+
+    margin-left: 8px;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .radius .title span {
+
+    color: red;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .radius .enterArea {
+
+    float: left;
+
+    margin-left: 9px;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .radius .enterArea select {
+
+    height: 29px;
+
+    width: 75px;
+
+    border: 1px solid #cccccc;
+
+    border-radius: 7px;
+
+    outline: none;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea input[type="text"],#shopTempTask .layerAddOrUpdate .rows .enterArea input[type="number"] {
+
+    overflow: hidden;
+
+    display: block;
+
+    border: 1px solid #cccccc;
+
+    height: 29px;
+
+    padding-left: 5px;
+
+    border-radius: 6px;
+
+    width: 307px;
+
+    float: left;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea .explain {
+
+    float: left;
+
+    height: 29px;
+
+    line-height: 29px;
+
+    margin-left: 4px;
+
+    color: red;
+
+    font-size: 13px;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea select {
+    overflow: hidden;
+    display: block;
+    border: 1px solid #cccccc;
+    height: 29px;
+    padding: 0 12px 0 5px;
+    border-radius: 6px;
+    float: left;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea .district {
+    margin-left: 12px;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea .location_type {
+    overflow: hidden;
+    display: block;
+    border: 1px solid #cccccc;
+    height: 29px;
+    padding-left: 5px;
+    border-radius: 6px;
+    float: left;
+    width: 307px;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea select option {
+
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea span {
+
+    display: block;
+
+    float: left;
+
+    font-size: 16px;
+
+    margin-top: 3px;
+
+    color: #636363;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea input {
+    outline: none
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea select {
+    outline: none
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea .lngTitle {
+
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea .lngValue {
+
+    width: 108px !important;
+
+    float: left;
+
+    margin-left: 7px;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea .latTitle {
+    margin-left: 16px;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea .latValue {
+
+    width: 108px !important;
+
+    float: left;
+
+    margin-left: 7px;
+}
+
+#shopTempTask .layerAddOrUpdate .rows .enterArea .mapArea {
+
+    width: 653px;
+
+    height: 314px;
+}
+
+/*新增或编辑弹框 end*/
+
+/*预览区域弹框 start*/
+#shopTempTask .layerPreview {
+
+    display: none;
+
+    width: 100%;
+
+    padding-top: 9px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+#shopTempTask .layerPreview .rows {
+
+    margin-top: 6px;
+
+    padding-left: 60px;
+
+    overflow: hidden;
+}
+
+#shopTempTask .layerPreview .rows .title {
+
+    overflow: hidden;
+
+    font-size: 14px;
+
+    color: #000000;
+
+    float: left;
+
+    display: block;
+
+    width: 114px;
+
+    text-align: right;
+
+    height: 24px;
+}
+
+#shopTempTask .layerPreview .rows .title span {
+
+    color: red;
+}
+
+#shopTempTask .layerPreview .rows .enterArea {
+
+    float: left;
+
+    padding-left: 12px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+#shopTempTask .layerPreview .rows .enterArea label {
+
+    color: #000000;
+
+    font-weight: normal;
+
+    font-size: 14px;
+
+    min-width: 142px;
+}
+
+#shopTempTask .layerPreview .rows .enterArea .explain {
+
+    float: right;
+
+    color: #fd0000;
+
+    font-weight: normal;
+
+    font-size: 14px;
+
+    height: 22px;
+
+    line-height: 25px;
+
+    margin-right: 7px;
+}
+
+#shopTempTask .layerPreview .rows .enterArea .lngTitle {
+
+    color: #000000;
+
+    font-weight: normal;
+
+    font-size: 14px;
+
+    float: left;
+}
+
+#shopTempTask .layerPreview .rows .enterArea .lngValue {
+
+    width: 91px !important;
+
+    float: left;
+
+    margin-left: 7px;
+}
+
+#shopTempTask .layerPreview .rows .enterArea .latTitle {
+    margin-left: 46px;
+    color: #000000;
+    font-weight: normal;
+    font-size: 14px;
+    float: left;
+}
+
+#shopTempTask .layerPreview .rows .enterArea .latValue {
+
+    width: 91px !important;
+
+    float: left;
+
+    margin-left: 7px;
+}
+
+#shopTempTask .layerPreview .rows .enterArea .mapArea {
+
+    width: 653px;
+
+    height: 314px;
+}
+
+#shopTempTask .layerPreview .rows .radius {
+
+    float: left;
+}
+
+#shopTempTask .layerPreview .rows .radius .title {
+    overflow: hidden;
+    font-size: 14px;
+    color: #000000;
+    float: left;
+    display: block;
+    text-align: right;
+    height: 24px;
+}
+
+#shopTempTask .layerPreview .rows .radius .title span {
+
+    color: red;
+}
+
+#shopTempTask .layerPreview .rows .radius .enterArea {
+
+    float: left;
+}
+
+#shopTempTask .layerPreview .rows .radius .enterArea label {
+
+    color: #000000;
+
+    font-weight: normal;
+
+    font-size: 14px;
+
+    min-width: 142px;
+
+    margin-left: 6px;
+}
+
+/*预览区域弹框 end*/
+
+/*提交成功弹框 start*/
+#shopTempTask .subSuccessfully {
+
+    display: block;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    padding: 0;
+
+    margin: 0;
+
+    display: none;
+}
+
+#shopTempTask .subSuccessfully .round {
+
+    width: 193px;
+
+    border: 10px solid #24b324;
+
+    margin: 92px auto 24px auto;
+
+    height: 193px;
+
+    border-radius: 118px;
+}
+
+#shopTempTask .subSuccessfully .round .successfully {
+
+    width: 100%;
+
+    height: 193px;
+
+    line-height: 180px;
+
+    text-align: center;
+
+    font-size: 107px;
+
+    color: #24b324;
+}
+
+#shopTempTask .subSuccessfully label {
+
+    display: block;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #636363;
+
+    font-weight: normal;
+}
+
+#shopTempTask .subSuccessfully label a {
+    text-decoration: underline !important;
+}
+
+/*提交成功弹框 end*/
+#laydate_clear {
+    /*display: none !important;*/
+}
+
+.layerPreview .col-md-3, .layerPreview .col-md-9, .layerPreview .col-md-12 {
+    line-height: 1.6;
+}

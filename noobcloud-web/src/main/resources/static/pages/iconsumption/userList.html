@@ -1,0 +1,181 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/scenecenter.css" rel="stylesheet">
+<link href="styles/iscene/positionBaseConfig.css" rel="stylesheet">
+<link href="ext/simplePagination.css" rel="stylesheet">
+<link href="styles/iconsumption/userList.css" rel="stylesheet">
+<div id="userList">
+    <!--搜索栏-->
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input class="form-control qryProductId" id="qryProductId" placeholder="产品id" style="display: none">
+            <input class="form-control userName" id="userPhone" maxlength="11" placeholder="手机号">
+            <select class="form-control create_type qryBaseAreas" id="qryBaseAreas"></select>
+            <button id="queryUsers" class="btn btn-success">
+                <i class="fa fa-search"></i>查询
+            </button>
+        </div>
+    </div>
+    <!--列表栏-->
+    <div class="row list-row"
+         style="padding: 0px 10px;">
+        <div class="col-md-12">
+            <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+                   width="100%">
+            </table>
+        </div>
+    </div>
+    <!--用户详情弹窗内容-->
+    <div class="layerPreview" style="display: none;">
+        <div class="row" style="padding-right: 15px;padding-left: 15px;margin: 15px 0;">
+            <div class="col-md-12" style="margin-bottom: 6px;">
+                <strong style="font-size: 16px;">用户基本信息</strong>
+            </div>
+            <!--姓名-->
+            <div class="col-md-3">
+                <span>姓名：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="userName" name="userName"></span>
+            </div>
+            <!--性别-->
+            <div class="col-md-3">
+                <span>性别：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="sex" name="sex"></span>
+            </div>
+            <!--手机号码-->
+            <div class="col-md-3">
+                <span>手机号码：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="phone" name="phone"></span>
+            </div>
+            <!--主产品名称-->
+            <div class="col-md-3">
+                <span>主产品名称：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="packageName" name="packageName"></span>
+            </div>
+            <!--主产品代码-->
+            <div class="col-md-3">
+                <span>主产品代码：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="packageCode" name="packageCode"></span>
+            </div>
+            <!--用户网别-->
+            <div class="col-md-3">
+                <span>用户终端：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="netType" name="netType"></span>
+            </div>
+            <!--是否长市漫-->
+            <div class="col-md-3">
+                <span>是否长市漫：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="isRoam" name="isRoam"></span>
+            </div>
+            <!--地市-->
+            <div class="col-md-3">
+                <span>地市：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="area" name="area"></span>
+            </div>
+            <!--区号-->
+            <div class="col-md-3">
+                <span>区号：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="areaCode" name="areaCode"></span>
+            </div>
+            <!--上月ARPU-->
+            <div class="col-md-3">
+                <span>上月出账金额：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="l_arpu" name="l_arpu"></span>
+            </div>
+            <!--上上月ARPU-->
+            <div class="col-md-3">
+                <span>上上月出账金额：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="ll_arpu" name="ll_arpu"></span>
+            </div>
+            <!--上上上月ARPU-->
+            <div class="col-md-3">
+                <span>上上上月出账金额：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="lll_arpu" name="lll_arpu"></span>
+            </div>
+            <!--近3个月的ARPU-->
+            <div class="col-md-3">
+                <span>近三个月平均消费：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="a_arpu" name="a_arpu"></span>
+            </div>
+            <!--近3个月平均流量-->
+            <div class="col-md-3">
+                <span>近三个月消耗总流量：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="flow" name="flow"></span>
+            </div>
+            <!--近3个月平均语音-->
+            <div class="col-md-3">
+                <span>近三个月消耗语音量：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="voice" name="voice"></span>
+            </div>
+            <!--归属系统-->
+            <div class="col-md-3">
+                <span>归属系统：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="sysName" name="sysName"></span>
+            </div>
+            <div class="col-md-12" style="margin-top: 16px;margin-bottom: 6px;">
+                <strong style="font-size: 16px;">低消匹配档位</strong>
+            </div>
+            <!--低消档位-->
+            <div class="col-md-3">
+                <span>低消档位：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="productName" name="productName"></span>
+            </div>
+            <!--低消产品ID-->
+            <div class="col-md-3">
+                <span>低消产品ID：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="productId" name="productId"></span>
+            </div>
+            <!--低销资费ID-->
+            <div class="col-md-3">
+                <span>低销资费ID：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="changeId" name="changeId"></span>
+            </div>
+            <!--入网时间-->
+            <div class="col-md-3">
+                <span>入网时间</span>
+            </div>
+            <div class="col-md-3">
+                <span class="time" name="time"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="ext/multiselect/dist/js/multiselect.js"></script>
+<script src="js/ishop/jquery.pagination.js"></script>
+<script src="js/iconsumption/userList.js"></script>

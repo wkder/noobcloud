@@ -1,0 +1,409 @@
+<link href="styles/ishop/myShopList.css" rel="stylesheet">
+<link href="styles/ishop/pagination.css" rel="stylesheet">
+
+<div id="myShopList">
+    <!--页面内容区域 start-->
+    <div class="row list-row">
+        <div class="col-md-12" style="background-color: transparent;">
+            <ul class="contentListArea">
+
+                <li class="rows" style="display: none;">
+                    <a href="javascript:void(0);" class="addButton"><i class="glyphicon glyphicon-plus"></i></a>
+                </li>
+            </ul>
+            <div class="pagination" style="    float: right; margin-right: 124px;"><!-- 这里显示分页 --></div>
+        </div>
+    </div>
+    <!--页面内容区域 end-->
+
+    <!--新增或编辑弹框 start-->
+    <div class="layerAddOrUpdate" data-autoVerify="true">
+        <input type="text" name="baseId" style="display: none;">
+        <div class="rows"><span class="title"><span>*</span>营业厅名称:</span>
+            <div class="enterArea"><input type="text" data-expression="isEmpty" data-error="营业厅名称不为空" name="baseName"
+                                          maxlength="100" placeholder="请输入营业厅名称,限制100个字数">
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title">任务发送配额:</span>
+            <div class="enterArea"><input type="text" name="quotaNumber" data-expression="isNumber" maxlength="5"
+                                          data-error="请输入正确的配额" value="50000" disabled="disabled"></div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>营业厅地址:</span>
+            <div class="enterArea"><input type="text" name="address" data-expression="isEmpty" data-error="营业厅地址不为空"
+                                          maxlength="200" placeholder="请输入地址,限制200个字数">
+                <label class="explain"></label>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>营业厅电话:</span>
+            <div class="enterArea">
+                <input type="text" maxlength="18" data-expression="isPhone" data-error="请输入正确的营业厅电话"
+                       name="fixedTelePhone">
+                <label class="explain">手机号或固话(xxx-xxxxxxxx)</label>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>渠道编码:</span>
+            <div class="enterArea">
+                <input type="text" data-expression="isNotChar" disabled="disabled" data-error="请输入正确的渠道编码"
+                       name="businessHallCode" maxlength="45">
+                <label class="explain">营业厅开户及业务办理的唯一渠道编码</label>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>所属区县:</span>
+            <div class="enterArea">
+                <select name="cityAreaCode" disabled="disabled">
+
+                </select>
+                <select name="districtCode" class="district" disabled="disabled">
+
+                </select>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>类型:</span>
+            <div class="enterArea">
+                <select name="locationTypeId" class="location_type" disabled="disabled">
+                </select>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>短信签名:</span>
+            <div class="enterArea"><input type="text" name="messageAutograph" data-expression="isEmpty" maxlength="100"
+                                          data-error="请输入短信签名"></div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>营业厅位置:</span>
+            <div class="enterArea">
+                <span class="lngTitle">经度</span>
+                <input type="text" class="lngValue" name="lng" data-expression="isEmpty" data-error="请在地图上选取打点"
+                       disabled="disabled">
+                <span class="latTitle">纬度</span>
+                <input type="text" name="lat" class="latValue" disabled="disabled">
+            </div>
+            <div class="radius">
+                <span class="title"><span>*</span>半径(米):</span>
+                <div class="enterArea">
+                    <select name="radius">
+                        <option value="400">400</option>
+                        <option value="1000">1000</option>
+                        <option value="1500">1500</option>
+                        <option value="2000">2000</option>
+                        <option value="5000" class="specialOption">5000</option>
+                        <option value="10000" class="specialOption">10000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"></span>
+            <div class="enterArea">
+                <div id="mapArea" class="mapArea" style="width: 653px; height: 314px;"></div>
+            </div>
+        </div>
+        <div class="rows" style="display: none;">
+            <span class="title"><span>*</span>状态:</span>
+            <div class="enterArea">
+                <select name="status">
+                    <option value="0">未注册</option>
+                    <option value="1">在线</option>
+                    <option value="2">待审核</option>
+                    <option value="3">未通过</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <!--新增或编辑弹框 end-->
+
+    <!--预览区域弹框 start-->
+    <div class="layerPreview">
+        <div class="rows"><span class="title"><span>*</span>营业厅名称:</span>
+            <div class="enterArea">
+                <label name="baseName">中国联通南京市新街口营业厅</label>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title">任务发送配额:</span>
+            <div class="enterArea">
+                <label name="quotaNumber">50000</label>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>营业厅地址:</span>
+            <div class="enterArea"><label name="address">江苏省南京市中山南路1号</label></div>
+        </div>
+        <div class="rows">
+            <span class="title">营业厅电话:</span>
+            <div class="enterArea"><label name="fixedTelePhone">02588888888</label></div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>渠道编码:</span>
+            <div class="enterArea" style="width: 494px">
+                <label name="businessHallCode">JSNJ001</label>
+                <label class="explain">营业厅开户及业务办理的唯一渠道编码</label>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>所属区县:</span>
+            <div class="enterArea">
+                <label name="cityDistrict">南京市,鼓楼区</label>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>类型:</span>
+            <div class="enterArea">
+                <label name="locationTypeName">自营厅</label>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>短信签名:</span>
+            <div class="enterArea"><label name="messageAutograph"></label></div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>营业厅位置:</span>
+            <div class="enterArea">
+                <span class="lngTitle">经度:</span>
+                <label class="lngValue" name="lng">118.791</label>
+                <span class="latTitle">纬度:</span>
+                <label class="latValue" name="lat">32.048</label>
+            </div>
+            <div class="radius">
+                <span class="title"><span>*</span>半径(米):</span>
+                <div class="enterArea">
+                    <label name="radius">500米</label>
+                </div>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"></span>
+            <div class="enterArea" style="width: 676px">
+                <div id="mapAreaShow" class="mapArea"></div>
+            </div>
+        </div>
+        <div class="rows">
+
+        </div>
+    </div>
+    <!--预览区域弹框 end-->
+
+    <!--提交成功弹框 start-->
+    <div class="subSuccessfully">
+        <div class="round">
+            <i class="fa fa-check successfully"></i>
+        </div>
+        <label>您已成功提交审核,请耐心等待结果!</label>
+        <label>您还可以到我的中心查看您的营业厅状态!</label>
+    </div>
+    <!--提交成功弹框 end-->
+
+    <!-- region 营业厅画像 -->
+    <div class="layerPortrayal" style="display: none;">
+        <div class="row portrayalInfo">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--营业厅名称-->
+                    <div class="col-md-3">
+                        <span>营业厅名称：</span>
+                    </div>
+                    <div class="col-md-9">
+                        <span class="detail_baseName"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!--详细地址-->
+                    <div class="col-md-3">
+                        <span>详细地址：</span>
+                    </div>
+                    <div class="col-md-9">
+                    <span class="detail_address"
+                          style="width: 100%;display: inline-block;word-break: break-all;"></span>
+                    </div>
+                </div>
+                <!--卡库编码-->
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                        <span>卡库编码：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_businessHallCoding"></span>
+                    </div>
+                    <!--分类-->
+                    <div class="col-md-3">
+                        <span>分类：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_locationType"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!--开厅时间-->
+                    <div class="col-md-3">
+                        <span>开厅时间：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_openDate"></span>
+                    </div>
+                    <!--装修时间-->
+                    <div class="col-md-3">
+                        <span>装修时间：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_decorateTime"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!--面积-->
+                    <div class="col-md-3">
+                        <span>面积：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_areaSize"></span>
+                    </div>
+                    <!--网速-->
+                    <div class="col-md-3">
+                        <span>网速：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_internetSpeed"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!--智能WIFI数-->
+                    <div class="col-md-3">
+                        <span>智能WIFI数：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_wifiNumber"></span>
+                    </div>
+                    <!--智能WIFI使用人数-->
+                    <div class="col-md-3">
+                        <span>智能WIFI使用人数：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_wifiUserNumber"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!--灯箱数-->
+                    <div class="col-md-3">
+                        <span>灯箱数：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_lightboxNumber"></span>
+                    </div>
+                    <!--台席数-->
+                    <div class="col-md-3">
+                        <span>台席数：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_taixiNumber"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!--台式机数-->
+                    <div class="col-md-3">
+                        <span>台式机数：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_desktopPCNumber"></span>
+                    </div>
+                    <!--云终端数-->
+                    <div class="col-md-3">
+                        <span>云终端数：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_cloudterminalEqptNumber"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!--无纸化设备数-->
+                    <div class="col-md-3">
+                        <span>无纸化设备数：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_paperlessEqptNumber"></span>
+                    </div>
+                    <!--无纸化设备月均业务量-->
+                    <div class="col-md-3">
+                        <span>无纸化设备月均业务量：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_paperlessMonthBusinessNum"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!--可办理业务小类-->
+                    <div class="col-md-3">
+                        <span>可办理业务小类：</span>
+                    </div>
+                    <div class="col-md-9">
+                        <span class="detail_businessType2"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!--个性化服务项枚举-->
+                    <div class="col-md-3">
+                        <span>个性化服务项枚举：</span>
+                    </div>
+                    <div class="col-md-9">
+                        <span class="detail_personalServiceItems"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!--厅内人数-->
+                    <div class="col-md-3">
+                        <span>厅内人数：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_hallpeopleNumber"></span>
+                    </div>
+                    <!--营业厅人员平均年龄-->
+                    <div class="col-md-3">
+                        <span>营业厅人员平均年龄：</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="detail_averageAge"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!--服务满意度-->
+                    <div class="col-md-3">
+                        <span>服务满意度：</span>
+                    </div>
+                    <div class="col-md-9">
+                        <span class="detail_serviceSatisfaction"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!--宽带业务受理量-->
+                    <div class="col-md-3">
+                        <span>宽带业务受理量：</span>
+                    </div>
+                    <div class="col-md-9">
+                        <span class="detail_kuandaiBusinessNum"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!--有无终端产品专卖店-->
+                    <div class="col-md-3">
+                        <span>有无终端产品专卖店：</span>
+                    </div>
+                    <div class="col-md-9">
+                        <span class="detail_terminalStoreStatus"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- endregion 营业厅画像 -->
+    <div id="portrayal_dialog"></div>
+</div>
+
+<script src="js/icommon/googleUtil.js"></script>
+<script src="js/icommon/gpsUtil.js"></script>
+<script src="js/ishop/jquery.pagination.js"></script>
+<script src="js/icommon/baiduMap.js"></script>
+<script src="js/ishop/myShopList.js"></script>

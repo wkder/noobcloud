@@ -1,0 +1,46 @@
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input type="text" id="startTime" class="form-control startTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+        <span style="margin: 0 4px;">至</span>
+        <input type="text" id="endTime" class="form-control endTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday: true,isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;"/>
+        <input id="taskName" class="form-control" placeholder="任务名称" maxlength="100">
+        <select id="marketType" class="form-control taskFrom">
+            <option value="all">任务来源</option>
+            <option value="sms">自建群发任务</option>
+            <option value="scenesms">自建场景任务</option>
+            <option value="jxhsms">精细化群发任务</option>
+            <option value="jxhscene">精细化场景任务</option>
+        </select>
+        <select id="businessType" class="form-control businessType">
+            <option value="-1">业务类型</option>
+            <option value="1">互联网综合业务</option>
+            <option value="2">内容营销</option>
+            <option value="3">流量经营</option>
+            <option value="4">APP场景营销</option>
+        </select>
+        <button id="queryButton" class="btn btn-success">
+            <i class="fa fa-search"></i>查询
+        </button>
+        <button id="exportBaseButton" class="btn btn-success">
+            <i class="fa fa-download"></i>导出
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               width="100%">
+        </table>
+    </div>
+</div>
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/ishop/JXHTaskStatistics.js"></script>

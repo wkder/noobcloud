@@ -1,0 +1,299 @@
+<!-- region 样式 -->
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/scenecenter.css" rel="stylesheet">
+<link href="styles/iscene/positionBaseConfig.css" rel="stylesheet">
+<link href="ext/simplePagination.css" rel="stylesheet">
+<link href="styles/inewScene/newSceneList.css" rel="stylesheet">
+<!-- endregion 样式 -->
+
+<div id="newSceneList">
+    <!-- region 搜索栏 -->
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input class="form-control qrybaseId" id="qrybaseId" placeholder="场景规则id" style="display: none">
+            <input class="form-control sceneceName" id="sceneceName" placeholder="场景规则名称">
+            <select class="form-control create_type scenceStatus" id="scenceStatus">
+                <option value="-1">全部状态</option>
+                <option value="0">未生效</option>
+                <option value="1">生效</option>
+            </select>
+            <select class="form-control create_type scenceType" id="scenceType">
+            </select>
+            <button id="QueryNewScene" class="btn btn-success">
+                <i class="fa fa-search"></i>查询
+            </button>
+            <button class="btn btn-success" id="addNewScene">
+                <i class="fa fa-plus"></i>新增
+            </button>
+        </div>
+    </div>
+    <!-- endregion 搜索栏 -->
+
+    <!-- region 列表栏 -->
+    <div class="row list-row"
+         style="padding: 0px 10px;">
+        <div class="col-md-12">
+            <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+                   width="100%">
+            </table>
+        </div>
+    </div>
+    <!-- endregion 列表栏 -->
+
+    <!-- region 弹出框 -->
+    <div class="iMarket_shopTask_Dialog">
+        <div id="createSceneRuleDialog" style="display: none"></div>
+        <div id="createScenceClientDialog" style="display: none"></div>
+        <div id="view-info"></div>
+    </div>
+    <!-- endregion 弹出框 -->
+
+    <!-- region 产品分配 模板 -->
+    <div class="iMarket_NewScene_Content" style="display: none;">
+        <!-- region 新建场景规则 -->
+        <div class="newSceneInfo">
+            <div class="flowStepContainer">
+                <div class="flowLine"></div>
+                <div class="flowStep">
+                    <div class="flowStepA" refDiv="sceneBaseInfo">
+                        <span class="stepNumber active">1</span>
+                        <span class="stepIcon active"></span>
+                        <span class="stepDesc active">场景基本信息</span>
+                    </div>
+                    <div class="flowStepB" refDiv="sceneRuleInfo">
+                        <span class="stepNumber">2</span>
+                        <span class="stepIcon"></span>
+                        <span class="stepDesc">场景捕捉规则</span>
+                    </div>
+                    <div class="flowStepC" refDiv="sceneViewInfo">
+                        <span class="stepNumber">3</span>
+                        <span class="stepIcon"></span>
+                        <span class="stepDesc">预览</span>
+                    </div>
+                </div>
+            </div>
+            <div class="infoConfigBody">
+                <!--场景基本信息-->
+                <div class="config sceneBaseInfo active">
+                    <div class="row taskNamePanel" style="margin-top: 30px">
+                        <div class="col-sm-3 text-right">
+                            <strong class="must" style="color: red">*</strong>
+                            <strong>场景规则名称：</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="id" hidden/>
+                            <input type="text" class="form-control sceneName" placeholder="请输入场景规则名称，限制50个字数"
+                                   title="不能为空或特殊字符"
+                                   maxlength="50"
+                                   style="width: 490px; border: 1px solid #ccc;"/>
+                        </div>
+                    </div>
+                    <div class="row sceneTimePanel">
+                        <div class="col-sm-3 text-right">
+                            <strong class="must" style="color: red">*</strong>
+                            <strong>触发开始时间：</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            <input class="form-control startTime" type="time" value="09:00"
+                                   style="display: inline;border: 1px solid #ccc;background: #fff;width: 175px;"
+                                   placeholder="请输入开始时间">
+                            <strong class="must" style="color: red;margin-left: 37px">*</strong>
+                            <strong>结束时间：</strong>
+                            <input class="form-control endTime" type="time" value="18:00"
+                                   style="display: inline;border: 1px solid #ccc;background: #fff;width: 175px;"
+                                   placeholder="请输入开始时间">
+                        </div>
+                    </div>
+                    <div class="row businessPanel">
+                        <div class="col-sm-3 text-right">
+                            <strong class="must" style="color: red">*</strong>
+                            <strong>是否生效：</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="select form-control sceneState"
+                                    style="display: inline; width: 176px;border-radius: 2px;">
+                                <option value="0">未生效</option>
+                                <option value="1" selected>生效</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!--场景捕捉规则-->
+                <div class="config sceneRuleInfo">
+                    <!--目标用户-->
+                    <div class="row marketUserPanel" style="margin: 20px;">
+                        <div class="col-sm-3 text-right">
+                            <span class="bold">营销场景：</span>
+                        </div>
+                        <div class="col-sm-9 sceneTypeAdd">
+                        </div>
+                    </div>
+                    <!--匹配客户端-->
+                    <div class="row appPanel" style="margin: 20px;">
+                        <div class="col-sm-3 text-right">
+                            <strong class="must" style="color: red;">*</strong>
+                            <span class="bold">匹配客户端：</span>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control appValueName" readonly placeholder="请选择捕捉App"
+                                   style="width: 360px;border: 1px solid #ccc;border-radius: 2px;"/>
+                            <button class="btn btn-success templateBtn appChooseButton"
+                                    style="float: right;margin-top: -35px;margin-right: 50px;border-radius:4px">选择
+                            </button>
+                            <input class="appValueIds" type="hidden"/>
+                            <input class="appModel" type="hidden">
+                        </div>
+                    </div>
+                    <!--流量突发-->
+                    <div class="row abrupFlowPanel" style="margin: 20px;display: none;">
+                        <div class="col-sm-3 text-right">
+                            <strong class="must" style="color: red;">*</strong>
+                            <span class="bold">单位时间：</span>
+                        </div>
+                        <div class="col-sm-3">
+                            <select class="select form-control unitTime"
+                                    style="display: inline; width: 80px;border-radius: 2px;">
+                                <option value="5" selected>5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="25">25</option>
+                                <option value="30">30</option>
+                            </select>
+                            <span style="margin-left: 6px">分钟</span>
+                        </div>
+                        <div class="col-sm-3 text-right">
+                            <strong class="must" style="color: red;">*</strong>
+                            <span class="bold">突发流量：</span>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="number" class="form-control abruptFlow" value="1"
+                                   style="width: 80px;border: 1px solid #ccc;border-radius: 2px;display: inline-block;"/>
+                            <span style="margin-left: 6px">MB</span>
+                        </div>
+                    </div>
+                </div>
+                <!--预览-->
+                <div class="config sceneViewInfo container-fluid">
+                    <div class="row" style="margin-top: 30px">
+                        <!--场景规则名称-->
+                        <div class="col-sm-3 text-right">
+                            <strong>场景规则名称：</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="viewSceneRuleName"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!--触发开始时间-->
+                        <div class="col-sm-3 text-right">
+                            <strong>触发开始时间：</strong>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="viewStartTime"></label>
+                        </div>
+                        <!--结束时间-->
+                        <div class="col-sm-3 text-right">
+                            <strong>结束时间：</strong>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="viewEndTime"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!--是否生效-->
+                        <div class="col-sm-3 text-right">
+                            <strong>是否生效：</strong>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="viewSceneState"></label>
+                        </div>
+                    </div>
+                    <!--营销场景-->
+                    <div class="row">
+                        <div class="col-sm-3 text-right">
+                            <strong>营销场景：</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="viewSceneMarketType"></label>
+                        </div>
+                    </div>
+                    <!--匹配客户端-->
+                    <div class="row market_no_L001" style="display: none;">
+                        <div class="col-sm-3 text-right">
+                            <strong>匹配客户端：</strong>
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="viewSceneMarket"></label>
+                        </div>
+                    </div>
+                    <!--突发流量-->
+                    <div class="row market_L001" style="display: none;">
+                        <div class="col-sm-3 text-right">
+                            <strong>单位时间：</strong>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="viewUnitTime"></label>
+                        </div>
+                        <div class="col-sm-3 text-right">
+                            <strong>突发流量：</strong>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="viewFlow"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <span class="pre">返回</span>
+                <span class="next active">下一步</span>
+                <span class="confirm">确定</span>
+                <span class="edit">返回修改</span>
+                <span class="closeBtn">关闭</span>
+            </div>
+            <div class="data" style="display: none"></div>
+        </div>
+        <!-- endregion 新建场景规则 -->
+    </div>
+    <!-- endregion 产品分配 模板 -->
+
+    <!-- region App客户端 模板 -->
+    <div class="createScenceClientSegment" style="display: none;padding: 15px;">
+        <div class="conditionSearch1" status="ready">
+            <input type="text" class="form-control name" id="d-sceneClientName" placeholder="客户端名称">
+            <select class="form-control create_type" id="d-sceneClientType">
+                <option value='-1'>全部</option>
+            </select>
+            <select class="form-control create_type" id="d-sceneClientType-2">
+                <option value='-1'>全部</option>
+            </select>
+            <button class="searchButton extensionalBtn"><i class="fa fa-search"></i>搜索</button>
+        </div>
+        <div class="chooseInfo">
+            <title class="emptyData">请选择客户端</title>
+        </div>
+        <div class="clientinfo">
+            <table class="iTable" cellspacing="0" border="0">
+                <tbody>
+                <!--模板填充这里-->
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="9" style="border-radius: 0 0 8px 8px;">
+                        <div class="pagination"></div>
+                        <input type="hidden" name="refreshAllMarketJob">
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <!-- endregion App客户端 模板 -->
+</div>
+
+<!-- region 脚本 -->
+<script src="ext/multiselect/dist/js/multiselect.js"></script>
+<script src="js/ishop/jquery.pagination.js"></script>
+<script src="ext/jquery.simplePagination.js"></script>
+<script src="js/inewScene/newSceneList.js"></script>
+<!-- endregion 脚本 -->

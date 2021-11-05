@@ -1,0 +1,101 @@
+<link href="ext/zyupload/skins/zyupload-1.0.0.css" rel="stylesheet">
+<link href="styles/iscene/imghover/imagehover.css" rel="stylesheet"/>
+<link href="styles/iscene/scenemanage.css" rel="stylesheet">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写场景名称">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+        <button id="btnRefresh">
+            <i class="fa fa fa-refresh"></i>刷新
+        </button>
+    </div>
+</div>
+
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered" cellspacing="0"></table>
+    </div>
+</div>
+
+<!--弹出框-->
+<div class="cmTableContent" id="cmTableContent" style="display: none" data-autoVerify="true">
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>场景名称：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="client" class="form-control" placeholder="场景名称" maxlength="20" name="client" data-expression="isEmpty" data-error="场景名称不为空">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>模型：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <select id="selTemplates" class="form-control">
+                </select>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>背景图片链接：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="bkUrl" class="form-control" placeholder="背景图片链接" name="url" maxlength="200" data-expression="isUrl" data-error="背景图片链接格式不正确" style="background-color: white;">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title"><strong>展示监控地址：</strong></td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="showTrackUrl" class="form-control" placeholder="展示监控地址"  maxlength="200" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title"><strong>点击监控地址：</strong></td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="clickTrackUrl" class="form-control" placeholder="点击监控地址"  maxlength="200" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>选择背景图片：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <button id="editbkImg" class="btn btn-primary">选择背景图片</button>
+                <div class="help-block alert alert-info" role="alert">多图模型选择图片时：第一张图片为：球的图片 第二张图片为：条的图片</div>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title"><strong>预览：</strong></td>
+            <td colspan="3" class="td-content">
+                <img id="pvwImg" src="" style="border: none; height: 1px;">
+                <img id="pvwImgSecond" src="" style="border: none; height: 1px;">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--弹出框 图片选择-->
+<div id="editbk" class="row hidden"></div>
+<!--记录背景图片的地址-->
+<input type="hidden" id="hideImgUrl"/>
+<!--记录背景图片的Title-->
+<input type="hidden" id="hideImgTitle"/>
+
+<script src="ext/zyupload/zyupload.basic-1.0.0.js"></script>
+<script src="ext/cmtable/js/cmtable.js"></script>
+<script src="js/iscene/scenemanage.js"></script>

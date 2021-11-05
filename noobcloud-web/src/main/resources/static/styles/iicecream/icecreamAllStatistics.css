@@ -1,0 +1,65 @@
+.list-row {
+    background: none;
+    border: none;
+}
+
+.list-row .col-md-6 {
+    width: 49.5%;
+    margin-top: 20px;
+    margin-right: 1%;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: #fff;
+    border: 1px solid #dbd9e1;
+}
+
+.list-row .col-md-6:last-child {
+    margin-right: 0;
+}
+
+.list-row .col-md-12 {
+    margin-top: 1%;
+    background-color: #fff;
+    border: 1px solid #dbd9e1;
+}
+
+.laydate-icon {
+    background: none !important;
+}
+
+.pie-empty-data, .funnel-empty-data {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+}
+
+.query-row .col-md-12 > div {
+    width: 90px;
+    display: inline-block;
+}
+
+.query-row .col-md-12 div:first-child:after {
+    position: absolute;
+    top: 8px;
+    left: 70px;
+    content: "年";
+    clear: both;
+}
+
+.queryYear, .queryMonth {
+    letter-spacing: 1.3px;
+    width: 90px !important;
+    background-color: #fff;
+}
+
+.searchBtn {
+    margin-left: 10px;
+}
+
+.queryPhone {
+    width: 150px!important;
+    background-color: #fff;
+}
+.inputPhone {
+    width: 140px!important;
+}

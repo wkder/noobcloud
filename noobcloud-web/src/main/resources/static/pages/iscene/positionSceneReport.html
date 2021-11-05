@@ -1,0 +1,49 @@
+<link href="styles/iscene/scenecenter.css" rel="stylesheet">
+<body>
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input class="form-control qrtaskName" id="qrtaskName" placeholder="任务名称" style="width: 110px;"/>
+        <input class="form-control qrbaseName" id="qrbaseName" placeholder="营业厅名称" style="width: 110px;display: none;"/>
+        <input class="form-control qrbaseCode" id="qrbaseCode" placeholder="营业厅编码" style="width: 110px;"/>
+        <select class="form-control create_type qryLocationType" id="qryLocationType" style="width: 120px;">
+            <option value="">营业厅类型</option>
+            <option value="1">自营厅</option>
+            <option value="3">临时摊点</option>
+            <option value="7">黄埔厅</option>
+        </select>
+        <select class="form-control create_type qryBaseAreas" id="qryBaseAreas" style="width: 110px;">
+        </select>
+        <input type="text" id="dateTime" class="form-control startTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday: true})" readonly
+               style="width: 110px;border: 1px solid #ccc;background: #fff;"/>
+        <button id="positonBaseButton" class="btn btn-success">
+            <i class="fa fa-search"></i>查询
+        </button>
+        <button id="exportPositionBaseButton" class="btn btn-success">
+            <i class="fa fa-download"></i>导出
+        </button>
+        <button id="btnDescription" class="btn btn-success">
+            <i class="fa fa-question-circle-o"></i>说明
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               width="100%">
+        </table>
+    </div>
+</div>
+
+<div id="dialogDescription" style="display: none">
+    <div class="tips">
+        <span style="display:inline-block;padding: 15px 5px 0 15px;font-size: initial;">数据于每日上午11点后刷新，全日数据请于当晚8点后刷新</span>
+    </div>
+</div>
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/iscene/positionSceneReport.js"></script>

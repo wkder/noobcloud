@@ -1,0 +1,38 @@
+/** 弹窗 */
+.taskInfo {
+    padding: 30px 15px;
+}
+
+.taskInfo .right {
+    text-align: right;
+}
+
+.taskInfo div.col-md-3,
+.taskInfo div.col-md-7 {
+    margin: 8px 0;
+}
+
+.query-row .col-md-12 > div {
+    width: 90px;
+    display: inline-block;
+}
+
+.query-row .col-md-12 div:first-child:after {
+    position: absolute;
+    top: 8px;
+    left: 70px;
+    content: "年";
+    clear: both;
+}
+
+.queryYear, .queryMonth {
+    letter-spacing: 1.3px;
+    width: 90px !important;
+    background-color: #fff;
+}
+
+.searchBtn {
+    margin-left: 10px;
+}
+
+

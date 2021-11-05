@@ -1,0 +1,117 @@
+<link href="styles/istatistics/TrafficOrder.css?version=2.0" rel="stylesheet">
+<link href="ext/simplePagination.css" rel="stylesheet">
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <span>起始日期:</span>
+        <input type="text" id="startTime" class="form-control startTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+        <span style="margin: 0 4px;">截止日期:</span>
+        <input type="text" id="endTime" class="form-control endTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday: true,isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;"/>
+        <button id="queryDailyReport" class="btn btn-success" style="width: 110px"><i class="fa fa-search"></i>查询日报</button>
+        <button id="exportBaseButton" class="btn btn-success" style="width: 110px">
+            <i class="fa fa-download"></i>一键导出
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12" style="background-color: #fff;text-align: center">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               style="width: 100%;margin: 0px;border-radius: 0px">
+            <thead>
+            <tr><td colspan="22" class="tableName">全省流量包订购量统计报表</td></tr>
+            <tr>
+                <td rowspan="3" class="vertical">日期</td>
+                <td colspan="10">CBSS流量包</td>
+                <td colspan="10">BSS流量包</td>
+                <td rowspan="3" class="vertical">合计</td>
+            </tr>
+            <tr>
+                <td colspan="2">日包</td>
+                <td colspan="3">月包</td>
+                <td rowspan="2" class="vertical">加油包</td>
+                <td colspan="2">半年包</td>
+                <td rowspan="2" class="vertical">定向包</td>
+                <td rowspan="2" class="vertical">国际包</td>
+                <td colspan="2">日包</td>
+                <td colspan="3">月包</td>
+                <td rowspan="2" class="vertical">叠加包</td>
+                <td colspan="2">半年包</td>
+                <td rowspan="2" class="vertical">定向包</td>
+                <td rowspan="2" class="vertical">国际包</td>
+            </tr>
+            <tr>
+                <td>5元日包</td>
+                <td>10元日包</td>
+                <td>国内包</td>
+                <td>省内包</td>
+                <td>闲时包</td>
+                <td>国内包</td>
+                <td>省内包</td>
+                <td>5元日包</td>
+                <td>10元日包</td>
+                <td>国内包</td>
+                <td>省内包</td>
+                <td>闲时包</td>
+                <td>国内包</td>
+                <td>省内包</td>
+            </tr>
+            </thead>
+            <tbody>
+            <!--模板填充在这里-->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="22" style="border-radius: 0 0 8px 8px;">
+                        <div class="pagination"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<!--template模板-->
+<div class="iMarket_ProvincialTrafficOrder_Template" style="display: none">
+    <script id="provincialTrafficOrder" type="text/html">
+        {{each list as obj index}}
+        <tr>
+            <td class="cityName" width="7%">{{obj.time}}</td>
+            <td width="4%">{{obj.cbss_5yuan}}</td>
+            <td width="4%">{{obj.cbss_10yuan}}</td>
+            <td width="4%">{{obj.cbss_domestic_1}}</td>
+            <td width="4%">{{obj.cbss_province_1}}</td>
+            <td width="4%">{{obj.cbss_xianshi}}</td>
+            <td width="4%">{{obj.cbss_jiayou}}</td>
+            <td width="4%">{{obj.cbss_domestic_2}}</td>
+            <td width="4%">{{obj.cbss_province_2}}</td>
+            <td width="4%">{{obj.cbss_dingxiang}}</td>
+            <td width="4%">{{obj.cbss_international}}</td>
+            <td width="4%">{{obj.bss_5yuan}}</td>
+            <td width="4%">{{obj.bss_10yuan}}</td>
+            <td width="4%">{{obj.bss_domestic_1}}</td>
+            <td width="4%">{{obj.bss_province_1}}</td>
+            <td width="4%">{{obj.bss_xianshi}}</td>
+            <td width="4%">{{obj.bss_diejia}}</td>
+            <td width="4%">{{obj.bss_domestic_2}}</td>
+            <td width="4%">{{obj.bss_province_2}}</td>
+            <td width="4%">{{obj.bss_dingxiang}}</td>
+            <td width="4%">{{obj.bss_international}}</td>
+            <td width="5%">{{obj.total}}</td>
+        </tr>
+        {{/each}}
+    </script>
+</div>
+
+
+
+<script src="ext/template.js"></script>
+<script src="js/icommon/dateUtil.js"></script>
+<script src="ext/simplePagination/js/jquery.simplePagination.js"></script>
+<script src="js/istatistics/provincialTrafficOrder.js"></script>
+

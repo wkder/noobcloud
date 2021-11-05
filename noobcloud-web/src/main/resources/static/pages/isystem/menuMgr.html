@@ -1,0 +1,111 @@
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写栏目名称">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+        <button id="btnBack">
+            <i class="fa fa-chevron-left"></i>返回
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-bordered">
+
+        </table>
+    </div>
+</div>
+
+<!--弹出框-->
+<div id="divMenu" style="display:none;" data-autoVerify="true">
+    <div class="cmTableContent">
+        <table class="table table-hover table-bordered cmTable">
+            <tbody>
+            <!--栏目级别-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>父级栏目级别：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select class="form-control" name="level"
+                            data-expression="isChoose" data-error="请选择栏目级别">
+                        <option value="0">父级</option>
+                        <option value="1">一级栏目</option>
+                        <option value="2">二级栏目</option>
+                        <option value="3">三级栏目</option>
+                        <option value="4">四级栏目</option>
+                    </select>
+                </td>
+            </tr>
+            <!--父级栏目-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>父级栏目：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select class="form-control" name="parentId" data-expression="isChoose"
+                            data-error="请选择父级栏目">
+                    </select>
+                </td>
+            </tr>
+            <!--栏目名称-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>栏目名称：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" class="form-control" name="title" placeholder="栏目名称"
+                           data-expression="isEmpty" data-error="栏目名称不能为空">
+                </td>
+            </tr>
+            <!--栏目图标-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>栏目图标：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" class="form-control" name="icon" placeholder="栏目图标">
+                </td>
+            </tr>
+            <!--链接-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>链接：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" class="form-control" name="url" placeholder="链接">
+                </td>
+            </tr>
+            <!--扩展属性-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>扩展属性ID：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" class="form-control" name="idName" placeholder="扩展属性ID">
+                </td>
+            </tr>
+            <!--扩展属性-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>扩展属性类名：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" class="form-control" name="className" placeholder="扩展属性类名">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="hidden" name="id">
+        <input type="hidden" name="sortNo">
+    </div>
+</div>
+
+<script src="js/isystem/menuMgr.js"></script>

@@ -1,0 +1,129 @@
+<link href="styles/ishop/shopDaily.css" rel="stylesheet">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="loginUser" type="hidden">
+        <input id="txtQueryDate" type="text" class="form-control"
+               onclick="laydate({istime: false,isclear:false, format: 'YYYY-MM-DD'})" readonly/>
+        <select id="selectQueryBase" class="form-control" style="display: none;"></select>
+        <button id="btnQuery" class="btn btn-success">
+            <i class="fa fa-search"></i>查询
+        </button>
+        <button id="btnExport" class="btn btn-success">
+            <i class="fa fa-download"></i>导出
+        </button>
+        <button id="btnDescription" class="btn btn-success">
+            <i class="fa fa-question-circle-o"></i>指标
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable dataTable table-bordered table-hover table-condensed table-bordered"
+               cellspacing="0" border="1" style="margin-top: 0 !important;width: 100%;text-align: center">
+            <thead>
+            <tr>
+                <td style="width: 7%;border-top: 0;font-weight: bold;font-size: large;" rowspan="2">地市</td>
+                <td style="border-top: 0;border-bottom: 0;font-weight: bold;padding-top: 10px;padding-bottom: 10px;font-size: large;"
+                    colspan="2">门店情况
+                </td>
+                <td style="border-top: 0;border-bottom: 0;font-weight: bold;font-size: large;" colspan="6">任务执行情况</td>
+                <td style="border-top: 0;border-bottom: 0;font-weight: bold;font-size: large;" colspan="5">目标用户群</td>
+                <td style="border-top: 0;width: 12%;border-bottom: 0;font-weight: bold;font-size: large;" colspan="2">引流人群</td>
+            </tr>
+            <tr>
+                <td style="width:6%;">渠道总数</td>
+                <td style="width:9%;">上线营业厅总数</td>
+                <td>省级任务总数</td>
+                <td>地市自建任务总数</td>
+                <td style="width: 7%;">营业厅任务总数</td>
+                <td style="width: 6%;">执行的任务总数</td>
+                <td style="color: red;">炒店任务人工执行率</td>
+                <td>业务类型数量</td>
+
+                <td>地市实际目标人群</td>
+                <td>指定导入人群</td>
+                <td style="width:6%;">地市目标常驻人群</td>
+                <td>本厅常驻覆盖人群</td>
+                <td style="color: red;">常驻覆盖率</td>
+                <td style="width:4%;">引流人数</td>
+                <td style="color: red;">短信到达率</td>
+            </tr>
+            </thead>
+            <tbody>
+            <!--模板填充这里-->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--template模板-->
+<div class="iMarket_TrafficOrder_Template" style="display: none">
+    <script id="shopProvinceDaily" type="text/html">
+        {{each list as obj index}}
+        <tr style="text-align: center;">
+            <td class="cityName" width="7%" >
+                {{if  obj.cityname == '全省'}}
+                    <p style="color: red;font-weight: bold;margin: 0">{{obj.cityname}}</p>
+                {{else}}
+                    {{obj.cityname}}
+                {{/if}}
+            </td>
+            <td width="6%" >{{obj.totalbasenum}}</td>
+            <td width="9%" >{{obj.effectbasenum}}</td>
+            <td>{{obj.provincetasknum}}</td>
+            <td>{{obj.citytasknum}}</td>
+            <td width="7%">{{obj.basetasknum}}</td>
+            <td width="6%" >{{obj.executetasknum}}</td>
+            <td>{{obj.executetaskrate}}</td>
+            <td>{{obj.businesstypenum}}</td>
+            <td>{{obj.citytargetuser}}</td>
+            <td>{{obj.appointuser}}</td>
+            <td width="6%">{{obj.cityresidentuser}}</td>
+            <td>{{obj.basecoveruser}}</td>
+            <td>{{obj.residentrate}}</td>
+            <td width="4%">{{obj.senduser}}</td>
+            <td>{{obj.smsrate}}</td>
+        </tr>
+        {{/each}}
+    </script>
+</div>
+
+<!--弹出框-->
+<div id="dialogDescription" style="display:none;">
+    <div class="row" style="margin: 0 auto;">
+        <div class="col-md-12 desc-title">一、任务执行情况</div>
+        <div class="col-md-12 desc-content"><span>省级任务总数：</span>本地市具备的省级任务总数</div>
+        <div class="col-md-12 desc-content"><span>地市任务总数：</span>本地市具备的地市任务总数</div>
+        <div class="col-md-12 desc-content"><span>营业厅任务总数：</span>本地市配置的营业厅任务总数</div>
+        <div class="col-md-12 desc-content"><span>执行的任务总数：</span>本地市已经执行的任务总数</div>
+        <div class="col-md-12 desc-content"><span>任务执行率：</span>执行的任务总数/(省级任务数+地市任务数+营业厅任务数）</div>
+        <div class="col-md-12 desc-content"><span>业务类型数量：</span>本地市执行的任务对应的业务类型数量</div>
+
+        <div class="col-md-12 desc-title">二、目标用户群:</div>
+        <div class="col-md-12 desc-content"><span>地市实际目标人群：</span>本地市所有生效营业厅对应的任务的目标总用户数（包含常驻用户群+个性化任务用户群+任务指定导入用户+老客  用户去重）
+        </div>
+        <div class="col-md-12 desc-content"><span>指定导入人群：</span>本地市自建有效的营业厅任务导入的用户合集，包含在地市目标人群中</div>
+        <div class="col-md-12 desc-content"><span>地市目标中常驻人群：</span> 地市目标人群中的基于本营业厅的1km以内的常驻用户数</div>
+        <div class="col-md-12 desc-content"><span>本厅实际覆盖常驻人群：</span>本地市范围内的营业厅1km以内的常驻用户数（数据更新：每周/1次）</div>
+        <div class="col-md-12 desc-content"><span>常驻覆盖率：</span>地市目标中常驻人群/本厅实际覆盖常驻人群*100%</div>
+
+        <div class="col-md-12 desc-title">三、引流人数</div>
+        <div class="col-md-12 desc-content"><span>引流人数：</span>本地市短信发送总人数</div>
+        <div class="col-md-12 desc-content"><span>短信到达率：</span>本地市引流流成功到达用户数/本厅引流用户数*100%</div>
+    </div>
+</div>
+
+<!--<script src="ext/js-xlsx-master/shim.js"></script>-->
+<!--<script src="http://oss.sheetjs.com/js-xlsx/xlsx.core.min.js"></script>-->
+<!--<script src="ext/js-xlsx-master/Export2Excel.js"></script>-->
+<!--&lt;!&ndash; FileSaver.js is the library of choice for Chrome &ndash;&gt;-->
+<!--<script src="ext/js-xlsx-master/Blob.js"></script>-->
+<!--<script src="ext/js-xlsx-master/FileSaver.js"></script>-->
+
+<script src="ext/template.js"></script>
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/ishop/shopProvinceDaily.js"></script>

@@ -1,0 +1,907 @@
+<link rel="stylesheet" href="styles/ishop/shopTask.css">
+<link rel="stylesheet" href="styles/iflow/oldCustomer.css">
+<link rel="stylesheet" href="styles/ikeeper/keeperTask.css">
+<link rel="stylesheet" href="styles/ikeeper/smsSignature.css">
+<link rel="stylesheet" href="styles/iptv/iptvTask.css">
+<link rel="stylesheet" href="styles/iptv/iptvTemplate.css"/>
+<link rel="stylesheet" href="styles/ischeduling/eSmsTask.css">
+<style type="text/css">
+    .btn-info {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    span.detail_marketName, span.detail_marketContent {
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+</style>
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <select class="form-control select taskType" id="taskTypeFilter"
+                style="width: 180px;display: inline-block;">
+            <option value="">任务类型</option>
+            <option value="1">炒店任务</option>
+            <option value="2">临时摊点（校园）</option>
+            <option value="3">临时摊点（集客）</option>
+            <option value="4">临时摊点（公众）</option>
+        </select>
+        <input class="form-control" id="oldCustomerTaskName" placeholder="任务名称"
+               style="width: 120px;display: none;">
+        <input class="form-control shopTaskName" id="shopTaskName" placeholder="任务名称"
+               style="width: 120px;display: none;">
+        <input class="form-control shopTaskBaseCode" id="shopTaskBaseCode" placeholder="营业厅编码"
+               style="width: 120px;display: none;">
+        <input class="form-control shopTaskBaseName" id="shopTaskBaseName" placeholder="营业厅名称"
+               style="width: 120px;display: none;">
+        <input type="text" id="dateTime" class="form-control"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday: true})" title="配置时间"
+               readonly style="width: 120px;border: 1px solid #ccc;background: #fff;display: none;" placeholder="配置时间"/>
+        <button id="auditShopTaskButton" class="btn btn-success" style="display: none;">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="exportAuditShopButton" class="btn btn-success" style="display: none;">
+            <i class="fa fa-download"></i>导出
+        </button>
+    </div>
+</div>
+
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+
+<!--弹出框-->
+<div id="popupAddOrEdit" style="display:none;"></div>
+
+<!--弹出框-->
+<div class="iMarket_audit_Dialog" style="display: none;">
+    <div id="viewDialog" style="height: 410px;overflow-y: auto"></div>
+    <div id="auditDialog"></div>
+</div>
+
+<!-- region 模板-->
+<div class="iMarket_audit_Content" style="display: none;"></div>
+<!-- endregion 模板 -->
+
+<div class="iMarket_preview" style="display: none;">
+    <div class="row taskMgrDetailInfo">
+        <!--隐藏域 存放ID-->
+        <input class="detail_id" type="hidden">
+        <!--任务基本信息-->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>任务基本信息</strong>
+            </div>
+            <!--任务名称-->
+            <div class="col-md-3">
+                <span>任务名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskName"></span>
+            </div>
+            <!--业务类别-->
+            <div class="col-md-3">
+                <span>业务类别：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_businessTypeSelect"></span>
+            </div>
+            <!--调度类型-->
+            <div class="col-md-3">
+                <span>调度类型：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_timerSelect"></span>
+            </div>
+            <!--开始时间-->
+            <div class="col-md-3">
+                <span>开始时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_startTime"></span>
+            </div>
+            <!--结束时间-->
+            <div class="col-md-3">
+                <span>结束时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_endTime"></span>
+            </div>
+
+            <!--监控开始时间-->
+            <div class="col-md-3 monitoring_row" style="display: none;">
+                <span>监控开始时间：</span>
+            </div>
+            <div class="col-md-3 monitoring_row" style="display: none;">
+                <span class="detail_monitoringStartTime"></span>
+            </div>
+            <!--监控结束时间-->
+            <div class="col-md-3 monitoring_row" style="display: none;">
+                <span>监控结束时间：</span>
+            </div>
+            <div class="col-md-3 monitoring_row" style="display: none;">
+                <span class="detail_monitoringEndTime"></span>
+            </div>
+
+            <!--剔除策略-->
+            <!--<div class="col-md-3">-->
+            <!--<span>剔除策略：</span>-->
+            <!--</div>-->
+            <!--<div class="col-md-3">-->
+            <!--<span class="detail_repeatStrategy"></span>-->
+            <!--</div>-->
+            <!--分组营销-->
+            <div class="col-md-3">
+                <span>分组营销：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_boidSale"></span>
+            </div>
+            <!--时间间隔-->
+            <div class="col-md-3">
+                <span class="detail_intervalInSeconds_title">时间间隔：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_intervalInSeconds"></span>
+            </div>
+            <!--营销地区-->
+            <div class="col-md-3">
+                <span>营销地区：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_areaNames"></span>
+            </div>
+
+            <!--过滤黑名单-->
+            <div class="col-md-3">
+                <span>过滤黑名单：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_filterBlack"></span>
+            </div>
+
+            <!--任务描述-->
+            <div class="col-md-3">
+                <span>任务描述：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_remarks"></span>
+            </div>
+        </div>
+
+        <!--目标用户选择-->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>目标用户选择</strong>
+            </div>
+            <!--营销客户-->
+            <div class="col-md-3">
+                <span>营销客户：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_segmentNames"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!--营销客户人数-->
+            <div class="col-md-3">
+                <span>营销客户人数：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_segmentCounts"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <div class="col-md-3" style="display: none;">
+                <span>限制人数：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_number"></span>
+            </div>
+        </div>
+
+        <!--客户接触渠道-->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>客户接触渠道</strong>
+            </div>
+            <!--营销方式-->
+            <div class="col-md-3">
+                <span>营销方式：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_marketType"></span>
+            </div>
+            <!--接入号-->
+            <div class="col-md-3">
+                <span>接入号：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_AccessNumber"></span>
+            </div>
+            <!--场景规则-->
+            <div class="col-md-3 marketTypeValue">
+                <span>场景规则：</span>
+            </div>
+            <div class="col-md-9 marketTypeValue">
+                <span class="detail_marketTypeValue"></span>
+            </div>
+            <!--短信内容-->
+            <div class="col-md-3 content">
+                <span>短信内容：</span>
+            </div>
+            <div class="col-md-9 content">
+                <span class="detail_Content"></span>
+            </div>
+            <!--测试号-->
+            <div class="col-md-3 testPhones">
+                <span>测试号：</span>
+            </div>
+            <div class="col-md-9 testPhones">
+                <span class="detail_TestPhones"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- region 炒店临时任务-预览区域弹框 -->
+<div class="layerTempTaskPreview" style="display: none;">
+    <div class="row" style="padding-right: 15px;padding-left: 15px;margin: 15px 0;">
+        <div class="col-md-12" style="margin-bottom: 6px;">
+            <strong>任务基本信息</strong>
+        </div>
+        <!--任务名称-->
+        <div class="col-md-3">
+            <span>任务名称：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="baseName" name="baseName"></span>
+        </div>
+        <!--任务发送配额-->
+        <div class="col-md-3">
+            <span>任务发送配额：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="quotaNumber" name="quotaNumber"></span>
+        </div>
+        <!--营销间隔-->
+        <div class="col-md-3">
+            <span>营销间隔：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="sendInterval" name="sendInterval"></span>
+        </div>
+        <!--任务开始时间-->
+        <div class="col-md-3">
+            <span>任务开始时间：</span>
+        </div>
+        <div class="col-md-3">
+            <span class="beginDate" name="beginDate"></span>
+        </div>
+        <!--任务结束时间-->
+        <div class="col-md-3">
+            <span>任务结束时间：</span>
+        </div>
+        <div class="col-md-3">
+            <span class="endDate" name="endDate"></span>
+        </div>
+        <!--类型-->
+        <div class="col-md-3">
+            <span>类型：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="businessHallCode" name="businessHallCode"></span>
+        </div>
+        <div class="col-md-12" style="margin-top: 16px;margin-bottom: 6px;">
+            <strong>任务地点信息</strong>
+        </div>
+        <!--监控范围-->
+        <div class="col-md-3">
+            <span>监控范围：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="marketArea" name="marketArea"></span>
+        </div>
+        <!--所属区县-->
+        <div class="col-md-3">
+            <span>所属区县：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="cityDistrict" name="cityDistrict"></span>
+        </div>
+        <!--营业厅地址-->
+        <div class="col-md-3">
+            <span>营业厅地址：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="address" name="address"></span>
+        </div>
+        <!--经度-->
+        <div class="col-md-3">
+            <span>经度：</span>
+        </div>
+        <div class="col-md-3">
+            <span class="lng" name="lng"></span>
+        </div>
+        <!--经度-->
+        <div class="col-md-3">
+            <span>纬度：</span>
+        </div>
+        <div class="col-md-3">
+            <span class="lat" name="lat"></span>
+        </div>
+        <!--半径-->
+        <div class="col-md-3">
+            <span>半径（米）：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="radius" name="radius"></span>
+        </div>
+        <div class="col-md-12" style="margin-top: 16px;margin-bottom: 6px;">
+            <strong>客户接触渠道信息</strong>
+        </div>
+        <!--监控类型-->
+        <div class="col-md-3">
+            <span>监控类型：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="marketUser" name="marketUser"></span>
+        </div>
+        <!--接入号-->
+        <div class="col-md-3">
+            <span>接入号：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="phone" name="phone"></span>
+        </div>
+        <!--营销内容-->
+        <div class="col-md-3">
+            <span>营销内容：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="smsContent" name="smsContent"></span>
+        </div>
+    </div>
+</div>
+<!-- endregion 预览区域弹框 -->
+
+<!-- region 老用户预览 -->
+<div class="iMarket_OldCustomer_Preview" style="display: none;">
+    <div class="row oldCustomerDetailInfo">
+        <!-- region 隐藏域 存放ID-->
+        <input class="detail_id" type="hidden">
+        <!-- endregion -->
+
+        <!-- region 任务基本信息 -->
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <strong>任务基本信息</strong>
+            </div>
+            <!-- region 任务名称-->
+            <div class="col-md-3">
+                <span>任务名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskName"></span>
+            </div>
+            <!-- endregion -->
+
+            <!-- region 任务来源 -->
+            <div class="col-md-3">
+                <span>任务来源：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskType"></span>
+            </div>
+            <!-- endregion -->
+
+            <!-- region 开始时间-->
+            <div class="col-md-3">
+                <span>开始时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_startTime"></span>
+            </div>
+            <!-- endregion -->
+
+            <!-- region 结束时间-->
+            <div class="col-md-3">
+                <span>结束时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_endTime"></span>
+            </div>
+            <!-- endregion -->
+
+            <!-- region 营销名称-->
+            <div class="col-md-3">
+                <span>营销名称：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_marketName"></span>
+            </div>
+            <!-- endregion -->
+
+            <!-- region 营销用语-->
+            <div class="col-md-3">
+                <span>营销用语：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_marketContent"></span>
+            </div>
+            <!-- endregion -->
+            <div class="col-md-3">
+                <span>任务描述：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_marketDesc"></span>
+            </div>
+        </div>
+        <!-- endregion -->
+
+        <!-- region 任务用户信息 -->
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <strong>任务用户信息</strong>
+            </div>
+
+            <!-- region 目标用户-->
+            <div class="col-md-3">
+                <span>目标用户：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_targetUser"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion -->
+
+            <!-- region 指定用户-->
+            <div class="col-md-3">
+                <span>指定用户：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_appiontUser"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion -->
+
+            <!-- region 免打扰用户-->
+            <div class="col-md-3">
+                <span>免打扰用户：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_blockUser"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion -->
+        </div>
+        <!-- endregion -->
+
+        <!-- region 营销渠道信息 -->
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <strong>客户接触渠道</strong>
+            </div>
+
+            <!-- region 线上渠道 -->
+            <div class="col-md-3">
+                <span>线上渠道：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_online"></span>
+            </div>
+            <!-- endregion -->
+
+            <!-- region 线下渠道 -->
+            <div class="col-md-3">
+                <span>线下渠道：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_offline"></span>
+            </div>
+            <!-- region 营业厅类型 -->
+            <div class="col-md-3">
+                <span>营业厅类型：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_businessType"></span>
+            </div>
+            <!-- endregion -->
+            <!-- endregion -->
+        </div>
+        <!-- endregion -->
+    </div>
+</div>
+<!-- endregion 老用户预览 -->
+
+<!-- region 掌柜预览 -->
+<div class="iMarket_keeperTask_Preview" style="display: none;">
+    <div class="row keeperTaskDetailInfo">
+        <!-- region 隐藏域 存放ID-->
+        <input class="detail_id" type="hidden">
+        <!-- endregion -->
+
+        <!-- region 维系任务 -->
+        <div class="col-md-12">
+            <strong>维系任务</strong>
+        </div>
+        <!-- region 任务名称 -->
+        <div class="col-md-3">
+            <span>任务名称：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_taskName"></span>
+        </div>
+        <!-- endregion 任务名称 -->
+
+        <!-- region 业务类型 -->
+        <div class="col-md-3">
+            <span>业务类型：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_taskType"></span>
+        </div>
+        <!-- endregion 业务类型 -->
+
+        <!-- region 开始时间 -->
+        <div class="col-md-3">
+            <span>开始时间：</span>
+        </div>
+        <div class="col-md-3">
+            <span class="detail_startTime"></span>
+        </div>
+        <!-- endregion 开始时间 -->
+
+        <!-- region 结束时间 -->
+        <div class="col-md-3">
+            <span>结束时间：</span>
+        </div>
+        <div class="col-md-3">
+            <span class="detail_endTime"></span>
+        </div>
+        <!-- endregion 结束时间 -->
+
+        <!-- region 维系区域 -->
+        <div class="col-md-3">
+            <span>维系区域：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_orgNames"></span>
+        </div>
+        <!-- endregion 维系区域 -->
+
+        <!-- region 指定维系用户 -->
+        <div class="col-md-3">
+            <span>指定维系用户：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_appointUser"></span>
+        </div>
+        <!-- endregion 指定维系用户 -->
+        <!-- endregion 维系任务 -->
+
+        <!-- region 维系策略 -->
+        <div class="col-md-12">
+            <strong>维系策略</strong>
+        </div>
+        <!-- region 维系提醒规则 -->
+        <div class="col-md-3">
+            <span>维系提醒规则：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_taskRemind"></span>
+        </div>
+        <!-- endregion 维系提醒规则 -->
+
+        <!-- region 维系产品 -->
+        <div class="col-md-3">
+            <span>维系产品：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_productName"></span>
+        </div>
+        <!-- endregion 维系产品 -->
+
+        <!-- region 维系动作 -->
+        <div class="col-md-3">
+            <span>维系动作：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_action"></span>
+        </div>
+        <!-- endregion 维系动作 -->
+
+        <!-- region 营销内容 -->
+        <div class="col-md-3">
+            <span>营销内容：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_content"></span>
+        </div>
+        <!-- endregion 营销内容 -->
+
+        <!-- region 话术脚本 -->
+        <div class="col-md-3">
+            <span>话术脚本：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_phoneContent"></span>
+        </div>
+        <!-- endregion 话术脚本 -->
+        <!-- endregion 维系策略 -->
+    </div>
+</div>
+<!-- endregion 掌柜预览 -->
+
+<!-- region 短信签名预览 -->
+<div class="iMarket_SmsSignature_Preview" style="display: none;">
+    <div class="row smsSignatureDetailInfo">
+        <!-- region 隐藏域 存放ID-->
+        <input class="detail_id" type="hidden">
+        <!-- endregion -->
+
+        <!-- region 短信签名 -->
+
+        <div class="col-md-12">
+            <strong>短信签名</strong>
+        </div>
+
+        <!-- region 当前短信签名 -->
+        <div class="col-md-3">
+            <span>当前短信签名：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_currentSmsSignature"></span>
+        </div>
+        <!-- endregion 当前短信签名 -->
+
+        <!-- region 审核短信签名 -->
+        <div class="col-md-3">
+            <span>审核短信签名：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_auditingSmsSignature"></span>
+        </div>
+        <!-- endregion 审核短信签名 -->
+
+        <!-- region 创建时间 -->
+        <div class="col-md-3">
+            <span>创建时间：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_createTime"></span>
+        </div>
+        <!-- endregion 创建时间 -->
+
+        <!-- endregion 短信签名 -->
+    </div>
+</div>
+<!-- endregion 短信签名 -->
+
+<!-- region IPTV任务预览 -->
+<div class="iMarket_iptv_Preview" style="display: none;">
+    <div class="taskDetailInfo">
+        <div class="row">
+            <!-- region 任务名称 -->
+            <div class="col-md-3">
+                <span>任务名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskName"></span>
+            </div>
+            <!-- endregion 任务名称 -->
+
+            <!-- region 任务类型 -->
+            <div class="col-md-3">
+                <span>任务类型：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskType"></span>
+            </div>
+            <!-- endregion 任务类型 -->
+
+            <!-- region 开始时间 -->
+            <div class="col-md-3">
+                <span>开始时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_startTime"></span>
+            </div>
+            <!-- endregion 开始时间 -->
+
+            <!-- region 结束时间 -->
+            <div class="col-md-3">
+                <span>结束时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_stopTime"></span>
+            </div>
+            <!-- endregion 结束时间 -->
+
+            <!-- region 归属区域 -->
+            <div class="col-md-3">
+                <span>归属区域：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_areaName"></span>
+            </div>
+            <!-- endregion 归属区域 -->
+
+            <!-- region 规则设置 -->
+            <div class="col-md-3">
+                <span>指定维系用户：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_triggerBalance"></span>
+            </div>
+            <!-- endregion 规则设置 -->
+
+            <!-- region 推送频次 -->
+            <div class="col-md-3">
+                <span>推送频次：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_repeatStrategy"></span>
+            </div>
+            <!-- endregion 推送频次 -->
+
+            <!-- region 描述 -->
+            <div class="col-md-3">
+                <span>描述：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_remarks"></span>
+            </div>
+            <!-- endregion 描述 -->
+        </div>
+        <div class="row preBox">
+            <h3>内容预览</h3>
+            <div class="preHtml"></div>
+        </div>
+    </div>
+</div>
+<!-- endregion IPTV任务预览 -->
+
+<!-- region IPTV模版预览 -->
+<div class="iMarket_iptv_template_Preview" style="display: none;">
+    <div class="templateDetailInfo">
+        <div class="row">
+            <!-- region 模版名称 -->
+            <div class="col-md-3">
+                <span>模版名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_templateName"></span>
+            </div>
+            <!-- endregion 模版名称 -->
+
+            <!-- region 模版内容 -->
+            <div class="col-md-3">
+                <span>模版内容：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_templateContent"></span>
+            </div>
+            <!-- endregion 模版内容 -->
+
+            <!-- region 创建时间 -->
+            <div class="col-md-3">
+                <span>创建时间：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_templateCreateTime"></span>
+            </div>
+            <!-- endregion 创建时间 -->
+
+            <!-- region 备注 -->
+            <div class="col-md-3">
+                <span>备注：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_templateRemarks"></span>
+            </div>
+            <!-- endregion 备注 -->
+        </div>
+        <div class="row preBox">
+            <h3>内容预览</h3>
+            <div class="preHtml"></div>
+        </div>
+    </div>
+</div>
+<!-- endregion IPTV模版预览 -->
+
+<!-- region 异网短信预览 -->
+<div class="row iMarket_offNetSms_Preview" style="display: none;">
+    <div class="offNetSmsDetailInfo">
+        <!-- region 任务基本信息 -->
+        <div class="col-md-12" style="margin: 20px 0">
+            <div class="col-md-12">
+                <strong>任务基本信息</strong>
+            </div>
+            <!-- region 短信内容 -->
+            <div class="col-md-3">
+                <span>任务名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="pre_taskName" style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 短信内容 -->
+
+            <!-- region 创建时间 -->
+            <div class="col-md-3">
+                <span>创建时间：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="pre_createTime" style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 创建时间 -->
+
+            <!-- region 创建者 -->
+            <div class="col-md-3">
+                <span>创建者：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="pre_createUserName" style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 创建者 -->
+
+            <!-- region 任务描述 -->
+            <div class="col-md-3">
+                <span>短信内容：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="pre_smsContent" style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 任务描述 -->
+        </div>
+        <!-- endregion 任务基本信息 -->
+
+        <!-- region 目标用户选择 -->
+        <div class="col-md-12" style="margin: 20px 0">
+            <div class="col-md-12">
+                <strong>目标用户选择</strong>
+            </div>
+            <!-- region 营销客户 -->
+            <div class="col-md-3">
+                <span>客群编码：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_appintUser_tableName"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 营销客户 -->
+
+            <!-- region 营销客户人数 -->
+            <div class="col-md-3">
+                <span>号池数量：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_phoneCount"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 营销客户人数 -->
+        </div>
+        <!-- endregion 目标用户选择 -->
+    </div>
+</div>
+<!-- endregion 异网短信预览 -->
+
+
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/iaudit/auditModel.js"></script>
+<script src="js/iaudit/auditMarket.js"></script>
+<script src="js/iaudit/auditTag.js"></script>
+<script src="js/iaudit/auditShop.js"></script>
+<script src="js/iaudit/auditOldCustomer.js"></script>
+<script src="js/iaudit/auditKeeperTask.js"></script>
+<script src="js/iaudit/auditSmsSignature.js"></script>
+<script src="js/iaudit/auditIptvTask.js"></script>
+<script src="js/iaudit/auditOffNetSms.js"></script>
+<script src="js/iaudit/auditIptvTemplate.js"></script>
+<script src="js/iaudit/auditJsSelector.js"></script>
+<script src="js/icommon/dateUtil.js"></script>
+<script src="ext/cmtable/js/cmtable.js"></script>

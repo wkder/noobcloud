@@ -1,0 +1,138 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="ext/otreetable/otreetable.css">
+<link rel="stylesheet" href="styles/ikeeper_school/department.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+
+    <div class="row query-row">
+        <div class="col-md-12 form-inline conditionSearch">
+            <input type="text" class="form-control queryName" placeholder="组织名称">
+            <button class="btn btn-primary searchBtn"><i class="fa fa-search"></i>搜索</button>
+            <button class="btn btn-primary addBtn"><i class="fa fa-plus"></i>新增</button>
+        </div>
+    </div>
+    <div class="row tab-row">
+        <div class="col-md-12 tab-row-container">
+            <div class="col-md-2 tab-item active" data-part="1">
+                <label class="active">部门组织</label>
+            </div>
+            <div class="col-md-2 tab-item" data-part="2">
+                <label>业务组织</label>
+            </div>
+            <div class="col-md-8 tab-item-space"></div>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12 animated">
+            <table id="departmentTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0">
+                <!--<thead>-->
+                <!--<th>组织名称</th>-->
+                <!--<th>创建时间</th>-->
+                <!--<th>描述</th>-->
+                <!--</thead>-->
+            </table>
+        </div>
+        <div class="col-md-12 animated hidden">
+            <table id="businessTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0">
+            </table>
+        </div>
+    </div>
+
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 组织架构 -->
+    <div class="col-md-12 departmentInfo" data-autoVerify="true">
+        <!-- region 记录操作状态 隐藏域 -->
+        <input class="operate" type="hidden">
+        <!-- endregion 记录操作状态 隐藏域 -->
+
+        <!-- region 数据ID 隐藏域 -->
+        <input name="orgId" class="orgId" type="hidden">
+        <!-- endregion 数据ID 隐藏域 -->
+
+        <!-- region 组织名称 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>组织名称:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="orgName form-control" name="orgName"
+                   placeholder="请输入组织名称，限制20个字数" maxlength="20"
+                   data-expression="isEnglishChineseNumber"
+                   data-error="名称由字母、下划线、中文组成"/>
+        </div>
+        <!-- endregion 组织名称 -->
+
+        <!-- region 组织类型 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>组织类型:</strong>
+        </div>
+        <div class="col-md-7">
+            <select class="form-control orgType" name="orgTypeId">
+                <option value="1">部门组织</option>
+                <option value="2">业务组织</option>
+            </select>
+        </div>
+        <!-- endregion 组织类型 -->
+
+        <!-- region 组织层级 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>组织层级:</strong>
+        </div>
+        <div class="col-md-7">
+            <select class="form-control orgLevel" name="level">
+                <option value="1">一级组织</option>
+                <option value="2">二级组织</option>
+                <option value="3">三级组织</option>
+                <option value="4">四级组织</option>
+                <option value="5">五级组织</option>
+                <option value="6">六级组织</option>
+            </select>
+        </div>
+        <!-- endregion 组织层级 -->
+
+        <!-- region 上级组织 -->
+        <div class="col-md-3 right parentOrgNameRow">
+            <strong class="must" style="color: red">*</strong><strong>上级组织:</strong>
+        </div>
+        <div class="col-md-7 parentOrgNameRow">
+            <input type="text" class="form-control parentOrgName" name="parentOrgName" disabled>
+            <input type="hidden" class="parentOrgId" name="parentId">
+        </div>
+        <!-- endregion 上级组织 -->
+
+        <!-- region 组织描述 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>组织描述:</strong>
+        </div>
+        <div class="col-md-7">
+            <textarea class="form-control comments" name="comments"
+                      placeholder="请输入组织描述，限制100个字符" maxlength="100"
+                      data-expression="isEnglishChineseNumber"
+                      data-error="名称由字母、下划线、中文组成"
+                      rows="3"></textarea>
+        </div>
+        <!-- endregion 组织描述 -->
+    </div>
+    <!-- endregion 组织架构 -->
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹出框 -->
+<div class="iMarket_Dialog">
+    <!-- region 新增、编辑组织 -->
+    <div id="addOrEdit_department_dialog" style="display: none"></div>
+    <!-- endregion 新增、编辑组织 -->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="ext/otreetable/otreetable.js"></script>
+<script src="js/ikeeper_school/department.js"></script>
+<!-- endregion 脚本 -->

@@ -1,0 +1,218 @@
+/**操作按钮*/
+a.stopTask {
+    background-color: #ccc;
+    border-color: #ccc;
+    color: #fff;
+}
+
+a.stopTask:hover {
+    background-color: #9b9b9b;
+    border-color: #adadad;
+    color: #fff;
+}
+
+a.startTask {
+    background-color: #43b333;
+    border-color: #15b300;
+    color: #fff;
+}
+
+a.startTask:hover {
+    background-color: #67d258;
+    border-color: #67d258;
+    color: #fff;
+}
+
+/** 弹窗 */
+.taskInfo {
+    padding: 30px 15px;
+}
+
+.taskInfo .right {
+    text-align: right;
+}
+
+.taskInfo div.col-md-3,
+.taskInfo div.col-md-7,
+.taskInfo div.col-md-9 {
+    margin: 8px 0;
+}
+
+.taskInfo .areaName {
+    cursor: pointer;
+}
+
+/** 客群选择 */
+.userGroup input {
+    width: 390px;
+    display: inline-block;
+}
+
+.userGroup button {
+    width: 60px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    text-transform: none;
+    overflow: visible;
+    -webkit-appearance: button;
+}
+
+.userGroup button:hover,
+.userGroup button:focus,
+.userGroup button:active {
+    color: #FFFFFF;
+    background-color: #0CCEA2;
+    border: none;
+    outline: none;
+}
+
+/** 导入客群弹窗 */
+/** 导入客群弹窗 */
+.importUserGroupInfo {
+    margin: 20px 0;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.importUserGroupInfo .importForm .meatOperate {
+    margin-left: 25px;
+}
+
+.importUserGroupInfo .importForm .meatOperate .fileUploadName {
+    width: 220px;
+    display: inline;
+    border: 1px solid #ccc;
+}
+
+.importUserGroupInfo .importForm .meatOperate a.file,
+.importUserGroupInfo .importForm .meatOperate div.btnUpload {
+    margin-right: 10px;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+.importUserGroupInfo .importForm .meatOperate a.file {
+    position: relative;
+    top: 0;
+    overflow: hidden;
+    text-indent: 0;
+}
+
+.importUserGroupInfo .importForm .meatOperate a.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    width: 180px;
+    margin: 0 5px;
+    outline: none;
+    border-radius: 2px !important;
+}
+
+.importUserGroupInfo .importForm .meatOperate div.btnUpload {
+    width: 80px;
+}
+
+.importUserGroupInfo .importForm .meatOperate a.templateBtn {
+    border-radius: 2px;
+    background: #00B38B;
+    border: none;
+    font-size: 16px;
+}
+
+.importUserGroupInfo .importForm .info {
+    margin-top: 20px;
+    margin-left: 26px;
+}
+
+.importUserGroupInfo .importForm .info span {
+    display: block;
+    color: red;
+    line-height: 24px;
+}
+
+.importUserGroupInfo .phoneInfo {
+    margin-top: 20px;
+    margin-left: 26px;
+    font-weight: bolder;
+}
+
+/** 预览 */
+#preview_dialog {
+    padding: 15px;
+}
+
+.taskDetailInfo {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 15px 0;
+}
+
+.taskDetailInfo > div.row {
+    margin-bottom: 0;
+}
+
+.taskDetailInfo > div.row div.col-md-12 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.taskDetailInfo > div.row div.col-md-3,
+.taskDetailInfo > div.row div.col-md-9 {
+    margin-bottom: 6px;
+}
+
+.cmTable {
+    margin-bottom: 0;
+}
+
+.btn-preview {
+
+}
+
+.taskDetailInfo div.preBox {
+    height: 190px;
+}
+
+.taskDetailInfo div.preBox h3 {
+    float: left;
+    width: 80px;
+    border-right: 1px dashed #ccc;
+    height: 100%;
+    margin: 0;
+    padding: 40px 20px 0;
+    text-align: center;
+}
+
+.taskDetailInfo div.preBox .preHtml {
+    height: 100%;
+    margin-left: 27%;
+}
+
+.taskDetailInfo div.preBox .preHtml > div {
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+}
+

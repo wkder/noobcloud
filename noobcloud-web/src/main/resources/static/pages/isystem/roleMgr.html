@@ -1,0 +1,116 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/isystem/roleMgr.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input type="text" class="form-control searchName" placeholder="名称">
+            <button class="searchBtn btn btn-primary"><i class="fa fa-search"></i>搜索</button>
+            <button class="addBtn btn btn-primary"><i class="fa fa-plus"></i>新增</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table class="roleTable iDataTable table table-hover table-condensed table-bordered dataTable no-footer"
+                   width="100%"></table>
+        </div>
+    </div>
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display:none;">
+    <!-- region 新增、修改角色 -->
+    <div class="roleInfo" data-autoVerify="true">
+        <!-- region 记录操作状态 隐藏域 -->
+        <input class="operate" type="hidden">
+        <!-- endregion 记录操作状态 隐藏域 -->
+
+        <!-- region 数据ID 隐藏域 -->
+        <input name="id" type="hidden">
+        <!-- endregion 数据ID 隐藏域 -->
+
+        <!-- region 角色名称 -->
+        <div class="col-md-3 text-right">
+            <strong class="must" style="color: red">*</strong><strong>角色名称:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="name" data-expression="isEmpty" data-error="角色名称不能为空"/>
+        </div>
+        <!-- endregion 角色名称 -->
+
+        <!-- region 角色类型 -->
+        <div class="col-md-3 text-right">
+            <strong class="must" style="color: red">*</strong><strong>角色类型:</strong>
+        </div>
+        <div class="col-md-7">
+            <select class="form-control" name="type" data-expression="isEmpty" data-error="不能为空">
+            </select>
+        </div>
+        <!-- endregion 角色类型 -->
+
+        <!-- region 角色级别 -->
+        <!--div class="col-md-3 text-right">
+            <strong class="must" style="color: red">*</strong><strong>角色级别:</strong>
+        </div>
+        <div class="col-md-7">
+            <select class="form-control" name="grade">
+            </select>
+        </div>-->
+        <!-- endregion 角色级别 -->
+
+        <!-- region 菜单权限 -->
+        <div class="col-md-3 text-right">
+            <strong>菜单权限:</strong>
+        </div>
+        <div class="col-md-7">
+            <div class="treeContainer">
+                <ul id="menuTree" class="ztree"></ul>
+            </div>
+            <input type="hidden" name="permissionMenuIds"/>
+        </div>
+        <!-- endregion 菜单权限 -->
+
+        <!-- region 按钮权限 -->
+        <div class="col-md-3 text-right">
+            <strong>按钮权限:</strong>
+        </div>
+        <div class="col-md-7">
+            <div class="treeContainer height-s">
+                <ul id="buttonTree" class="ztree"></ul>
+            </div>
+            <!--<input type="hidden" name="permissionButtonIds"/>-->
+        </div>
+        <!-- endregion 按钮权限 -->
+
+        <!-- region 备注 -->
+        <div class="col-md-3 text-right">
+            <strong>备注:</strong>
+        </div>
+        <div class="col-md-7">
+            <textarea class="form-control" rows="2" name="remarks"></textarea>
+        </div>
+        <!-- endregion 备注 -->
+    </div>
+    <!-- endregion 新增、修改角色 -->
+</div>
+<!-- endregion 页面内容 -->
+
+
+<!-- region 弹出框 -->
+<div class="iMarket_Dialog">
+    <!-- region 新增、编辑福利 -->
+    <div id="addOrEdit_roleInfo_dialog" style="display: none;"></div>
+    <!-- endregion 新增、编辑福利 -->
+
+    <!-- region 归属区域 -->
+    <div id="select_area_dialog" style="display: none"></div>
+    <!-- endregion 归属区域 -->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="js/isystem/roleMgr.js"></script>
+<!-- endregion 脚本 -->

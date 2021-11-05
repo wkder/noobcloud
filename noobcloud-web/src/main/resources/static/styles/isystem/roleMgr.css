@@ -1,0 +1,25 @@
+/** 弹窗 */
+.roleInfo {
+    padding: 20px 15px;
+}
+
+.roleInfo .right {
+    text-align: right;
+}
+
+.roleInfo div.col-md-3,
+.roleInfo div.col-md-7 {
+    margin: 8px 0;
+}
+
+.roleInfo .treeContainer {
+    height: 200px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow-y: auto;
+}
+
+.roleInfo .treeContainer.height-s {
+    height: 100px;
+}

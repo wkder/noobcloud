@@ -1,0 +1,98 @@
+<link href="styles/iresource/smsContentMgr.css" rel="stylesheet">
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="内容标题">
+        <input id="txtKey" class="form-control" placeholder="关键词">
+        <input id="txtMob" class="form-control" placeholder="手机号码">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+
+<div class="iMarket_SmsContentMgr_Dialog">
+    <div id="selectProductDialog" style="display: none;">
+        <ul id="productSelectTree" class="ztree"></ul>
+    </div>
+    <div id="editSmsContentDialog" style="display: none;"></div>
+</div>
+
+<div class="row" style="display:none;">
+    <div class="cmTableContent">
+        <table class="table table-hover table-bordered cmTable">
+            <tbody>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>内容标题：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <textarea class="content" id="content" name="content" rows="8" maxlength="200"
+                              data-expression="isEmpty"
+                              data-error="内容标题不为空"></textarea>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>内容地址：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" id="url" name="url" maxlength="400" placeholder="内容地址">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>内容类型：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select class="form-control" id="businessType" name="businessType">
+                        <option value="0">炒店业务</option>
+                        <option value="1">场景业务</option>
+                        <option value="2">掌柜短信业务</option>
+                        <option value="3">掌柜话+业务</option>
+                        <option value="4">内容营销</option>
+                        <option value="5">精准短信</option>
+                        <option value="6">异网短信</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>关键词：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" id="keywords" name="keywords" maxlength="20"
+                           placeholder="关键词">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>营销产品：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="productNames" id="productNames" type="text" placeholder="选择该内容对应的增值业务产品"
+                           readonly="readonly" style="width: 80%;"/>
+                    <input class="productIds" id="productIds" type="text" style="display: none;"/>
+                    <input type="button" class="extensionalBtn productSelectBtn" value="选择" id="productSelectBtn"
+                           onclick="smsContentMgr.productSelectTree()"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="hidden" id="id">
+    </div>
+</div>
+
+<script src="js/iresource/smsContentMgr.js"></script>

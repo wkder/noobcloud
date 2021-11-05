@@ -1,0 +1,34 @@
+﻿
+#import {
+    margin-top: 20px !important;
+    margin-bottom: 10px;
+    height: 50px;
+}
+
+    #import textarea {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        font-size: 18px;
+        padding: 10px;
+    }
+
+#result {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    /*height: 100%;*/
+}
+
+    #result textarea {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+#confirm {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    text-align: center;
+}

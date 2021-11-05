@@ -1,0 +1,272 @@
+.col-xs-1,
+.col-sm-1,
+.col-md-1,
+.col-lg-1,
+.col-xs-2,
+.col-sm-2,
+.col-md-2,
+.col-lg-2,
+.col-xs-3,
+.col-sm-3,
+.col-md-3,
+.col-lg-3,
+.col-xs-4,
+.col-sm-4,
+.col-md-4,
+.col-lg-4,
+.col-xs-5,
+.col-sm-5,
+.col-md-5,
+.col-lg-5,
+.col-xs-6,
+.col-sm-6,
+.col-md-6,
+.col-lg-6,
+.col-xs-7,
+.col-sm-7,
+.col-md-7,
+.col-lg-7,
+.col-xs-8,
+.col-sm-8,
+.col-md-8,
+.col-lg-8,
+.col-xs-9,
+.col-sm-9,
+.col-md-9,
+.col-lg-9,
+.col-xs-10,
+.col-sm-10,
+.col-md-10,
+.col-lg-10,
+.col-xs-11,
+.col-sm-11,
+.col-md-11,
+.col-lg-11,
+.col-xs-12,
+.col-sm-12,
+.col-md-12,
+.col-lg-12 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.col-sm-9 {
+  margin-left: 10px;
+}
+.row {
+  margin: 0;
+}
+h3 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 20px;
+}
+.wrap {
+  padding-top: 4px;
+  height: 100%;
+}
+.wrap .page {
+  overflow: hidden;
+}
+.wrap .page .contentInfo {
+  padding: 0 8px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.wrap .page .contentInfo .dialogLeft {
+  width: 48%;
+  float: left;
+}
+.wrap .page .contentInfo .dialogLeft > div {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.wrap .page .contentInfo .dialogLeft > div .right {
+  float: left;
+  width: 20%;
+}
+.wrap .page .contentInfo .dialogLeft > div .inputBox {
+  float: right;
+  width: 78%;
+}
+.wrap .page .contentInfo .dialogLeft > div .inputBox .imgBox {
+  display: inline-block;
+}
+.wrap .page .contentInfo .dialogLeft > div .inputBox .imgBox input {
+  height: 78px;
+  width: 78px;
+  position: absolute;
+  opacity: 0;
+  z-index: 99;
+  border: 1px dashed #ccc;
+}
+.wrap .page .contentInfo .dialogLeft > div .inputBox .imgBox img {
+  height: 78px;
+  z-index: 9;
+  border: 1px dashed #ccc;
+}
+.wrap .page .contentInfo .dialogLeft > div .inputBox button {
+  float: right;
+  margin-right: 120px;
+}
+.wrap .page .contentInfo .dialogLeft > div.qrCode,
+.wrap .page .contentInfo .dialogLeft > div.bgPic {
+  position: relative;
+  height: 78px;
+}
+.wrap .page .contentInfo .dialogLeft > div.remarkBox {
+  position: absolute;
+  left: 24%;
+  top: 112px;
+}
+.wrap .page .contentInfo .dialogRight {
+  width: 48%;
+  float: right;
+}
+.wrap .page .contentInfo .dialogRight .config .setFont,
+.wrap .page .contentInfo .dialogRight .config .setQrCode {
+  padding: 4px;
+  margin-bottom: 4px;
+  border: 1px dashed #ccc;
+  overflow: hidden;
+}
+.wrap .page .contentInfo .dialogRight .config .setFont > p,
+.wrap .page .contentInfo .dialogRight .config .setQrCode > p {
+  float: left;
+  margin: 0;
+  line-height: 50px;
+}
+.wrap .page .contentInfo .dialogRight .config .setFont .inp,
+.wrap .page .contentInfo .dialogRight .config .setQrCode .inp {
+  float: left;
+  padding-left: 10px;
+}
+.wrap .page .contentInfo .dialogRight .config .setFont .inp input,
+.wrap .page .contentInfo .dialogRight .config .setQrCode .inp input {
+  margin-bottom: 4px;
+}
+.wrap .page .contentInfo .dialogRight .config .setFont .inp select,
+.wrap .page .contentInfo .dialogRight .config .setQrCode .inp select {
+  display: inline-block;
+  width: 70px;
+  padding: 6 2px!important;
+}
+.wrap .page .contentInfo .dialogRight .remarkBox .right {
+  float: left;
+  width: 20%;
+}
+.wrap .page .contentInfo .dialogRight .remarkBox .inputBox {
+  float: right;
+  width: 78%;
+}
+.wrap .page .previewContainer {
+  padding: 0 20px;
+}
+.wrap .page .previewContainer .viewHtml {
+  overflow: hidden;
+  border: 1px dashed #ccc;
+  margin: 0 auto;
+}
+.wrap .page .previewContainer .viewHtml > h3 {
+  float: left;
+  width: 80px;
+  line-height: 240px;
+  border-right: 1px dashed #ccc ;
+}
+.wrap .page .previewContainer .viewHtml .preHtml {
+  margin-right: 200px;
+  margin-left: 80px;
+  height: 240px;
+  border-right: 1px dashed #ccc;
+}
+.wrap .page .previewContainer .viewHtml .preHtml > div {
+  width: 100%;
+  height: 100%;
+}
+.wrap .page .previewContainer .viewHtml .tip {
+  padding: 40px 10px 0 10px;
+  float: right;
+  width: 200px;
+}
+.wrap .page .previewContainer .viewHtml .tip p {
+  text-indent: 2em;
+}
+.wrap .myInput {
+  display: inline-block;
+  width: 70px;
+}
+.wrap .step {
+  height: 55px;
+  border-top: 1px solid silver;
+  padding-top: 12px;
+  text-align: center;
+}
+.wrap .step span {
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  margin: 0 10px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 15px;
+  color: white;
+  background-color: #00B38B;
+  cursor: pointer;
+}
+.prevRow > div {
+  line-height: 40px;
+  overflow: hidden;
+}
+.prevRow > div .title {
+  float: left;
+  width: 14%;
+  line-height: 40px;
+  text-align: right;
+}
+.prevRow > div .title h3 {
+  font-size: 16px!important;
+  line-height: 40px;
+}
+.prevRow > div .title h3.styl {
+  line-height: 80px;
+}
+.prevRow > div .info {
+  float: left;
+  padding-left: 10px;
+  text-align: left;
+}
+.prevRow > div.contentDiv .info,
+.prevRow > div.remarkDiv .info {
+  width: 80%;
+}
+.prevRow > div.contentDiv .info p,
+.prevRow > div.remarkDiv .info p {
+  margin: 0;
+  line-height: 36px;
+}
+.prevRow .config {
+  height: 80px;
+}
+.prevRow .config .font span {
+  margin-right: 24px;
+  width: 55px;
+  display: inline-block;
+}
+.prevRow .config .font span.fontColor {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 55px;
+  height: 30px;
+  background-color: red;
+  background-clip: content-box;
+  padding: 6px 10px;
+  margin-bottom: -12px;
+}
+.prevRow .page {
+  height: 250px;
+  padding-bottom: 10px;
+}
+.prevRow .page > div {
+  margin-left: 15%;
+  width: 80%;
+}

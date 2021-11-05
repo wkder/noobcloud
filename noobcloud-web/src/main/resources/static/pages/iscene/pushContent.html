@@ -1,0 +1,166 @@
+<link href="ext/zyupload/skins/zyupload-1.0.0.css" rel="stylesheet">
+<link href="styles/iscene/pushcontent.css" rel="stylesheet">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <select id="selQueryPush" class="form-control"></select>
+        <input id="txtQuery" class="form-control" placeholder="请填写任务名称">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered" cellspacing="0"></table>
+    </div>
+</div>
+
+<!--弹出框 内容推送-->
+
+<!--<div id="popupAddOrEdit" style="display:none;">-->
+    <!--<input type="hidden" name="PictureByte" value=""/>-->
+    <!--<input type="hidden" name="PicTitle" value=""/>-->
+<!--</div>-->
+
+<div class="cmTableContent" id="cmTableContent" style="display: none" data-autoVerify="true">
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>任务名：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="txtTaskName" class="form-control" placeholder="任务名" readonly="readonly" data-taskid="0">
+                <div class="help-block alert alert-info" role="alert">点击任务名可替换任务</div>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>内容：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="txtContent" class="form-control" placeholder="内容"  maxlength="100"  name="content" data-expression="isEmpty" data-error="内容不为空">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title"><strong>标题：</strong></td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="txtTitle" class="form-control" placeholder="标题"  maxlength="20">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title"><strong>封面图片：</strong></td>
+            <td colspan="3" class="td-content">
+                <div id="uploadImg" class="col-md-12 zyupload" style="width: 500px; height: 400px;">
+
+                </div>
+            </td>
+        </tr>
+        <tr class="tdBg" id="trTitle">
+            <td class="td-title"><strong>图标：</strong></td>
+            <td colspan="3" class="td-content">
+                <input type="radio" id="iconFirst" name="iconType" data-icontype="1" checked="checked">
+                <img src="images/icon1.png"><input type="radio" id="iconSecond" name="iconType" data-icontype="2">
+                <img src="images/icon2.png"><input type="radio" id="iconThird" name="iconType" data-icontype="3">
+                <img src="images/icon3.png">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title"><strong>推送类型：</strong></td>
+            <td colspan="3" class="td-content">
+                <select id="selPuchConfig" class="form-control">
+
+                </select>
+            </td>
+        </tr>
+        <tr class="tdBg" id="trChoose">
+            <td class="td-title"><strong>选择：</strong></td>
+            <td colspan="3" class="td-content">
+                <input type="radio" name="type" data-dbtype="1" checked="checked"><span>网址</span>
+                <input type="radio" name="type" data-dbtype="2"><span>描述</span>
+                <div class="help-block alert alert-info" role="alert">流量包选择描述，活动应用选择网址</div>
+            </td>
+        </tr>
+        <tr class="tdBg" id="trHref">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>网址：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="txtHref" class="form-control" name="href"  maxlength="200" placeholder="网址" >
+            </td>
+        </tr>
+        <tr class="tdBg" id="trDesc" style="display: none;">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>描述：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="txtDesc" class="form-control" name="remark"  maxlength="200" placeholder="描述" >
+            </td>
+        </tr>
+        <tr class="tdBg" id="trOrderKey" style="display: none;">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>订购编码：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="txtOrderKey" class="form-control" name="orderKey" maxlength="100" placeholder="订购编码" >
+            </td>
+        </tr>
+        <tr class="tdBg" id="trSort" style="display: none;">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>排序：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input type="text" id="txtSort" class="form-control" name="sort"  maxlength="4" placeholder="排序" >
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>网络类型：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <select id="selNetWork" class="form-control">
+                    <option value="1">2G/3G</option>
+                    <option value="2">4G</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>是否启用：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <select id="selIsUsed" class="form-control">
+                    <option value="1">启用</option>
+                    <option value="0">不启用</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div id="popupTask" style="display:none;">
+    <div>
+        <table id="tableTask" class="table iDataTable table-hover table-condensed table-bordered" cellspacing="0"></table>
+    </div>
+</div>
+
+<script src="ext/zyupload/zyupload.basic_n-1.0.0.js"></script>
+<script src="ext/cmtable/js/cmtable.js"></script>
+<script src="js/iscene/pushcontent.js"></script>

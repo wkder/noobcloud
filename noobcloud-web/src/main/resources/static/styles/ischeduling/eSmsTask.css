@@ -1,0 +1,753 @@
+/*
+ * 营销调度模块样式
+ */
+
+/*营销任务管理*/
+div.iMarket_MarketTaskMgr_Body div.marketinfo table td.namelink a {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+div.iMarket_MarketTaskMgr_Body div.marketinfo table td:not(.operate) > div {
+    white-space: normal;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+div.iMarket_MarketTaskMgr_Body div.marketinfo table td:not(.operate) > div:hover {
+    overflow: auto;
+}
+
+div.flowStepContainer {
+    height: 90px;
+    border-bottom: 1px solid silver;
+}
+
+div.flowStepContainer div.flowLine {
+    height: 8px;
+    margin-top: 30px;
+    position: absolute;
+    background: silver;
+    width: 78%;
+    margin-left: 10%;
+}
+
+div.flowStepContainer div.flowStep {
+    height: 100%;
+    margin-left: 20%;
+}
+
+div.flowStepContainer div.flowStep > div {
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    margin-top: 31px;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepB {
+    margin-left: 18%;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepC {
+    margin-left: 36%;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepD {
+    margin-left: 54%;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepE {
+    margin-left: 72%;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepNumber {
+    display: inline-block;
+    width: 28px;
+    height: 9px;
+    position: absolute;
+    z-index: 2;
+    background: 0;
+    line-height: 9px;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: -12px;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepNumber.active {
+    color: #fff;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepIcon {
+    background: url("../../images/icon_gray.png") no-repeat;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    margin-top: -12px;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepIcon.active {
+    background: url("../../images/icon_green.png") no-repeat;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepDesc {
+    display: inline-block;
+    position: absolute;
+    top: 25px;
+    left: 17px;
+    width: 100px;
+    margin-left: -50px;
+    font-size: 14px;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepDesc.active {
+    color: #0847a6;
+}
+
+div.marketJobEditInfo {
+    overflow: hidden;
+}
+
+div.marketJobEditInfo div.infoConfigBody {
+    min-height: 390px;
+    height: 390px;
+    padding-top: 30px;
+    padding-left: 30px;
+    overflow: auto;
+    /*margin-top: 20px;*/
+}
+
+div.marketJobEditInfo div.marketArea .areaNames {
+    cursor: pointer;
+}
+
+div.marketJobEditInfo div.marketSegments textarea.segmentNames {
+    cursor: pointer;
+}
+
+div.marketJobEditInfo div.config {
+    display: none;
+}
+
+div.marketJobEditInfo div.row.active {
+    display: block;
+}
+
+div.marketJobEditInfo div.channelInfo div.messageInfo textarea {
+    height: 120px;
+}
+
+div.marketJobEditInfo div.marketTestPhones div.buttonGroup {
+    display: inline-block;
+    vertical-align: top;
+}
+
+div.marketJobEditInfo div.marketTestPhones div.buttonGroup div.marketTestPhones {
+    cursor: pointer;
+}
+
+div.marketJobEditInfo div.marketTestPhones div.buttonGroup div.testNumbersSendBtn {
+    margin-left: -6px;
+    border-radius: 0 8px 8px 0;
+    padding-left: 5px;
+}
+
+div.marketJobEditInfo div.marketTypeOptionBody > div {
+    display: none;
+}
+
+div.marketJobEditInfo div.marketTypeOptionBody > div.active {
+    display: block;
+}
+
+div.marketJobEditInfo div.step {
+    height: 60px;
+    border-top: 1px solid silver;
+    padding-top: 12px;
+    text-align: center;
+}
+
+div.marketJobEditInfo div.step > span.active {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+    color: white;
+    background-color: #00B38B;
+    cursor: pointer;
+}
+
+div.marketJobEditInfo div.step > span.pre.active {
+    color: #333;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+div.marketJobEditInfo div.step > span {
+    display: none;
+}
+
+div.selectTestNumberInfo ul.info li > span.checkBox {
+    width: 10%;
+    min-width: 30px;
+}
+
+div.selectTestNumberInfo ul.info li > span.testNumber {
+    width: 50%;
+}
+
+div.selectTestNumberInfo ul.info li > span.userName {
+    width: 40%;
+}
+
+div.marketJobViewInfo {
+    font-family: Verdana, Arial, Helvetica, AppleGothic, sans-serif;
+    font-size: 14px;
+}
+
+div.marketJobViewInfo div.left {
+    height: 100%;
+    width: 110px;
+    position: absolute;
+}
+
+div.marketJobViewInfo div.left ul {
+    border-top: 20px solid #d19043;
+    text-align: right;
+    height: 100%;
+    background: silver;
+    color: black;
+}
+
+div.marketJobViewInfo div.left li {
+    padding: 2px;
+    margin: 8px;
+    border-bottom: 1px solid #d8d8d8;
+    height: 25px;
+}
+
+div.marketJobViewInfo div.left li.active {
+    color: brown;
+    cursor: pointer;
+}
+
+div.marketJobViewInfo div.left li:hover {
+    color: brown;
+    cursor: pointer;
+}
+
+div.marketJobViewInfo div.right {
+    padding: 5px;
+    height: 470px;
+    position: relative;
+    margin-left: 120px;
+}
+
+div.marketJobViewInfo div.right > div {
+    display: none;
+}
+
+div.marketJobViewInfo div.right > div.active {
+    display: block;
+}
+
+div.marketJobViewInfo div.marketHistory {
+    border: 1px solid silver;
+    border-radius: 8px;
+}
+
+div.marketJobViewInfo div.marketHistory ul.info {
+    word-break: break-all;
+}
+
+div.marketJobViewInfo div.marketHistory ul.info > li {
+    border-bottom: 1px solid silver;
+    padding: 5px 0;
+}
+
+div.marketJobViewInfo div.marketHistory ul.info > li:last-child {
+    border-bottom: 0;
+}
+
+div.marketJobViewInfo div.marketHistory ul.info > li span {
+    display: inline-block;
+    width: 70px;
+}
+
+div.marketJobViewInfo div.marketHistory ul.info > li span.name {
+    width: 120px;
+}
+
+div.marketJobViewInfo div.marketHistory ul.info > li span.time {
+    width: 90px;
+    word-break: normal;
+}
+
+div.marketJobViewInfo div.marketHistory ul.info > li span.segments {
+    width: 130px;
+}
+
+div.marketJobViewInfo div.marketHistory ul.info > li span.personCounts {
+    width: 100px;
+}
+
+/*测试号管理*/
+div.iMarket_TestNumber_Body ul.info li > span {
+    width: 25%;
+}
+
+/*短信内容*/
+div.iMarket_SmsContentMgr_Body ul.info > li span {
+    width: 10%;
+}
+
+div.iMarket_SmsContentMgr_Body ul.info > li span.content {
+    width: 45%;
+}
+
+div.iMarket_SmsContentMgr_Body ul.info > li span.keywords {
+    width: 15%;
+}
+
+div.smsContentInfo > div input, div.smsContentInfo > div textarea {
+    width: 410px;
+}
+
+div.selectSmsContentInfo ul.info {
+    height: 454px;
+    overflow: auto;
+}
+
+div.selectSmsContentInfo ul.info li > span {
+    width: 24%;
+    vertical-align: bottom;
+}
+
+div.selectSmsContentInfo ul.info li > span.checked {
+    width: 5%;
+    min-width: 30px;
+}
+
+div.selectSmsContentInfo ul.info li > span.content {
+    width: 45%;
+    max-height: 80px;
+    overflow: hidden;
+}
+
+div.selectSmsContentInfo ul.info li > span.content:hover {
+    overflow: auto;
+}
+
+div.selectSmsContentInfo ul.info li > span.keywords {
+    padding: 0 1%;
+}
+
+.infoConfigBody .row {
+    /*margin: 15px;*/
+}
+
+div.marketJobEditInfo div.step span.closeBtn {
+    color: #333;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: 100px;
+    height: 30px;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+table.taskTab td.centerColumns.operate {
+    text-align: left;
+}
+
+.selectBtn {
+    color: #fff;
+    background-color: #00B38B;
+    margin-top: 10px;
+    padding: 7px 23px;
+}
+
+.processTab thead > tr > th.sorting_disabled {
+    text-align: center;
+}
+
+.processTab tbody tr.odd {
+    text-align: center;
+}
+
+tr.selected {
+    background: silver;
+}
+
+.hideRadio {
+    display: none;
+}
+
+/* 短信内容选择*/
+.selectSmsContentInfo div.col-md-12 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 0;
+}
+
+.selectSmsContentInfo div.col-md-12 .qryContentInfo, .selectSmsContentInfo div.col-md-12 .qryKeyInfo {
+    display: inline;
+    margin-right: 10px;
+    border-radius: 2px;
+}
+
+.selectSmsContentInfo div.col-md-12 .smsContentSearchBtn {
+    width: 80px;
+    margin-right: 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    text-transform: none;
+    overflow: visible;
+    -webkit-appearance: button;
+}
+
+.selectSmsContentInfo div.col-md-12 .smsContentSearchBtn:hover {
+    color: #FFFFFF;
+    background-color: #0CCEA2;
+    border: none;
+    outline: none;
+}
+
+.smsContentTab {
+    border: 1px solid silver;
+}
+
+.smsContentTab thead tr {
+    background-color: #e4e4e4 !important;
+}
+
+.smsContentTab thead tr th {
+    padding: 8px 0;
+    border: 1px solid silver;
+    border-bottom-width: 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+.smsContentTab tbody tr td {
+    border: 1px solid silver;
+}
+
+/* 选择测试号*/
+.selectTestNumberInfo {
+    margin-top: 20px;
+}
+
+.testNumberTab {
+    border: 1px solid silver;
+}
+
+.testNumberTab thead tr {
+    background-color: #e4e4e4 !important;
+}
+
+.testNumberTab thead tr th {
+    padding: 8px 0;
+    border: 1px solid silver;
+    border-bottom-width: 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+.testNumberTab tbody tr td {
+    border: 1px solid silver;
+}
+
+.smsContentId.willHide,
+.sceneSmsContentId.willHide {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    width: 0;
+    height: 0;
+    position: relative;
+    float: right;
+    top: -120px;
+}
+
+div.marketJobEditInfo div.row {
+    display: none;
+}
+
+div.marketJobEditInfo div.row.active {
+    display: block;
+}
+
+.infoConfigBody .userGroupInfo .col-md-12,
+.infoConfigBody .channelInfo .col-md-12,
+.infoConfigBody .jobConfigureInfo .col-md-12,
+.infoConfigBody .auditInfo .col-md-12 {
+    margin: 7.5px 0;
+}
+
+.task-button {
+    /* width: 80px; */
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    text-transform: none;
+    overflow: visible;
+    -webkit-appearance: button;
+}
+
+.task-button:hover,
+.task-button:focus,
+.task-button:active {
+    color: #FFFFFF;
+    background-color: #0CCEA2;
+    border: none;
+    outline: none;
+}
+
+div.marketJobEditInfo div.row.taskMgrDetailInfo {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: -25px;
+    margin-bottom: 10px;
+}
+
+div.marketJobEditInfo div.row.taskMgrDetailInfo, div.marketJobEditInfo div.row.taskMgrDetailInfo div.row {
+    display: block;
+}
+
+.queryName, .queryMarketType, .queryMarketBusinessType, .stats, .poolStats {
+    width: 150px !important;
+}
+
+#treePrimary {
+    height: 400px;
+}
+
+/* 新增导入营销客群的样式  start*/
+
+.userGroupInfo .marketUser .file-name {
+    width: 152px;
+    margin-right: 8px;
+    display: inline;
+}
+
+.userGroupInfo .marketUser .file-browse-btn {
+    position: relative;
+    top: 2px;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    padding: 6px 8px 6px 12px;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 1.42857143;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.userGroupInfo .marketUser .file-browse-btn input[type='file'] {
+    width: 56px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.userGroupInfo .marketUser .file-upload-btn {
+    width: 56px;
+    margin-left: 13px;
+    margin-right: 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    text-transform: none;
+    overflow: visible;
+}
+
+/* 新增导入营销客群的样式  end*/
+
+
+
+/*表单处导入客群*/
+.userGroup input {
+    display: inline-block;
+    outline: none;
+}
+
+.userGroup button {
+    width: 52px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    text-transform: none;
+    overflow: visible;
+    -webkit-appearance: button;
+}
+
+/*导入客群弹框*/
+.importUserGroupInfo {
+    margin: 20px 0;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.importUserGroupInfo .importForm .meatOperate {
+    margin-left: 25px;
+}
+
+.importUserGroupInfo .importForm .meatOperate .fileUploadName {
+    width: 220px;
+    display: inline;
+    border: 1px solid #ccc;
+}
+
+.importUserGroupInfo .importForm .meatOperate a.file,
+.importUserGroupInfo .importForm .meatOperate div.btnUpload {
+    margin-right: 10px;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+.importUserGroupInfo .importForm .meatOperate a.file {
+    position: relative;
+    top: 0;
+    overflow: hidden;
+    text-indent: 0;
+}
+
+.importUserGroupInfo .importForm .meatOperate a.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    width: 180px;
+    margin: 0 5px;
+    outline: none;
+    border-radius: 2px !important;
+}
+
+.importUserGroupInfo .importForm .meatOperate div.btnUpload {
+    width: 80px;
+}
+
+.importUserGroupInfo .importForm .meatOperate a.templateBtn {
+    border-radius: 2px;
+    background: #00B38B;
+    border: none;
+    font-size: 16px;
+}
+
+.importUserGroupInfo .importForm .info {
+    margin-top: 20px;
+    margin-left: 26px;
+}
+
+.importUserGroupInfo .importForm .info span {
+    display: block;
+    color: red;
+    line-height: 24px;
+}
+
+.importUserGroupInfo .phoneInfo {
+    margin-top: 20px;
+    margin-left: 26px;
+    font-weight: bolder;
+}
+
+
+/*todo*/
+.jxhContent .jxhsmsMessage{
+    margin: 10px 0;
+}
+
+.jxhSmsContentId.willHide{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    width: 0;
+    height: 0;
+    position: relative;
+    float: right;
+    top: -120px;
+}

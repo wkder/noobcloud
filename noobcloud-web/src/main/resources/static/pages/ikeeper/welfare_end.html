@@ -1,0 +1,95 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/ikeeper/welfare.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12 form-inline conditionSearch">
+            <input type="text" class="form-control queryName" placeholder="福利名称">
+            <button class="searchBtn"><i class="fa fa-search"></i>搜索</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0">
+            </table>
+        </div>
+    </div>
+
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 福利赠送 -->
+    <div class="col-md-12 sendInfo" data-autoVerify="true">
+        <!-- region 登录用户ID 隐藏域 -->
+        <input type="hidden" name="userId">
+        <!-- endregion 登录用户ID 隐藏域 -->
+
+        <!-- region 用户号码 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>用户号码:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="telephone" maxlength="11"
+                   placeholder="请输入用户号码"
+                   data-expression="isMob"
+                   data-error="用户号码格式不正确"/>
+        </div>
+        <!-- endregion 用户号码 -->
+
+        <!-- region 福利名称 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>福利名称:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="welfareName"
+                   maxlength="20" readonly="readonly"
+                   data-expression="isEnglishChineseNumber"
+                   data-error="名称由字母、下划线、中文组成">
+            <input type="hidden" name="welfareId">
+        </div>
+        <!-- endregion 福利名称 -->
+
+        <!-- region 短信签名 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>短信签名:</strong>
+        </div>
+        <div class="col-md-7">
+            <select class="form-control" name="autograph">
+                <option value="Y">是</option>
+                <option value="N">否</option>
+            </select>
+        </div>
+        <!-- endregion 短信签名 -->
+    </div>
+    <!-- endregion 福利赠送 -->
+
+    <!-- region 详情 -->
+    <div class="col-md-12 detailsInfo">
+        <table class="table table-hover table-condensed table-bordered detailsInfoTable"
+               cellspacing="0">
+        </table>
+    </div>
+    <!-- endregion 详情 -->
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹出框 -->
+<div class="iMarket_Dialog">
+    <!-- region 福利赠送 -->
+    <div id="send_welfare_dialog" style="display: none"></div>
+    <!-- endregion 福利赠送 -->
+
+    <!-- region 详情 -->
+    <div id="details_dialog" style="display: none"></div>
+    <!-- endregion 详情 -->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="js/ikeeper/welfare_end.js"></script>
+<!-- endregion 脚本 -->

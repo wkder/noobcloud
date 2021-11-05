@@ -1,0 +1,118 @@
+<link href="styles/ishop/shopWeekly.css" rel="stylesheet">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="loginUser" type="hidden">
+        <!--<input id="txtQueryDate" type="text" class="form-control"-->
+        <!--onclick="laydate({istime: false,isclear:false, format: 'YYYY-MM-DD'})" readonly/>-->
+        <input id="txtQueryDate" type="text" class="form-control"
+               onclick="WdatePicker({readOnly:true,isShowToday:false,errDealMode:2,qsEnabled:false,isShowClear:false,isShowWeek:false,highLineWeekDay:false,disabledDays:[1,2,3,4,5,6],maxDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd'})"/>
+        <select id="selectQueryBaseAreas" class="form-control"></select>
+        <input id="bussHallCoding" class="form-control" placeholder="渠道编码" maxlength="60">
+        <select id="selectQueryLocationType" class="form-control">
+            <option value="-1">请选择营业厅类型</option>
+            <option value="1">自营厅</option>
+            <option value="7">黄埔厅</option>
+        </select>
+        <select id="selectQueryBase" class="form-control" style="display: none;"></select>
+        <button id="btnQuery" class="btn btn-success">
+            <i class="fa fa-search"></i>查询
+        </button>
+        <button id="btnExport" class="btn btn-success">
+            <i class="fa fa-download"></i>导出
+        </button>
+        <button id="btnDescription" class="btn btn-success">
+            <i class="fa fa-question-circle-o"></i>指标
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable dataTable table-bordered table-hover table-condensed table-bordered"
+               cellspacing="0" border="0" style="margin-top: 0 !important;">
+            <thead>
+            <tr>
+                <td style="border-top: 0;font-weight: bold; width: 6%" rowspan="2">地市</td>
+                <td style="border-top: 0;border-bottom: 0;font-weight: bold;padding-top: 10px;padding-bottom: 10px;"
+                    colspan="4">门店情况
+                </td>
+                <td style="border-top: 0;border-bottom: 0;font-weight: bold; width: 30%" colspan="6">任务执行情况</td>
+                <td style="border-top: 0;border-bottom: 0;font-weight: bold;width: 40%" colspan="6">引流情况(引流人次)</td>
+                <td style="border-top: 0;border-bottom: 0;font-weight: bold; " colspan="3">业务办理情况</td>
+            </tr>
+            <tr>
+                <td>渠道编码</td>
+                <td style="width: 13%">名称</td>
+                <td>渠道类型</td>
+                <td style="width: 4%">上线状态</td>
+
+                <td style="width: 4%">省级任务总数</td>
+                <td style="width: 4%">地市任务总数</td>
+                <td style="width: 4%">营业厅任务总数</td>
+                <td style="width: 4%">任务执行总数</td>
+                <td style="width: 4%">任务执行率</td>
+                <td style="width: 4%">业务类型数量</td>
+
+                <td style="width: 3%">常驻</td>
+                <td style="width: 3%">流动拜访</td>
+                <td style="width: 3%">指定导入</td>
+                <!--<td style="color: red;width: 6%">常驻引流达到率</td>-->
+                <td style="width: 4%">引流总人次</td>
+                <td style="color: red;width: 6%">短信到达率</td>
+                <td style="color: red; width: 6%">周环比增长率</td>
+
+                <td style="width: 4%">办理人次</td>
+                <td style="width: 4%">渠道内排名</td>
+                <td style="width: 4%">全市排名</td>
+            </tr>
+            </thead>
+            <tbody>
+            <!--模板填充这里-->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--弹出框-->
+<div id="dialogDescription" style="display:none;">
+    <div class="row" style="margin: 0 auto;">
+        <div class="col-md-12 desc-title">一、业务办理排名</div>
+        <div class="col-md-12 desc-content"><span>渠道内排名：</span>在该地市本厅对应的营业厅类型中以本厅办理人次为口径进行排名，列出名次</div>
+        <div class="col-md-12 desc-content"><span>地市排名：</span>在该地市所有的营业厅类型中，以本厅办理人次为口径进行排名，列出名次</div>
+
+        <div class="col-md-12 desc-title">二、任务执行情况</div>
+        <div class="col-md-12 desc-content"><span>省级任务数：</span>本营业厅本周具备的省级任务累积数</div>
+        <div class="col-md-12 desc-content"><span>地市任务数：</span>本地市本周具备的地市任务总数</div>
+        <div class="col-md-12 desc-content"><span>营业厅任务数：</span>本营业厅本周配置的营业厅任务总数</div>
+        <div class="col-md-12 desc-content"><span>执行的任务总数：</span>本营业厅本周已经执行的任务总数</div>
+        <div class="col-md-12 desc-content"><span>任务执行率：</span>执行的任务总数/(省级任务数+地市任务数+营业厅任务数)*100%</div>
+        <div class="col-md-12 desc-content"><span>业务类型数量：</span>本营业厅本周执行的任务对应的业务类型数量</div>
+
+        <div class="col-md-12 desc-title">三、引流情况</div>
+        <div class="col-md-12 desc-content"><span>常驻引流人次：</span>本营业厅本周每天的常驻引流人数累计（包括发送网关成功和发送网关失败）</div>
+        <div class="col-md-12 desc-content"><span>流动拜访引流人次：</span>本营业厅本周每天的流动拜访引流人数累计</div>
+        <div class="col-md-12 desc-content"><span>指定导入引流人次：</span>本营业厅本周每天的指定导入用户引流人数累计</div>
+
+        <div class="col-md-12 desc-content"><span>常驻引流达到率：</span>本营业厅本周常驻引流人数（去重）/本营业本周地市目标常驻人群（去重）*100%</div>
+        <div class="col-md-12 desc-content"><span>引流总人次：</span>常驻引流人数次+流动拜访引流人数次+指定导入人次（包括成功和失败）</div>
+        <div class="col-md-12 desc-content"><span>短信到达率：</span>本营业厅本周累计成功到达人次/(常驻引流人次+流动拜访引流人次+指定导入引流人次)*100%</div>
+        <div class="col-md-12 desc-content"><span>周环比增长率：</span>（本营业厅本周合计引流人次-本营业厅上周合计引流人次）/本营业厅本周合计引流人次*100%</div>
+
+        <div class="col-md-12 desc-title">四、业务办理人数</div>
+        <div class="col-md-12 desc-content"><span>办理人次：</span>本营业厅引流用户的业务办理人次</div>
+
+    </div>
+</div>
+<script src="ext/My97DatePicker/WdatePicker.js"></script>
+<script src="ext/js-xlsx-master/shim.js"></script>
+<script src="http://oss.sheetjs.com/js-xlsx/xlsx.core.min.js"></script>
+<script src="ext/js-xlsx-master/Export2Excel.js"></script>
+<!-- FileSaver.js is the library of choice for Chrome -->
+<script src="ext/js-xlsx-master/Blob.js"></script>
+<script src="ext/js-xlsx-master/FileSaver.js"></script>
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/ishop/shopWeekly.js"></script>

@@ -1,0 +1,65 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/ikeeper/policy.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row catalogContainer">
+        <div class="col-md-12">
+            <input type="text" class="form-control queryCatalogName" placeholder="目录名称">
+            <button class="searchBtn"><i class="fa fa-search"></i>搜索</button>
+        </div>
+    </div>
+    <div class="row list-row catalogContainer">
+        <div class="col-md-12">
+            <table id="catlogTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0">
+            </table>
+        </div>
+    </div>
+    <div class="row query-row policyContainer" style="display: none;">
+        <div class="col-md-12">
+            <input type="text" class="form-control queryPolicyName" placeholder="政策名称">
+            <button class="searchBtn"><i class="fa fa-search"></i>搜索</button>
+            <button class="returnBtn"><i class="fa fa-chevron-left"></i>返回</button>
+        </div>
+    </div>
+    <div class="row list-row policyContainer" style="display: none;">
+        <div class="col-md-12">
+            <table id="policyTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0">
+            </table>
+        </div>
+    </div>
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 查看政策详情 -->
+    <div class="col-md-12 policyDetailInfo" data-autoVerify="true">
+        <!-- region 政策内容 -->
+        <div class="col-md-3">
+            <span>政策内容：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_policyContent"></span>
+        </div>
+        <!-- endregion 政策内容 -->
+    </div>
+    <!-- endregion 查看政策详情 -->
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹出框 -->
+<div class="iMarket_Dialog">
+    <!-- region 查看政策详情 -->
+    <div id="detail_policy_dialog" style="display: none"></div>
+    <!-- endregion 查看政策详情 -->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="ext/otreetable/otreetable.js"></script>
+<script src="js/ikeeper/policy_end.js"></script>
+<!-- endregion 脚本 -->

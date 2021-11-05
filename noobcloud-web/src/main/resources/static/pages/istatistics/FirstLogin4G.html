@@ -1,0 +1,37 @@
+
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12" >
+        <span>开始日期:</span>
+        <input type="text" id="startTime" class="form-control startTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+
+        <span style="margin: 0 4px;">结束日期:</span>
+        <input type="text" id="endTime" class="form-control endTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday: true,isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;"/>
+
+        <span style="display: none">场景类型:</span>
+        <input type="text" id="type" class="form-control type" placeholder="4G首登网" style="display:none " >
+
+        <button id="queryFirstLogin" class="btn btn-success" style="width: 110px"><i class="fa fa-search"></i>查询</button>
+
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/istatistics/FirstLogin4G.js"></script>
+
+

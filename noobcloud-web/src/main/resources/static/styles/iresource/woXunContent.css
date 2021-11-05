@@ -1,0 +1,106 @@
+/** 弹窗 */
+.woXunInfo,
+.resourceInfo {
+    padding: 30px 15px;
+}
+
+.woXunInfo .right,
+.resourceListInfo .right,
+.resourceInfo .right {
+    text-align: right;
+}
+
+.woXunInfo div.col-md-3,
+.woXunInfo div.col-md-7,
+.resourceInfo div.col-md-3,
+.resourceInfo div.col-md-7,
+.detailsInfo div.col-md-3,
+.detailsInfo div.col-md-7 {
+    margin: 8px 0;
+}
+
+.resourceListInfo {
+    padding: 0 15px;
+    overflow-y: hidden;
+}
+
+.resourceListInfo .query-row {
+    height: 65px;
+    margin-top: 10px;
+}
+
+/** 新增资源配置 start */
+.resourceInfo .importForm .meatOperate .fileUploadName {
+    width: 208px;
+    display: inline;
+    border: 1px solid #ccc;
+}
+
+.resourceInfo .importForm .meatOperate a.file {
+    margin-left: 4px;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+.resourceInfo .importForm .meatOperate a.file {
+    position: relative;
+    top: 0;
+    overflow: hidden;
+    text-indent: 0;
+}
+
+.resourceInfo .importForm .meatOperate a.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    width: 180px;
+    margin: 0 5px;
+    outline: none;
+    border-radius: 2px !important;
+}
+
+.resourceInfo .importForm .meatOperate a.templateBtn {
+    border-radius: 2px;
+    background: #00B38B;
+    border: none;
+    font-size: 16px;
+}
+
+.resourceInfo .importForm .levelOne,
+.resourceInfo .importForm .levelTwo {
+    color: red;
+}
+
+/** 新增资源配置 end */
+
+.status-warning {
+    background-color: rgba(235, 158, 5, .1);
+    color: #eb9e05;
+    display: inline-block;
+    padding: 0 10px;
+    height: 32px;
+    line-height: 30px;
+    font-size: 12px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 1px solid rgba(235, 158, 5, .2);
+    white-space: nowrap;
+}
+
+.status-success {
+    background-color: rgba(0, 179, 139, .1);
+    color: #00B38B;
+    border: 1px solid rgba(0, 179, 139, .2);
+    display: inline-block;
+    padding: 0 10px;
+    height: 32px;
+    line-height: 30px;
+    font-size: 12px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    white-space: nowrap;
+}

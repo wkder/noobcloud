@@ -1,0 +1,13 @@
+.iSelectBox-c{display: inline-block;margin-left: -3px;}
+.iSelectBox-c .iSelectBox-i .iSelectBox-i-text{padding: 6px 25px 6px 8px;font-size: 14px;margin: 0 5px;border: 1px solid #a8acad;outline: none;border-radius: 8px;background: #fff;line-height: 16px;}
+.iSelectBox-c .iSelectBox-i .iSelectBox-i-text:focus{border-color: #48ADEE;}
+.iSelectBox-c .iSelectBox-i .iSelectBox-i-icon{display: inline-block;font-size: 14px;color: #44adef;cursor: pointer;padding: 6px 5px;
+    vertical-align: bottom;margin-left: -31px;border: 1px solid silver;border-radius: 0 8px 8px 0;line-height: 16px;}
+.iSelectBox-c .iSelectBox-p{max-height: 224px;border: 1px solid silver;background: #fff;overflow: auto;position:fixed;z-index: 2147483647;-webkit-user-select: none;}
+.iSelectBox-c .iSelectBox-p ul{padding: 0; margin: 0;max-height: 196px;overflow: auto;}
+.iSelectBox-c .iSelectBox-p ul li{padding: 2px 15px;font-size: 14px;white-space: nowrap;list-style-type: none;}
+.iSelectBox-c .iSelectBox-p ul li.hover{cursor: pointer;background: #48ADEE;color:#fff;}
+.iSelectBox-c .iSelectBox-p ul li.unable{display:none;}
+.iSelectBox-c .iSelectBox-p .iSelectBox-pg{height: 22px;text-align: center;}
+.iSelectBox-c .iSelectBox-p .iSelectBox-pg span{text-align: center;margin: 0 8%;width: 18px;display: inline-block;height:inherit;font-weight: bold;line-height: 22px;}
+.iSelectBox-c .iSelectBox-p .iSelectBox-pg span:hover{color:#fff;background:#e3e3e3;cursor: pointer;}

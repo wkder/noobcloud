@@ -1,0 +1,92 @@
+<style type="text/css">
+    div#dialogDescription div.txt{padding: 10px 20px 10px 20px;}
+    span.title{font-size: 16px;font-family:'Microsoft Yahei', 'Open Sans', sans-serif;}
+    div.txt1{padding: 0;margin:0;display: inline-block}
+    div.txt2{font-size: 16px;font-family:'Microsoft Yahei', 'Open Sans', sans-serif;}
+    #dataTable1 {padding-left: 20px}
+    #dataTable1 tr td { border:1px solid gray;border-right-width:1px!important; }
+
+</style>
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <span>开始日期：</span>
+        <input type="text" id="startTime" class="form-control startTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+
+        <span>结束日期：</span>
+        <input type="text" id="endTime" class="form-control endTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+
+        <button id="promoteQueryBtn" class="btn btn-success"><i class="fa fa-search"></i>查询
+        </button>
+        <!--<button id="promoteExportButton" class="btn btn-success" style="width: 110px"><i class="fa fa-download"></i>导出-->
+        <!--</button>-->
+        <button id="btnDescription" class="btn btn-success"><i class="fa fa-question-circle-o"></i>指标</button>
+
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+<!--指标弹窗-->
+<div id="dialogDescription" style="display: none">
+    <div class="txt">
+        <div class="txt1"><span class="title"><strong>营销用户数</strong>：满足促登客群群发营销目标用户数</span></div>
+    </div>
+    <div class="txt">
+        <div class="txt1"><span class="title"><strong>成功转化用户数</strong>：已登录4G网络的用户数</span></div>
+        </div>
+    <div class="txt">
+        <div class="txt2"><strong>转化率=成功转化用户数/群发营销用户数</strong></div>
+    </div>
+</div>
+
+<!--日转化趋势弹窗-->
+<div class="promoteOnNetMarketChart" style="display: none;" >
+
+    <div class="distributionOfUser analysisChart" style="width: 600px;height: 400px;"></div>
+
+
+    <div class="col-md-9 promoteOnNetMarketTable">
+        <table id="dataTable1" class="iDataTable iTable" cellspacing="0" border="1">
+            <thead>
+            <tr>
+                <td class="dateTime" width="20%"><strong>日期</strong></td>
+                <td class="transfer_num" width="20%"><strong>日转化</strong></td>
+            </tr>
+            </thead>
+            <tbody>
+            <!--模板填充这里-->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--artTemplate模板-->
+<div class="iMarket_promoteOnNetMarket_Template " style="display: none">
+    <script id="promoteOnNetMarketTemplate" type="text/html">
+        {{each list as promoteInfo index}}
+        <tr>
+            <td class="timest" width="20%">{{promoteInfo.timest}}</td>
+            <td class="num" width="20%">{{promoteInfo.num}}</td>
+        </tr>
+        {{/each}}
+    </script>
+</div>
+
+
+<script src="ext/template.js"></script>
+<script src="js/icommon/dateUtil.js"></script>
+<!--<script src="ext/echarts/echarts-all.js" type="text/javascript"></script>-->
+<script src="ext/echarts/echarts.min.js" type="text/javascript"></script>
+<script src="js/istatistics/promoteOnNetMarket.js"></script>

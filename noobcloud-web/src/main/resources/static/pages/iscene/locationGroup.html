@@ -1,0 +1,63 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/locationgroup.css?version=2.0" rel="stylesheet">
+
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtGroupName" type="text" class="form-control" placeholder="请填写分类名称">
+        <button id="btnQuery" class="btn btn-primary"><i class="fa fa-search"></i>搜索</button>
+        <button id="btnAdd"><i class="fa fa-plus"></i>新增</button>
+        <button id="upload"><i class="fa fa-file-text-o"></i>导入分类</button>
+        <button id="btnRefresh"><i class="fa fa-refresh"></i>刷新</button>
+    </div>
+</div>
+
+<!--页面表-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+
+
+<!--regionlist弹出框-->
+<div id="poplocation" style="display:none;">
+    <div class="col-md-12">
+        <table id="region-list" class="table table-hover table-condensed table-bordered" cellspacing="0"></table>
+    </div>
+    <!--<div id="phoneTools" class="col-md-12">-->
+    <!--<button class="btn btn-default" id="btnCancel">取消</button>-->
+    <!--</div>-->
+</div>
+
+<!--修改区域分类名称弹出框-->
+<!--<div id="popupAddOrEdit" style="display: none;"></div>-->
+<div id="popupAddOrEdit" style="display: none;" class="cmTableContent" data-autoVerify="true">
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title"><strong>分类名称：</strong></td>
+            <td colspan="3" class="td-content"><input type="text" id="txtName" name="groupName" class="form-control"
+                                                      placeholder="分类名称" data-expression="isEmpty" data-error="区域名称不能为空" maxlength="30">
+                <div class="help-block alert alert-warning" role="alert">分类名称不能为空</div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="uploadPross" style="display:none;">
+    <div>
+        <span class="title"></span>
+        <span class="proess"></span>
+        <span class="wordloading">加载中...</span>
+    </div>
+</div>
+
+<!--隐藏值 保存分类ID-->
+<input id="GroupId" type="hidden" value="0"/>
+
+
+<script src="ext/plupload/plupload.full.min.js"></script>
+<!--<script src="ext/cmtable/js/cmtable.js"></script>-->
+<script src="js/iscene/locationGroup.js?version=2.0" charset="UTF-8"></script>

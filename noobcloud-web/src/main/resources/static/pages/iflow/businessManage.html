@@ -1,0 +1,70 @@
+<style type="text/css">
+    .businessManageInfo .col-md-12{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .queryRelatingProduct{
+        max-width: 200px;
+    }
+</style>
+<link href="ext/searchable/searchableSelect.css" rel="stylesheet" type="text/css">
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+
+        <input type="text" id="businessName" class="form-control businessName" maxlength="200" placeholder="业务名称"/>
+
+        <button id="businessManageQueryBtn" class="btn btn-success"><i class="fa fa-search"></i>查询</button>
+        <button id="businessManageAddPopUp" class="btn btn-primary"><i class="fa fa-plus"></i>新增</button>
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+<!--弹窗-->
+<div class="popUpTable" style="display: none"></div>
+
+<!--业务管理新增或修改弹窗-->
+<div class="businessManageAddOrEditBtnPopUp" style="display: none">
+    <div class="col-md-12 businessManageInfo">
+
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>业务名称：</strong></div>
+            <div class="col-md-10"><input class="businessName" type="text" data-expression="isEmpty" maxlength="200" title="业务名称不为空"><strong class="must" style="color: red">*</strong></div>
+        </div>
+
+        <!--归属地市-->
+        <div class="col-md-12 belongingArea">
+            <div class="col-md-2"><strong>归属地市：</strong></div>
+            <div class="col-md-10"><select class="queryBelongingArea" data-expression="isEmpty" title="归属地市不为空"></select><strong class="must" style="color: red">*</strong></div>
+        </div>
+
+        <!--关联分组-->
+        <div class="col-md-12 relatingArea">
+            <div class="col-md-2"><strong>关联分组：</strong></div>
+            <div class="col-md-10"><select class="queryRelatingGroup" data-expression="isEmpty" title="关联分组不为空"></select><strong class="must" style="color: red">*</strong></div>
+        </div>
+
+        <!--关联产品-->
+        <div class="col-md-12 relatingProduct">
+            <div class="col-md-2"><strong>关联产品：</strong></div>
+            <div class="col-md-10"><select class="queryRelatingProduct" data-expression="isEmpty"></select><strong class="must" style="color: red">*</strong></div>
+        </div>
+
+        <!--业务说明-->
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>业务说明：</strong></div>
+            <div class="col-md-10"><textarea class="businessInfo" maxlength="1000"></textarea></div>
+        </div>
+    </div>
+</div>
+
+<script src="js/iflow/businessManage.js"></script>
+<script src="ext/searchable/searchableSelect.js"></script>

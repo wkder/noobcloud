@@ -1,0 +1,84 @@
+/*********** spinner start *************/
+
+.wan-spinner {
+  /*border: 1px solid #dddddd;*/
+  display: inline-block;
+  position: relative;
+  padding-left: 15px;
+}
+
+.wan-spinner .minus,
+.wan-spinner .plus,
+.wan-spinner input {
+  height: 34px;
+  float: left;
+  line-height: 1em;
+  padding: 5px;
+  text-align: left;
+}
+
+.wan-spinner input {
+  /*border: none;*/
+  /*border-left: 1px solid #dddddd;*/
+  /*border-right: 1px solid #dddddd;*/
+  border:1px solid #dddddd;
+  border-radius:4px;
+  margin: 0;
+  background-color: white;
+  /*width: 40px;*/
+  width:60px;
+}
+
+.wan-spinner .minus,
+.wan-spinner .plus {
+  color: #333333;
+  cursor: pointer;
+  text-decoration: none;
+  width: 15px;
+}
+
+.buttons button span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    display: block;
+}
+
+button span.triangle-up {
+    border-bottom: 7px solid #16425B;
+    bottom: 2px;
+    right: 0.6rem;
+}
+
+button span.triangle-down {
+    border-top: 7px solid #16425b;
+    top: 2px;
+    right: 0.6rem;
+}
+
+.buttons button {
+    position: relative;
+    width: 1.8rem;
+    height: 1rem;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    display: block;
+    outline: 0;
+    cursor: default;
+    -webkit-appearance: none;
+}
+
+.buttons {
+    position: absolute;
+    top: 0.5rem;
+    right: 0;
+    width: 1.8rem;
+}
+
+
+/*********** spinner end *************/

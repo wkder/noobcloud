@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="styles/isystem/user.css">
+    <style>
+        .keeperUserInfo >div.row{margin:10px 0;}
+        .keeperUserInfo .willHide {
+            margin: 0;
+            padding: 0;
+            outline: 0;
+            border: 0;
+            width: 0;
+            height: 0;
+            position: relative;
+            float: right;
+            top:-30px;
+        }
+        .abilityItem {
+            background: silver;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 15px;
+            margin: 10px 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .abilityItem.active{
+            background: #44adef;
+            color: #fff;
+        }
+    </style>
+    <script src="js/ikeeper/keeperUserMgr.js"></script>
+</head>
+<body>
+<div class="iMarket_Body">
+    <div class="">
+        <div class="row query-row">
+            <div class="col-md-12 form-inline">
+                <input type="tel" class="form-control telephone" placeholder="手机号码" maxlength="11">
+               <!-- <select class="form-control areaSearchSelect">
+                    <option value="-1">所有区域</option>
+                </select>-->
+                <button class="searchBtn btn btn-primary"><i class="fa fa-search"></i>搜索</button>
+                <button class="keeperUserAddBtn btn btn-primary"><i class="fa fa-plus"></i>新增</button>
+                <div class="keeperUserRefreshBtn" style="display: none;"></div>
+            </div>
+        </div>
+        <div class="row list-row">
+            <div class="col-md-12">
+                <table class="keeperUserTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer"
+                       width="100%" style="table-layout: fixed;width: 100%;"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="iMarket_Content" style="display: none;">
+    <div class="keeperUserInfo container-fluid">
+        <div class="row">
+            <div class="col-sm-3 text-right">
+                <span style="color:red">*</span>
+                <label class="">用户区域：</label>
+            </div>
+            <div class="col-sm-6">
+                <select class="form-control areaSelect">
+                    <option value="-1">--- 请选择 ---</option>
+                </select>
+                <input type="hidden" class="areaId"/>
+                <input type="text" class="form-control input-sm areaName" disabled style="display: none;"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 text-right">
+                <span style="color:red">*</span>
+                <label class="">姓名：</label>
+            </div>
+            <div class="col-sm-6">
+                <select class="form-control userSelect">
+                    <option value="-1">--- 请选择 ---</option>
+                </select>
+                <input type="hidden" class="userId"/>
+                <input type="text" class="form-control input-sm userName" disabled style="display: none;"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 text-right">
+                <span style="color:red">*</span>
+                <label class="">手机号码：</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control input-sm telephone" disabled/>
+            </div>
+        </div>
+<!--        <div class="row">
+            <div class="col-sm-3 text-right">
+                <span style="color:red">*</span>
+                <label class="">管理权限：</label>
+            </div>
+            <div class="col-sm-6">
+                <select class="form-control isCanManage">
+                    <option value="1">否</option>
+                    <option value="0">是</option>
+                </select>
+            </div>
+        </div>-->
+        <div class="row">
+            <div class="col-sm-3 text-right">
+                <span style="color:red">*</span>
+                <label class="">接口人：</label>
+            </div>
+            <div class="col-sm-6">
+                <select class="form-control interfaceMan">
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 text-right">
+                <span style="color:red">*</span>
+                <label class="">组织机构：</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="systemOrg form-control input-sm" disabled/>
+                <input type="text" class="id systemOrgId willHide" title="组织机构不能为空"/>
+            </div>
+            <div class="col-sm-2 text-left">
+                <button type="button" class="systemOrgSelectBtn btn btn-info btn-sm">选择</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 text-right">
+                <span style="color:red">*</span>
+                <label class="">业务归属：</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="businessOrg form-control input-sm" disabled/>
+                <input type="text" class="id businessOrgId willHide" title="业务部门不能为空"/>
+            </div>
+            <div class="col-sm-2 text-left">
+                <button type="button" class="businessOrgSelectBtn btn btn-info btn-sm">选择</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 text-right">
+                <span style="color:red">*</span>
+                <label class="">维系能力：</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="abilityText form-control input-sm" disabled/>
+                <input type="text" class="abilityIds willHide" title="维系能力不能为空"/>
+            </div>
+            <div class="col-sm-2 text-left">
+                <button type="button" class="abilitySelectBtn btn btn-info btn-sm">选择</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 text-right">
+                <label class="">短信签名：</label>
+            </div>
+            <div class="col-sm-6">
+                <input class="smsSignature form-control input-sm" type="text" maxlength="30"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 text-right">
+                <span style="color:red">*</span>
+                <label class="">签名审批人：</label>
+            </div>
+            <div class="col-sm-6">
+                <select class="form-control smsSignatureAuditUser" title="请选择短信签名审批人">
+                    <option value="">-- 请选择短信签名审批人 --</option>
+                </select>
+            </div>
+        </div>
+        <div class="keeperUserHandel" style="display: none;"></div>
+    </div>
+
+    <div class="abilitySelectInfo container-fluid">
+        <div class="abilityList row"></div>
+    </div>
+</div>
+</body>
+</html>

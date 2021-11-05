@@ -1,0 +1,54 @@
+/***** common 配置 *****/
+select,textarea,input[type=text],input[type=password],input[type=time],input[type=file]{width: 180px;padding: 6px 8px;font-size: 14px;margin: 0 5px;border: 1px solid #a8acad;outline: none;border-radius: 8px;background: #fff;}
+select:focus,input:focus,textarea:focus{border-color: #48ADEE;}
+select{padding: 5px 8px;line-height: 24px;}
+textarea{height: 140px;margin-bottom: -.2em;resize: none;}
+input[type=radio]{width: 15px;}
+ul,li,a{ list-style-type: none;text-decoration: none;margin: 0px;border: 0px;padding: 0px;}
+i.fa{font-size: 16px;}
+span.label {display: inline-block;text-align: right;margin-right: 20px;width: 90px;font-size: 14px;color: black}
+input.specificHide{position: absolute;width: 0;border: 0;outline: 0;height: 0;margin: 0;padding: 0;}
+div.iMarket_Shade.on{width: 100%;height: 100%;z-index: 19891042;background-color: #000;opacity: 0.3;top: 0px;position: absolute;}
+div.iMarket_Shade.off{display: none;}
+/*基本按钮样式*/
+div.extensionalBtn{ padding: 2px 12px;text-align: center;display: inline-block;vertical-align: top;background: #a8acad;cursor: pointer;color: #fff;height: 34px;line-height: 26px;font-size: 15px;border-radius: 8px;}
+div.extensionalBtn:hover{background: #66BFF7;color: #eee;}
+/*表格*/
+table.iTable {border-top: 1px solid silver;width: 99%;margin: 10px 7px;border-radius: 8px;}
+table.iTable thead {background: #e4e4e4;font-weight: 600;font-size: 14px;}
+table.iTable thead tr:first-child th:first-child{border-radius: 8px 0 0 0;}
+table.iTable thead tr:first-child th:last-child{border-radius: 0 8px 0 0;}
+table.iTable tfoot tr:last-child td:first-child{border-radius: 0 0 8px 8px}
+table.iTable tr >td:first-child,table.iTable thead tr >th:first-child {border-left: 1px solid silver;}
+table.iTable td,table.iTable th{border-bottom: 1px solid silver;border-right: 1px solid silver;word-break: break-word;word-wrap: break-word;padding: 8px 0;text-align: center;font-size: 14px;font-family: 'microsoft yahei','Helvetica',simhei,simsun,sans-serif;}
+/***** 位置场景配置 *****/
+.positionScenceSegment .elment div{display: inline-block;width: 48%}
+.positionScenceSegment >div{margin:7px;}
+.positionScenceSegment input{width: 168px;}
+.positionScenceSegment select{width: 187px;}
+.positionScenceSegment input[type='time']{height:32px;width:186px}
+.positionBaseInfoSegment .baseinfo tr.silver{background: silver;}
+.positionScenceSegment{margin: 10px 5px; font-family: Verdana, Arial, Helvetica, AppleGothic, sans-serif;  font-size: 14px;}
+.positionScenceSegment span.label{  display: inline-block;  width: 100px;}
+
+/***** 场景规则配置 *****/
+.createScenceSegment,.positionScenceSegment,.createPositonBaseSegment{  margin: 10px 5px;  font-family: Verdana, Arial, Helvetica, AppleGothic, sans-serif;  font-size: 14px;}
+.createScenceSegment span.label,.positionScenceSegment span.label{display: inline-block;width: 100px;}
+.createScenceSegment >div{margin:10px;}
+.createScenceSegment div.automaticFetching >div{margin:10px 0;}
+.createScenceSegment input{width: 430px;}
+.createScenceSegment select{width: 447px;}
+.createScenceSegment select.timeUnitSelect{width: 60px;}
+.createScenceSegment span.needAuto{margin: 10px;cursor: pointer;}
+.createScenceSegment div.mark{margin-top: 5px;}
+.createScenceSegment textarea{width: 362px;height: 110px;}
+div.conditionSearch1{padding: 10px 0px;font-size: 14px;display: inline-block;}
+div.conditionSearch1 select,div .conditionSearch1 input {width: 120px;}
+
+/***** 位置场景基站配置 *****/
+.createPositonBaseSegment span.label{display: inline-block;width: 100px;}
+.createPositonBaseSegment >div{margin:10px;}
+.createPositonBaseSegment input{width: 380px;}
+.createPositonBaseSegment select{width: 400px;}
+.batchImportBaseSegment .info{margin-left: 26px}
+.batchImportBaseSegment .info span{display: block;color: red;line-height:24px}

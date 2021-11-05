@@ -1,0 +1,344 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/isystem/userMgr_new.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input type="text" class="form-control queryName" placeholder="姓名" maxlength="200">
+            <input type="tel" class="form-control queryTelephone" placeholder="手机号" maxlength="11">
+            <select class="form-control roleSearchSelect">
+                <option value="-1">所有角色</option>
+            </select>
+            <button class="searchBtn btn btn-primary"><i class="fa fa-search"></i>搜索</button>
+            <button class="addBtn btn btn-primary"><i class="fa fa-plus"></i>新增</button>
+            <button class="distributionBtn btn btn-primary"><i class="fa fa-gears"></i>分配</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table class="userTable iDataTable table table-hover table-condensed table-bordered dataTable no-footer"
+                   width="100%" style="table-layout: fixed;width: 100%;"></table>
+        </div>
+    </div>
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 新增、编辑用户 -->
+    <div class="userInfoContainer">
+        <!-- region header -->
+        <div class="flowStepContainer">
+            <div class="flowLine"></div>
+            <div class="flowStep">
+                <div class="flowStepA" refDiv="userInfo">
+                    <span class="stepNumber active">1</span>
+                    <span class="stepIcon active"></span>
+                    <span class="stepDesc active">基础信息</span>
+                </div>
+                <div class="flowStepB" refDiv="roleInfo">
+                    <span class="stepNumber">2</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">角色信息</span>
+                </div>
+                <div class="flowStepC" refDiv="examineInfo">
+                    <span class="stepNumber">3</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">审批信息</span>
+                </div>
+                <div class="flowStepD" refDiv="previewInfo">
+                    <span class="stepNumber">4</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">预览</span>
+                </div>
+            </div>
+        </div>
+        <!-- endregion header -->
+
+        <!-- region body -->
+        <div class="container-fluid infoConfigBody">
+            <!-- region 用户基础信息 -->
+            <div class="row userInfo active">
+                <!-- region 手机号码 -->
+                <div class="col-md-12">
+                    <div class="col-md-3 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>手机号码:</strong>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control tellPhone" title="手机号为空或格式有误"
+                               placeholder="请输入手机号，限制11个数字" maxlength="11"
+                               onkeyup="this.value=this.value.replace(/\D/g,'').replace(/^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D/g,'').replace(/^0/g,'')"/>
+                    </div>
+                </div>
+                <!-- endregion 手机号码 -->
+
+                <!-- region 用户名 -->
+                <div class="col-md-12">
+                    <div class="col-md-3 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>用户名:</strong>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control userName" title="用户名不能为空" placeholder="用户名不能为空"
+                               maxlength="50"/>
+                    </div>
+                </div>
+                <!-- endregion 用户名 -->
+
+                <!-- region 密码 -->
+                <div class="col-md-12">
+                    <div class="col-md-3 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>密码:</strong>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control password" title="密码至少一个数字，小写字母，大写字母和特殊字符 长度8-16位"
+                               placeholder="密码不能为空"
+                               maxlength="16" minlength="8"/>
+                    </div>
+                </div>
+                <!-- endregion 密码 -->
+
+                <!-- region 邮箱 -->
+                <div class="col-md-12">
+                    <div class="col-md-3 text-right">
+                        <strong>邮箱:</strong>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control email" title="邮箱格式有误" placeholder="请输入邮箱"
+                               maxlength="50"/>
+                    </div>
+                </div>
+                <!-- endregion 邮箱 -->
+
+                <!-- region 备注 -->
+                <div class="col-md-12">
+                    <div class="col-md-3 text-right">
+                        <strong>备注:</strong>
+                    </div>
+                    <div class="col-md-6">
+                        <textarea class="form-control remark" rows="4" maxlength="200"
+                                  placeholder="请输入备注，限制200个字符"></textarea>
+                    </div>
+                </div>
+                <!-- endregion 备注 -->
+            </div>
+            <!-- endregion 用户基础信息 -->
+
+            <!-- region 角色信息 -->
+            <div class="row roleInfo">
+                <div class="col-md-3 roleTree">
+                    <ul id="roleTree" class="ztree"></ul>
+                </div>
+                <div class="col-md-9 roleContainer">
+                </div>
+            </div>
+            <!-- endregion 角色信息 -->
+
+            <!-- region 审批信息 -->
+            <div class="row examineInfo">
+                <!-- region 模型审批人 -->
+                <div class="examineItem" style="display: none;">
+                    <div class="examineTitle"></div>
+                    <div class="examineContent">
+                        <!-- region 审批 表格 -->
+                        <div class="examineTableInfo">
+                            <table class="examineTable table table-striped cell-border">
+                                <thead>
+                                <tr>
+                                    <td width="25%">审批级别</td>
+                                    <td width="55%">审批人</td>
+                                    <td width="20%">操作</td>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <!-- endregion 审批 表格 -->
+                    </div>
+                </div>
+                <!-- endregion 模型审批人 -->
+
+                <!-- region 指定首页 -->
+                <div class="examineAssignPage">
+                    <div class="col-md-2">
+                        <strong class="must" style="color: red">*</strong><strong>指定首页:</strong>
+                    </div>
+                    <div class="col-md-10">
+                        <select class="form-control assignPage">
+                        </select>
+                    </div>
+                </div>
+                <!-- endregion 指定首页 -->
+            </div>
+            <!-- endregion 审批信息 -->
+
+            <!-- region 预览 -->
+            <div class="row previewInfo">
+                <!-- region 基础信息 -->
+                <div class="previewItem">
+                    <div class="previewItemTitle">基础信息</div>
+                    <div class="previewItemContent">
+                        <div class="previewItemContentRow">
+                            <div class="title">手机号：</div>
+                            <div class="detail_tellPhone"></div>
+                        </div>
+                        <div class="previewItemContentRow">
+                            <div class="title">用户名：</div>
+                            <div class="detail_userName"></div>
+                        </div>
+                        <div class="previewItemContentRow">
+                            <div class="title">邮箱：</div>
+                            <div class="detail_email"></div>
+                        </div>
+                        <div class="previewItemContentRow">
+                            <div class="title">备注：</div>
+                            <div class="detail_remark"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- endregion 基础信息 -->
+
+                <!-- region 角色信息 -->
+                <div class="previewItem">
+                    <div class="previewItemTitle">角色信息</div>
+                    <div class="previewItemContent role">
+                    </div>
+                </div>
+                <!-- endregion 角色信息 -->
+
+                <!-- region 审批信息 -->
+                <div class="previewItem">
+                    <div class="previewItemTitle">审批信息</div>
+                    <div class="previewItemContent examine">
+                    </div>
+                </div>
+                <!-- endregion 审批信息 -->
+            </div>
+            <!-- endregion 预览 -->
+
+        </div>
+        <!-- endregion body -->
+
+        <!-- region footer -->
+        <div class="step">
+            <span class="pre">返回</span>
+            <span class="next active">继续</span>
+            <span class="confirm">确定</span>
+            <span class="closeBtn">关闭</span>
+        </div>
+        <!-- endregion footer -->
+
+        <!-- region 记录操作状态 -->
+        <input type="hidden" class="data">
+        <!-- endregion 记录操作状态 -->
+    </div>
+    <!-- endregion 新增、编辑用户 -->
+
+    <!-- region 角色 卡片 -->
+    <div class="col-md-5 roleCardInfo">
+        <div class="col-md-12 header"></div>
+        <div class="col-md-12 body">
+        </div>
+        <div class="col-md-12 footer">
+            <div class="areaItem" onclick="userMgr_new.roleAreaItemClick(this)">
+                <i class="fa fa-map-marker"></i>
+                <span class="defaultText">请点击选择</span>
+                <span class="displayNames"></span>
+                <input class="checkedIds" type="hidden">
+                <input class="checkedNames" type="hidden">
+            </div>
+            <div class="areaClose" style="display: none;">
+                <button class="btn btn-default btn-xs confirm" onclick="userMgr_new.roleAreaItemClose(this)">确定</button>
+                <button class="btn btn-default btn-xs cancel" onclick="userMgr_new.roleAreaItemCancel(this)">取消</button>
+            </div>
+        </div>
+    </div>
+    <!-- endregion 角色 卡片 -->
+
+    <!-- region 营业厅选择 -->
+    <div class="businessHallInfo" style="padding: 0 15px;">
+        <div class="row query-row">
+            <div class="col-md-12">
+                <input class="form-control queryBaseName" placeholder="营业厅名称" style="width: 160px">
+                <select class="form-control queryBaseAreas"></select>
+                <button class="searchBtn"><i class="fa fa-search"></i>搜索</button>
+            </div>
+        </div>
+        <div class="row" style="height: 320px;margin: 10px 0 20px 0;">
+            <table class="businessHallTable table table-condensed table-bordered"
+                   cellspacing="0" width="98%"></table>
+        </div>
+    </div>
+    <!-- endregion 营业厅选择 -->
+
+    <!-- region 用户启停 -->
+    <div class="startStopUserInfo">
+        <div class="col-md-12">
+            <input class="stopMainAccount" type="checkbox"><span>冻结主账号</span>
+        </div>
+    </div>
+    <!-- endregion 用户启停 -->
+
+    <!-- region 营业厅分配 -->
+    <div class="distributionUserRoleInfo">
+        <div class="container-fluid">
+            <div class="row distributionSearch form-inline query-row">
+                <select class="areaSelect form-control">
+                </select>
+                <select class="subAdminSelect form-control">
+                </select>
+                <select class="businessHallTypeSelect form-control">
+                    <!--<option value="-1">请选择营业厅类型</option>-->
+                </select>
+                <button class="btn btn-primary btnSearch"><i class="fa fa-search"></i>搜索</button>
+            </div>
+            <div class="row form-inline distributionBox">
+                <div class="willBusinessHallList">
+                    <div>可选营业厅</div>
+                    <ul class="unDistributionData"></ul>
+                </div>
+                <div class="changeBtn">
+                    <button class="right btn btn-block"><i class="fa fa-chevron-right"></i></button>
+                    <button class="left btn btn-block"><i class="fa fa-chevron-left"></i></button>
+                </div>
+                <div class="doneBusinessHall">
+                    <div>归属营业厅</div>
+                    <ul class="onDistributionData"></ul>
+                </div>
+            </div>
+            <div class="distributionBtn" style="display:none;"></div>
+        </div>
+    </div>
+    <!-- endregion 营业厅分配 -->
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹出框 -->
+<div class="iMarket_Dialog">
+    <!-- region 新增、编辑福利 -->
+    <div id="addOrEdit_userInfo_dialog" style="display: none;"></div>
+    <!-- endregion 新增、编辑福利 -->
+
+    <!-- region 预览 -->
+    <div id="preview_dialog" style="display: none;padding: 15px;"></div>
+    <!-- endregion 预览 -->
+
+    <!-- region 营业厅 -->
+    <div id="businessHall_dialog" style="display: none;"></div>
+    <!-- endregion 营业厅 -->
+
+    <!-- region 用户启停 -->
+    <div id="startStopUser_dialog" style="display: none;"></div>
+    <!-- endregion 用户启停 -->
+
+    <!-- region 营业厅分配 -->
+    <div id="distributionBusinessHall_dialog" style="display: none;"></div>
+    <!-- endregion 营业厅分配 -->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="js/isystem/userMgr_new.js"></script>
+<!-- endregion 脚本 -->

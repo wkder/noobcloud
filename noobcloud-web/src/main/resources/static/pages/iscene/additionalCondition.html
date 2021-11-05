@@ -1,0 +1,63 @@
+<!--<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">-->
+<link href="styles/iscene/additionalcondition.css?version=2.0" rel="stylesheet">
+
+
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写内部名称">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnRefresh">
+            <i class="fa fa-refresh"></i>刷新
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+    </div>
+</div>
+
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+
+
+<!--弹出框-->
+<!--<div id="popupAddOrEdit" style="display:none;"></div>-->
+<div id="popupAddOrEdit" style="display: none;" class="cmTableContent" data-autoVerify="true">
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title"><strong>内部名称：</strong></td>
+            <td colspan="3" class="td-content"><input type="text" id="txtName" name="InternalName" class="form-control"
+                                                      placeholder="内部名称" data-expression="isEmpty" data-error="内部名称不能为空">
+                <div class="help-block alert alert-warning" role="alert">内部名称不能为空</div>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title"><strong>外部名称：</strong></td>
+            <td colspan="3" class="td-content"><input type="text" id="txtDescription" name="outsideName" class="form-control"
+                                                      placeholder="外部名称" data-expression="isEmpty" data-error="外部名称不能为空">
+
+                <div class="help-block alert alert-warning" role="alert">外部名称不能为空</div>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title"><strong>变量类型：</strong></td>
+            <td colspan="3" class="td-content">
+                <select id="selType" class="form-control">
+                    <option value="1">int</option>
+                    <option value="2">String</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!--<script src="ext/cmtable/js/cmtable.js"></script>-->
+<script src="js/iscene/additionalCondition.js?version=2.0" charset="UTF-8"></script>

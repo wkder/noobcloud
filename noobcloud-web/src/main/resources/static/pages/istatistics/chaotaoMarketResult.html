@@ -1,0 +1,40 @@
+<style>
+    #dataTable_info {
+        padding-right: 300px
+    }
+    #queryBtn{
+        margin-left: 20px;
+    }
+
+</style>
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <span>查询日期:</span>
+        <input type="text" id="queryTime" class="form-control startTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+        <button id="queryBtn" class="btn btn-success"><i class="fa fa-search"></i>查询</button>
+        <button id="downloadList" class="btn btn-success"><i class="fa fa-download"></i>导出</button>
+        <button id="queryDesc" class="btn btn-success"><i class="fa fa-question-circle-o"></i>指标</button>
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+
+<!--指标说明-->
+<div class="dialogDescription"
+     style="font-size: 14px;font-family: 'microsoft yahei','Helvetica',simhei,simsun,sans-serif;">
+</div>
+
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/istatistics/chaotaoMarketResult.js"></script>

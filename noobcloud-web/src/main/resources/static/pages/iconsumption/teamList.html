@@ -1,0 +1,83 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/scenecenter.css" rel="stylesheet">
+<link href="styles/iscene/positionBaseConfig.css" rel="stylesheet">
+<link href="ext/simplePagination.css" rel="stylesheet">
+<link href="styles/iconsumption/teamList.css" rel="stylesheet">
+<div id="userList">
+    <!--搜索栏-->
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input class="form-control teamName" id="teamName" placeholder="团队名称">
+            <button id="queryTeam" class="btn btn-success">
+                <i class="fa fa-search"></i>查询
+            </button>
+            <button id="allotTeam" class="btn btn-success">
+                <i class="fa fa-plus"></i>分配
+            </button>
+            &nbsp;&nbsp;
+            <span>（话+平台同步线上外呼团队信息）</span>
+        </div>
+    </div>
+    <!--列表栏-->
+    <div class="row list-row"
+         style="padding: 0px 10px;">
+        <div class="col-md-12">
+            <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+                   width="100%">
+            </table>
+        </div>
+    </div>
+    <!--弹窗-->
+    <div id="dialogTeam" class="dialog">
+        <div class="team-allot">
+
+        </div>
+    </div>
+    <!--产品分配 模板-->
+    <div id="templateTeam" class="template" style="display: none">
+        <div class="allotProductInfoDialog">
+            <div class="query-row conditionSearch" status="ready">
+                <div class="col-md-12">
+                    <input class="form-control teamName" id="teamAllotName" placeholder="团队名称">
+                    <button id="QueryAllotTeam" class="searchButton extensionalBtn "><i class="fa fa-search"></i>搜索
+                    </button>
+                </div>
+            </div>
+            <div class="baseInfoDesc">
+                <div class="selectLeftDesc">
+                    可分配团队
+                </div>
+                <div class="selectMiddleDesc"></div>
+                <div class="selectRightDesc">
+                    已分配团队
+                </div>
+            </div>
+            <div class="baseInfo">
+                <div class="selectLeft">
+                    <select name="from[]" class="js-multiselect form-control" size="8" multiple="multiple"></select>
+                </div>
+
+                <div class="selectBtn">
+                    <button id="btnRightAll" class="btn btn-block">
+                        <i class="fa fa-forward"></i>
+                    </button>
+                    <button id="btnRightSign" class="btn btn-block">
+                        <i class="fa fa-chevron-right"></i></button>
+                    <button id="btnLeftSign" class="btn btn-block">
+                        <i class="fa fa-chevron-left"></i></button>
+                    <button id="btnLeftAll" class="btn btn-block">
+                        <i class="fa fa-backward"></i>
+                    </button>
+                </div>
+
+                <div class="selectRight">
+                    <select name="to[]" id="multiselectRight" class="form-control" size="8"
+                            multiple="multiple"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="ext/multiselect/dist/js/multiselect.js"></script>
+<script src="js/ishop/jquery.pagination.js"></script>
+<script src="js/iconsumption/teamList.js"></script>

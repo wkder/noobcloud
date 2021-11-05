@@ -1,0 +1,251 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/iptv/template.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input type="text" class="form-control queryName" placeholder="内容名称">
+            <!--<input type="text" class="form-control queryProductCode" placeholder="产品编码">-->
+            <button class="searchBtn"><i class="fa fa-search"></i>搜索</button>
+            <button class="addBtn"><i class="fa fa-plus"></i>新增</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0">
+            </table>
+        </div>
+    </div>
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <div class="wrap">
+        <div class="page">
+            <!-- region 新增、编辑任务 -->
+            <div class="contentInfo" data-autoVerify="true">
+                <form method="post" enctype="multipart/form-data" id="form">
+                    <!-- region 记录操作状态 隐藏域 -->
+                    <input class="operate" type="hidden">
+                    <!-- endregion 记录操作状态 隐藏域 -->
+                    <!-- region 数据ID 隐藏域 -->
+                    <input name="id" type="hidden">
+                    <!-- endregion 数据ID 隐藏域 -->
+
+                    <!-- region 预览div大小 隐藏域 -->
+                    <input name="showDivHeight" type="hidden" id="divHeight">
+                    <!-- endregion 预览div大小 隐藏域 -->
+
+                   <div class="dialogLeft">
+                       <!-- region 消息内容名称 -->
+                       <div class="nameBox">
+                           <div class="title right">
+                               <strong class="must" style="color: red">*</strong><strong>内容名称:</strong>
+                           </div>
+                           <div class="inputBox">
+                               <input type="text" class="form-control" name="name"
+                                      placeholder="请输入任务名称，限制20个字数" maxlength="30"
+                                      data-expression="isEmpty"
+                                      data-error="任务名称由字母、下划线、中文组成"/>
+                           </div>
+                       </div>
+                       <!-- endregion 任务名称 -->
+
+                       <!-- region 消息内容 -->
+                       <div class="contentBox">
+                           <div class=" right">
+                               <strong class="must" style="color: red">*</strong><strong>消息内容:</strong>
+                           </div>
+                           <div class="inputBox">
+                            <textarea class="form-control" name="content" maxlength="200"
+                                      placeholder="请输入推送内容，限制200个字符"></textarea>
+                           </div>
+                       </div>
+                       <!-- endregion 消息内容 -->
+
+                       <div class="qrCode">
+                           <div class=" right">
+                               <strong class="must" style="color: red">*</strong>
+                               <strong>二维码:</strong><br>
+                               <p style="font-size: 12px;"> &nbsp;图片大小(<span class="qrWid">248</span>*<span class="qrHei">248</span>)</p>
+                           </div>
+                           <div class="inputBox">
+                               <div class="imgBox" style="width: 100px; overflow: hidden">
+                                   <input type="file" id="fileUpload" name="qrcodeFile">
+                                   <img src="./images/add_img.png" id="qrcode" class="qrImg">
+                               </div>
+                               <!--<button class="btn btn-success changeImgBtn changeQr" type="button">更换图片</button>-->
+                           </div>
+                       </div>
+                       <div class="bgPic">
+                           <div class="right">
+                               <strong class="must" style="color: red">*</strong>
+                               <strong>背景图片:</strong>
+                               <p style="font-size: 12px;"> &nbsp;背景大小(<span class="bgWid">590</span>*<span class="bgHei">350</span>)</p>
+                           </div>
+                           <div class="inputBox" >
+                               <div class="imgBox" style="">
+                                   <input type="file" id="bgUpload" name="bgdFile">
+                                   <img src="./images/add_img.png" id="bgP" class="bgImg">
+                               </div>
+                               <!--<button class="btn btn-success changeImgBtn changeBg" type="button">更换背景</button>-->
+                           </div>
+                       </div>
+
+                       <!-- region 备注 -->
+                       <div class="remarkBox">
+                           <div class=" right">
+                               <strong>备注:</strong>
+                           </div>
+                           <div class="inputBox">
+                <textarea class="form-control" rows="4" name="remarks" maxlength="200" style="height: 165px"
+                          placeholder="请输入备注，限制200个字符"></textarea>
+                           </div>
+                       </div>
+                       <!-- endregion 备注 -->
+                   </div>
+                    <div class="dialogRight">
+
+
+                        <div class="config">
+                            <!-- region 记录位置规则 隐藏域 -->
+                            <input name="positionRule" type="hidden" id="positionRule">
+                            <!-- endregion 记录位置规则 隐藏域 -->
+                            <div>
+                                <strong class="must" style="color: red">*</strong>
+                                <strong>基本配置:</strong>
+                            </div>
+                            <div class="setFont">
+                                <p class="pic"><strong>字体：</strong></p>
+                                <div class="inp">
+                                    <span>字体大小：</span>
+                                    <input type="number" class="form-control setFontSize myInput" style="margin-right: 20px;">
+                                    <span>字体颜色：</span>
+                                    <input type="color" class="form-control setColor myInput">
+                                    <br>
+                                    <span>距离顶部：</span>
+                                    <input type="number" class="form-control setFontTop myInput" style="margin-right: 20px;">
+                                    <span>距离左侧：</span>
+                                    <input type="number" class="form-control setFontLeft myInput" style="margin-right: 20px;">
+                                    <br>
+                                    <span>距离右侧：</span>
+                                    <input type="number" class="form-control setFontRight myInput" style="margin-right: 20px;">
+                                    <span>首行缩进：</span>
+                                    <input type="number" class="form-control setFontIndent myInput">
+                                    <br>
+                                    <span>行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高：</span>
+                                    <input type="number" class="form-control setFontLineHeight myInput" style="margin-right: 20px;">
+                                </div>
+                            </div>
+                            <div class="setQrCode">
+                                <p class="pic"><strong>图片：</strong></p>
+                                <div class="inp">
+                                    <span>图片宽度：</span>
+                                    <input type="number" class="setWidth form-control myInput"><px></px>
+                                    <br>
+                                    <span>距离顶部：</span>
+                                    <input type="number" class="form-control myInput setTop" style="margin-right: 20px">
+                                    <span>距离左侧：</span>
+                                    <input type="number" class="form-control myInput setLeft">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <!-- endregion 新增、编辑任务 -->
+
+            <!-- region 预览 -->
+            <div class="previewContainer">
+                <div class="viewHtml">
+                    <h3>预览</h3>
+                    <div class="tip">
+                        <strong>小提示：</strong>
+                        <p>图片大小、位置和文字样式、位置等均可通过上方输入框更改<span class="ifShowTip">，点击预览即可查看默认效果</span>。</p>
+                    </div>
+                    <div class="preHtml"></div>
+                </div>
+            </div>
+            <!-- endregion 预览 -->
+        </div>
+
+        <div class="step">
+            <span class="pre">预览</span>
+            <span class="confirm">保存</span>
+        </div>
+    </div>
+    <div class="prevRow">
+        <div>
+            <div class="title"><h3>名称：</h3></div>
+            <div class="info name">测试</div>
+        </div>
+        <div class="contentDiv">
+            <div class="title"><h3>内容：</h3></div>
+            <div class="info content">
+                <p class="words">content</p>
+            </div>
+        </div>
+        <div class="config">
+        <div class="title"><h3 class="styl">样式：</h3></div>
+        <div class="info style">
+            <div class="font">
+                字体大小：
+                <span class="fontSize">12</span>
+                字体颜色：
+                <span class="fontColor"></span>
+                文字顶部：
+                <span class="fontTop"></span>
+                文字左侧：
+                <span class="fontLeft"></span>
+                <br>
+                文字行高：
+                <span class="fontLineHeight"></span>
+                图片宽度：
+                <span class="imgWid">100</span>
+                距离左侧：
+                <span class="imgLeft">100</span>
+                距离顶部：
+                <span class="imgTop">100</span>
+
+            </div>
+            <div class="img"></div>
+        </div>
+    </div>
+        <div class="remarkDiv">
+        <div class="title"><h3>备注：</h3></div>
+        <div class="info">
+            <p class="words remarks" style="line-height: 30px;"></p>
+        </div>
+    </div>
+        <div class="page">
+
+        </div>
+    </div>
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹出框 -->
+<div class="iMarket_Dialog">
+    <!-- region 新增、编辑内容+ -->
+    <div id="addOrEdit_task_dialog" style="display: none;"></div>
+    <!-- endregion 新增、编辑内容+ -->
+
+    <!--region step-->
+    <div id="step_dialog" style="display: none;"></div>
+    <!--endRegion step-->
+
+    <!-- region 预览 -->
+    <div id="preview_dialog" style="display: none"></div>
+    <!-- endregion 预览 -->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="ext/cmtable/js/cmtable.js"></script>
+<script src="js/iptv/template.js"></script>
+<!-- endregion 脚本 -->

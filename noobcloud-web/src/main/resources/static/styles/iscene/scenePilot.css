@@ -1,0 +1,324 @@
+#selectNavigation {
+    margin: 10px;
+    display: none;
+}
+
+#selectNavigation .imgDiv {
+    width: 200px;
+    float: left;
+    margin-left: 7px;
+    margin-top: 5px;
+    border: 1px solid #E0DADA;
+    height: 103px;
+}
+
+#selectNavigation .imgDiv img {
+    width: 100%;
+    height: 60px;
+}
+
+#selectNavigation .imgDiv span {
+    font-size: 15px;
+    float: left;
+    height: 28px;
+    line-height: 28px;
+    margin-top: 6px;
+    margin-left: 4px;
+}
+
+#selectNavigation .imgDiv a {
+    float: right;
+    height: 14px;
+    line-height: 14px;
+    margin-top: 6px;
+}
+
+.nStyle {
+    width: 100%;
+    height: 60px;
+    border-radius: 5px;
+}
+
+.chooseimgcancel {
+    width: 100%;
+    height: 55px;
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    margin-top: 20px;
+    margin-left: -10px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    border-top: 1px solid #bbb;
+    background-color: #F6F6F6;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#chooseSceneImg {
+    border: 1px solid #CCC;
+    height: 50px;
+    border-radius: 5px;
+}
+
+#chooseImgTr:hover, :focus {
+    cursor: pointer;
+}
+
+#additionTr:hover, :focus {
+    cursor: pointer;
+}
+
+#additionTr > td:nth-child(2) > div:nth-child(2) {
+    margin-top: 30px;
+}
+
+#selectUrlGroups ul, #selectUserGroups ul, #selectLocationGroups ul {
+    list-style: none;
+    margin: 5% 0;
+}
+
+#selectUrlGroups ul li, #selectUserGroups ul li, #selectLocationGroups ul li {
+    width: 48%;
+    display: inline-flex;
+    height: 35px;
+}
+
+#selectUrlGroups button, #selectUserGroups button, #selectLocationGroups button {
+    float: right;
+    margin: 4%;
+}
+
+#selectUrlGroups ul li span, #selectUserGroups ul li span, #selectLocationGroups ul li span {
+    margin-left: 2%;
+    cursor: pointer;
+}
+
+#selectUrlGroups ul li input, #selectUserGroups ul li input, #selectLocationGroups ul li input {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+.confirmAndCancel {
+    text-align: right;
+    width: 150px;
+    float: right;
+    margin-right: 80px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+/*#urlGroupsDiv, #userGroupsDiv, #locationGroupsDiv {*/
+/*border: 1px solid #ccc;*/
+/*padding: 6px 0;*/
+/*border-radius: 4px;*/
+/*}*/
+
+.phonecolor {
+    background-color: transparent !important;
+    border-radius: 36px !important;
+}
+
+textarea {
+    background-color: white !important;
+}
+
+figure {
+    background-color: transparent !important;
+    border-radius: 10px !important;
+}
+
+figcaption {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.imgmain {
+    height: 100px;
+    margin: 0 0 20px 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.imgmain > figure > img {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.imgname {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.imgbtndiv {
+    margin-top: 15px;
+}
+
+.imgbtn {
+    padding: 2px 15px !important;
+    border-radius: 10px !important;
+}
+
+/******************************导航附加条件样式*****************************************/
+#popupAddition {
+    margin: 0 auto;
+}
+
+.layui-layer-title {
+    margin-top: 8px;
+    background: none !important;
+    color: black !important;
+    font-size: 20px !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+}
+
+.cmtable {
+    width: 96%;
+}
+
+.ruleTr {
+    /*background: none !important;*/
+    border-top: 1px solid #e5e5e5 !important;
+}
+
+#addition {
+    background-color: #eee !important;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    line-height: 30px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 30px;
+    color: #555;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#addition:hover {
+    cursor: pointer;
+}
+
+.operation {
+    padding: 5px 0px 5px 10px;
+}
+
+.operation > div {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.operation > div > span:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    cursor: pointer;
+    color: #51BDF4;
+}
+
+.rules {
+    height: 50px;
+    line-height: 50px;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 10px auto;
+}
+
+.rules > div {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.rules > div:nth-child(1) {
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.rules > div:nth-child(2) {
+    margin-top: 10px;
+}
+
+.rules > div:nth-child(3) {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.rules > div:nth-child(4) {
+    text-align: left;
+    line-height: 64px;
+    padding-left: 30px;
+    color: #6dde3f;
+}
+
+.rules > div:nth-child(4):hover {
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    cursor: pointer;
+    color: #46f202;
+}
+
+.rulesword {
+    border-radius: 4px;
+    background-color: #B5E0F1;
+    padding: 8px 10px;
+    color: #31708f;
+    font-size: 14px;
+}
+
+#tagEditer + .tag-editor {
+    background: #fafafa;
+    font-size: 16px;
+    line-height: 40px;
+    font-family: 微软雅黑, 宋体, Arial, Helvetica, Verdana, sans-serif;
+}
+
+#tagEditer + .tag-editor .tag-editor-delete {
+    display: none;
+}
+
+.tag-editor .red-tag .tag-editor-tag {
+    color: #c65353;
+    background: #ffd7d7;
+}
+
+.tag-editor .green-tag .tag-editor-tag {
+    color: #45872c;
+    background: #e1f3da;
+}
+
+.float-left {
+    float: left;
+    margin-right: 6px;
+}
+
+.float-operator {
+    background-color: red;
+}
+
+#btnHelp {
+    float: left;
+}
+
+#popupHelp {
+    margin: 0 auto;
+}
+
+#popupHelp label {
+    font-size: 20px;
+    font-weight: 500 !important;
+}
+
+#popupHelp p {
+    color: #666;
+}
+
+#popupHelp .top-less {
+    margin-top: 6px;
+}
+
+#popupHelp .bottom-less {
+    margin-bottom: 100px;
+}
+
+/****************************************************End*******************************************/

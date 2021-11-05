@@ -1,0 +1,172 @@
+<link rel="stylesheet" href="styles/iscene/smsSendConfig.css">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写接入号">
+        <button id="btnQuery"><i class="fa fa-search"></i>搜索</button>
+        <button id="btnAdd"><i class="fa fa-plus"></i>新增</button>
+    </div>
+</div>
+<!--END 搜索栏-->
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+<!--END 列表栏-->
+
+<!--弹出框-->
+<div id="divSmsSendConfig" data-autoVerify="true" style="display:none;">
+    <div class="cmTableContent">
+        <table class="table table-hover table-bordered cmTable">
+            <tbody>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>*</strong>
+                    <strong>接入号：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" name="accessNumber" maxlength="20" placeholder="接入号"
+                           data-expression="isNumber" data-error="接入号格式不正确">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>*</strong>
+                    <strong>发送时段：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="time" name="sendBeginTime"
+                           data-expression="isEmpty" data-error="不能为空">
+                    <span>-</span>
+                    <input class="form-control" type="time" name="sendEndTime"
+                           data-expression="isEmpty" data-error="不能为空">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>*</strong>
+                    <strong>暂停时段：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="time" name="sendPauseBeginTime"
+                           data-expression="isEmpty" data-error="不能为空">
+                    <span>-</span>
+                    <input class="form-control" type="time" name="sendPauseEndTime"
+                           data-expression="isEmpty" data-error="不能为空">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>*</strong>
+                    <strong>网关IP：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" name="ip" maxlength="20" placeholder="网关IP"
+                           data-expression="isIp" data-error="网关IP格式不正确">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>*</strong>
+                    <strong>端口号：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" name="port" maxlength="10" placeholder="端口号"
+                           data-expression="isNumber" data-error="端口号格式不正确">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>*</strong>
+                    <strong>登录名：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" name="loginName" maxlength="20" placeholder="登录名"
+                           data-expression="isEmpty" data-error="登录名不能为空">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>*</strong>
+                    <strong>登录密码：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" name="loginPassword" maxlength="20" placeholder="登录密码"
+                           data-expression="isEmpty" data-error="登录密码不能为空">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>*</strong>
+                    <strong>企业代码：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" name="companyCode" maxlength="20" placeholder="企业代码"
+                           data-expression="isEmpty" data-error="企业代码不能为空">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>*</strong>
+                    <strong>业务代码：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" name="serviceType" maxlength="20" placeholder="业务代码"
+                           data-expression="isEmpty" data-error="业务代码不能为空">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>*</strong>
+                    <strong>节点编号：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" name="nodeId" maxlength="20" placeholder="节点编号"
+                           data-expression="isNumber" data-error="节点编号格式不正确">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>*</strong>
+                    <strong>反馈报告标识：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" name="reportFlag" maxlength="8" placeholder="反馈报告标识"
+                           data-expression="isNumber" data-error="反馈报告标识格式不正确">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>*</strong>
+                    <strong>发送间隔(毫秒)：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" name="differentUserSendInterval" maxlength="8"
+                           placeholder="发送间隔"
+                           data-expression="isNumber" data-error="发送间隔格式不正确">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>*</strong>
+                    <strong>长消息间隔(毫秒)：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" name="sameUserSendInterval" maxlength="8"
+                           placeholder="长消息间隔"
+                           data-expression="isNumber" data-error="长消息间隔格式不正确">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="hidden" name="id">
+    </div>
+</div>
+<!--END 弹出框-->
+
+<script src="js/iscene/smsSendConfig.js"></script>

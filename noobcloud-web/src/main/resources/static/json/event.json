@@ -1,0 +1,17 @@
+{
+  "page": {
+    "js": {
+      "shop_task": {
+       "click":{
+//         ""
+       }
+      }
+    },
+    "sh": {
+      "shop_task": {
+        "base_page": "ishop/shopTask_sh.requestHtml?status=2",
+        "template_page": ""
+      }
+    }
+  }
+}

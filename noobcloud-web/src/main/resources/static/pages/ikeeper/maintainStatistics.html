@@ -1,0 +1,28 @@
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <span>执行时间：</span>
+        <input type="text" class="form-control executeTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday: true,isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;"/>
+
+        <span>维系人员号码：</span>
+        <input type="text" class="maintainNumber" data-expression="isNumber" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11" placeholder="请输入维系人员号码">
+
+        <button class="queryMaintainStatistics btn btn-success" style="width: 110px"><i class="fa fa-search"></i>查询</button>
+
+        <button class="downloadMaintainStatistics btn btn-success" style="width: 110px"><i class="fa fa-download"></i>导出</button>
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/ikeeper/maintainStatistics.js"></script>

@@ -1,0 +1,555 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="ext/simplePagination.css">
+<link rel="stylesheet" href="styles/iflow/oldCustomer.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12 form-inline conditionSearch">
+            <select class="form-control querySelectStatus">
+            </select>
+            <input type="text" class="form-control queryTaskName" placeholder="任务名称">
+            <select class="form-control querySelectType">
+                <option value="">请选择来源</option>
+                <option value="sms">自建任务</option>
+                <option value="jxhscene">精细化实时任务</option>
+            </select>
+            <select class="form-control querySelectArea"></select>
+            <button class="searchBtn btn btn-primary"><i class="fa fa-search"></i>搜索</button>
+            <button class="addBtn btn btn-primary"><i class="fa fa-plus"></i>新增</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table class="taskTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer"
+                   width="100%" style="table-layout: fixed;"></table>
+        </div>
+    </div>
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 新建任务 -->
+    <div class="marketJobEditInfo">
+        <div class="flowStepContainer">
+            <div class="flowLine"></div>
+            <div class="flowStep">
+                <div class="flowStepA" refDiv="taskInfo">
+                    <span class="stepNumber active">1</span>
+                    <span class="stepIcon active"></span>
+                    <span class="stepDesc active">任务基本信息</span>
+                </div>
+                <div class="flowStepB" refDiv="userInfo">
+                    <span class="stepNumber">2</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">任务用户信息</span>
+                </div>
+                <div class="flowStepC" refDiv="channelInfo">
+                    <span class="stepNumber">3</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">营销渠道信息</span>
+                </div>
+                <div class="flowStepD" refDiv="auditInfo">
+                    <span class="stepNumber">4</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">预览</span>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid infoConfigBody">
+            <!-- region 任务基本信息 -->
+            <div class="row taskBaseInfo active">
+                <!-- region 任务名称 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>任务名称:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="taskName form-control" title="名称由字母、下划线、中文组成"
+                               placeholder="请输入任务名称，限制50个字数" maxlength="50"/>
+                    </div>
+                </div>
+                <!-- endregion 任务名称 -->
+
+                <!-- region 开始时间、结束时间 -->
+                <div class="col-md-12 marketStartTime">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>开始时间:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="startTime form-control"
+                               onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"
+                               title="开始时间不能为空 "/>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>结束时间:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="endTime form-control"
+                               onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"
+                               title="结束时间不能为空 "/>
+                    </div>
+                </div>
+                <!-- endregion 开始时间、结束时间 -->
+
+                <!-- region 任务描述 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>任务描述:</strong>
+                    </div>
+                    <div class="col-md-8">
+                    <textarea class="form-control remark"
+                              title="请输入任务描述，限制200个字符"
+                              placeholder="请输入任务描述，限制200个字符" maxlength="200"
+                              rows="3"></textarea>
+                    </div>
+                </div>
+                <!-- endregion 任务描述 -->
+            </div>
+            <!-- endregion -->
+
+            <!-- region 任务用户信息 -->
+            <div class="row userInfo">
+                <!-- region 目标用户 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>目标用户:</strong>
+                    </div>
+                    <div class="col-md-9 targetUser">
+                        <div class="col-md-12 targetUser-province">
+                            <label>
+                                <input type="radio" name="targetUserRadios" class="radiosProvince"
+                                       data-targetUser="1"> 全省
+                            </label>
+                        </div>
+                        <div class="col-md-12 targetUser-city">
+                            <label class="targetUser-city-text" data-targetUser="2">
+                                <input type="radio" name="targetUserRadios" class="radiosCity"
+                                       data-targetUser="2"> 地市
+                            </label>
+                            <div class="col-md-12"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- endregion -->
+
+                <!-- region 指定用户 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong>指定用户:</strong>
+                    </div>
+                    <div class="col-md-9 appointUser">
+                        <input type="text" class="form-control txtAppointUser" placeholder="请导入指定用户文件"/>
+                        <button class="btn btn-primary btnAppointUser">导入</button>
+                        <input class="appointUsersIds" type="hidden"/>
+                    </div>
+                </div>
+                <!-- endregion -->
+
+                <!-- region 免打扰用户 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong>免打扰用户:</strong>
+                    </div>
+                    <div class="col-md-9 blockUser">
+                        <input type="text" class="form-control txtBlockUser" placeholder="请导入免打扰用户文件"/>
+                        <button class="btn btn-primary btnBlockUser">导入</button>
+                        <input class="blockUsersIds" type="hidden"/>
+                    </div>
+                </div>
+                <!-- endregion -->
+            </div>
+            <!-- endregion -->
+
+            <!-- region 营销渠道信息 -->
+            <div class="row channelInfo">
+                <!-- region 营销名称-->
+                <div class="col-md-12 timerOptionBody">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>营销名称:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="marketName form-control" title="名称由字母、下划线、中文组成"
+                               placeholder="请输入营销名称，限制50个字数" maxlength="50"/>
+                    </div>
+                </div>
+                <!-- endregion -->
+
+                <!-- region 营销用语 -->
+                <div class="col-md-12 marketMark">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>营销用语:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="marketContent form-control" title="营销用语不能为空"
+                                  placeholder="请输入营销用语，限制200个字符" maxlength="200"
+                                  rows="3"></textarea>
+                    </div>
+                </div>
+                <!-- endregion 营销用语 -->
+
+                <!-- region 接触渠道 -->
+                <div class="col-md-12">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>接触渠道:</strong>
+                    </div>
+                    <div class="col-md-9 channel">
+                        <div class="col-md-12 channel-online">
+                            <label class="channel-online-text">
+                                <input type="checkbox" class="radiosOnline" value="online" data-channel="1"> 线上
+                            </label>
+                            <div class="col-md-12">
+                                <label>办理链接：</label>
+                                <input type="text" class="txtOnLineUrl form-control" title="请输入办理链接"
+                                       placeholder="请输入办理链接，限制100个字数" maxlength="100"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12 channel-offline">
+                            <label class="channel-offline-text">
+                                <input type="checkbox" class="radiosOffline" value="offline" data-channel="2"> 线下
+                            </label>
+                            <div class="col-md-12">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" value="1"> 自营
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" value="2"> 合作
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" value="4"> 黄埔
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" value="5"> 社区
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" value="6"> 校园
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" value="7"> 其他
+                                </label>
+                                <input class="offlineBusinessType" type="hidden"/>
+                                <input type="text" class="form-control txtOffline" placeholder="请导入营业厅文件"/>
+                                <button class="btn btn-primary btnOffline">导入</button>
+                                <input class="offlineBusinessIds" type="hidden"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- endregion 接触渠道 -->
+            </div>
+            <!-- endregion 营销渠道信息 -->
+
+            <!-- region 预览 -->
+            <div class="row auditInfo previewDiv"></div>
+            <!-- endregion 预览 -->
+
+            <div class="row finishInfo">
+                <div class="col-md-12">
+                    <strong>审批已完成</strong>
+                </div>
+            </div>
+        </div>
+        <div class="step">
+            <span class="pre">返回</span>
+            <span class="next active">继续</span>
+            <span class="confirm">确定</span>
+            <span class="edit">返回修改</span>
+            <span class="closeBtn">关闭</span>
+        </div>
+        <div class="data" style="display: none"></div>
+    </div>
+    <!-- endregion 新建任务 -->
+
+    <!-- region 导入用户 -->
+    <div class="importSegmentInfo">
+        <!-- region 文件导入表单 -->
+        <form class="importForm" method="post" enctype="multipart/form-data">
+            <div class="meatOperate">
+                <input class="form-control fileUploadName" type="text" placeholder="文件路径">
+                <a class="btn btn-success file" href="javascript:void(0);">选择文件
+                    <input type="file" name="file">
+                </a>
+                <div class="btn btn-success btnUpload">上传</div>
+                <a class="btn btn-success templateBtn" href="excelTemplate/PHONE_MODEL.xlsx">模板下载</a>
+            </div>
+            <div class="info">
+                <span>1、下载模板，导入xlsx文件</span>
+                <span>2、请按照要求填写文件，无值为空</span>
+                <span>3、导入用户最多导入5000个</span>
+            </div>
+        </form>
+        <!-- endregion 文件导入表单 -->
+
+        <!-- region 导入数据表格 -->
+        <div class="container-fluid phoneInfo">
+            <div class="row">
+                <div class="col-md-12">
+                    <table cellspacing="0" border="0">
+                        <tbody>
+                        <!--模板填充这里-->
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                <div class="pagination"></div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- endregion 导入数据表格 -->
+    </div>
+    <!-- endregion 导入用户 -->
+
+
+    <!-- region 导入指定用户 -->
+    <div class="importAppointInfo">
+        <!-- region 指定用户文件导入表单 -->
+        <form class="importForm" method="post" enctype="multipart/form-data">
+            <div class="meatOperate">
+                <input class="form-control fileUploadName" type="text" placeholder="文件路径">
+                <a class="btn btn-success file" href="javascript:void(0);">选择文件
+                    <input type="file" name="file">
+                </a>
+                <div class="btn btn-success btnUpload">上传</div>
+            </div>
+            <div class="info">
+                <span>1、请导入txt文件(文件小于10MB)</span>
+                <span>2、txt文件中每行存放一个指定用户手机号码</span>
+                <span>3、数据导入后会进行加密处理</span>
+            </div>
+        </form>
+        <!-- endregion 指定用户文件导入表单 -->
+
+        <!-- region 导入数据表格 -->
+        <div class="container-fluid phoneInfo">
+            <span class="uploadMessage"></span>
+        </div>
+        <!-- endregion 导入数据表格 -->
+    </div>
+    <!-- endregion 导入用户 -->
+
+
+    <!-- region 导入营业厅 -->
+    <div class="importBusinessInfo">
+        <!-- region 文件导入表单 -->
+        <form class="importForm" method="post" enctype="multipart/form-data">
+            <div class="meatOperate">
+                <input class="form-control fileUploadName" type="text" placeholder="文件路径">
+                <a class="btn btn-success file" href="javascript:void(0);">选择文件
+                    <input type="file" name="file">
+                </a>
+                <div class="btn btn-success btnUpload">上传</div>
+                <a class="btn btn-success templateBtn" href="excelTemplate/BASEINFO_MODEL.xlsx">模板下载</a>
+            </div>
+            <div class="info">
+                <span>1、下载模板，导入xlsx文件</span>
+                <span>2、请按照要求填写文件，无值为空</span>
+                <span>3、营业厅最多导入1000个</span>
+            </div>
+        </form>
+        <!-- endregion 文件导入表单 -->
+
+        <!-- region 导入数据表格 -->
+        <div class="container-fluid businessInfo">
+            <div class="row">
+                <div class="col-md-12">
+                    <table cellspacing="0" border="0">
+                        <tbody>
+                        <!--模板填充这里-->
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                <div class="pagination"></div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- endregion 导入数据表格 -->
+    </div>
+    <!-- endregion 导入营业厅 -->
+
+    <!-- region 预览 -->
+    <div class="row oldCustomerDetailInfo">
+        <!-- region 隐藏域 存放ID -->
+        <input class="detail_id" type="hidden">
+        <!-- endregion 隐藏域 存放ID -->
+
+        <!-- region 任务基本信息 -->
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <strong>任务基本信息</strong>
+            </div>
+            <!-- region 任务名称 -->
+            <div class="col-md-3">
+                <span>任务名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskName"></span>
+            </div>
+            <!-- endregion 任务名称 -->
+
+            <!-- region 任务来源 -->
+            <div class="col-md-3">
+                <span>任务来源：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskType"></span>
+            </div>
+            <!-- endregion 任务来源 -->
+
+            <!-- region 开始时间 -->
+            <div class="col-md-3">
+                <span>开始时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_startTime"></span>
+            </div>
+            <!-- endregion 开始时间 -->
+
+            <!-- region 结束时间 -->
+            <div class="col-md-3">
+                <span>结束时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_endTime"></span>
+            </div>
+            <!-- endregion 结束时间 -->
+
+            <!-- region 任务描述 -->
+            <div class="col-md-3">
+                <span>任务描述：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_remark"></span>
+            </div>
+            <!-- endregion 任务描述 -->
+        </div>
+        <!-- endregion 任务基本信息 -->
+
+        <!-- region 任务用户信息 -->
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <strong>任务用户信息</strong>
+            </div>
+
+            <!-- region 目标用户 -->
+            <div class="col-md-3">
+                <span>目标用户：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_targetUser"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 目标用户 -->
+
+            <!-- region 指定用户 -->
+            <div class="col-md-3">
+                <span>指定用户：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_appiontUser"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 指定用户 -->
+
+            <!-- region 免打扰用户 -->
+            <div class="col-md-3">
+                <span>免打扰用户：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_blockUser"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 免打扰用户 -->
+        </div>
+        <!-- endregion 任务用户信息 -->
+
+        <!-- region 营销渠道信息 -->
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <strong>客户接触渠道</strong>
+            </div>
+
+            <!-- region 营销名称 -->
+            <div class="col-md-3">
+                <span>营销名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_marketName"></span>
+            </div>
+            <!-- endregion 营销名称 -->
+
+            <!-- region 营销用语 -->
+            <div class="col-md-3">
+                <span>营销用语：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_marketContent"></span>
+            </div>
+            <!-- endregion 营销用语 -->
+
+            <!-- region 线上渠道 -->
+            <div class="col-md-3">
+                <span>线上渠道：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_online"></span>
+            </div>
+            <!-- endregion 线上渠道 -->
+
+            <!-- region 线下渠道 -->
+            <div class="col-md-3">
+                <span>线下渠道：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_offline"></span>
+            </div>
+
+            <!-- region 营业厅类型 -->
+            <div class="col-md-3">
+                <span>营业厅类型：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_businessType"></span>
+            </div>
+            <!-- endregion 营业厅类型 -->
+
+            <!-- endregion 线下渠道 -->
+        </div>
+        <!-- endregion 营销渠道信息 -->
+    </div>
+    <!-- endregion 预览 -->
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹出框 -->
+<div class="iMarket_shopTask_Dialog">
+    <!-- region 导入指定用户 -->
+    <div id="importAppointDialog" style="display: none"></div>
+    <!-- endregion 导入指定用户 -->
+
+    <!-- region 导入免打扰用户 -->
+    <div id="importBlockDialog" style="display: none"></div>
+    <!-- endregion 导入免打扰用户 -->
+
+    <!-- region 导入营业厅 -->
+    <div id="importBusinessDialog" style="display: none"></div>
+    <!-- endregion 导入营业厅 -->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="ext/jquery.simplePagination.js"></script>
+<script src="ext/cmtable/js/cmtable.js"></script>
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/iflow/oldCustomer.js"></script>
+<!-- endregion 脚本 -->

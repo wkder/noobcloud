@@ -1,0 +1,47 @@
+<style type="text/css">
+    div#dialogDescription div.txt{padding: 5px 15px 5px 15px;}
+    span.title{font-size: 16px;font-family:'Microsoft Yahei', 'Open Sans', sans-serif;}
+    div.txt1{width: 120px;padding: 0;margin:0;display: inline-block}
+    span.content{font-size: 14px;padding-left: 15px;}
+</style>
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <select class="form-control queryMonth"></select>
+        <select class="form-control queryProductType"></select>
+        <button id="tdcmQueryBtn" class="btn btn-success" style="width: 110px"><i class="fa fa-search"></i>查询</button>
+        <button id="exportBaseButton" class="btn btn-success" style="width: 110px"><i class="fa fa-download"></i>导出</button>
+        <button id="btnDescription" class="btn btn-success">
+            <i class="fa fa-question-circle-o"></i>指标
+        </button>
+    </div>
+</div>
+
+
+<!--列表栏-->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               width="100%">
+        </table>
+    </div>
+</div>
+
+
+<div id="dialogDescription" style="display: none">
+    <div class="txt"><div class="txt1"><span class="title">类型:</span></div><span class="content">只做TDCM四个项目，其他后续再补充</span></div>
+    <div class="txt"><div class="txt1"><span class="title">出账用户:</span></div><span class="content">该产品当月总费用大于0的用户</span></div>
+    <div class="txt"><div class="txt1"><span class="title">出账用户占比:</span></div><span class="content">该产品出账用户/该产品当月总用户（包含出账及无出账）</span></div>
+    <div class="txt"><div class="txt1"><span class="title">ARPU:</span></div><span class="content">该产品当月用户费用均值(元)</span></div>
+    <div class="txt"><div class="txt1"><span class="title">MOU:</span></div><span class="content">该产品当月用户语音均值(分钟)</span></div>
+    <div class="txt"><div class="txt1"><span class="title">DOU:</span></div><span class="content">该产品当月用户流量均值(M)</span></div>
+    <div class="txt"><div class="txt1"><span class="title">4G登网率:</span></div><span class="content">该产品本月产生4G使用用户数/该产品本月在网4G总用户数*100%</span></div>
+    <div class="txt"><div class="txt1"><span class="title">停机率:</span></div><span class="content">该产品停机用户数/(开机用户数+停机用户数)*100%</span></div>
+    <div class="txt"><div class="txt1"><span class="title">已首充停机率:</span></div><span class="content">有首充的该产品停机用户数/有首充的(开机用户数+停机用户数)*100%</span></div>
+    <div class="txt"><div class="txt1"><span class="title">离网率:</span></div><span class="content">销户用户数/(开机用户数+停机用户数+销户用户数)*100%</span></div>
+    <div class="txt"><div class="txt1"><span class="title">已首充离网率:</span></div><span class="content">有首充的销户用户数/有首充的(开机用户数+停机用户数+销户用户数)*100%</span></div>
+</div>
+
+<script src="js/istatistics/tdcmProductReport.js"></script>

@@ -1,0 +1,857 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/ischeduling/marketTaskMgr.css">
+<!-- endregion 样式 -->
+
+<!-- region 搜索、列表 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12 form-inline conditionSearch">
+            <input type="text" class="form-control queryName" placeholder="任务名称">
+            <select class="form-control queryMarketType">
+                <option value="">请选择来源</option>
+                <option value="sms">周期任务</option>
+                <option value="scenesms">场景任务</option>
+                <option value="jxhscene">精细化实时任务</option>
+                <option value="jxhsms">精细化周期任务</option>
+            </select>
+            <select class="form-control queryMarketBusinessType">
+                <option value="">请选择业务类别</option>
+                <option value="1">互联网综合业务</option>
+                <option value="2">内容营销</option>
+                <option value="3">流量经营</option>
+                <option value="4">APP场景营销</option>
+            </select>
+            <select class="form-control stats">
+                <option value="">请选择状态</option>
+                <option value="1">待审核</option>
+                <option value="2">审核成功</option>
+                <option value="3">审核拒绝</option>
+                <option value="6">已终止</option>
+            </select>
+            <select class="form-control poolStats" style="display: none;">
+                <option value="">请选择状态</option>
+                <option value="2">审核成功</option>
+                <option value="30">营销处理中</option>
+                <option value="35">营销触发成功</option>
+                <option value="36">营销失败</option>
+                <option value="6">已终止</option>
+            </select>
+            <button class="searchBtn btn btn-primary"><i class="fa fa-search"></i>搜索</button>
+            <button class="addBtn btn btn-primary"><i class="fa fa-plus"></i>新增</button>
+            <button class="batchExecute active" style="width: auto"><i class=""></i><span>批量执行</span><span>取消批量执行</span></button>
+            <button class="execute"><i class=""></i>执行</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table class="taskTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer"
+                   width="100%" style="table-layout: fixed;"></table>
+        </div>
+    </div>
+</div>
+<!-- endregion 搜索、列表 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 新增、编辑营销任务 -->
+    <div class="marketJobEditInfo">
+        <div class="flowStepContainer">
+            <div class="flowLine"></div>
+            <div class="flowStep">
+                <div class="flowStepA" refDiv="userGroupInfo">
+                    <span class="stepNumber active">1</span>
+                    <span class="stepIcon active"></span>
+                    <span class="stepDesc active">任务基本信息</span>
+                </div>
+                <div class="flowStepB" refDiv="channelInfo">
+                    <span class="stepNumber">2</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">目标用户选择</span>
+                </div>
+                <div class="flowStepC" refDiv="jobConfigureInfo">
+                    <span class="stepNumber">3</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">客户接触渠道</span>
+                </div>
+                <div class="flowStepD" refDiv="auditInfo">
+                    <span class="stepNumber">4</span>
+                    <span class="stepIcon"></span>
+                    <span class="stepDesc">预览</span>
+                </div>
+                <!--<div class="flowStepE">-->
+                <!--<span class="stepNumber">5</span>-->
+                <!--<span class="stepIcon"></span>-->
+                <!--<span class="stepDesc">完成</span>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="container-fluid infoConfigBody">
+            <!-- region 任务基本信息 -->
+            <div class="row userGroupInfo active">
+                <!-- region 任务名称 -->
+                <div class="col-md-12 marketName">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>任务名称:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="name form-control" title="名称由字母、下划线、中文组成"
+                               placeholder="请输入任务名称，限制50个字数" maxlength="50"/>
+                    </div>
+                </div>
+                <!-- endregion 任务名称 -->
+
+                <!-- region 营销方式 -->
+                <div class="col-md-12 marketType">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>营销方式:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="select marketTypeSelect form-control">
+                            <option class="default" value="sms">周期任务</option>
+                            <option class="default" value="scenesms">场景任务</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- endregion 营销方式 -->
+
+                <!-- region 场景短信：场景规则 -->
+                <div class="col-md-12 sceneSms sceneRule" style="display: none;">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>场景规则:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="select sceneRuleSmsSelect form-control">
+                        </select>
+                    </div>
+                </div>
+                <!-- endregion 场景短信：场景规则 -->
+
+                <!-- region 业务类别、调度类型 -->
+                <div class="col-md-12 marketBusinessType">
+                    <!-- 业务类别 -->
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>业务类别:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="select form-control marketBusinessTypeSelect">
+                            <option value="1">互联网综合业务</option>
+                            <option value="2">内容营销</option>
+                            <option value="3">流量经营</option>
+                            <option value="4">APP场景营销</option>
+                        </select>
+                    </div>
+                    <!-- 调度类型 -->
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>调度类型:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="select timerSelect form-control">
+                            <option value="manu">手动调度</option>
+                            <option value="single">自动调度</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- endregion 业务类别、调度类型 -->
+
+                <!-- region 开始时间、结束时间 -->
+                <div class="col-md-12 marketStartTime">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>开始时间:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="startTime form-control"
+                               onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"
+                               title="开始时间不能为空 "/>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>结束时间:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="endTime form-control"
+                               onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"
+                               title="结束时间不能为空 "/>
+                    </div>
+                </div>
+                <!-- endregion 开始时间、结束时间 -->
+
+                <!-- region 监控开始时间、结束时间 -->
+                <div class="col-md-12 marketMonitoringTime">
+                    <div class="col-md-2 text-right" style="padding-left: 0;">
+                        <strong class="must" style="color: red">*</strong><strong>监控开始时间:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="time" class="monitoringStartTime form-control" title="监控开始时间不能为空 "/>
+                    </div>
+                    <div class="col-md-2 text-right" style="padding-left: 0;">
+                        <strong class="must" style="color: red">*</strong><strong>监控结束时间:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="time" class="monitoringEndTime form-control" title="监控结束时间不能为空 "/>
+                    </div>
+                </div>
+                <!-- endregion 监控开始时间、结束时间 -->
+
+                <!-- region 剔除策略、间隔时间 -->
+                <div class="col-md-12 timerOptionBody">
+                    <!-- region 剔除策略 -->
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>剔除策略:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <!--<select class="select marketLimitSelect form-control">-->
+                        <!--<option value="1">剔重（1天）</option>-->
+                        <!--<option value="3">剔重（3天）</option>-->
+                        <!--<option value="5">剔重（5天）</option>-->
+                        <!--<option value="7">剔重（7天）</option>-->
+                        <!--</select>-->
+                        <input type="text" class="form-control marketLimitSelect" placeholder="剔除策略,最多7天"
+                               title="请填写小于等于7的正整数">
+                    </div>
+                    <!-- endregion 剔除策略 -->
+
+                    <!-- region 间隔时间 -->
+                    <div class="col-md-2 text-right">
+                        <strong class="must " style="color: red">*</strong><strong
+                            class="singleValueTitle">时间间隔:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" value="1" class="singleValue form-control" title="请填写间隔时间,格式为正整数"
+                               onkeyup="this.value=this.value.replace(/\D/g,'').replace(/^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D/g,'').replace(/^0/g,'')"
+                               maxlength="10"/>
+                    </div>
+                    <div class="col-md-1"
+                         style="padding-left: 0;margin-left: -5px;position: relative;top: 7px;left: -34px;font-weight: 400;">
+                        <span>天</span>
+                    </div>
+                    <!-- endregion 间隔时间 -->
+                </div>
+                <!-- endregion 剔除策略、间隔时间 -->
+
+                <!-- region 是否分组营销 剔除黑名单 -->
+                <div class="col-md-12 timerOptionBody">
+                    <!-- region 是否分组营销 -->
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>分组营销:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="checkbox-inline checkbox-waveCountGroup" style="padding-left: 0;">
+                            <input type="radio" name="waveCountGroup" value="1">是
+                        </label>
+                        <label class="checkbox-inline checkbox-waveCountGroup" style="padding-left: 0; margin:0 0 0 30px;">
+                            <input type="radio" name="waveCountGroup" value="0" checked>否
+                        </label>
+                    </div>
+                    <!-- endregion 是否分组营销 -->
+
+                    <!-- region 是否剔除黑名单 -->
+                    <div class="col-md-2 text-right" style="width:19%">
+                        <strong class="must" style="color: red">*</strong><strong>过滤黑名单:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="checkbox-filterBlack" style="padding-left: 0;font-weight: 400;">
+                            <input type="radio" name="filterBlack" value="0" checked>是
+                        </label>
+                        <label class="checkbox-filterBlack" style="padding-left: 0;font-weight: 400; margin:0 0 0 30px;">
+                            <input type="radio" name="filterBlack" value="1"> 否
+                        </label>
+                    </div>
+                    <!-- endregion 是否剔除黑名单 -->
+                </div>
+                <!-- endregion 是否分组营销 剔除黑名单 -->
+
+                <div class="col-md-12 filterEmployeeBox">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>过滤员工:</strong>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="margin:0; font-weight: 400;"><input type="radio" name="filterEmployee" value="0">是</label>
+                        <label style="margin:0 0 0 30px; font-weight: 400;"><input type="radio" name="filterEmployee" value="1">否</label>
+                    </div>
+
+
+                </div>
+
+                <!-- region 任务描述 -->
+                <div class="col-md-12 marketMark">
+                    <div class="col-md-2 text-right">
+                        <strong>任务描述:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="remarks form-control" placeholder="请输入任务描述，限制200个字符" maxlength="200"
+                                  rows="2"></textarea>
+                    </div>
+                </div>
+                <!-- endregion 任务描述 -->
+
+                <!-- region 分组营销提示 -->
+                <div class="col-md-12 marketDescription" style="letter-spacing: 1.5px; display: none;">
+                    <div class="col-md-2 text-right">
+                    </div>
+                    <div class="col-md-8" style="color: red;">
+                        当前任务将会分成<span class="waveCountBatch"></span>批营销，每批的时间间隔是<span class="waveCountDay"></span>天
+                    </div>
+                </div>
+                <!-- endregion 分组营销提示 -->
+            </div>
+            <!-- endregion 任务基本信息 -->
+
+            <!-- region 目标用户选择 -->
+            <div class="row channelInfo">
+                <div class="col-md-12 marketSegments">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>营销客户:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="modelUser">
+                            <input type="radio" name="userType" class="userType" value="1" checked="checked">
+                            <div class="segmentNames">
+                                <div class="o-placeholder">请选择营销客户</div>
+                                <!--<div class="segmentList"></div>-->
+                            </div>
+                            <!--<textarea class="segmentNames form-control" title="点击，选择需要营销的客户群" placeholder="请选择营销客户" rows="4" readonly="readonly">
+                            </textarea>-->
+                            <input class="segmentIds specificHide" title="点击，选择需要营销的客户群"/>
+                            <input class="segmentCounts" type="hidden"/>
+                        </div>
+                        <div class="splitBox col-md-12" style="display: none; padding: 0; justify-content: space-between">
+                            <div class="col-md-2" style="padding: 0;display: flex; align-items: center">
+                                <div>
+                                    <label style="line-height: 34px; margin-bottom: 0; font-weight: 400"><input type="radio" name="ifSplit" value="1">不分拆</label>
+                                </div>
+                            </div>
+                            <div class="col-md-5" style="display: flex; align-items: center">
+                                <div>
+                                    <label style="font-weight: 400; margin: 0; line-height: 34px;"><input type="radio" name="ifSplit" value="multiple">分拆为</label>
+                                </div>
+                                <div>
+                                    <input type="text" class="split-input form-control" style="padding: 6px; width: 50px" disabled>
+                                </div>
+                                <div>
+                                    <span>份</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="padding: 0">
+                                <a href="javascript:0" title="该操作需要耗费一定时间，请耐心等候。" style=" text-decoration:none; out-line: none">
+                                    <button type="button" id="splitBtn" class="form-control" style="background-color: #00B38B; color: #fff; border: 1px solid #00B38B;">确定</button>
+                                </a>
+                            </div>
+                            <input type="hidden" class="numCount">
+                            <input type="hidden" class="poolName">
+                        </div>
+                        <div class="col-md-12 batch-row" style="    display: none">
+                            <div class="col-md-1">
+                                <input type="radio" name="userType" class="userType" value="2" style="display: none">
+                            </div>
+                            <div class="col-md-11">
+                                <form method="post" enctype="multipart/form-data">
+                                    <input type="text" class="form-control file-name" placeholder="文件名" maxlength="100"
+                                           disabled="disabled">
+                                    <a href="javascript:void(0);" class="file-browse-btn">浏览
+                                        <input type="file" name="file" disabled="disabled">
+                                    </a>
+                                    <input type="button" class="file-upload-btn" value="上传" disabled="disabled"/>
+                                </form>
+                                <input class="appointUserCounts" title="请导入文件" type="hidden"/>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12 numberLimit" style="display: none;">
+                    <div class="col-md-2 text-right">
+                        <strong>限制人数:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <input class="numberLimit form-control" type="text" title="不能为空"
+                               onkeyup="this.value=this.value.replace(/\D/g,'').replace(/^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D/g,'').replace(/^0/g,'')" maxlength="9"
+                               placeholder="设置营销人数上限(请输入数字最多9位)"/>
+                    </div>
+                </div>
+                <!-- 营销地区 -->
+                <div class="col-md-12 marketArea">
+                    <div class="col-md-2 text-right">
+                        <strong>营销地区:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea type="text" class="areaNames form-control" title="点击，选择需要营销的营销地区" rows="4"
+                                  readonly="readonly"
+                                  placeholder="请选择营销区域，如果不勾选择默认营销全用户"></textarea>
+                        <input type="text" class="areaIds" style="display: none" title="不能为空"/>
+                    </div>
+                </div>
+            </div>
+            <!-- endregion 目标用户选择 -->
+
+            <!-- region 客户接触渠道 -->
+            <div class="row jobConfigureInfo">
+                <!-- 短信：接入号-->
+                <div class="col-md-12 sms accessNumber">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>接入号:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="select smsAccessNumberSelect form-control"></select>
+                    </div>
+                </div>
+                <!-- 短信：短信内容-->
+                <div class="col-md-12 sms messageInfo">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>短信内容:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="smsMessageContent form-control" title="请选择短信内容" rows="3"
+                                  placeholder="短信内容，字数不超过400个字" maxlength="400"></textarea>
+                        <input class="smsContentId willHide" title="请选择短信内容"/>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="smsMessageSelectButton task-button btn-sm">选择
+                        </button>
+                    </div>
+                </div>
+                <!-- region 短信：短信地址 -->
+                <div class="col-md-12 sms messageUrl">
+                    <div class="col-md-2 text-right">
+                        <strong>内容地址:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="smsMessageUrl form-control" title="请填写内容地址" rows="1"
+                                  placeholder="内容链接" maxlength="400"></textarea>
+                    </div>
+                </div>
+                <!--endregion 短信：短信地址-->
+                <!-- 场景短信：接入号-->
+                <div class="col-md-12 sceneSms accessNumber" style="display: none;">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>接入号:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="select sceneSmsAccessNumberSelect form-control">
+                        </select>
+                    </div>
+                </div>
+                <!-- 场景短信：短信内容-->
+                <div class="col-md-12 sceneSms messageInfo" style="display: none;">
+                    <div class="col-md-2 text-right">
+                        <strong class="must" style="color: red">*</strong><strong>短信内容:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="sceneSmsMessageContent form-control" title="请选择短信内容" rows="3"
+                                  placeholder="短信内容，字数不超过400个字" maxlength="400"></textarea>
+                        <input class="sceneSmsContentId willHide" title="请选择短信内容"/>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="sceneSmsMessageSelectButton task-button btn-sm">选择</button>
+                    </div>
+                </div>
+                <!-- region 场景：短信地址 -->
+                <div class="col-md-12 sceneSms sceneMessageUrl" style="display: none">
+                    <div class="col-md-2 text-right">
+                        <strong>内容地址:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="sceneMessageUrl form-control" title="请填写内容地址" rows="1"
+                                  placeholder="内容链接" maxlength="400"></textarea>
+                    </div>
+                </div>
+                <!--endregion 场景：短信地址-->
+
+                <!-- 测试号 -->
+                <div class="col-md-12 marketTestPhones">
+                    <div class="col-md-2 text-right">
+                        <strong>测试号:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="marketTestPhones form-control" placeholder="测试号：逗号分隔多个手机号。测试号用于跟踪任务执行情况"
+                                  title="测试号不能为空" warn="true" rows="3"></textarea>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="testNumbersSelectBtn task-button btn-sm">选择</button>
+                        <button class="testNumbersSendBtn  task-button btn-sm">发送</button>
+                    </div>
+                </div>
+                <!--友情提醒-->
+                <div class="col-md-12 warnMessage" style="display: none;">
+                    <div class="col-md-12">
+                        <p style="font-size: 14px;color: red;padding-left: 50px;">友情提醒：您还未进行测试号短信发送确认，如果坚决不发送，请点击继续</p>
+                    </div>
+                </div>
+            </div>
+            <!-- endregion 客户接触渠道 -->
+
+            <!-- region 预览 -->
+            <div class="row auditInfo previewDiv"></div>
+            <!-- endregion 预览 -->
+
+            <!-- region 审批已完成 -->
+            <div class="row finishInfo">
+                <div class="col-md-12">
+                    <strong>审批已完成</strong>
+                </div>
+            </div>
+            <!-- endregion 审批已完成 -->
+        </div>
+        <div class="step">
+            <span class="pre">返回</span>
+            <span class="next active">继续</span>
+            <span class="confirm">确定</span>
+            <span class="edit">返回修改</span>
+            <span class="closeBtn">关闭</span>
+        </div>
+        <div class="data" style="display: none"></div>
+    </div>
+    <!-- endregion 新增、编辑营销任务 -->
+
+    <div class="selectTestNumberInfo">
+        <table class="testNumberTab table table-hover table-condensed table-bordered"
+               style="width: 96%;margin: 0 2%;"></table>
+    </div>
+
+    <div class="selectSmsContentInfo" style="width:96%;margin: 0 2%;">
+        <div class="col-md-12">
+            <input class="form-control qryContentInfo" placeholder="内容" style="width: 160px">
+            <input class="form-control qryKeyInfo" placeholder="关键词" style="width: 160px">
+            <button class="smsContentSearchBtn">
+                <i class="fa fa-search"></i>搜索
+            </button>
+        </div>
+        <div class="col-md-12" style="height: 390px;">
+            <table class="smsContentTab table table-hover table-condensed table-bordered" style="width:100%;"></table>
+        </div>
+    </div>
+    <!--jxh周期任务短信修改模板-->
+    <div class="jxhContent" style="display: none;">
+        <div class="col-md-12 jxhsmsMessage">
+            <div class="col-md-2 text-right">
+                <strong class="must" style="color: red">*</strong><strong>短信内容:</strong>
+            </div>
+            <div class="col-md-8">
+                        <textarea class="jxhsmsMessageContent form-control" title="请选择短信内容" rows="3"
+                                  placeholder="短信内容，字数不超过400个字" maxlength="400"></textarea>
+                <input class="jxhSmsContentId willHide" title="请选择短信内容"/>
+            </div>
+            <div class="col-md-1">
+                <button class="jxhsmsMessageSelectButton task-button btn-sm">选择</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- endregion 页面内容 -->
+
+<div class="o-modelDetail">
+    <i class="tips-arrow"></i>
+    <div class="o-modelDetail-content"></div>
+</div>
+
+<!-- region 预览模板 -->
+<div class="iMarket_preview" style="display: none;">
+    <!-- region 营销任务预览 -->
+    <div class="row taskMgrDetailInfo">
+        <!-- region 隐藏域 存放ID -->
+        <input class="detail_id" type="hidden">
+        <!-- endregion 隐藏域 存放ID -->
+
+        <!-- region 任务基本信息 -->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>任务基本信息</strong>
+            </div>
+            <!-- region 任务名称 -->
+            <div class="col-md-2">
+                <span>任务名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskName"></span>
+            </div>
+            <!-- endregion 任务名称 -->
+
+            <!-- region 营销方式 -->
+            <div class="col-md-2">
+                <span>营销方式：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_marketType"></span>
+            </div>
+            <!-- endregion 营销方式 -->
+
+             <!--region 任务编码-->
+            <div class="col-md-2 taskCode">
+                <span>任务编码：</span>
+            </div>
+            <div class="col-md-3 taskCode">
+                <span class="saleId"></span>
+            </div>
+             <!--endregion 任务编码-->
+
+            <!--region 任务波次-->
+            <div class="col-md-3 taskFrequency textToRight">
+                <span>任务波次：</span>
+            </div>
+            <div class="col-md-3 taskFrequency">
+                <span class="saleBoidId"></span>
+            </div>
+            <!--endregion 任务波次-->
+
+            <!-- region 场景规则 -->
+            <div class="col-md-2 marketTypeValue">
+                <span>场景规则：</span>
+            </div>
+            <div class="col-md-9 marketTypeValue">
+                <span class="detail_marketTypeValue"></span>
+            </div>
+            <!-- endregion 场景规则 -->
+
+            <!-- region 业务类别 -->
+            <div class="col-md-2">
+                <span>业务类别：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_businessTypeSelect"></span>
+            </div>
+            <!-- endregion 业务类别 -->
+
+            <!-- region 调度类型 -->
+            <div class="col-md-3 textToRight">
+                <span>调度类型：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_timerSelect"></span>
+            </div>
+            <!-- endregion 调度类型 -->
+
+            <!-- region 开始时间 -->
+            <div class="col-md-2">
+                <span>开始时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_startTime"></span>
+            </div>
+            <!-- endregion 开始时间 -->
+
+            <!-- region 结束时间 -->
+            <div class="col-md-3 textToRight">
+                <span>结束时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_endTime"></span>
+            </div>
+            <!-- endregion 结束时间 -->
+
+            <!-- region 监控开始时间 -->
+            <div class="col-md-3 monitoring_row" style="display: none;">
+                <span>监控开始时间：</span>
+            </div>
+            <div class="col-md-3 monitoring_row" style="display: none;">
+                <span class="detail_monitoringStartTime"></span>
+            </div>
+            <!-- endregion 监控开始时间 -->
+
+            <!-- region 监控结束时间 -->
+            <div class="col-md-3 monitoring_row" style="display: none;">
+                <span>监控结束时间：</span>
+            </div>
+            <div class="col-md-3 monitoring_row" style="display: none;">
+                <span class="detail_monitoringEndTime"></span>
+            </div>
+            <!-- endregion 监控结束时间 -->
+
+            <!-- region 分组营销 -->
+            <div class="col-md-2">
+                <span>分组营销：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_boidSale"></span>
+            </div>
+            <!-- endregion 分组营销 -->
+
+            <!-- region 时间间隔 -->
+            <div class="col-md-3 textToRight">
+                <span class="detail_intervalInSeconds_title">时间间隔：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_intervalInSeconds"></span>
+            </div>
+            <!-- endregion 时间间隔 -->
+
+            <!-- region 剔除策略 -->
+            <div class="col-md-2">
+                <span>剔除策略：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_repeatStrategy"></span>
+            </div>
+            <!-- endregion 剔除策略 -->
+
+            <!-- region 剔除黑名单 -->
+            <div class="col-md-3 textToRight">
+                <span>过滤黑名单：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_filterBlack"></span>
+            </div>
+            <!-- endregion 剔除黑名单 -->
+
+            <!-- region 过滤员工 -->
+            <div class="col-md-2">
+                <span>过滤员工：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_filterEmployee"></span>
+            </div>
+            <!-- endregion 过滤员工 -->
+
+            <!-- region 营销地区 -->
+            <div class="col-md-2">
+                <span>营销地区：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_areaNames"></span>
+            </div>
+            <!-- endregion 营销地区 -->
+
+            <!-- region 任务描述 -->
+            <div class="col-md-2">
+                <span>任务描述：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_remarks"></span>
+            </div>
+            <!-- endregion 任务描述 -->
+
+            <!-- region 创建人 -->
+            <div class="col-md-2 hidden">
+                <span>创建人：</span>
+            </div>
+            <div class="col-md-3 hidden">
+                <span class="detail_createUserName"></span>
+            </div>
+            <!-- endregion 创建人 -->
+
+            <!-- region 创建时间 -->
+            <div class="col-md-3 hidden textToRight">
+                <span>创建时间：</span>
+            </div>
+            <div class="col-md-3 hidden">
+                <span class="detail_createTime"></span>
+            </div>
+            <!-- endregion 创建时间 -->
+
+            <!-- region 审核人员 -->
+  <!--          <div class="col-md-3 hidden">
+                <span>审核人员：</span>
+            </div>
+            <div class="col-md-3 hidden">
+                <span class="detail_auditor"></span>
+            </div>-->
+            <!-- endregion 审核人员 -->
+
+        </div>
+        <!-- endregion 任务基本信息 -->
+
+        <!-- region 目标用户选择 -->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>目标用户选择</strong>
+            </div>
+            <!-- region 营销客户 -->
+            <div class="col-md-3">
+                <span>营销客户：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_segmentNames"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 营销客户 -->
+
+            <!-- region 营销客户人数 -->
+            <div class="col-md-3">
+                <span>营销客户人数：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_segmentCounts"
+                      style="width: 100%;display: inline-block;word-break: break-all;"></span>
+            </div>
+            <!-- endregion 营销客户人数 -->
+
+            <!-- region 客群编码 -->
+            <div class="col-md-3 targetGroup">
+                <span>客户群编码：</span>
+            </div>
+            <div class="col-md-9 targetGroup">
+                <span class="detail_marketSegmentIds">空</span>
+            </div>
+            <!-- endregion 客群编码 -->
+
+            <!-- region 最新更新时间 -->
+            <div class="col-md-3 targetGroup">
+                <span>最近更新时间：</span>
+            </div>
+            <div class="col-md-9 targetGroup">
+                <span class="detail_lastUpdateTime">空</span>
+            </div>
+            <!-- endregion 最新更新时间 -->
+
+            <!-- region 限制人数 -->
+            <div class="col-md-3" style="display: none;">
+                <span>限制人数：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_number"></span>
+            </div>
+            <!-- endregion 限制人数 -->
+        </div>
+        <!-- endregion 目标用户选择 -->
+
+        <!-- region 客户接触渠道 -->
+        <div class="row">
+            <div class="col-md-12">
+                <strong>客户接触渠道</strong>
+            </div>
+            <!-- region 接入号 -->
+            <div class="col-md-3">
+                <span>接入号：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_AccessNumber"></span>
+            </div>
+            <!-- endregion 接入号 -->
+
+            <!-- region 短信内容 -->
+            <div class="col-md-3 content">
+                <span>短信内容：</span>
+            </div>
+            <div class="col-md-9 content">
+                <span class="detail_Content"></span>
+            </div>
+            <!-- endregion 短信内容 -->
+
+            <!-- region 短信地址 -->
+            <div class="col-md-3 content_url">
+                <span>短信地址：</span>
+            </div>
+            <div class="col-md-9 content_url">
+                <span class="detail_ContentUrl"></span>
+            </div>
+            <!-- endregion 短信地址 -->
+
+            <!-- region 测试号 -->
+            <div class="col-md-3 testPhones">
+                <span>测试号：</span>
+            </div>
+            <div class="col-md-9 testPhones">
+                <span class="detail_TestPhones"></span>
+            </div>
+            <!-- endregion 测试号 -->
+        </div>
+        <!-- endregion 客户接触渠道 -->
+    </div>
+    <!-- endregion 营销任务预览 -->
+</div>
+<!-- endregion 预览模板 -->
+
+<!-- region 脚本 -->
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/ischeduling/taskMgr.js"></script>
+<script src="js/icommon/modelRule.js"></script>
+<!-- endregion 脚本 -->

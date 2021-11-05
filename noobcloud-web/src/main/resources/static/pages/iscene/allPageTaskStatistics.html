@@ -1,0 +1,32 @@
+<link href="ext/zyupload/skins/zyupload-1.0.0.css" rel="stylesheet">
+<link href="styles/iscene/imghover/imagehover.css" rel="stylesheet"/>
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写任务名称">
+        <input type="text" class="form-control startTime"
+               onclick="laydate({istime: true, format: 'YYYY-MM-DD'})" title="不能为空"
+               style="display: inline;border: 1px solid #ccc;background: #fff;margin-right: 0;"
+               readonly="readonly"/>
+        <span style="margin: 0 4px;">至</span>
+        <input type="text" class="form-control stopTime"
+               onclick="laydate({istime: true, max: laydate.now(),format: 'YYYY-MM-DD'})" title="不能为空"
+               style="display: inline;border: 1px solid #ccc;background: #fff;"
+               readonly="readonly"/>
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+    </div>
+</div>
+
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+
+<script src="ext/zyupload/zyupload.basic-1.0.0.js"></script>
+<script src="ext/cmtable/js/cmtable.js"></script>
+<script src="js/iscene/allpagetaskstatistics.js"></script>

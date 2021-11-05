@@ -1,0 +1,54 @@
+<style type="text/css">
+    .query-row .col-md-12 .col-md-4:first-child, .query-row .col-md-12 .col-md-4:last-child {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .query-row .col-md-12 .col-md-4 input {
+        width: 100%;
+        height: 50px;
+    }
+
+    .query-row .col-md-12 {
+        margin-top: 20px;
+    }
+
+    .query-row .col-md-12:nth-child(3) {
+        text-align: center;
+    }
+
+    #result {
+        font-size: 16px;
+        background-color: #fff;
+    }
+</style>
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <input id="txtQuery" class="form-control" maxlength="11" placeholder="请输入手机号">
+        </div>
+        <div class="col-md-4">
+            <input id="txtAccessNumber" class="form-control" maxlength="10" placeholder="请输入接入号">
+        </div>
+        <div class="col-md-4">
+            <input id="txtTaskId" class="form-control" maxlength="6" placeholder="请输入任务ID">
+        </div>
+    </div>
+    <div class="col-md-12">
+        <textarea id="smsContent" class="form-control" rows="3" maxlength="50" placeholder="请输入短信内容"></textarea>
+    </div>
+    <div class="col-md-12">
+        <button id="btnQuery">执行</button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <textarea id="result" class="form-control" rows="10" placeholder="结果" readonly></textarea>
+    </div>
+</div>
+
+<script src="js/isystem/testInterface.js"></script>

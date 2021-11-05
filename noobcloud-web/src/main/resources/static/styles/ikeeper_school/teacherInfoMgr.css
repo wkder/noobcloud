@@ -1,0 +1,101 @@
+/*新增弹窗样式*/
+div.infoConfigBody {
+    min-height: 390px;
+    height: 390px;
+    padding-top: 30px;
+    padding-left: 30px;
+    overflow: auto;
+}
+
+.infoConfigBody .col-md-12 {
+    margin: 7.5px 0;
+}
+
+.teacherInfo {
+    padding: 30px 15px;
+}
+
+.teacherInfo .right {
+    text-align: right;
+}
+
+.teacherInfo div.col-md-3, .teacherInfo div.col-md-7 {
+    margin: 8px 0;
+}
+
+/*导入弹窗样式*/
+.importDirectionalCustomer {
+    padding: 20px 0;
+}
+
+.importDirectionalCustomer .importForm .meatOperate {
+    margin-left: 25px;
+}
+
+.importDirectionalCustomer .importForm .meatOperate .fileUploadName {
+    width: 220px;
+    display: inline;
+    border: 1px solid #ccc;
+}
+
+.importDirectionalCustomer .importForm .meatOperate a.file,
+.importDirectionalCustomer .importForm .meatOperate div.btnUpload {
+    margin-right: 10px;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+.importDirectionalCustomer .importForm .meatOperate a.file {
+    position: relative;
+    top: 0;
+    overflow: hidden;
+    text-indent: 0;
+}
+
+.importDirectionalCustomer .importForm .meatOperate a.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    width: 180px;
+    margin: 0 5px;
+    outline: none;
+    border-radius: 2px !important;
+}
+
+.importDirectionalCustomer .importForm .meatOperate div.btnUpload {
+    width: 80px;
+}
+
+.importDirectionalCustomer .importForm .meatOperate a.templateBtn {
+    border-radius: 2px;
+    background: #00B38B;
+    border: none;
+    font-size: 16px;
+}
+
+.importDirectionalCustomer .importForm .info {
+    margin-top: 20px;
+    margin-left: 26px;
+}
+
+.importDirectionalCustomer .importForm .info span {
+    display: block;
+    color: red;
+    line-height: 24px;
+
+}
+
+.importForm div.retMessage {
+    height: 60px;
+    border: aliceblue;
+}
+
+
+
+
+
+

@@ -1,0 +1,74 @@
+<style>
+    #dataTable_info {margin-right: 345px;}
+    #dataTable {  background: #fff;  border: 4px; vertical-align: middle !important; }
+    .row { border-top-width: inherit; }
+    .table-bordered>thead>tr>th, .table-bordered>thead>tr>td{border-bottom-width: 1px !important;}
+</style>
+
+
+<!-- 搜索栏目-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <div class="conditionSearch">
+            <span><span>订购日期：</span></span>
+            <input type="text" id="startTime" class="startTime" placeholder="起始时间"
+                   onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"/>
+            至
+            <input type="text" id="endTime" class="endTime" placeholder="结束时间"
+                   onclick="laydate({istime: false, format: 'YYYY-MM-DD'})"/>
+            <span>城市选择：</span>
+            <select class="form-control create_type qryBaseAreas" id="qryBaseAreas" style="width: 110px;">
+                <option value="-1">广西省</option>
+            </select>
+            <button id="btnQuery" class="btn btn-success">
+                <i class="fa fa-search"></i>查询
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 列表栏-->
+<div class="row list-row">
+    <div class="col-md-12" style="background-color: #fff;text-align: center">
+        <table id="dataTable" class="iDataTable dataTable table-bordered table-hover table-condensed table-bordered"
+               cellspacing="0" table-border="1px" style="margin-top: 0 !important;width: 100%;text-align: center;">
+            <thead style="text-align: center;table-border:1px;"  >
+            <tr>
+                <td rowspan="2">产品编码</td>
+                <td rowspan="2" >产品名称</td>
+                <td colspan="3">订购数据</td>
+            </tr>
+            <tr>
+                <td style="border-left: none;">订购数</td>
+                <td >成功数</td>
+                <td >成功率</td>
+            </tr>
+            </thead>
+            <tbody></tbody>
+            <!--<tfoot>-->
+            <!--<tr>-->
+                <!--<td colspan="6">-->
+                    <!--<div id="pagination" class="pagination"></div>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--</tfoot>-->
+        </table>
+    </div>
+</div>
+
+
+<!--<div class="iMarket_ProductOrderStatistics_Template">-->
+    <!--<script id="productOrderStatisticsTemplate" type="text/html">-->
+        <!--{{each list as statistics index}}-->
+        <!--<tr>-->
+            <!--<td width="20%">{{statistics.product_code}}</td>-->
+            <!--<td width="44%">{{statistics.product_name}}</td>-->
+            <!--<td width="12%">{{statistics.order_num}}</td>-->
+            <!--<td width="12%">{{statistics.succ_num}}</td>-->
+            <!--<td width="12%">{{statistics.succ_rate}}</td>-->
+        <!--</tr>-->
+        <!--{{/each}}-->
+    <!--</script>-->
+<!--</div>-->
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/istatistics/productOrderStatistics.js"></script>

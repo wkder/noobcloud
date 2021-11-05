@@ -1,0 +1,220 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/scenecenter.css" rel="stylesheet">
+<link href="ext/simplePagination.css" rel="stylesheet">
+<style type="text/css">
+    span.label{margin-right: 2px}
+    .positionScenceSegment,.positionBaseInfoSegment{margin-left: 12px}
+    .positionScenceSegment div.hide{display: none}
+</style>
+
+<body>
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="qrypositionScenName" class="form-control name" placeholder="位置场景名称">
+        <select class="form-control create_type" id="qrypositionScenStau">
+            <option value="">全部</option>
+            <option value="1">生效</option>
+            <option value="0">失效</option>
+        </select>
+        <button id="positonScenButton" class="btn btn-success">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="createPositionScenButton" class="btn btn-success">
+            <i class="fa fa-plus"></i>新增
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>场景名称</th>
+                <th>类别</th>
+                <th class="centerColumns">监控开始时间</th>
+                <th class="centerColumns">监控结束时间</th>
+                <th>基站名称</th>
+                <th class="centerColumns">状态</th>
+                <th class="centerColumns">操作</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<div class="iMarket_Position_Dialog">
+    <div id="createPositionSceneDialog" style="display: none"></div>
+    <div id="positionBaseInfoDialog" style="display: none"></div>
+</div>
+<div id="selectMarketAreaDialog" style="display: none">
+    <ul id="marketAreaTree" class="ztree"></ul>
+</div>
+<div class="iMarket_Position_Template" style="display: none">
+    <script id="positionBaseInfo" type="text/html">
+        {{each list as order index}}
+        <tr>
+            <td class="baseId" width="20%">{{order.id}}</td>
+            <td class="baseName" width="50%">{{order.name}}</td>
+        </tr>
+        {{/each}}
+    </script>
+</div>
+<div class="iMarket_Position_EditHtml" style="display: none">
+    <div class="positionScenceSegment">
+        <div class="scenceId" style="display: none">
+            <input type="text" class="id">
+        </div>
+        <div class="scenceNamePanel">
+            <span class="label"><span class="must" style="color: red">*</span><span>位置场景名称</span></span>
+            <input type="text"  class="scenceName" placeholder="请输入位置场景名称，限制30个字数"   title="不能为空" style="width: 493px"/>
+        </div>
+        <div class="elment">
+            <div class="scenceType" >
+                <span class="label"><span class="must" style="color: red">*</span><span>场景类别</span></span>
+                <select class="select scenceTypeSelect">
+                </select>
+            </div>
+            <div class="monitorAreaPanel" >
+                <span class="label"><span>监控的区县</span></span>
+                <input type="text"  class="monitorArea" placeholder="请输入监控的区县"/>
+            </div>
+        </div>
+        <div class="elment">
+            <div class="monitorInvartalPanl" >
+                <span class="label"><span class="must" style="color: red">*</span><span>监控周期</span></span>
+                <select class="select monitorInvartal">
+                    <option value="1">每天</option>
+                    <option value="2">周末</option>
+                    <option value="3">工作日</option>
+                </select>
+            </div>
+            <div class="sendIntervalPanel" >
+                <span class="label"><span class="must" style="color: red">*</span><span>营销间隔</span></span>
+                <input type="text"  class="sendInterval" style="width: 98px"/>
+                <span>(单位：天)</span>
+            </div>
+        </div>
+
+        <div class="elment">
+            <div class="beginTimePanel" >
+                <span class="label"><span class="must" style="color: red">*</span><span>监控开始时间</span></span>
+                <input class="beginTime" type="time" value="09:00" placeholder="请输入开始时间">
+            </div>
+            <div class="endTimePanel" >
+                <span class="label"><span class="must" style="color: red">*</span><span>监控结束时间</span></span>
+                <input class="endTime" type="time" value="18:00" placeholder="请输入结束时间">
+            </div>
+        </div>
+        <div class="elment">
+            <div class="channelId" >
+                <span class="label"><span class="must" style="color: red">*</span><span>场景渠道</span></span>
+                <select class="select channelIdSelect">
+                    <option value="1">联通</option>
+                    <option value="2">商户</option>
+                </select>
+            </div>
+            <div class="monitorType" >
+                <span class="label"><span class="must" style="color: red">*</span><span>监控类型</span></span>
+                <select class="select monitorTypeSelect">
+                    <option value="1">进入</option>
+                </select>
+            </div>
+        </div>
+        <div class="baseArea" >
+            <span class="label"><span class="must" style="color: red">*</span><span>监控的基站</span></span>
+            <select class="select baseAreaIdSelect" style="width:93px">
+            </select>
+            <span>基站类型</span>
+            <select class="select baseAreaTypeSelect" style="width:94px">
+            </select>
+            <span>基站点</span>
+            <input class="baseId" type="text" style="width:170px" placeholder="请选择要监控的基站">
+            <input class="baseIds" type="text" style="display: none">
+        </div>
+        <div class="triggerChannelId" >
+            <span class="label"><span class="must" style="color: red">*</span><span>触发渠道</span></span>
+            <select class="select triggerChannelIdSelect">
+                <option value="0">安讯渠道</option>
+            </select>
+            <span class=""><span style="color: red">(暂只开通安讯渠道，其它渠道功能未开通)</span></span>
+        </div>
+        <div class="elment">
+            <div class="isSengReport">
+                <span class="label"><span class="must" style="color: red">*</span><span>接收发送报告</span></span>
+                <select class="select isSengReportSelect">
+                    <option value = "0"> 否</option>
+                    <option value = "1">是</option>
+                </select>
+            </div>
+            <div class="reportPhonelabel hide">
+                <span class="label"><span class="must" style="color: red">*</span><span>接收手机号码</span></span>
+                <input type="text"  class="reportPhone" placeholder="请输入手机号码"/>
+            </div>
+        </div>
+        <div class="taskWeightPanel" >
+            <span class="label"><span class="must" style="color: red">*</span><span>任务权重</span></span>
+            <input type="text"  class="taskWeight" />
+            <span>(优先级：0-33低，34-66中，67-100高)</span>
+        </div>
+        <div class="whiteUsersPanel">
+            <span class="label"><span>监视用户白名单</span></span>
+            <input type="text"  class="whiteUsers" placeholder="请选择白名单监视用户群"    style="width: 497px"/>
+            <input type="text"  class="whiteUserIds"  style="display: none"/>
+        </div>
+        <div class="blackUsersPanel">
+            <span class="label"><span>监视用户黑名单</span></span>
+            <input type="text"  class="blackUsers" placeholder="请选择黑名单监视用户群"    style="width: 497px"/>
+            <input type="text"  class="blackUserIds"  style="display: none"/>
+        </div>
+        <div class="whiteAreasPanel">
+            <span class="label"><span>监视号段白名单</span></span>
+            <input type="text"  class="whiteAreas" placeholder="请选择监视用户白名单号段"    style="width: 497px"/>
+            <input type="text"  class="whiteAreaIds"  style="display: none"/>
+        </div>
+        <div class="blackAreasPanel">
+            <span class="label"><span>监视号段黑名单</span></span>
+            <input type="text"  class="blackAreas" placeholder="请选择监视用户黑名单号段"    style="width: 497px"/>
+            <input type="text"  class="blackAreaIds"  style="display: none"/>
+        </div>
+        <div class="statusPanel">
+            <span class="label"><span class="must" style="color: red">*</span><span>是否生效</span></span>
+            <select class="select status">
+                <option value = "0"> 否</option>
+                <option value = "1">是</option>
+            </select>
+        </div>
+    </div>
+    <div class="positionBaseInfoSegment">
+        <div class="conditionSearch1" status="ready">
+            <input type="text" class="name" id="d-baseId" placeholder="基站Id">
+            <input type="text" class="name" id="d-baseName" placeholder="基站名称">
+            <div class="searchButton extensionalBtn"><i class="fa fa-search"></i>搜索</div>
+        </div>
+        <div class="baseinfo">
+            <table class="iTable" cellspacing="0" border="0" style="width: 94%;">
+                <thead>
+                <tr>
+                    <td class="baseId"  width="20%" style="border-radius: 8px 0 0 0;">基站ID</td>
+                    <td class="baseName" width="50%" style="border-radius: 0 8px 0 0;">基站名称</td>
+                </tr>
+                </thead>
+                <tbody>
+                <!--模板填充这里-->
+                </tbody>
+                <tfoot>
+                <tr><td colspan="3" style="border-radius: 0 0 8px 8px;">
+                    <div class="pagination"></div>
+                </td></tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="ext/zTree/jquery.ztree.all-3.5.min.js"></script>
+<script src="ext/template.js"></script>
+<script src="js/iscene/positionScene.js"></script>
+<script src="ext/jquery.simplePagination.js"></script>

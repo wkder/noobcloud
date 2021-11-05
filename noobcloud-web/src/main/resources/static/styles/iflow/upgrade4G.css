@@ -1,0 +1,29 @@
+
+/* upgrade4GActivityQuery */
+
+.assistNetwork button.sendVerification
+{
+    background: #00aaff  !important;
+    border-color: #00aaff !important;
+    color: #fff !important;
+}
+
+.assistNetwork button.sendVerification,
+.assistNetwork #verificationCode
+{
+    padding: 8px 14px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.assistNetwork #verificationCode
+{
+    /*width: 50%;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.assistNetwork .col-md-12
+{
+    margin-top: 30px;
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/icommon/homeGX.js"></script>
+    <style>
+        div.iMarket_Home_Body div.marketUserShow div.title{
+            height: 40px;
+            line-height: 40px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+            border-top: 1px solid rgba(160, 160, 160, 0.2);
+            font-size: 16px;
+        }
+        div.iMarket_Home_Body div.marketUserShow div.content{
+            background: rgb(255, 255, 255);
+        }
+        div.iMarket_Home_Body div.userMapShow{
+            float: left;
+            z-index: 2;
+            box-shadow: rgba(0, 0, 0, 0.137255) 0px 2px 2px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 5px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px;
+            position: relative;
+            background-color: rgb(255, 255, 255);
+            border-radius: 2px;
+            transition: box-shadow 0.25s;
+        }
+        div.iMarket_Home_Body div.userDataShow{
+            padding-right: 0;
+        }
+        div.iMarket_Home_Body div.userDataShow div.userProportion {
+            box-shadow: rgba(0, 0, 0, 0.137255) 0px 2px 2px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 5px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px;
+            position: relative;
+            background-color: rgb(255, 255, 255);
+            border-radius: 2px;
+            transition: box-shadow 0.25s;
+        }
+        div.iMarket_Home_Body div.userDataShow div.user4GProportion {
+            margin-top: 4%;
+            box-shadow: rgba(0, 0, 0, 0.137255) 0px 2px 2px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 5px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px;
+            position: relative;
+            background: rgb(255, 255, 255);
+            border-radius: 2px;
+            transition: box-shadow 0.25s;
+        }
+        div.iMarket_Home_Body div.marketJobDetail div.jobDetailTitle span {
+            display: inline-block;
+            padding: 5px 20px 2px 0;
+            font-size: 18px;
+            width: 95%;
+            margin: 20px 15px 0px 15px;
+        }
+
+        div.iMarket_Home_Body div.marketJobDetail div.jobDetailBtn {
+            margin: 0 15px 10px 15px;
+            border-top: 1px solid silver;
+            padding-top: 10px;
+        }
+        div.iMarket_Home_Body div.marketJobDetail div.jobDetailBtn div {
+            width: 100px;
+            display: inline-block;
+            text-align: center;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        div.iMarket_Home_Body div.marketJobDetail div.jobDetailBtn span.btnSplit {
+            height: 15px;
+            border: 1px solid silver;
+            display: inline-block;
+            vertical-align: bottom;
+        }
+        .jobDetailBtn div.active{
+            font-weight: bold;
+            color: #0099CC;
+        }
+        .detailInfo {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="iMarket_Home">
+    <div class="iMarket_Home_Body container-fluid">
+        <div class="marketUserShow row">
+            <div class="userMapShow col-md-8 col-xs-8">
+                <div class="title" style="height:42px;">用户数</div>
+                <div class="content userCountChart" style="height:500px;">
+
+                </div>
+            </div>
+            <div class="userDataShow col-md-4 col-xs-4">
+                <div class="userProportion">
+                    <div class="title">用户数占比</div>
+                    <div class="content userProportionChart" style="height:223px;">
+
+                    </div>
+                </div>
+                <div class="user4GProportion" style="margin-top: 15px;">
+                    <div class="title">4G用户占比</div>
+                    <div class="content user4GProportionChart" style="height:223px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="marketJobDetail row">
+            <div class="jobDetailTitle"><span>代办事项</span></div>
+            <div class="jobDetailContent marketJob">
+                <div class="jobDetailBtn">
+                   <!-- <div class="modelWaitingAuditButton" refDiv="modelWaitingAuditInfo" data-value="1" refTab="modelWaitingAuditTab"><span>待审批模型</span></div>
+                    <span class="btnSplit"></span>
+                    <div class="taskWaitingAuditButton" refDiv="taskWaitingAuditInfo" data-value="2" refTab="taskWaitingAuditTab"><span>待审批任务</span></div>
+                    <span class="btnSplit"></span>
+                    <div class="toBeExecutedButton" refDiv="toBeExecutedInfo" data-value="3" refTab="toBeExecutedTab"><span>待执行任务</span></div>
+                    <span class="btnSplit"></span>
+                    <div class="todayModelButton" refDiv="todayModelInfo" data-value="4" refTab="todayModelTab"><span>今日客户群</span></div>-->
+                </div>
+                <div class="detailInfos row list-row">
+                   <!-- <div class="detailInfo modelWaitingAuditInfo col-md-12">
+                        <table class="modelWaitingAuditTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer" width="100%"></table>
+                    </div>
+                    <div class="detailInfo taskWaitingAuditInfo col-md-12">
+                        <table class="taskWaitingAuditTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer" width="100%"></table>
+                    </div>
+                    <div class="detailInfo toBeExecutedInfo col-md-12">
+                        <table class="toBeExecutedTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer" width="100%"></table>
+                    </div>
+                    <div class="detailInfo todayModelInfo col-md-12">
+                        <table class="todayModelTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer" width="100%"></table>
+                    </div>-->
+                </div>
+                <!--<div class="detailInfos ">
+                    <div class="detailInfo modelWaitingAuditInfo row" style="display: none;">
+                        <div class="col-md-12">
+                            <table class="modelWaitingAuditTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer" width="100%"></table>
+                        </div>
+                    </div>
+                    <div class="detailInfo taskWaitingAuditInfo row" style="display: none;">
+                        <div class="col-md-12">
+                            <table class="taskWaitingAuditTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer" width="100%"></table>
+                        </div>
+                    </div>
+                    <div class="detailInfo toBeExecutedInfo row" style="display: none;">
+                        <div class="col-md-12">
+                            <table class="toBeExecutedTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer" width="100%"></table>
+                        </div>
+                    </div>
+                    <div class="detailInfo todayModelInfo row" style="display: none;">
+                        <div class="col-md-12">
+                            <table class="todayModelTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer" width="100%"></table>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

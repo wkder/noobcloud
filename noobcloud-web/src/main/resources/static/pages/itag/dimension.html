@@ -1,0 +1,43 @@
+<link href="styles/itag/dimension.css" rel="stylesheet">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+
+<div class="cmTableContent" id="cmTableContent" style="display:none;" data-autoVerify="true" >
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>维度名称：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="name" placeholder="维度名称" name="name" maxlength="20" data-expression="isEmpty" data-error="维度名称不为空">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row list-row" style="width: 98%;margin: 15px auto;">
+        <div class="col-md-12">
+            <table id="dataTable2" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0" width="100%"></table>
+        </div>
+    </div>
+    <input type="hidden" id="id">
+</div>
+
+<script src="js/itag/dimension.js"></script>

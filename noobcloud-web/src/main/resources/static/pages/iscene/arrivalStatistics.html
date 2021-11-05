@@ -1,0 +1,64 @@
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <span>开始日期:</span>
+        <input type="text" id="startTime" class="form-control startTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+
+        <span style="margin: 0 4px;">结束日期:</span>
+        <input type="text" id="endTime" class="form-control endTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday: true,isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;"/>
+
+        <input class="form-control qrbaseCode" id="qrbaseCode" placeholder="营业厅编码" style="width: 110px;"/>
+
+        <select class="form-control create_type qryBaseAreas" id="qryBaseAreas" style="width: 110px;">
+            <option value="99999">上海市</option>
+            <option value="1">黄浦区</option>
+            <option value="2">卢湾区</option>
+            <option value="3">徐汇区</option>
+            <option value="4">长宁区</option>
+            <option value="5">静安区</option>
+            <option value="6">普陀区</option>
+            <option value="7">闸北区</option>
+            <option value="8">虹口区</option>
+            <option value="9">杨浦区</option>
+            <option value="10">闵行区</option>
+            <option value="11">宝山区</option>
+            <option value="12">嘉定区</option>
+            <option value="13">浦东新区</option>
+            <option value="14">金山区</option>
+            <option value="15">松江区</option>
+            <option value="16">青浦区</option>
+            <option value="17">南汇区</option>
+            <option value="18">奉贤区</option>
+            <option value="19">崇明县</option>
+        </select>
+
+        <button id="qryButton" class="btn btn-success">
+            <i class="fa fa-search"></i>查询
+        </button>
+        <button id="exportButton" class="btn btn-success">
+            <i class="fa fa-download"></i>导出
+        </button>
+
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row"
+     style="padding: 0px 10px;">
+    <div class="col-md-12">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               width="100%">
+        </table>
+    </div>
+</div>
+
+<div id="dialogDescription">
+    <span>数据来源：</span><span style="color: red">取自沃受理系统和BSS系统</span>
+</div>
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/iscene/arrivalStatistics.js"></script>

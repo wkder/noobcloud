@@ -1,0 +1,58 @@
+<link href="styles/istatistics/insightAnalysis.css" rel="stylesheet"/>
+<div class="iMarket_StockUserDaily">
+    <div class="iMarket_StockUserDaily_Body">
+        <div class="dailyType">
+            <span class="dailyType">日报类型选择：</span>
+            <select>
+                <option value="4G">日收入(4G)</option>
+                <option value="all">日收入(全量)</option>
+            </select>
+            <input class="queryValue" type="hidden"/>
+            <!--<div class="extensionalBtn dailyQueryBtn"><i class="fa fa-search"></i>查询</div>-->
+            <button id="btnQuery"><i class="fa fa-search"></i>查询</button>
+        </div>
+        <div class="meatOperate">
+            <div class="extensionalBtn downloadAnalysisDaily"><i class="fa fa-download"></i>下载</div>
+            <div class="downloadFrame">
+                <iframe name="frameName" style="display:none;"></iframe>
+                <form action="downloadAnalysisDaily.view" method="post" target="frameName"
+                      style="display: none;">
+                    <input name="dailyType" value="">
+                </form>
+            </div>
+        </div>
+        <div class="dailyChart"><div class="chartContent"></div></div>
+        <div class="dailyData lineShow">
+            <table class="" cellspacing="0" border="0" cellpadding="3">
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="iMarket_StockUserDaily_Template" style="display: none;">
+        <script id="dailyDataTemplate" type="text/html">
+            <tr>
+                <td width="10%">日期</td>
+                <td width="20%">{{tableHead.MONTH_2}}月收入</td>
+                <td width="10%">{{tableHead.MONTH_2}}月收入保有率</td>
+                <td width="20%">{{tableHead.MONTH_1}}月收入</td>
+                <td width="10%">{{tableHead.MONTH_1}}月收入保有率</td>
+                <td width="20%">{{tableHead.MONTH_0}}月收入</td>
+                <td width="10%">{{tableHead.MONTH_0}}月收入保有率</td>
+            </tr>
+            {{each list as dailyData index}}
+            <tr>
+                <td width="10%">{{dailyData.DAY}}</td>
+                <td width="20%">{{dailyData.SUM_2}}</td>
+                <td width="10%">{{dailyData.RATE_2}}</td>
+                <td width="20%">{{dailyData.SUM_1}}</td>
+                <td width="10%">{{dailyData.RATE_1}}</td>
+                <td width="20%">{{dailyData.SUM_0}}</td>
+                <td width="10%">{{dailyData.RATE_0}}</td>
+            </tr>
+            {{/each}}
+        </script>
+    </div>
+</div>
+<script src="ext/template.js"></script>
+<script src="ext/echarts/echarts-all.js" type="text/javascript"></script>
+<script src="js/istatistics/stockUserDaily.js"></script>

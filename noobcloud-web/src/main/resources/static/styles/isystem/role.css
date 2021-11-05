@@ -1,0 +1,5 @@
+.roleInfo >.row{margin: 5px 0;}
+.menuPermissionShow,.dataPermissionShow{height: 90px;border: 1px solid silver;border-radius: 4px;cursor: not-allowed;background-color: #eee;opacity: 1;overflow: auto;}
+.menuPermission >div,.dataPermission >div{float: left;}
+.pRender{width: 90px;display: inline-block;font-size: 13px;padding: 1px;text-align: center;margin: 2px;background: #5BC0DE;color: #fff;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+

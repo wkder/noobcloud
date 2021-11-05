@@ -1,0 +1,113 @@
+<link href="styles/iscene/common/commonNew.css" rel="stylesheet">
+<link href="styles/iresource/smsContentMgr.css" rel="stylesheet">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写服务器名称">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table  iDataTable  table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+
+<div class="row" style="display:none;">
+    <div class="cmTableContent">
+        <table class="table table-hover table-bordered cmTable">
+            <tbody>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>服务器名：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" id="name" name="name" maxlength="20" placeholder="服务器名"
+                           data-expression="isEmpty" data-error="服务器名不为空">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>主机IP：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" id="ip" name="ip" maxlength="20" placeholder="主机IP" data-expression="isIp"
+                           data-error="主机IP格式不正确">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>连接方式：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select id="connectType" class="form-control">
+                        <option value="sftp">SFTP</option>
+                        <option value="ftp">FTP</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>端口号：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" id="port" name="port" maxlength="10" placeholder="端口号"
+                           data-expression="isNumber" data-error="端口号格式不正确">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>用户名：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="text" id="user" name="serverUser" maxlength="20" placeholder="用户名"
+                           data-expression="isEmpty" data-error="用户名不为空">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>密码：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input class="form-control" type="password" id="password" name="password" maxlength="50" placeholder="密码"
+                           data-expression="isEmpty" data-error="密码不为空">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>备注：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <textarea id="remarks" maxlength="150"></textarea>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>测试连接：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <button id="btnTest" class="layerBtn" onclick="remoteServer.testConnect()">连接</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="hidden" id="id">
+    </div>
+</div>
+
+<script src="js/itag/remoteServer.js"></script>

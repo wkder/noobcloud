@@ -1,0 +1,120 @@
+.tab-row {
+    background-color: #fff;
+    border-radius: 8px 2px;
+    margin: 0;
+}
+
+.tab-row .tab-row-container {
+    height: 55px;
+    padding-left: 0;
+    padding-right: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: #fff;
+}
+
+.tab-row .tab-row-container .tab-item {
+    height: 100%;
+    line-height: 55px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-row .tab-row-container .tab-item.active {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-bottom: none;
+    cursor: pointer;
+}
+
+.tab-row .tab-row-container .tab-item-space {
+    border-bottom: 1px solid #ddd;
+    height: 100%;
+}
+
+.tab-row .tab-row-container .tab-item label {
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.tab-row .tab-row-container .tab-item label.active {
+    color: #0CCEA2;
+    -webkit-transform: scale(1.1, 1.1);
+    -moz-transform: scale(1.1, 1.1);
+    -o-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+}
+
+.list-row {
+    min-height: 196px;
+    border: none;
+    border-right: 1px solid #ddd;
+}
+
+.list-row div.col-md-12 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.iDataTable > thead > tr {
+    background: #f7f7f7;
+    font-size: 16px;
+    color: black;
+}
+
+.iDataTable > thead > tr > th {
+    border-left: 1px solid #ddd !important;
+    border-bottom: 1px solid #ddd !important;
+}
+
+.iDataTable > thead > tr th:first-child {
+    padding-left: 30px;
+}
+
+.iDataTable > tbody > tr:first-child > td {
+    border-top: none;
+}
+
+/** 弹窗 */
+.departmentInfo {
+    padding: 30px 15px;
+}
+
+.departmentInfo .right {
+    text-align: right;
+}
+
+.departmentInfo div.col-md-3,
+.departmentInfo div.col-md-7 {
+    margin: 8px;
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.hidden {
+    position: fixed;
+    top: -999999px;
+    left: -999999px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}

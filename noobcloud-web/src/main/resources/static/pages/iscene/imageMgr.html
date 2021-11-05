@@ -1,0 +1,35 @@
+<link href="ext/zyupload/skins/zyupload-1.0.0.css" rel="stylesheet">
+<link href="styles/iscene/imageMgr.css" rel="stylesheet">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写图片名称">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+        <button id="btnRefresh">
+            <i class="fa fa fa-refresh"></i>刷新
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered" cellspacing="0"></table>
+    </div>
+</div>
+
+<!--弹出框-->
+<div id="popupAddOrEdit" style="display: none;">
+    <input type="hidden" name="Thumbnail" value=""/>
+    <input type="hidden" name="PictureByte" value=""/>
+</div>
+
+<script src="ext/cmtable/js/cmtable.js"></script>
+<script src="ext/zyupload/zyupload.basic_n-1.0.0.js"></script>
+<script src="js/iscene/imageMgr.js"></script>

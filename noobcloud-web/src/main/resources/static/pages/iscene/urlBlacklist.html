@@ -1,0 +1,41 @@
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写网址">
+        <button id="btnQuery"><i class="fa fa-search"></i>搜索</button>
+        <button id="btnAdd"><i class="fa fa-plus"></i>新增</button>
+    </div>
+</div>
+<!--END 搜索栏-->
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+<!--END 列表栏-->
+
+<!--弹出框-->
+<div id="divUrlBlacklist" data-autoVerify="true" style="display:none;">
+    <div class="cmTableContent">
+        <table class="table table-hover table-bordered cmTable">
+            <tbody>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>网址黑名单：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" id="txtBlackUrl" class="form-control" name="url" placeholder="请输入网址黑名单"
+                           data-expression="isEmpty" data-error="网址黑名单不能为空">
+                    <div class="help-block alert alert-warning" role="alert">网址黑名单不能为空</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--END 弹出框-->
+
+<script src="js/iscene/urlBlacklist.js"></script>

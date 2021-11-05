@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>核心网数据运维智能中台</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="cache-control" content="no-cache,no-store, must-revalidate"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <link rel="stylesheet" href="ext/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="ext/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="ext/dataTables/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="ext/layer/skin/layer.css">
+    <link rel="stylesheet" href="ext/zTree/zTreeStyle.css">
+    <link rel="stylesheet" href="styles/icommon/main.css">
+    <link rel="stylesheet" href="styles/icommon/common.css">
+    <link rel="icon" href="data:image/ico;base64,aWNv">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=RAphln6BWq0vPetd8rTp9UpHkg6IINoA"></script>
+    <script src="ext/jquery-1.11.3.min.js"></script>
+    <script src="ext/jquery.form.min.js"></script>
+    <script src="ext/bootstrap/bootstrap.min.js"></script>
+    <!--<script src="ext/dataTables/jquery.dataTables.min.js"></script>-->
+    <script src="ext/dataTables/jquery.dataTables.js"></script><!--此版本修改过源码-->
+    <script src="ext/dataTables/dataTables.bootstrap.min.js"></script>
+    <script src="ext/zTree/jquery.ztree.all-3.5.min.js"></script>
+    <script src="ext/zTree/jquery.ztree.exhide.min.js"></script>
+    <script src="ext/echarts/echarts-all.js"></script>
+    <script src="ext/layer/layer.js"></script>
+    <script src="js/icommon/autoForm.js"></script>
+    <script src="js/icommon/common.js"></script>
+    <script src="js/icommon/request.js"></script>
+    <script src="js/icommon/menu.js"></script>
+    <script src="js/icommon/global.js"></script>
+    <script src="js/icommon/utils.js"></script>
+    <script src="js/icommon/main.js"></script>
+    <script src="ext/laydate.js"></script>
+    <script src="js/icommon/googleUtil.js"></script>
+    <script src="js/icommon/gpsUtil.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default top-navbar" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">
+            <i class="header-icon fa fa-align-right"></i>
+            <span>运维智能中台</span>
+        </a>
+        <div id="sideNav" href=""><i class="fa fa-list-ul"></i></div>
+    </div>
+    <ul class="nav navbar-top-links navbar-right" style="margin-right: 10px;">
+        <li>
+            <span class="dropDown-button" style="color: #00b38b;width: 120px;">
+                <b id="defaultModule" data-value="-1" title="默认模块">默认模块</b>
+                <i class="fa fa-caret-down"></i>
+            </span>
+            <ul id="userModules" class="dropDown-content"></ul>
+        </li>
+        <li>
+            <span class="dropDown-button">
+                <i class="fa fa-user fa-fw"></i>
+                <b id="loginUser" title="匿名用户">匿名用户</b>
+                <i class="fa fa-caret-down"></i>
+            </span>
+            <ul class="dropDown-content">
+                <li><a id="personalCenter"><i class="fa fa-user fa-fw"></i>个人中心</a></li>
+                <!--  <li><a><i class="fa fa-gear fa-fw"></i> 设置</a></li>-->
+                <li><a id="loginOut"><i class="fa fa-sign-out fa-fw"></i> 退出</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse" style="overflow-y: auto;"> DFSDFD
+        <ul class="nav" id="menuTree"></ul>
+    </div>
+</nav>
+<div id="page-wrapper">
+    <div id="location">
+        <h2 class="page-header">首页</h2>
+        <ol class="breadcrumb"></ol>
+    </div>
+    <div id="coreFrame" class="container-fluid" style="padding: 0 30px;"></div>
+</div>
+<div id="commonPage" style="display: none;"></div>
+<div id="dialogs">
+    <div id="dialogPrimary" style="display: none;" data-autoVerify="true"></div>
+    <div id="dialogMiddle" style="display: none;"></div>
+    <div id="dialogFinal" style="display: none;"></div>
+    <div id="dialogTreePrimary" style="display: none;">
+        <ul id="treePrimary" class="ztree"></ul>
+    </div>
+    <div id="dialogTreeMiddle" style="display: none;">
+        <ul id="treeMiddle" class="ztree"></ul>
+    </div>
+    <div id="dialogTreeFinal" style="display: none;">
+        <ul id="treeFinal" class="ztree"></ul>
+    </div>
+</div>
+<div class="loading" style="display:none;">
+    <div class="loading-center">
+        <div class="loading-center-absolute">
+            <div class="object object_one"></div>
+            <div class="object object_two"></div>
+            <div class="object object_three"></div>
+            <div class="object object_four"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

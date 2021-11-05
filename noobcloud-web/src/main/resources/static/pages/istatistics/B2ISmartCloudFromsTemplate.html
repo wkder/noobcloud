@@ -1,0 +1,36 @@
+
+<!--搜索栏-->
+<div class="row query-row smartCloudFromQuery">
+    <div class="col-md-12">
+        <span>开始时间:</span>
+        <input type="text" id="startTime" class="form-control dateTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday:false,isclear:false,min:laydate.now(-45),max:laydate.now(-1)})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+        <span>结束时间:</span>
+        <input type="text" id="endTime" class="form-control dateTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday:false,isclear:false,min:laydate.now(-45),max:laydate.now(-1)})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+        <span>地市:</span>
+        <select class="queryCityArea"></select>
+        <button id="smartCloudFromQueryBtn" class="btn btn-success"><i class="fa fa-search"></i>查询</button>
+        <button id="smartCloudFromQueryDownloadBtn" class="btn btn-success"><i class="fa fa-download"></i>下载</button>
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/istatistics/b2ISmartCloudFromsTemplate.js"></script>
+<script src="js/istatistics/lowBalanceWarning.js"></script>
+<script src="js/istatistics/wangCardAssistant.js"></script>
+<script src="js/istatistics/maYiDaBaoPackageUpgrade.js"></script>
+<script src="js/istatistics/TencentWangCardPresented.js"></script>
+<script src="js/istatistics/bilibiliCardUpgrade.js"></script>
+<script src="js/istatistics/ICBCCardUpgrade.js"></script>

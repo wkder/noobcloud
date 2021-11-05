@@ -1,0 +1,260 @@
+/*审核弹框 start*/
+#auditAreaLayer {
+
+    display: none;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    padding: 9px 0;
+}
+
+#auditAreaLayer textarea {
+    outline: none
+}
+
+#auditAreaLayer > .rows {
+
+    margin-top: 6px;
+
+    padding-left: 60px;
+
+    overflow: hidden;
+}
+
+#auditAreaLayer > .rows > .title {
+
+    font-size: 17px;
+
+    color: #636363;
+
+    float: left;
+
+    display: block;
+
+    width: 114px;
+
+    text-align: right;
+
+    height: 24px;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+#auditAreaLayer > .rows > .enterArea {
+
+    float: left;
+
+    padding-left: 12px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+#auditAreaLayer > .rows > .enterArea > label {
+
+    color: #636363;
+
+    font-weight: normal;
+
+    font-size: 17px;
+}
+
+#auditAreaLayer > .rows > .enterArea > select {
+
+}
+
+#auditAreaLayer > .rows > .enterArea > textarea {
+
+}
+
+/*审核弹框 end*/
+
+
+
+/*预览区域弹框 start*/
+#myShopList .layerPreview{
+
+    display: none;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+#myShopList .layerPreview>.content{
+
+    padding: 0;
+
+    margin: 0;
+
+    height: 428px;
+
+    overflow-y: auto;
+
+    box-sizing: border-box;
+}
+#myShopList .layerPreview>.content>.rows{
+
+    margin-top: 6px;
+
+    padding-left: 60px;
+
+    overflow: hidden;
+}
+#myShopList .layerPreview>.content>.rows>.title{
+
+    overflow: hidden;
+
+    font-size: 17px;
+
+    color: #636363;
+
+    float: left;
+
+    display: block;
+
+    width: 114px;
+
+    text-align: right;
+
+    height: 24px;
+}
+#myShopList .layerPreview>.content>.rows>.title>span{
+
+    color: red;
+}
+#myShopList .layerPreview>.content>.rows>.enterArea{
+
+    float: left;
+
+    padding-left: 12px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+#myShopList .layerPreview>.content>.rows>.enterArea>label{
+
+    color: #636363;
+
+    font-weight: normal;
+
+    font-size: 17px;
+
+    min-width: 142px;
+}
+#myShopList .layerPreview>.content>.rows>.enterArea>.explain{
+
+    float: right;
+
+    color: #fd0000;
+
+    font-weight: normal;
+
+    font-size: 14px;
+
+    height: 22px;
+
+    line-height: 25px;
+
+    margin-right: 7px;
+}
+#myShopList .layerPreview>.content>.rows>.enterArea>.lngTitle{
+
+    color: #636363;
+
+    font-weight: normal;
+
+    font-size: 17px;
+
+    float: left;
+}
+#myShopList .layerPreview>.content>.rows>.enterArea>.lngValue{
+
+    width: 91px !important;
+
+    float: left;
+
+    margin-left: 7px;
+}
+#myShopList .layerPreview>.content>.rows>.enterArea>.latTitle{
+    margin-left: 46px;
+    color: #636363;
+    font-weight: normal;
+    font-size: 17px;
+    float: left;
+}
+#myShopList .layerPreview>.content>.rows>.enterArea>.latValue{
+
+    width: 91px !important;
+
+    float: left;
+
+    margin-left: 7px;
+}
+#myShopList .layerPreview>.content>.rows>.enterArea> .mapArea{
+
+    width: 653px;
+
+    height: 314px;
+}
+
+#myShopList .layerPreview>.content>.rows>.radius{
+
+    float: left;
+}
+#myShopList .layerPreview>.content>.rows>.radius>.title{overflow: hidden;font-size: 17px;color: #636363;float: left;display: block;text-align: right;height: 24px;}
+#myShopList .layerPreview>.content>.rows>.radius>.title>span{
+
+    color: red;
+}
+#myShopList .layerPreview>.content>.rows>.radius>.enterArea{
+
+    float: left;
+}
+#myShopList .layerPreview>.content>.rows>.radius>.enterArea>label{
+
+    color: #636363;
+
+    font-weight: normal;
+
+    font-size: 17px;
+
+    min-width: 142px;
+
+    margin-left: 6px;
+}
+
+#myShopList .layerPreview>.reviewArea{
+
+    margin-top: 2px;
+
+    box-sizing: border-box;
+}
+#myShopList .layerPreview>.reviewArea>ul{overflow: hidden;margin: 10px auto;padding: 0;width: 86%;border: 1px solid #cecece;height: 110px;}
+#myShopList .layerPreview>.reviewArea>ul>li{width: 12%;float: left;outline: none;height: 55px;display: block;overflow: hidden;box-sizing: border-box;line-height: 55px;text-align: right;font-size: 17px;color: red;}
+#myShopList .layerPreview>.reviewArea>ul>:nth-child(2n+0){width: 88%;text-align: left;padding-left: 11px;color: black;border-left: 1px solid #cecece;}
+#myShopList .layerPreview>.reviewArea>ul>.split-line{border-top: 1px solid #cecece;}
+#myShopList .layerPreview>.reviewArea>ul>li>input{
+    outline: none;
+    height: 31px;
+    width: 400px;
+    overflow: hidden;
+    display: block;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    float: left;
+    margin-top: 12px;
+    padding-left: 12px;
+}
+
+/*预览区域弹框 end*/

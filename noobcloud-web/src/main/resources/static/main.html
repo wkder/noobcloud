@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="cache-control" content="no-cache,no-store, must-revalidate"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            padding: 0;
+            background: #000040 url("./images/selectSystem/img_bg.png") repeat;
+        }
+
+        .select-header {
+            width: 100%;
+            height: 80px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url("./images/selectSystem/header.png") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .select-body {
+            min-height: 500px;
+            display: flex;
+            display: -webkit-flex; /* Safari */
+            align-items: center;
+        }
+
+        .select-body .select-body-wrapper {
+            width: 100%;
+            display: flex;
+            display: -webkit-flex; /* Safari */
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .select-body .select-body-wrapper .item {
+            display: flex;
+            align-content: center;
+            width: 200px;
+            height: 200px;
+            margin: 0 16px;
+        }
+
+        .select-body .select-body-wrapper .item:hover {
+            background: url("./images/selectSystem/btn_hig_scroll.png") no-repeat;
+            background-size: 100% 100%;
+            cursor: pointer;
+        }
+
+        .select-body .select-body-wrapper .system {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 35px;
+            flex: 0 0 130px;
+            text-align: center;
+            line-height: 130px;
+            width: 130px;
+            height: 130px;
+            background: url("./images/selectSystem/btn_nor.png") no-repeat;
+            background-size: 100% 100%;
+            color: #bdbdbd;
+            font-size: 17px;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .select-body .select-body-wrapper .system:hover {
+            width: 130px;
+            height: 130px;
+            background: url("./images/selectSystem/btn_hig_center.png") no-repeat;
+            background-size: 100% 100%;
+            color: #000040;
+            font-weight: 600;
+        }
+
+        .select-star {
+            width: 94%;
+            height: 400px;
+            margin-left: 3%;
+            margin-right: 3%;
+            position: absolute;
+            bottom: 40px;
+            background: url("./images/selectSystem/img_star.png") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .select-footer {
+            width: 100%;
+            height: 80px;
+            position: absolute;
+            bottom: 0;
+            background: url("./images/selectSystem/footer.png") no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="select-header"></div>
+<div class="select-body">
+    <div class="select-body-wrapper">
+        <div class="item">
+            <div class="system iCompaign" data-module="1">
+                智能营销
+                <!--<span data-module="1"></span>-->
+            </div>
+        </div>
+        <div class="item">
+            <div class="system ikeeper" data-module="2">
+                掌柜
+                <li>
+                    <a id=' menu.menu_id ' class=' iDefinedClass  menu_menu.id ' title=' menu.title ' url=' (iDefinedClass == 'home'? globalConfigConstant.loginUser.homePageUrl : menu.url) ' locationPath=' menu.location'>
+                     <i class=' icon '></i> menu.title
+                    </a>
+                </li>
+                <!--<span data-module="2"></span>-->
+            </div>
+        </div>
+        <div class="item">
+            <div class="system diXiao" data-module="3">
+                XXX
+                <!--<span data-module="3"></span>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="select-star"></div>
+<div class="select-footer"></div>
+<script src="ext/jquery-1.11.3.min.js"></script>
+<script src="ext/layer/layer.js"></script>
+<script src="js/icommon/common.js"></script>
+<script src="js/icommon/request.js"></script>
+<script>
+    $(function () {
+        $(".select-body").css("height", (getHeight() - 160) + "px");
+
+        function getHeight() {
+            var w = window, d = document, e = d.documentElement, g = d.getElementsByTagName('body')[0]
+            return w.innerHeight || e.clientHeight || g.clientHeight
+        }
+    })
+    $(".system").on('click', function (e) {
+        var module = $(this).attr('data-module');
+        globalRequest.iSystem.switchSystem(false, {module: module}, function (data) {
+            if (!data || data.retValue != 0) {
+                layer.alert("系统异常", {icon: 5});
+                return;
+            }
+            window.location.href = 'index.view'
+        }, function () {
+            layer.alert("系统异常", {icon: 5});
+        })
+    })
+</script>
+</body>
+</html>

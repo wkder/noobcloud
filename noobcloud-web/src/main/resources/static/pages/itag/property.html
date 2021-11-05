@@ -1,0 +1,110 @@
+<link rel="stylesheet" href="styles/itag/property.css">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtProperty" class="form-control" placeholder="属性名称">
+        <input id="txtTable" class="form-control" placeholder="所属表名">
+        <input id="txtColumn" class="form-control" placeholder="所属列名">
+        <input id="txtCreater" class="form-control" placeholder="创建人">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+    </div>
+</div>
+<!--END 搜索栏-->
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+<!--END 列表栏-->
+
+<!--新增属性-->
+<div id="divProperty" style="display: none;">
+    <div class="cmTableContent">
+        <div class="col-md-12" style="margin: 10px 0;padding:0">
+            <label style="font-size: 16px;">请选择元数据表：</label>
+            <select id="selTable" class="form-control"></select>
+        </div>
+        <table id="propertyDataTable" class="table table-hover table-bordered" width = "100%"></table>
+    </div>
+</div>
+<!--END 新增属性-->
+
+<!--类别-->
+<div id="divCatalog" style="display: none;">
+    <div class="cmTableContent"></div>
+</div>
+<!--END 类别-->
+
+<!--编辑属性-->
+<div id="divEditProperty" style="display: none">
+    <div class="cmTableContent">
+        <table class="table iDataTable table-hover table-bordered cmTable">
+            <tbody>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>属性名称：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" class="form-control" name="name" placeholder="请输入属性名称">
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>元数据表：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select class="form-control" name="tableName"></select>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>表字段：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select class="form-control" name="columnName"></select>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>目录类别：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" class="form-control layerInput" name="catalogName" placeholder="请选择目录类别"
+                           readonly="readonly">
+                    <input type="hidden" name="catalogId" value="1">
+                    <button id="btnChooseCatalog" class="layerBtn">选择</button>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>维度：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select class="form-control" name="dimensionId"></select>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>备注：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" name="remarks" class="form-control" maxlength='50' placeholder="备注">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="hidden" name="id">
+    </div>
+</div>
+<!--END 编辑属性-->
+
+<script src="js/itag/property.js"></script>

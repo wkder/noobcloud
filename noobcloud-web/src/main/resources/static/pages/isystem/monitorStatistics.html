@@ -1,0 +1,25 @@
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="目标服务地址">
+        <select id="selStatus" class="form-control">
+            <option value="-1" selected="selected">请选择状态</option>
+            <option value="0">失败</option>
+            <option value="1">成功</option>
+        </select>
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered" cellspacing="0"></table>
+    </div>
+</div>
+
+
+
+<script src="js/isystem/monitorStatistics.js"></script>

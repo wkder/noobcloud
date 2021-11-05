@@ -1,0 +1,201 @@
+<style type="text/css">
+    .iMarket_branchOpen_Popup div.col-md-12 {
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+
+    .iMarket_branchOpen_Popup strong {
+        font-size: 16px;
+    }
+
+    .iMarket_branchOpen_Popup .branchOpenSegment .targetUser-city .col-md-12 .cityChoice {
+        margin-left: 10px;
+    }
+
+    .productTxt {
+        display: flex;
+    }
+
+    .col-md-12 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .effectiveMonth {
+        width: 245px;
+        display: inline;
+        margin-right: 8px;
+    }
+
+    .must{
+        display: inline-block;
+    }
+</style>
+<!--搜索栏-->
+<div class="iMarket_body">
+    <div class="row query-row">
+        <div class="col-md-12 form-inline conditionSearch">
+            <input type="text" class="form-control queryProductName" placeholder="产品名称" maxlength="200">
+            <button class="searchBtn btn btn-primary"><i class="fa fa-search"></i>搜索</button>
+            <button class="productAddBtn btn btn-primary"><i class="fa fa-search"></i>新增</button>
+        </div>
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+<!--权限配置弹出-->
+<div class="iMarket_branchOpen_Popup" style="display: none">
+    <div class="branchOpenSegment">
+        <div class="col-md-12">
+            <div class="col-md-3 left_title">
+                <span><strong>产品:</strong></span>
+            </div>
+            <div class="col-md-9">
+                <span class="product"></span>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-3 left_title">
+                <span><strong>权限配置:</strong></span>
+            </div>
+        </div>
+
+        <div class="col-md-12 targetUser">
+            <div class="col-md-12 targetUser-province">
+                <label>
+                    <input type="radio" name="targetUserRadios" class="radiosProvince"
+                           data-targetUser="1"> 全省
+                </label>
+            </div>
+            <div class="col-md-12 targetUser-city">
+                <label class="targetUser-city-text">
+                    <input type="radio" name="targetUserRadios" class="radiosCity"
+                           data-targetUser="2"> 地市
+                </label>
+                <div class="col-md-12"></div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-3 left_title"><strong>生效策略:</strong></div>
+            <div class="col-md-6">
+                <select class="form-control effectiveStrategy">
+                    <option value="0">立即生效</option>
+                    <option value="1">次月生效</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-12 effectiveMonthRow" style="display: none">
+            <div class="col-md-3 left_title"><strong>生效时长:</strong><div><span style="color: red;font-size: xx-small">(生效时长会覆盖产品时长)</span></div></div>
+            <div class="col-md-7">
+                <input type="number" class="form-control effectiveMonth" placeholder="请填写正整数" value="1">个月
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="iMarket_branchOpen_time" style="display: none">
+    <div class="col-md-12 cbss_time_control">
+        <!--<div class="col-md-12 start_time">-->
+        <!--<div class="col-md-3 left_title"><strong>生效时间:</strong></div>-->
+        <!--<div class="col-md-6"><input type="text" id="startTime" class="form-control dateTime"-->
+        <!--onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false,min: laydate.now()})"-->
+        <!--readonly-->
+        <!--style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/></div>-->
+        <!--</div>-->
+        <!--<div class="col-md-12 end_time">-->
+        <!--<div class="col-md-3 left_title"><strong>失效时间:</strong></div>-->
+        <!--<div class="col-md-6"><input type="text" id="endTime" class="form-control dateTime"-->
+        <!--onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false,min: laydate.now()})"-->
+        <!--readonly-->
+        <!--style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/></div>-->
+        <!--</div>-->
+    </div>
+</div>
+
+
+<div class="productManageAddOrEditBtnPopUp" style="display: none">
+    <div class="col-md-12 productManageInfo">
+
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>产品名称：</strong></div>
+            <div class="col-md-10 productTxt"><input class="form-control popUpProductName" type="text"
+                                                     data-expression="isEmpty" title="产品名称不为空"><strong class="must"
+                                                                                                       style="color: red">*</strong>
+            </div>
+        </div>
+
+        <!--<div class="col-md-12">-->
+            <!--<div class="col-md-2"><strong>支持系统：</strong></div>-->
+
+            <!--<div class="col-md-5 popUpBSSContent">-->
+                <!--<input class="popUpBSSCheck" product-type="1" name="popUpBSSCheck" type="checkbox"-->
+                       <!--value="1"><span>BSS</span>-->
+                <!--<strong>产品编码：</strong>-->
+                <!--<div class="productTxt"><input class="form-control popUpProductCodeBSS" type="text" disabled="disabled"-->
+                                               <!--title="产品编码不为空"><strong class="must" style="color: red">*</strong></div>-->
+            <!--</div>-->
+
+            <!--<div class="col-md-5 popUpCBSSContent">-->
+                <!--<input class="popUpCBSSCheck" product-type="2" name="popUpCBSSCheck" type="checkbox" value="2"><span>CBSS</span>-->
+                <!--<strong>产品编码：</strong>-->
+                <!--<div class="productTxt"><input class="form-control popUpProductCodeCBSS" type="text" disabled="disabled"-->
+                                               <!--title="产品编码不为空"><strong class="must" style="color: red">*</strong></div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <!--test-->
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>支持系统：</strong></div>
+
+            <div class="col-md-5 popUpBSSContent">
+                <input class="popUpBSSCheck"  product-type = "1" name="popUpBSSCheck" type="checkbox" value="1" ><span>BSS</span>
+                <strong>产品编码：</strong>
+                <div class="productTxt"><input class="form-control popUpProductCodeBSS" type="text" disabled="disabled" maxlength="20" title="产品编码不为空"><strong class="must" style="color: red">*</strong></div>
+                <strong>包编码：</strong>
+                <input class="form-control popUpPackageCodeBSS" type="text" disabled="disabled" maxlength="20">
+
+                <strong>资费编码：</strong>
+                <div class="productTxt"><input class="form-control popUpExpenseCodeBSS" type="text" disabled="disabled" title="资费编码不为空" maxlength="20"></div>
+            </div>
+
+            <div class="col-md-5 popUpCBSSContent">
+                <input class="popUpCBSSCheck" product-type = "2" name="popUpCBSSCheck" type="checkbox" value="2"><span>CBSS</span>
+
+                <strong>产品编码：</strong>
+                <div class="productTxt"><input class="form-control popUpProductCodeCBSS" type="text" disabled="disabled" title="产品编码不为空" maxlength="20"></div>
+
+                <strong>包编码：</strong>
+                <input class="form-control popUpPackageCodeCBSS" type="text" disabled="disabled" maxlength="20">
+
+                <strong>资费编码：</strong>
+                <div class="productTxt"><input class="form-control popUpElementCodeCBSS" type="text" disabled="disabled" title="资费编码不为空" maxlength="20"><strong class="must" style="color: red">*</strong></div>
+            </div>
+        </div>
+        <!--end test-->
+
+        <div class="col-md-12">
+            <div class="col-md-2"><strong> 成功短信：</strong><div><span style="color: red;font-size: xx-small">(配置就会发送)</span></div></div>
+            <div class="col-md-10"><textarea class="popUpSucMsg"></textarea></div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>产品说明：</strong></div>
+            <div class="col-md-10"><textarea class="popUpProductInfo"></textarea></div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/iflow/batchOpenProduct.js"></script>

@@ -1,0 +1,91 @@
+.div-filter-field {
+    width: 31% !important;
+    height: 44px;
+    line-height: 44px;
+    margin: 0 19px 20px 0;
+    background-color: #efebeb;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+.div-filter-field > span {
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.div-filter-field:hover {
+    font-size: 18px;
+    color: #fff;
+    background-color: #0CCEA2;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.div-filter-field-active {
+    font-size: 18px;
+    color: #fff;
+    background-color: #0CCEA2;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: 4px 2px 6px #888888;
+}
+
+.margin-right-none {
+    margin-right: 0 !important;
+}
+
+.layerBtn {
+    float: right;
+    width: 70px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 8px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 4px;
+    text-transform: none;
+    overflow: visible;
+    -webkit-appearance: button;
+}
+
+.layerBtn i {
+    margin-right: 4px;
+}
+
+.layerSelect {
+    width: 82% !important;
+    display: inline !important;
+}
+
+.layerInput {
+    width: 82% !important;
+    display: inline !important;
+}
+
+.cmTableContent {
+    height: 450px;
+}

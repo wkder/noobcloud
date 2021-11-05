@@ -1,0 +1,58 @@
+<style type="text/css">
+    .cableBandRecordWindow .col-md-12 {
+        margin-top: 30px;
+    }
+</style>
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input type="text" id="cableBandRecord" class="form-control cableBandRecord" placeholder="请输入宽带账号" maxlength="20"/>
+        <select class="form-control areaSelect"></select>
+        <button id="recordQueryBtn" class="btn btn-success"><i class="fa fa-search"></i>查询</button>
+        <button id="recordAddBtn" class="btn btn-success"><i class="fa fa-plus"></i>新增</button>
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+<!--弹窗-->
+<div class="assistNetworkDialog" style="display: none"></div>
+
+<!--弹窗文本-->
+<div class="cableBandRecordContent" style="display: none">
+    <div class="cableBandRecordWindow">
+        <div class="col-md-12 col-xs-5">
+            <div class="col-md-7">
+                <input id="cableBand" class="form-control text-center" type="text" placeholder="请输入用户宽带账号"
+                       title="请输入用户宽带账号" maxlength="20"/>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-xs-5">
+            <div class="col-md-7">
+                <input id="channelCoding" class="form-control text-center" type="text" placeholder="请输入7位渠道编码"
+                       title="请输入7位渠道编码" maxlength="7"/>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-7">
+                <input id="employeeNumber" class="form-control text-center" type="text" placeholder="请输员工手机号"
+                       title="请输员工手机号" maxlength="11"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/iptv/recordForCableBand.js"></script>
+
+
+

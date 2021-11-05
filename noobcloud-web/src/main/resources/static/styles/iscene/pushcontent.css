@@ -1,0 +1,55 @@
+﻿
+#popupTask {
+    padding: 10px;
+}
+
+#popupTask > div {
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    border-top: 3px solid #08A1EF;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.taskTools {
+    border-top: 1px solid #bbb;
+    background-color: #F6F6F6;
+    padding-right: 10px;
+    text-align: right;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#tableTask_wrapper {
+    padding: 10px;
+}
+
+#trTitle > td > img {
+    width: 20px;
+    height: 20px;
+    margin-right: 17px;
+    margin-left: 8px;
+}
+
+#trChoose > td > span {
+    margin-right: 17px;
+    margin-left: 8px;
+}
+
+.file-input.file-input-new {
+    width: 100%;
+}
+
+.input-group-btn > button:nth-child(3) {
+    display: none !important;
+}
+
+.input-group {
+    width: 100%;
+}
+
+#hiddenImg {
+    width: auto;
+    height: 60px;
+}

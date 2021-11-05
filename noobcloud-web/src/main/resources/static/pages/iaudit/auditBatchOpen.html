@@ -1,0 +1,35 @@
+<!--搜索栏-->
+<div class="iMarket_body">
+    <div class="row query-row">
+        <div class="col-md-12 form-inline conditionSearch">
+            <span>创建时间：</span>
+            <input type="text" id="dateTime" class="form-control dateTime"
+                   onclick="laydate({istime: false, format: 'YYYY-MM',isclear:false})" readonly
+                   style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+
+            <span>任务状态：</span>
+            <select class="form-control querySelectType" id="taskStatus">
+                <option value="99999">全部</option>
+                <option value="1">待审核</option>
+                <option value="2">已通过</option>
+                <option value="3">未通过</option>
+            </select>
+
+            <button class="searchBtn btn btn-primary"><i class="fa fa-search"></i>搜索</button>
+        </div>
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+<script src="js/iaudit/auditBatchOpen.js"></script>
+<script src="js/icommon/dateUtil.js"></script>
+
+

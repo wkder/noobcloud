@@ -1,0 +1,48 @@
+<style type="text/css">
+    .upgrade4GOrderDetailQuery input[type="text"]{
+        width: 120px;
+    }
+    .upgrade4GOrderDetailQuery select.queryCityArea{
+        width: 110px;
+    }
+</style>
+<!--搜索栏-->
+<div class="row query-row upgrade4GOrderDetailQuery">
+    <div class="col-md-12">
+        <span>开始时间:</span>
+        <input type="text" id="startTime" class="form-control dateTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+        <span>结束时间:</span>
+        <input type="text" id="endTime" class="form-control dateTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+        <span>地市:</span>
+        <select class="queryCityArea"></select>
+        <span>订单类别:</span>
+        <select class="queryDetailType">
+            <option value="1">渠道特定业务</option>
+            <option value="2">辅助登网业务</option>
+        </select>
+        <input type="text" id="customerPhone" class="form-control telephone" placeholder="用户号码" maxlength="11"/>
+        <!--<input type="text" id="businessHallCode" class="form-control businessHallCode" placeholder="受理渠道"/>-->
+        <input type="text" id="businessHallManager" class="form-control businessHallManager" placeholder="受理账号" maxlength="11"/>
+        <button id="orderDetailQueryBtn" class="btn btn-success"><i class="fa fa-search"></i>查询</button>
+        <button id="orderDetailDownloadBtn" class="btn btn-success"><i class="fa fa-download"></i>下载</button>
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/iflow/upgrade4GOrderDetail.js"></script>
+
+
+

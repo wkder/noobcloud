@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户资源管理(广西定制)</title>
+    <script src="js/itag/userResourcesMgr.js"></script>
+    <style>
+        #userResourcesForm .row{
+            margin: 10px 0;
+        }
+        .div-choose-user {
+            width: 30% !important;
+            height: 44px;
+            line-height: 44px;
+            margin: 0 18px 20px 0;
+            background-color: #efebeb;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 18px;
+        }
+
+        .div-choose-user > span {
+            word-break: break-all;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .div-choose-user:hover {
+            font-size: 18px;
+            color: #fff;
+            background-color: #0CCEA2;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+        .div-choose-user-active {
+            font-size: 18px;
+            color: #fff;
+            background-color: #0CCEA2;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            box-shadow: 4px 2px 6px #888888;
+        }
+        .roleDiv{
+            margin-left: 15px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="iMarket_Body">
+    <div class="">
+        <div class="row query-row">
+            <div class="col-md-12 form-inline">
+                <!--<input type="tel" class="form-control telephone" placeholder="手机号码" maxlength="11">
+                <button class="searchBtn btn btn-primary"><i class="fa fa-search"></i>搜索</button>-->
+                <button class="userResourcesAddBtn btn btn-primary"><i class="fa fa-plus"></i>新增</button>
+                <div class="userResourcesRefreshBtn" style="display: none;"></div>
+            </div>
+        </div>
+        <div class="row list-row">
+            <div class="col-md-12">
+                <table class="userResourcesTab iDataTable table table-hover table-condensed table-bordered dataTable no-footer"
+                       width="100%" style="table-layout: fixed;width: 100%;"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="iMarket_Content" style="display: none;">
+    <div class="userResourcesInfo container-fluid">
+        <form id="userResourcesForm" method="post">
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <span style="color:red">*</span>
+                    <label class="">标题：</label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" name="title" class="form-control input-sm title" maxlength="50"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <span style="color:red">*</span>
+                    <label class="">导入文件：</label>
+                </div>
+                <div class="col-sm-6">
+                    <input name="importFile" type="text" class="form-control form-control layerInput" max="50" placeholder="文件路径" disabled="disabled">
+                </div>
+                <div class="col-sm-2">
+                    <input class="fileUpload" type="file" name="file" style="display: none;">
+                    <button class="fileSelectBtn btn btn-primary">选择</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <label class="">指定角色：</label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" name="roleNames" class="form-control input-sm roleNames" disabled/>
+                    <input type="hidden" name="roleIds" class="form-control input-sm roleIds" maxlength="1024"/>
+                </div>
+                <div class="col-sm-2">
+                    <button class="roleSelectBtn btn btn-primary">选择</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    <label class="">备注：</label>
+                </div>
+                <div class="col-sm-6">
+                    <textarea name="remarks" class="form-control remarks" maxlength="1024"></textarea>
+                </div>
+            </div>
+            <div class="userResourcesHandel" style="display: none;"></div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

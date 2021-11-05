@@ -1,0 +1,58 @@
+.allot-stall {
+    background-color: #ffffff;
+    border: 1px solid #DDDDDD;
+}
+
+.allot-stall .table {
+    border: 0;
+}
+
+.allot-stall .table .thead {
+}
+
+.allot-stall .table .thead .check-box-th, .allot-stall tbody tr td.allot-checkbox,.allot-stall tbody tr td.download-checkbox {
+    display: none;
+}
+
+.allot-stall .table .thead th {
+    text-align: center;
+    font-size: 16px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+}
+
+.allot-stall tbody tr td {
+    text-align: center;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.push-type {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.push-type > div.item {
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+}
+
+.push-type > div.item > label > input {
+    margin-right: 12px;
+}
+
+.color-green {
+    color: #00B38B;
+}
+
+.download-type {
+    padding: 20px;
+
+}
+
+.download-type label {
+    font-size: 20px;
+}

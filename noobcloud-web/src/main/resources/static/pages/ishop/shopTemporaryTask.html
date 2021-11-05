@@ -1,0 +1,501 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/scenecenter.css" rel="stylesheet">
+<link href="styles/iscene/positionBaseConfig.css" rel="stylesheet">
+<link href="ext/simplePagination.css" rel="stylesheet">
+<link href="styles/ishop/shopTemporaryTask.css" rel="stylesheet">
+<div id="shopTempTask">
+    <!--搜索栏-->
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input class="form-control qrybaseId" id="qrybaseId" placeholder="营业厅ID" style="display: none">
+            <input class="form-control projectName" id="projectName" placeholder="项目名称">
+            <select class="form-control create_type qryBaseAreas" id="qryBaseAreas"></select>
+            <select class="form-control select taskType" id="taskTypeFilter"
+                    style="width: 180px;display: inline-block;">
+                <option value="">任务类型</option>
+                <option value="2">临时摊点（校园）</option>
+                <option value="3">临时摊点（集客）</option>
+                <option value="4">临时摊点（公众）</option>
+            </select>
+            <input type="text" id="creatDateTime" class="form-control"
+                   onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday: true})" title="配置时间"
+                   readonly placeholder="配置时间" style="background: #ffffff;"/>
+            <button id="shopTempTaskButton" class="btn btn-success">
+                <i class="fa fa-search"></i>查询
+            </button>
+            <button class="btn btn-success" id="createShopTempTask" style="display: none">
+                <i class="fa fa-plus"></i>新增
+            </button>
+        </div>
+    </div>
+
+    <!--图表栏 start-->
+    <div class="row" id="positionChart">
+        <!--地图坐标打点 start-->
+        <div class="mapAreaShow list-row">
+            <label class="title">
+                全省营业厅分部
+            </label>
+            <div class="showArea">
+
+            </div>
+        </div>
+        <!--地图坐标打点 end-->
+        <!--饼图显示区域 start-->
+        <div class="barAreaShow list-row">
+            <label class="title">
+                当前营业厅详细信息
+            </label>
+            <div class="showArea">
+
+            </div>
+        </div>
+        <!--饼图显示区域 end-->
+    </div>
+    <!--图表栏 end-->
+
+    <!--列表栏-->
+    <div class="row list-row"
+         style="padding: 0px 10px;">
+        <div class="col-md-12">
+            <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+                   width="100%">
+            </table>
+        </div>
+    </div>
+
+    <div class="iMarket_PosiBase_Dialog">
+        <div id="createPositionBaseDialog" style="display: none"></div>
+        <div id="batchImportBaseDialog" style="display: none"></div>
+    </div>
+
+    <div class="iMarket_PosiBase_EditHtml" style="display: none">
+        <div class="createPositonBaseSegment">
+            <div class="baseId" style="display: none">
+                <input type="text" class="id">
+            </div>
+            <div class="baseNamePanel">
+                <span class="label"><span class="must" style="color: red">*</span><span>营业厅名称</span></span>
+                <input type="text" class="baseName" placeholder="请输入营业厅名称，限制100个字数" title="不能为空"/>
+            </div>
+
+            <div class="addressPanel">
+                <span class="label"><span class="must" style="color: red">*</span><span>地址</span></span>
+                <input type="text" class="address" placeholder="请输入地址，限制200个字数"/>
+            </div>
+
+            <div class="businessHallCodePanel">
+                <span class="label"><span>营业厅编码</span></span>
+                <input type="text" class="businessHallCode" placeholder="请输入营业厅编码，限制60个字数"/>
+            </div>
+
+            <div class="cityCodePanel">
+                <span class="label"><span class="must" style="color: red">*</span><span>地市</span></span>
+                <select class="select cityCodeSelect">
+                </select>
+            </div>
+
+            <div class="locationTypePanel">
+                <span class="label"><span class="must" style="color: red">*</span><span>类型</span></span>
+                <select class="select locationTypeSelect">
+                    <option value="1">自营厅</option>
+                    <option value="2">合作厅</option>
+                    <option value="3">临促点</option>
+                    <option value="4">第三方</option>
+                    <option value="5">公共设施(机场、车站)</option>
+                    <option value="6">其它</option>
+                </select>
+            </div>
+
+            <div class="lngPanel">
+                <span class="label"><span class="must" style="color: red">*</span><span>经度</span></span>
+                <input type="text" class="lng" placeholder="请输入经度"/>
+            </div>
+
+            <div class="latPanel">
+                <span class="label"><span class="must" style="color: red">*</span><span>纬度</span></span>
+                <input type="text" class="lat" placeholder="请输入纬度"/>
+            </div>
+
+            <div class="radiusPanel">
+                <span class="label"><span class="must" style="color: red">*</span><span>半径</span></span>
+                <input type="text" class="radius" style="width: 312px" placeholder="请输入半径，半径值不能为0"/>
+                <span>(单位:米)</span>
+            </div>
+
+            <div class="statusPanel">
+                <span class="label"><span class="must" style="color: red">*</span><span>状态</span></span>
+                <select class="select statusSelect" style="width:110px">
+                    <option value="1">使用</option>
+                    <option value="0">禁用</option>
+                </select>
+            </div>
+        </div>
+        <div class="batchImportBaseSegment">
+            <form class="addForm" method="post" enctype="multipart/form-data">
+                <div class="meatOperate" style="margin-left: 20px">
+                    选择文件: <input type="file" name="file" style="width:280px;display: inline-block"/>&nbsp;&nbsp;
+                    <div class="extensionalBtn execlInit">上传</div>
+                    <a href="excelTemplate/批量导入营业厅规范样例.xlsx" style="color:blue;margin-left:20px;" id="modem">模板下载</a>
+                </div>
+                <div class="info">
+                    <span>1、下载模板，导入xlsx文件</span>
+                    <span>2、请按照要求填写文件,无值为空</span>
+                </div>
+            </form>
+            <table class="iTable" cellspacing="0" border="0">
+                <thead>
+                <tr>
+                    <td class="COL0" width="10%" style="border-radius: 8px 0 0 0;">营业厅名称</td>
+                    <td class="COL1" width="6%">营业厅类型ID</td>
+                    <td class="COL2" width="6%">所属地市</td>
+                    <td class="COL3" width="6%">营业厅编码</td>
+                    <td class="COL4" width="6%">经度</td>
+                    <td class="COL5" width="6%">纬度</td>
+                    <td class="COL6" width="6%">半径</td>
+                    <td class="COL7" width="15%">详细地址</td>
+                    <td class="COL8" width="6%">状态</td>
+                    <td class="status" width="6%">导入状态</td>
+                    <td class="result" width="15%" style="border-radius: 0 8px 0 0;">导入结果</td>
+                </tr>
+                </thead>
+                <tbody>
+                <!--模板填充这里-->
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="11" style="border-radius: 0 0 8px 8px;">
+                        <div class="pagination"></div>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+
+    <!--新增或编辑弹框 start-->
+    <div class="layerAddOrUpdate" data-autoVerify="true">
+        <input type="text" name="baseId" style="display: none;">
+        <div class="rows"><span class="title"><span>*</span>项目名称:</span>
+            <div class="enterArea">
+                <input type="text" data-expression="isEmpty" id="baseName" data-error="项目名称不为空" name="baseName"
+                       maxlength="100"
+                       placeholder="请输入项目名称,限制100个字数">
+                <label style="float: left;line-height: 30px;color: #ff0000;">（项目名称不能重复）</label>
+            </div>
+        </div>
+        <div class="rows" style="display: flex;">
+            <div style="flex: 0 0 50%;">
+                <span class="title"><span>*</span>任务发送配额:</span>
+                <div class="enterArea" style="padding-left: 17px;">
+                    <input type="number" name="quotaNumber" readonly id="quotaNumber" disabled
+                           data-expression="isNumber" maxlength="5"
+                           data-error="请输入正确的配额" value="1000"
+                           style="display: block;border: 1px solid #cccccc;height: 29px;padding-left: 5px;">
+                </div>
+            </div>
+            <div style="flex: 0 0 50%;">
+                <span class="title"><span>*</span>类型:</span>
+                <div class="enterArea">
+                    <select name="taskType" id="taskType" class="location_type">
+                        <option value="2">临时摊点（校园）</option>
+                        <option value="3">临时摊点（集客）</option>
+                        <option value="4">临时摊点（公众）</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="rows" style="display: flex;">
+            <div style="flex:0 0 50%">
+                <span class="title"><span>*</span>开始时间:</span>
+                <div class="enterArea">
+                    <input type="text" id="validBeginDateTime" class="form-control"
+                           onclick="laydate({istime: false,min:addDate(laydate.now()),format: 'YYYY-MM-DD',istoday: true})"
+                           title="开始时间"
+                           readonly placeholder="开始时间" style="background: #ffffff;"/>
+                </div>
+            </div>
+            <div style="flex:0 0 50%">
+                <span class="title"><span>*</span>结束时间:</span>
+                <div class="enterArea">
+                    <input type="text" id="validEndDateTime" class="form-control"
+                           onclick="laydate({istime: false, min: addDate(laydate.now()),format: 'YYYY-MM-DD',istoday: true})"
+                           title="结束时间"
+                           readonly placeholder="结束时间" style="background: #ffffff;"/>
+                </div>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>营销间隔:</span>
+            <div class="enterArea">
+                <select name="locationTypeId" id="locationTypeId" class="location_type">
+                    <option value="1">1天</option>
+                    <option value="2">2天</option>
+                    <option value="3">3天</option>
+                    <option value="4">4天</option>
+                    <option value="5">5天</option>
+                    <option value="6">6天</option>
+                    <option value="7">7天</option>
+                    <option value="8">8天</option>
+                    <option value="9">9天</option>
+                    <option value="10">10天</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>监控类型:</span>
+            <div class="enterArea">
+                <div id="marketUserType" class="checkbox" style="margin-top: 0; margin-left: 5px;">
+                    <label>
+                        <input id="marketUser1" type="checkbox" value="1" data="1" checked>
+                        常驻用户
+                    </label>
+                    <label class="marketUser2" style="margin-left: 10px;">
+                        <input id="marketUser2" type="checkbox" value="2" data="2" checked>
+                        流动拜访用户
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>监控范围:</span>
+            <div id="marketArea" class="enterArea">
+                <div class="nation" style="margin-top: 0; margin-left: 5px;">
+                    <label>
+                        <input id="nation" type="checkbox" value="1" data="1">
+                        国内漫入
+                    </label>
+                    <label class="province" style="margin-left: 10px;">
+                        <input id="province" type="checkbox" value="1" data="1">
+                        本省跨地市漫入
+                    </label>
+                    <label class="city" style="margin-left: 10px;">
+                        <input id="city" type="checkbox" value="1" data="1" checked>
+                        本市用户
+                    </label>
+                </div>
+                <p>当用户选择流动拜访时，监控范围选项才可以勾选，且是哪个选项是复选按钮，支持复选，当监控类型为流动+常驻时，默认本市用户必选</p>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>接入号:</span>
+            <div class="enterArea">
+                <input name="mobile" id="mobile" type="text" style="width: 150px;">
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"><span>*</span>短信内容:</span>
+            <div class="enterArea" style="padding-bottom: 20px">
+                     <textarea id="smsContent" class="form-control taskDesc" placeholder="短信营销内容200个字" maxlength="200"
+                               style="height: 80px;width: 830px;border-radius: 2px !important;"></textarea>
+            </div>
+        </div>
+        <div class="rows">
+            <div style="flex: 0 0 50%;">
+                    <span class="title"><span
+                            style="color: #ff0000;">*</span>场馆地址:</span>
+                <div class="enterArea"><input
+                        type="text" name="address" id="address" data-expression="isEmpty"
+                        data-error="场馆地址不为空"
+                        maxlength="200" placeholder="请输入地址,限制200个字数">
+                    <label class="explain"></label>
+                </div>
+                <button id="queryAddress" class="btn btn-success btn-sm">查询</button>
+            </div>
+        </div>
+        <div class="rows">
+            <div style="flex: 0 0 50%;">
+                <span class="title"><span>*</span>所属区县:</span>
+                <div class="enterArea">
+                    <input name="cityAreaCode" id="cityAreaCode" type="text" style="width: 150px;background: #ebebe4;"
+                           readonly disabled>
+                    <input name="districtCode" id="districtCode" readonly type="text"
+                           style="width: 150px;background: #ebebe4;"
+                           class="district" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="rows" style="display: flex;">
+            <div style="flex: 0 0 50%;">
+                <span class="title"><span>*</span>场馆位置:</span>
+                <div class="enterArea">
+                    <span class="lngTitle">经度</span>
+                    <input type="text" class="lngValue" id="lngValue" name="lng" data-expression="isEmpty"
+                           data-error="请在地图上选取打点" style="width:200px;">
+                    <span class="latTitle">纬度</span>
+                    <input type="text" name="lat" id="lat" class="latValue" style="width:200px;">
+                </div>
+                <button id="queryLocation" class="btn btn-success btn-sm">查询</button>
+            </div>
+            <div style="flex: 0 0 50%;">
+                <span class="title" style="margin-left: 0"><span>*</span>半径(米):</span>
+                <div class="enterArea">
+                    <input type="number" name="radius" id="radius" class="radius" style="width:200px;">
+                    <!--<select name="radius" id="radius" style="width: 100px;">-->
+                    <!--<option value="1000">1000</option>-->
+                    <!--<option value="500">500</option>-->
+                    <!--<option value="1500">1500</option>-->
+                    <!--<option value="2000">2000</option>-->
+                    <!--</select>-->
+                </div>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"></span>
+            <div class="enterArea">
+                <div id="mapArea" class="mapArea" style="width: 830px; height: 314px;"></div>
+            </div>
+        </div>
+    </div>
+    <!--新增或编辑弹框 end-->
+
+    <!--预览区域弹框 start-->
+    <div class="layerPreview">
+        <div class="row" style="padding-right: 15px;padding-left: 15px;margin: 15px 0;">
+            <div class="col-md-12" style="margin-bottom: 6px;">
+                <strong style="font-size: 16px;">任务基本信息</strong>
+            </div>
+            <!--任务名称-->
+            <div class="col-md-3">
+                <span>任务名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="baseName" name="baseName"></span>
+            </div>
+            <!--任务发送配额-->
+            <div class="col-md-3">
+                <span>任务发送配额：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="quotaNumber" name="quotaNumber"></span>
+            </div>
+            <!--营销间隔-->
+            <div class="col-md-3">
+                <span>营销间隔：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="sendInterval" name="sendInterval"></span>
+            </div>
+            <!--任务开始时间-->
+            <div class="col-md-3">
+                <span>任务开始时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="beginDate" name="beginDate"></span>
+            </div>
+            <!--任务结束时间-->
+            <div class="col-md-3">
+                <span>任务结束时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="endDate" name="endDate"></span>
+            </div>
+            <!--类型-->
+            <div class="col-md-3">
+                <span>类型：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="businessHallCode" name="businessHallCode"></span>
+            </div>
+            <div class="col-md-12" style="margin-top: 16px;margin-bottom: 6px;">
+                <strong>任务地点信息</strong>
+            </div>
+            <!--所属区县-->
+            <div class="col-md-3">
+                <span>所属区县：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="cityDistrict" name="cityDistrict"></span>
+            </div>
+            <!--营业厅地址-->
+            <div class="col-md-3">
+                <span>营业厅地址：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="address" name="address"></span>
+            </div>
+            <!--经度-->
+            <div class="col-md-3">
+                <span>经度：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="lng" name="lng"></span>
+            </div>
+            <!--经度-->
+            <div class="col-md-3">
+                <span>纬度：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="lat" name="lat"></span>
+            </div>
+            <!--半径-->
+            <div class="col-md-3">
+                <span>半径（米）：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="radius" name="radius"></span>
+            </div>
+            <div class="col-md-12" style="margin-top: 16px;margin-bottom: 6px;">
+                <strong style="font-size: 16px;">客户接触渠道信息</strong>
+            </div>
+            <!--监控类型-->
+            <div class="col-md-3">
+                <span>监控类型：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="marketUser" name="marketUser"></span>
+            </div>
+            <!--监控范围-->
+            <div class="col-md-3">
+                <span>监控范围：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="marketArea" name="marketArea"></span>
+            </div>
+            <!--接入号-->
+            <div class="col-md-3">
+                <span>接入号：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="phone" name="phone"></span>
+            </div>
+            <!--营销内容-->
+            <div class="col-md-3">
+                <span>营销内容：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="smsContent" name="smsContent"></span>
+            </div>
+        </div>
+        <div class="rows">
+            <span class="title"></span>
+            <div class="enterArea">
+                <div id="mapAreaShow" class="mapArea" style="width: 553px; height: 314px;"></div>
+            </div>
+        </div>
+    </div>
+    <!--预览区域弹框 end-->
+
+    <!--提交成功弹框 start-->
+    <div class="subSuccessfully">
+        <div class="round">
+            <i class="fa fa-check successfully"></i>
+        </div>
+        <label>您已成功提交审核,请耐心等待结果!</label>
+        <label>您还可以到我的中心查看您的营业厅状态!</label>
+    </div>
+    <!--提交成功弹框 end-->
+</div>
+<script src="js/icommon/googleUtil.js"></script>
+<script src="js/icommon/gpsUtil.js"></script>
+<script src="js/ishop/jquery.pagination.js"></script>
+<script src="js/icommon/baiduMap.js"></script>
+<script src="js/icommon/gpsUtil.js"></script>
+<script src="js/ishop/shopTemporaryTask.js"></script>
+<script>
+    addOrUpdateUrl = "adminAddOrUpdateMyShopList.view"
+</script>
+<!--<script src="ext/template.js"></script>-->
+<!--<script src="js/iscene/positionBaseConfig.js"></script>-->

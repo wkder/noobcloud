@@ -1,0 +1,127 @@
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <select id="queryType" class="form-control">
+            <option value="" selected="selected">请选择同步方式</option>
+            <option value="0">全量</option>
+            <option value="1">增量</option>
+        </select>
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+        <button id="btnSync">
+            <i class="fa fa-handshake-o"></i>同步
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered" cellspacing="0"></table>
+    </div>
+</div>
+
+
+<div class="cmTableContent" id="cmTableContent" style="display:none;" data-autoVerify="true">
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>mysql库：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="mysqlDbName" maxlength="200" placeholder="mysql库" name="mysqlDbName" data-expression="isEnglishNumber" data-error="mysql库格式不对">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>mysql目标表：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="mysqlTableName" name="mysqlTableName"  placeholder="mysql目标表" maxlength="200" data-expression="isEnglishNumber" data-error="mysql目标表格式不对">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>gp目标库：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="gpDbName" name="gpDbName" placeholder="gp目标库" maxlength="200" data-expression="isEnglishNumber" data-error="gp目标库格式不对">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>同步的频次（分钟）：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="frequency" name="frequency" maxlength="8" placeholder="同步的频次（分钟）" data-expression="isNumberNotZero" data-error="同步的频次要为数字">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>gp目标表：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="gpTableName" name="gpTableName" placeholder="gp目标表" maxlength="200" data-expression="isEnglishNumber" data-error="gp目标表格式不对">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>同步方式：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <select id="selType" class="form-control">
+                    <option value="0" selected="selected">全量</option>
+                    <option value="1">增量</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <strong>增量的字段：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="syncField" name="syncField" placeholder="增量的字段" maxlength="200" >
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <strong>增量值：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="syncFieldStr" name="syncFieldStr" placeholder="增量值" maxlength="200" >
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>FTP文件生成名称：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="ftpName" placeholder="FTP文件生成名称" maxlength="200"  name="ftpName" data-expression="isEmpty" data-error="FTP文件生成名称不为空">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>分隔符：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="delimit" placeholder="分隔符" maxlength="200" name="delimit" data-expression="isChars" data-error="分隔符格式不对">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="js/isystem/syncConfig.js"></script>

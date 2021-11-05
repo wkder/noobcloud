@@ -1,0 +1,436 @@
+/** 步骤 */
+div.flowStepContainer {
+    height: 90px;
+    border-bottom: 1px solid silver;
+}
+
+div.flowStepContainer div.flowLine {
+    height: 8px;
+    margin-top: 30px;
+    position: absolute;
+    background: silver;
+    width: 78%;
+    margin-left: 10%;
+}
+
+div.flowStepContainer div.flowStep {
+    height: 100%;
+    margin-left: 20%;
+}
+
+div.flowStepContainer div.flowStep > div {
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    margin-top: 31px;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepB {
+    margin-left: 13%;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepC {
+    margin-left: 27%;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepD {
+    margin-left: 41%;
+}
+
+div.flowStepContainer div.flowStep > div.flowStepE {
+    margin-left: 54%;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepNumber {
+    display: inline-block;
+    width: 28px;
+    height: 9px;
+    position: absolute;
+    z-index: 2;
+    background: 0;
+    line-height: 9px;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: -12px;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepNumber.active {
+    color: #fff;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepIcon {
+    background: url("../../images/icon_gray.png") no-repeat;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    margin-top: -12px;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepIcon.active {
+    background: url("../../images/icon_green.png") no-repeat;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepDesc {
+    display: inline-block;
+    position: absolute;
+    top: 25px;
+    left: 17px;
+    width: 100px;
+    margin-left: -50px;
+    font-size: 14px;
+}
+
+div.flowStepContainer div.flowStep > div > span.stepDesc.active {
+    color: #0847a6;
+}
+
+/** 弹窗内容 */
+div.taskFramework {
+    overflow: hidden;
+}
+
+div.taskFramework .infoConfigBody > div {
+    display: none;
+}
+
+div.taskFramework div.row.active {
+    display: block;
+}
+
+div.taskFramework div.row.configInfo,
+div.taskFramework div.row.auditInfo {
+    margin-top: -25px;
+}
+
+div.taskFramework div.config {
+    display: none;
+}
+
+div.taskFramework div.step {
+    height: 60px;
+    border-top: 1px solid silver;
+    padding-top: 12px;
+    text-align: center;
+}
+
+div.taskFramework div.step > span.active {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+    color: white;
+    background-color: #00B38B;
+    cursor: pointer;
+}
+
+div.taskFramework div.step > span.pre.active {
+    color: #333;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+div.taskFramework div.step > span {
+    display: none;
+}
+
+div.taskFramework div.step span.closeBtn {
+    color: #333;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: 100px;
+    height: 30px;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+div.taskFramework div.infoConfigBody {
+    min-height: 390px;
+    height: 390px;
+    padding-top: 30px;
+    padding-left: 30px;
+    overflow: auto;
+}
+
+div.taskFramework div.infoConfigBody .taskInfo .col-md-12,
+div.taskFramework div.infoConfigBody .userInfo .col-md-12,
+div.taskFramework div.infoConfigBody .taskTypeInfo .col-md-12,
+div.taskFramework div.infoConfigBody .configInfo .col-md-12,
+div.taskFramework div.infoConfigBody .auditInfo .col-md-12 {
+    margin: 7.5px 0;
+}
+
+/** 客群选择 */
+div.taskFramework div.infoConfigBody .userInfo .appointUser {
+    margin-top: 0;
+}
+
+div.taskFramework div.infoConfigBody .userInfo .appointUser input {
+    width: 320px;
+    display: inline-block;
+}
+
+div.taskFramework div.infoConfigBody .userInfo .appointUser button,
+div.taskFramework div.infoConfigBody .configInfo button.smsBtn,
+div.taskFramework div.infoConfigBody .configInfo button.phoneBtn {
+    width: 60px;
+    margin-right: 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 4px;
+    text-transform: none;
+    overflow: visible;
+    -webkit-appearance: button;
+}
+
+div.taskFramework div.infoConfigBody .userInfo .appointUser button:hover,
+div.taskFramework div.infoConfigBody .userInfo .appointUser button:focus,
+div.taskFramework div.infoConfigBody .userInfo .appointUser button:active,
+div.taskFramework div.infoConfigBody .configInfo button.smsBtn:hover,
+div.taskFramework div.infoConfigBody .configInfo button.smsBtn:focus,
+div.taskFramework div.infoConfigBody .configInfo button.smsBtn:active,
+div.taskFramework div.infoConfigBody .configInfo button.phoneBtn:hover,
+div.taskFramework div.infoConfigBody .configInfo button.phoneBtn:focus,
+div.taskFramework div.infoConfigBody .configInfo button.phoneBtn:active {
+    color: #FFFFFF;
+    background-color: #0CCEA2;
+    border: none;
+    outline: none;
+}
+
+/** 接触渠道 */
+div.taskFramework div.infoConfigBody .configInfo .checkbox-inline {
+    padding-left: 35px;
+}
+
+/** 导入用户弹窗 */
+.importAppointInfo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.importAppointInfo .importForm .meatOperate {
+    margin-left: 25px;
+}
+
+.importAppointInfo .importForm .meatOperate .fileUploadName {
+    width: 220px;
+    display: inline;
+    border: 1px solid #ccc;
+}
+
+.importAppointInfo .importForm .meatOperate a.file,
+.importAppointInfo .importForm .meatOperate div.btnUpload {
+    margin-right: 10px;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+.importAppointInfo .importForm .meatOperate a.file {
+    position: relative;
+    top: 0;
+    overflow: hidden;
+    text-indent: 0;
+}
+
+.importAppointInfo .importForm .meatOperate a.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    width: 180px;
+    margin: 0 5px;
+    outline: none;
+    border-radius: 2px !important;
+}
+
+.importAppointInfo .importForm .meatOperate div.btnUpload {
+    width: 80px;
+}
+
+.importAppointInfo .importForm .meatOperate a.templateBtn {
+    border-radius: 2px;
+    background: #00B38B;
+    border: none;
+    font-size: 16px;
+}
+
+.importAppointInfo .importForm .info {
+    margin-top: 20px;
+    margin-left: 26px;
+}
+
+.importAppointInfo .importForm .info span {
+    display: block;
+    color: red;
+    line-height: 24px;
+}
+
+.importAppointInfo .phoneInfo {
+    margin-top: 20px;
+    margin-left: 20px;
+    height: 320px;
+}
+
+.importAppointInfo .phoneInfo .row {
+    height: 100%;
+}
+
+.importAppointInfo .phoneInfo .row .col-md-12 {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.importAppointInfo .phoneInfo .row .col-md-12 table {
+    border-top: 1px solid silver;
+    width: 94%;
+    margin: 10px 7px;
+    border-radius: 8px;
+}
+
+.importAppointInfo .phoneInfo .row .col-md-12 table thead {
+    background: #e4e4e4;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.importAppointInfo .phoneInfo .row .col-md-12 table thead tr:first-child th:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.importAppointInfo .phoneInfo .row .col-md-12 table thead tr:first-child th:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+.importAppointInfo .phoneInfo .row .col-md-12 table tfoot tr:last-child td:first-child {
+    border-radius: 0 0 8px 8px
+}
+
+.importAppointInfo .phoneInfo .row .col-md-12 table tr > td:first-child,
+.importAppointInfo .phoneInfo .row .col-md-12 table.iTable thead tr > th:first-child {
+    border-left: 1px solid silver;
+}
+
+.importAppointInfo .phoneInfo .row .col-md-12 table td,
+.importAppointInfo .phoneInfo .row .col-md-12 table th {
+    border-bottom: 1px solid silver;
+    border-right: 1px solid silver;
+    word-break: break-all;
+    word-wrap: break-word;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 14px;
+    font-family: 'microsoft yahei', 'Helvetica', simhei, simsun, sans-serif;
+}
+
+.importAppointInfo .phoneInfo .row .col-md-12 table tfoot tr td {
+    border-radius: 0 0 8px 8px;
+}
+
+/** 选择维系产品 选择短信内容 table样式 */
+
+.productInfo,
+.contentInfo {
+    height: 485px;
+}
+
+.dataTableProduct thead tr th,
+.contentTable thead tr th {
+    border-bottom-width: 1px;
+}
+
+.dataTableProduct tr.selected,
+.contentTable tr.selected {
+    background: #ececec;
+}
+
+#preview_dialog {
+    padding: 15px;
+}
+
+.taskDetailInfo {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 15px 0;
+}
+
+.taskDetailInfo > div.row {
+    margin-bottom: 20px;
+}
+
+.taskDetailInfo > div.row div.col-md-12 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.taskDetailInfo > div.row div.col-md-3,
+.taskDetailInfo > div.row div.col-md-9 {
+    margin-bottom: 6px;
+}
+
+/** 选择任务审核人 */
+
+.auditUserInfo {
+    padding: 15px;
+}
+
+.auditUserInfo .row {
+    margin-left: 0;
+    padding-right: 0;
+}
+
+.auditUserInfo .row .auditItem {
+    height: 200px;
+}
+
+.auditUserInfo .row .auditItem .col-md-12 {
+    margin-bottom: 10px;
+}
+
+/** 任务审批页面 */
+.keeperTaskDetailInfo {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 15px 0;
+}
+
+.keeperTaskDetailInfo > div.col-md-12 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.keeperTaskDetailInfo > div.col-md-12 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.keeperTaskDetailInfo > div.col-md-3, .keeperTaskDetailInfo > div.col-md-9 {
+    margin-bottom: 4px;
+}

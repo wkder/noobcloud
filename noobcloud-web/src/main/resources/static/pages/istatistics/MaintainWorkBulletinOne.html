@@ -1,0 +1,117 @@
+<style type="text/css">
+    .dateSelect div {  display: inline-block;  border: 10px;  margin: 5px;  }
+    .dateSelect span {  color: #0c0c0c;  font-size: 15px;  }
+    .extensionalBtn {  font-size: 16px;  width: 110px;  background-color: #00B38B !important;  border-color: #0CCEA2 !important;  }
+    #dataTable {  background: #fff;  border: 4px; vertical-align: middle !important; }
+    #dataTable .vertical{  vertical-align:middle !important;}
+    #dataTable #tBody{text-align: center;}
+    .table-bordered>thead>tr>th, .table-bordered>thead>tr>td{border-bottom-width: 1px!important;}
+</style>
+
+<div class="iMarket_MaintainWorkBulletin">
+    <div class="iMarket_MaintainWorkBulletin_Body">
+        <div class="row query-row dateSelect ">
+            <div class="year">
+                <span class="label">年份选择：</span>
+                <select class="year"></select>
+            </div>
+            <div class="month">
+                <span class="label">月份选择：</span>
+                <select class="month">
+                    <option value="1">1月</option>
+                    <option value="2">2月</option>
+                    <option value="3">3月</option>
+                    <option value="4">4月</option>
+                    <option value="5">5月</option>
+                    <option value="6">6月</option>
+                    <option value="7">7月</option>
+                    <option value="8">8月</option>
+                    <option value="9">9月</option>
+                    <option value="10">10月</option>
+                    <option value="11">11月</option>
+                    <option value="12">12月</option>
+                </select>
+            </div>
+            <input class="queryValue" type="hidden"/>
+            <div class="btn btn-success extensionalBtn maintainWorkBulletinQueryBtn"><i class="fa fa-search">查询</i></div>
+
+            <div class="btn btn-success extensionalBtn downloadMaintainWorkBulletin"><i class="fa fa-download">下载</i></div>
+                <div class="downloadFrame">
+                    <iframe name="frameName" style="display:none;"></iframe>
+                    <form action="downloadMaintainWorkBulletinOne.view" method="post" target="frameName"
+                          style="display: none;">
+                        <input name="yearMonth" value="">
+                    </form>
+                </div>
+        </div>
+
+        <div class="row list-row" id="maintainWorkData">
+            <div class="col-md-12">
+                <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+                       style="width: 100%;margin-top: 0;border-radius: 0;">
+                    <thead>
+                    <tr align="center" valign="middle">
+                        <td rowspan="2" width="10%" class="vertical">地市</td>
+                        <td colspan="2">高价值用户</td>
+                        <td colspan="2">合约用户</td>
+                        <td colspan="2">网络用户占比</td>
+                        <td colspan="2">终端占比</td>
+                        <td colspan="2">ARPU</td>
+                    </tr>
+                    <tr align="center" valign="middle">
+                        <td width="7%">收入保有率</td>
+                        <td width="7%">用户保有率</td>
+                        <td width="7%">收入保有率</td>
+                        <td width="7%">用户保有率</td>
+                        <td width="10%">2G网络用户占比</td>
+                        <td width="10%">4G网络用户占比</td>
+                        <td width="8%">2G终端占比</td>
+                        <td width="8%">4G终端占比</td>
+                        <td width="8%">当月ARPU</td>
+                        <td width="12%">ARPU较拍照提升值</td>
+                    </tr>
+                    </thead>
+                    <tbody id="tBody">
+                    <!--模板填充-->
+                    </tbody>
+                </table>
+
+                <div class="remarks"
+                     style="font-size: 14px;font-family: 'microsoft yahei','Helvetica',simhei,simsun,sans-serif;">
+                    <span>备注:</span>
+                    <ul>
+                        <li>1. 高价值用户指2015年12月31日及之前已入网的移动业务手机用户，且该用户在2016年12月前（含）评级为三四五星级</li>
+                        <li> （其中包含未参加评级的原VIP用户，该批用户预评级为三四五星级）。</li>
+                        <li>2. 合约用户指拍照时的合约用户，包括终端合约、普通合约、其他合约用户。</li>
+                        <li>3. 4G网络用户占比：2016年12月在网出账移网用户（不含上网卡），在观察月出账的用户中，4G用户占比。</li>
+                        <li>4. 4G终端占比：2016年12月在网出账移网用户（不含上网卡），在观察月出账的用户中，4G终端占比。</li>
+                        <li>5. ARPU较拍照提升值=当月ARPU-拍照月ARPU。</li>
+                        <li>6. 以上通报的都是存量用户的数据。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--<div class="iMarket_maintainWork_Template">-->
+            <!--<script id="maintainWorkTemplate" type="text/html">-->
+                <!--{{each list as maintainWorkData index}}-->
+                <!--<tr>-->
+                    <!--<td width="7%">{{maintainWorkData.cityName}}</td>-->
+                    <!--<td width="8%">{{maintainWorkData.feeRate}}</td>-->
+                    <!--<td width="8%">{{maintainWorkData.uvRate}}</td>-->
+                    <!--<td width="8%">{{maintainWorkData.feeTwoRate}}</td>-->
+                    <!--<td width="8%">{{maintainWorkData.uvTwoRate}}</td>-->
+                    <!--<td width="9%">{{maintainWorkData.twoGWang}}</td>-->
+                    <!--<td width="9%">{{maintainWorkData.fourGWang}}</td>-->
+                    <!--<td width="7%">{{maintainWorkData.twoZhongd}}</td>-->
+                    <!--<td width="7%">{{maintainWorkData.fourZhongd}}</td>-->
+                    <!--<td width="7%">{{maintainWorkData.arpu}}</td>-->
+                    <!--<td width="9%">{{maintainWorkData.cha}}</td>-->
+                <!--</tr>-->
+                <!--{{/each}}-->
+            <!--</script>-->
+        <!--</div>-->
+    </div>
+</div>
+
+<script src="ext/template.js"></script>
+<script src="js/istatistics/MaintainWorkBulletinOne.js"></script>

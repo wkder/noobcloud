@@ -1,0 +1,70 @@
+
+
+<link href="styles/istatistics/insightAnalysis.css" rel="stylesheet"/>
+<style>
+    div.iMarket_TerminalAndPackage_Body div.terminalAndPackageChart {width: 48.3%;height: 250px;display: inline-block;}
+</style>
+<div class="iMarket_TerminalAndPackage">
+    <div class="iMarket_TerminalAndPackage_Body">
+        <div class="queryComparison lineShow">
+            <span class="queryLabel">查询日期：</span>
+
+            <div class="year">
+                <select class="queryComparisonYear"></select>
+            </div>
+            <div class="month">
+                <select class="queryComparisonMonth">
+                    <option value="1">1月</option>
+                    <option value="2">2月</option>
+                    <option value="3">3月</option>
+                    <option value="4">4月</option>
+                    <option value="5">5月</option>
+                    <option value="6">6月</option>
+                    <option value="7">7月</option>
+                    <option value="8">8月</option>
+                    <option value="9">9月</option>
+                    <option value="10">10月</option>
+                    <option value="11">11月</option>
+                    <option value="12">12月</option>
+                </select>
+            </div>
+            <button id="btnQuery"><i class="fa fa-search"></i>查询</button>
+        </div>
+        <div class="terminalPackageCompareChart">
+            <div class="userProportion terminalAndPackageChart"></div>
+            <div class="comparisonProportion terminalAndPackageChart"></div>
+        </div>
+        <div class="behaviorPreferencesTable">
+            <div class="tableTitle">3/4G行为喜好</div>
+            <div class="tableInfo">
+                <ul class="info">
+                    <li class="infoHeader">
+                        <span class="appName">客户端名称</span>
+                        <span class="appType">客户端类型</span>
+                        <span class="useCounts">使用用户数</span>
+                        <span class="perCapitaUsageAmount">使用用户(户均/M)</span>
+                        <span class="perCapitaVisitTimes">人均访问次数</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="iMarket_TerminalAndPackage_Template" style="display:none;">
+        <script id="behaviorPreferencesTemplate" type="text/html">
+            {{each list as behaviorPreferences index}}
+            <li>
+                <span class="appName">{{behaviorPreferences.appName}}</span>
+                <span class="appType">{{behaviorPreferences.appType}}</span>
+                <span class="useCounts">{{behaviorPreferences.useCounts}}</span>
+                <span class="perCapitaUsageAmount">{{behaviorPreferences.perCapitaUsageAmount}}</span>
+                <span class="perCapitaVisitTimes">{{behaviorPreferences.perCapitaVisitTimes}}</span>
+            </li>
+            {{/each}}
+        </script>
+    </div>
+</div>
+<script src="ext/template.js"></script>
+<script src="ext/echarts/echarts-all.js" type="text/javascript"></script>
+<script src="js/istatistics/terminalAndPackage.js"></script>
+
+

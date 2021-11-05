@@ -1,0 +1,302 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/iptv/iptvTask.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input type="text" class="form-control queryName" placeholder="任务名称">
+            <button class="searchBtn"><i class="fa fa-search"></i>搜索</button>
+            <button class="addBtn"><i class="fa fa-plus"></i>新增</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0">
+            </table>
+        </div>
+    </div>
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 新增、编辑任务 -->
+    <div class="col-md-12 taskInfo" data-autoVerify="true">
+
+        <!-- region 记录操作状态 隐藏域 -->
+        <input class="operate" type="hidden">
+        <!-- endregion 记录操作状态 隐藏域 -->
+
+        <!-- region 数据ID 隐藏域 -->
+        <input name="id" type="hidden">
+        <!-- endregion 数据ID 隐藏域 -->
+
+        <!-- region 记录任务类型 隐藏域 -->
+        <input name="type" type="hidden" value="manual">
+        <!-- endregion 记录任务类型 隐藏域 -->
+
+        <!-- region 任务名称 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>任务名称:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="name"
+                   placeholder="请输入任务名称，限制30个字数" maxlength="30"
+                   data-expression="isEmpty"
+                   data-error="任务名称由字母、下划线、中文组成"/>
+        </div>
+        <!-- endregion 任务名称 -->
+
+        <!-- region 内容模板 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>内容模板:</strong>
+        </div>
+        <div class="col-md-7">
+            <select class="form-control" name="contentId"></select>
+        </div>
+        <!-- endregion 内容模板 -->
+
+        <!-- region 导入客群 -->
+        <div class="userGroup">
+            <div class="col-md-3 right">
+                <strong class="must" style="color: red">*</strong><strong>导入客群:</strong>
+            </div>
+            <div class="col-md-9">
+                <div class="meatOperate">
+                    <!--<input type="text" class="form-control" name="modelName" readonly="readonly"-->
+                    <!--data-expression="isEmpty"-->
+                    <!--data-error="客群不能为空"-->
+                    <!--placeholder="请导入客群">-->
+                    <!--<a class="btn btn-success file" href="javascript:void(0);">选择文件-->
+                    <!--<input type="file" name="file">-->
+                    <!--</a>-->
+                    <input type="text" class="form-control" name="modelName" placeholder="请导入客群" data-expression="isEmpty" data-error="请导入文件" readonly>
+                    <button class="btn btn-primary userGroupBtn">导入</button>
+                    <input type="hidden" name="modelCode">
+                </div>
+            </div>
+        </div>
+        <!-- endregion 导入客群 -->
+
+        <!-- region 开始时间、结束时间 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>开始时间:</strong>
+        </div>
+        <div class="col-md-3" style="width: 23%;">
+            <input type="text" class="form-control" name="startTime"
+                   onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"
+                   placeholder="请选择开始时间"
+                   data-expression="isEmpty"
+                   data-error="开始时间不能为空"/>
+        </div>
+        <div class="col-md-2 right" style="margin: 8px 0;width: 12.3%;padding:0;">
+            <strong class="must" style="color: red">*</strong><strong>结束时间:</strong>
+        </div>
+        <div class="col-md-3" style="width: 23%;">
+            <input type="text" class="form-control" name="stopTime"
+                   onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"
+                   placeholder="请选择结束时间"
+                   data-expression="isEmpty"
+                   data-error="结束时间不能为空"/>
+        </div>
+        <!-- endregion 开始时间、结束时间 -->
+
+        <!-- region 余额设置 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>余额设置:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="triggerBalance"
+                   placeholder="请输入任务触发的余额临界值，小于10000" maxlength="4"
+                   data-expression="isNumber"
+                   data-error="余额设置只能输入数字"/>
+        </div>
+        <!-- endregion 余额设置 -->
+
+        <!-- region 推送间隔(天) -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>推送间隔(天):</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="repeatStrategy"
+                   placeholder="请输入推送间隔(天)，小于10000" maxlength="4"
+                   data-expression="isNumber"
+                   data-error="推送间隔(天)只能输入数字"/>
+        </div>
+        <!-- endregion 推送间隔(天) -->
+
+        <!-- region 覆盖区域 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>覆盖区域:</strong>
+        </div>
+        <div class="col-md-7">
+            <textarea class="form-control" name="areaName" readonly
+                      placeholder="请点击选择覆盖区域"
+                      data-expression="isEmpty"
+                      data-error="覆盖区域不能为空"></textarea>
+            <input type="hidden" name="areaCode">
+        </div>
+        <!-- endregion 覆盖区域 -->
+
+        <!-- region 任务描述 -->
+        <div class="col-md-3 right">
+            <strong>任务描述:</strong>
+        </div>
+        <div class="col-md-7">
+                <textarea class="form-control" name="remarks" maxlength="200"
+                          placeholder="请输入任务描述，限制200个字符"></textarea>
+        </div>
+        <!-- endregion 任务描述 -->
+    </div>
+    <!-- endregion 新增、编辑任务 -->
+
+    <!-- region 归属区域 -->
+    <div class="col-md-12 areaInfo">
+        <h1>归属区域</h1>
+    </div>
+    <!-- endregion 归属区域 -->
+
+    <!-- region 导入客群 -->
+    <div class="importUserGroupInfo">
+        <!-- region 用户文件导入表单 -->
+        <form class="importForm" method="post" enctype="multipart/form-data">
+            <div class="meatOperate">
+                <input class="form-control fileUploadName" type="text" placeholder="文件路径">
+                <a class="btn btn-success file" href="javascript:void(0);">选择文件
+                    <input type="file" name="file">
+                </a>
+                <div class="btn btn-success btnUpload">上传</div>
+            </div>
+            <div class="info">
+                <span>1、请导入txt文件</span>
+                <span>2、txt文件中每行存放一个宽带账号,最大支持10万条记录</span>
+                <span>3、宽带账号只支持零开头的11位或12位数字</span>
+            </div>
+        </form>
+        <!-- endregion 用户文件导入表单 -->
+
+        <!-- region 导入数据表格 -->
+        <div class="phoneInfo">
+            <span class="uploadMessage"></span>
+        </div>
+        <!-- endregion 导入数据表格 -->
+
+        <!-- region 隐藏域 存放弹窗句柄 -->
+        <input type="hidden" class="dialogIndex">
+        <!-- endregion 隐藏域 存放弹窗句柄 -->
+    </div>
+    <!-- endregion 导入客群 -->
+
+    <!-- region 预览 -->
+    <div class="taskDetailInfo">
+        <div class="row">
+            <!-- region 任务名称 -->
+            <div class="col-md-3">
+                <span>任务名称：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskName"></span>
+            </div>
+            <!-- endregion 任务名称 -->
+
+            <!-- region 任务类型 -->
+            <div class="col-md-3">
+                <span>任务类型：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_taskType"></span>
+            </div>
+            <!-- endregion 任务类型 -->
+
+            <!-- region 开始时间 -->
+            <div class="col-md-3">
+                <span>开始时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_startTime"></span>
+            </div>
+            <!-- endregion 开始时间 -->
+
+            <!-- region 结束时间 -->
+            <div class="col-md-3">
+                <span>结束时间：</span>
+            </div>
+            <div class="col-md-3">
+                <span class="detail_stopTime"></span>
+            </div>
+            <!-- endregion 结束时间 -->
+
+            <!-- region 归属区域 -->
+            <div class="col-md-3">
+                <span>归属区域：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_areaName"></span>
+            </div>
+            <!-- endregion 归属区域 -->
+
+            <!-- region 规则设置 -->
+            <div class="col-md-3">
+                <span>余额阈值：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_triggerBalance"></span>
+            </div>
+            <!-- endregion 规则设置 -->
+
+            <!-- region 推送频次 -->
+            <div class="col-md-3">
+                <span>推送间隔：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_repeatStrategy"></span>
+            </div>
+            <!-- endregion 推送频次 -->
+
+            <!-- region 描述 -->
+            <div class="col-md-3">
+                <span>描述：</span>
+            </div>
+            <div class="col-md-9">
+                <span class="detail_remarks"></span>
+            </div>
+            <!-- endregion 描述 -->
+        </div>
+        <!--region 预览-->
+        <div class="row preBox">
+            <h3>内容预览</h3>
+            <div class="preHtml"></div>
+        </div>
+        <!--endregion 预览-->
+    </div>
+    <!-- endregion 预览 -->
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹出框 -->
+<div class="iMarket_Dialog">
+    <!-- region 新增、编辑任务 -->
+    <div id="addOrEdit_task_dialog" style="display: none;"></div>
+    <!-- endregion 新增、编辑任务 -->
+
+    <!-- region 归属区域 -->
+    <div id="select_area_dialog" style="display: none"></div>
+    <!-- endregion 归属区域 -->
+
+    <!-- region 导入客群 -->
+    <div id="import_userGroup_dialog" style="display: none"></div>
+    <!-- endregion 导入客群 -->
+
+    <!-- region 预览 -->
+    <div id="preview_dialog" style="display: none"></div>
+    <!-- endregion 预览 -->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="ext/cmtable/js/cmtable.js"></script>
+<script src="js/iptv/iptvTask.js"></script>
+<!-- endregion 脚本 -->

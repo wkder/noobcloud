@@ -1,0 +1,218 @@
+/* 新增炒店用户黑名单*/
+.shop-tab {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.shop-tab div {
+    min-width: 140px;
+    height: 34px;
+    padding: 2px 12px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    background: #fff;
+    cursor: pointer;
+    color: #666;
+    line-height: 28px;
+    font-size: 16px;
+    border: 1px solid #00B38B;
+}
+
+.shop-tab .single-span {
+    border-radius: 18px 0 0 18px;
+}
+
+.shop-tab .batch-span {
+    border-radius: 0 18px 18px 0;
+}
+
+.shop-tab-active {
+    color: #fff !important;
+    background-color: #00B38B !important;
+}
+
+.shop-form {
+
+}
+
+.shop-form div.col-md-12, .batch-phone div.col-md-12 {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 20px;
+}
+
+.shop-form div.col-md-12 label, .batch-phone div.col-md-12 label {
+    margin-top: 8px;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: right;
+}
+
+#blockLocationName {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* 间隔屏蔽*/
+.shop-form .shield-time div.col-md-10 input[type='text'] {
+    background: #fff;
+    width: 47%;
+    display: inline;
+}
+
+.shop-form .batch-row .file-name {
+    width: 152px;
+    margin-right: 8px;
+    display: inline;
+}
+
+.shop-form .batch-row .file-browse-btn {
+    position: relative;
+    top: 2px;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    padding: 6px 8px 6px 12px;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 1.42857143;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.shop-form .batch-row .file-browse-btn input[type='file'] {
+    width: 56px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.shop-form .batch-row .file-upload-btn {
+    width: 56px;
+    margin-left: 13px;
+    margin-right: 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    text-transform: none;
+    overflow: visible;
+}
+
+.shop-form .batch-row .template-btn {
+    border-radius: 2px;
+    background: #00B38B;
+    border: none;
+    font-size: 16px;
+}
+
+/* 批量导入 说明*/
+.shop-form .explain {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    line-height: 24px;
+}
+
+.shop-form .explain div {
+    color: red;
+}
+
+/* 免打扰范围*/
+.locationDesc {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.locationDesc .selectLeftDesc {
+    float: left;
+    width: 40%;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.locationDesc .selectMiddleDesc {
+    float: left;
+    width: 12%;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.locationDesc .selectRightDesc {
+    float: right;
+    width: 40%;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 2px;
+    text-align: center;
+}
+
+.locationChoose {
+
+}
+
+.locationChoose .selectLeft {
+    width: 40%;
+    float: left
+}
+
+.locationChoose .selectLeft select {
+    width: 98%;
+    height: 360px;
+    border-radius: 4px;
+}
+
+.locationChoose .selectLeft select option {
+    margin: 4px 0;
+    cursor: pointer;
+}
+
+.locationChoose .selectBtn {
+    width: 12%;
+    float: left;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.locationChoose .selectBtn button {
+    border-radius: 2px;
+}
+
+.locationChoose .selectRight {
+    width: 40%;
+    float: left
+}
+
+.locationChoose .selectRight select {
+    width: 98%;
+    height: 360px;
+    margin-left: 0;
+    border-radius: 4px;
+}
+
+.locationChoose .selectRight select option {
+    margin: 4px 0;
+    cursor: pointer;
+}

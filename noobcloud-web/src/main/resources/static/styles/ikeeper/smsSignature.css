@@ -1,0 +1,15 @@
+.smsSignatureDetailInfo {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 15px 0;
+}
+
+.smsSignatureDetailInfo > div.col-md-12 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.smsSignatureDetailInfo > div.col-md-3,
+.smsSignatureDetailInfo > div.col-md-9 {
+    margin-bottom: 6px;
+}

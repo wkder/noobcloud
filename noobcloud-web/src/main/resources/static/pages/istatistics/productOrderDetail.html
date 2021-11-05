@@ -1,0 +1,87 @@
+<style type="text/css">
+    .query_day{border-radius:6px 0px 0px 6px;font-size: 15px;}
+    .query_mon{border-radius:0px 6px 6px 0px;font-size: 15px;}
+    .paging_select span {padding: 2px 15px;text-align: center;display: inline-block;vertical-align: top;background: #fff;cursor: pointer;color: #666;height: 35px;line-height: 30px;font-size: 15px;border:1px solid #00B38B}
+    .paging_select span.active{ background: #00B38B;color: #fff}
+    .paging_select span.query_mon{ margin-left: -5px }
+</style>
+<link rel="stylesheet" href="styles/istatistics/productOrderDetail.css">
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <!--<span>订购日期:</span>-->
+        <input type="text" id="orderTime" class="form-control orderTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',isclear:false})" readonly
+               style="border: 1px solid #ccc;background: #fff;margin-right: 0;"/>
+        <select class="firstLevel"></select>
+        <!--<span>二级类别:</span><select class="secondLevel"></select>-->
+        <select class="manufacturer"></select>
+        <select class="channels"></select>
+        <select class="city"></select>
+        <button id="queryAllDetail" class="btn btn-success" style="width: 110px"><i class="fa fa-search"></i>查询全部</button>
+        <button id="exportProductOrderBtn" class="btn btn-success" style="width: 80px">
+            <i class="fa fa-download"></i>导出
+        </button>
+    </div>
+</div>
+
+<!--页签-->
+<div class="paging_select">
+    <span class="query_day active">当日订购信息<input value="1" type="hidden"/></span>
+    <span class="query_mon ">截止到当日订购信息<input value="2" type="hidden"/></span>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12" style="background-color: #fff;">
+        <table id="dataTable" class="iDataTable table table-hover table-condensed table-bordered" cellspacing="0"
+               style="width: 100%;margin: 0px;border-radius: 0px">
+        </table>
+    </div>
+</div>
+
+
+<div class="iMarket_Content" style="display: none">
+    <!--查看错误日志弹窗-->
+    <div class="showErrorContentInfo" style="width:96%;margin: 0 2%;">
+        <div class="col-md-12">
+            <input class="form-control qryContentInfo" placeholder="状态码" style="width: 160px">
+            <input class="form-control qryKeyInfo" placeholder="状态描述" style="width: 160px">
+            <button class="errorLogSearchBtn">
+                <i class="fa fa-search"></i>搜索
+            </button>
+            <!--<button class="errorLogDownloadBtn">-->
+                <!--<i class="fa fa-search"></i>导出-->
+            <!--</button>-->
+        </div>
+        <div class="col-md-12" style="height: 390px;">
+            <table class="errorLogTab table table-hover table-condensed table-bordered" style="width:100%;"></table>
+        </div>
+    </div>
+
+    <!--查看用户详情弹窗-->
+    <div class="showUserInfo" style="width:96%;margin: 0 2%;">
+        <div class="col-md-12">
+            <span>操作类别:</span>
+            <select class="form-control qryContentInfo"  style="width: 160px">
+                <option value="">全部</option>
+                <option value="O">订购</option>
+                <option value="C">退订</option>
+                <option value="M">修改</option>
+            </select>
+            <input class="form-control qryKeyInfo" placeholder="用户号码" style="width: 160px">
+            <button class="userInfoSearchBtn">
+                <i class="fa fa-search"></i>搜索
+            </button>
+        </div>
+        <div class="col-md-12" style="height: 390px;">
+            <table class="userInfoTab table table-hover table-condensed table-bordered" style="width:100%;"></table>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/istatistics/productOrderDetail.js"></script>

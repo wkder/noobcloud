@@ -1,0 +1,109 @@
+<!-- region 样式 -->
+<link href="styles/ischeduling/taskUserBlackList.css" rel="stylesheet">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12">
+            <input class="form-control" id="queryPhone" placeholder="请填写手机号码">
+            <select class="form-control" id="queryAccessNumber"></select>
+            <input type="text" class="form-control" id="queryDate"
+                   onclick="laydate({isclear:true, format: 'YYYY-MM-DD'})"/>
+            <button id="btnQuery"><i class="fa fa-search"></i>搜索</button>
+            <button id="btnAdd"><i class="fa fa-plus"></i>新增</button>
+            <button id="importBtn"><i class="fa fa-upload"></i>导入</button>
+            <button id="exportBtn"><i class="fa fa-download"></i>导出</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0"></table>
+        </div>
+    </div>
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display:none;">
+    <!-- region 新增免服务用户 -->
+    <div class="userBlackListInfo" data-autoVerify="true">
+        <!-- region 手机号 -->
+        <div class="col-md-3 text-right">
+            <strong class="must" style="color: red">*</strong><strong>手机号:</strong>
+        </div>
+        <div class="col-md-7">
+            <textarea class="form-control phoneList" rows="5" name="phone"></textarea>
+            <strong style="color: red;margin-top: 10px;display: block;">可输入多个手机号，每行一个</strong>
+        </div>
+        <!-- endregion 手机号 -->
+
+        <!-- region 指定接入号 -->
+        <div class="col-md-3 text-right">
+            <strong class="must" style="color: red">*</strong><strong>指定接入号:</strong>
+        </div>
+        <div class="col-md-7">
+            <label class="radio-inline">
+                <input type="radio" name="accessNumberRadio" value="1" checked>是
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="accessNumberRadio" value="0">否
+            </label>
+        </div>
+        <!-- endregion 指定接入号 -->
+
+        <!-- region 接入号 -->
+        <div class="col-md-3 text-right accessNumberRow">
+            <strong class="must" style="color: red">*</strong><strong>接入号:</strong>
+        </div>
+        <div class="col-md-7 accessNumberRow">
+            <select class="form-control" name="accessNumber">
+            </select>
+        </div>
+        <!-- endregion 接入号 -->
+
+    </div>
+    <!-- endregion 新增免服务用户 -->
+
+    <!-- region 导入模板 -->
+    <div class="importUserBlackList">
+        <form class="importForm" method="post" enctype="multipart/form-data">
+            <div class="meatOperate">
+                <input class="form-control fileUploadName" type="text" placeholder="文件路径"/>
+                <a class="btn btn-success file" href="javascript:void(0);">选择文件
+                    <input type="file" name="file">
+                </a>
+                <div class="btn btn-success btnUpload">上传</div>
+            </div>
+            <div class="info">
+                <span>1、请导入txt文本</span>
+                <span>2、每行顺序输入号码接入号,两者以英文状态下的逗号分隔,没有接入号则只需输入手机号</span>
+                <span>3、数据导入后会进行加密处理</span>
+                <span>4、导入文件最大不能超过5M</span>
+            </div>
+            <div class="form-control retMessage">
+                <span class="message"></span>
+            </div>
+        </form>
+    </div>
+    <!-- endregion 导入模板 -->
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹出框 -->
+<div class="iMarket_Dialog">
+    <!-- region 新增免服务用户 -->
+    <div id="add_userBlackListInfo_dialog" style="display: none;"></div>
+    <!-- endregion 新增免服务用户 -->
+
+    <!-- region 导入弹窗 -->
+    <div id="import_dialog" style="display: none"></div>
+    <!-- endregion 导入弹窗 -->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/ischeduling/taskUserBlackList.js"></script>
+<!-- endregion 脚本 -->

@@ -1,0 +1,280 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/ikeeper/policy.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row catalogContainer">
+        <div class="col-md-12">
+            <input type="text" class="form-control queryCatalogName" placeholder="目录名称">
+            <button class="searchBtn"><i class="fa fa-search"></i>搜索</button>
+            <button class="addBtn"><i class="fa fa-plus"></i>新增</button>
+        </div>
+    </div>
+    <div class="row list-row catalogContainer">
+        <div class="col-md-12">
+            <table id="catlogTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0">
+            </table>
+        </div>
+    </div>
+    <div class="row query-row policyContainer" style="display: none;">
+        <div class="col-md-12">
+            <input type="text" class="form-control queryPolicyName" placeholder="政策名称">
+            <button class="searchBtn"><i class="fa fa-search"></i>搜索</button>
+            <button class="addPolicyBtn"><i class="fa fa-plus"></i>新增</button>
+            <button class="returnBtn"><i class="fa fa-chevron-left"></i>返回</button>
+        </div>
+    </div>
+    <div class="row list-row policyContainer" style="display: none;">
+        <div class="col-md-12">
+            <table id="policyTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0">
+            </table>
+        </div>
+    </div>
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 新增目录 -->
+    <div class="col-md-12 catalogInfo" data-autoVerify="true">
+        <!-- region 记录操作状态 隐藏域 -->
+        <input name="operate" type="hidden">
+        <!-- endregion 记录操作状态 隐藏域 -->
+
+        <!-- region 数据Id 隐藏域 -->
+        <input name="menuId" type="hidden">
+        <!-- endregion 数据Id 隐藏域 -->
+
+        <!-- region 目录名称 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>目录名称:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="menuName"
+                   placeholder="请输入目录名称，限制20个字数" maxlength="20"
+                   data-expression="isEmpty"
+                   data-error="目录名称不能为空"/>
+        </div>
+        <!-- endregion 目录名称 -->
+
+        <!-- region 归属区域 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>归属区域:</strong>
+        </div>
+        <div class="col-md-7">
+            <textarea class="form-control" name="areaName" readonly
+                      placeholder="请点击选择归属区域"
+                      data-expression="isEmpty"
+                      data-error="归属区域不能为空"></textarea>
+            <input type="hidden" name="areaId">
+        </div>
+        <!-- endregion 归属区域 -->
+
+        <!-- region 组织层级 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>组织层级:</strong>
+        </div>
+        <div class="col-md-7">
+            <select class="form-control" name="menuLevel">
+                <option value="1">一级组织</option>
+                <option value="2">二级组织</option>
+                <option value="3">三级组织</option>
+            </select>
+        </div>
+        <!-- endregion 组织层级 -->
+
+        <!-- region 上级组织 -->
+        <div class="col-md-3 right parentOrgNameRow">
+            <strong class="must" style="color: red">*</strong><strong>上级组织:</strong>
+        </div>
+        <div class="col-md-7 parentOrgNameRow">
+            <input type="text" class="form-control" name="pMenuName" disabled>
+            <input type="hidden" name="pId">
+        </div>
+        <!-- endregion 上级组织 -->
+        <!-- endregion 选择目录 -->
+    </div>
+    <!-- endregion 新增目录 -->
+
+    <!-- region 新增政策 -->
+    <div class="col-md-12 policyInfo" data-autoVerify="true">
+        <!-- region 记录操作状态 隐藏域 -->
+        <input name="operate" type="hidden">
+        <!-- endregion 记录操作状态 隐藏域 -->
+
+        <!-- region 数据ID 隐藏域 -->
+        <input name="policyId" type="hidden">
+        <!-- endregion 数据ID 隐藏域 -->
+
+        <!-- region 政策名称 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>政策名称:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="policyName"
+                   placeholder="请输入政策名称，限制20个字数" maxlength="20"
+                   data-expression="isEmpty"
+                   data-error="政策名称不能为空"/>
+        </div>
+        <!-- endregion 政策名称 -->
+
+        <!-- region 关联产品 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>关联产品:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="productNames" readonly
+                   placeholder="请点击选择关联产品"
+                   data-expression="isEmpty"
+                   data-error="关联产品不能为空"/>
+            <input type="hidden" name="productIds">
+        </div>
+        <!-- endregion 关联产品 -->
+
+        <!-- region 归属小组 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>归属小组:</strong>
+        </div>
+        <div class="col-md-7">
+            <textarea class="form-control" name="orgNames" readonly
+                      placeholder="请点击选择归属小组"
+                      data-expression="isEmpty"
+                      data-error="归属小组不能为空"></textarea>
+            <input type="hidden" name="orgIds">
+        </div>
+        <!-- endregion 归属小组 -->
+
+        <!-- region 开始时间、结束时间 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>开始时间:</strong>
+        </div>
+        <div class="col-md-3" style="width: 23%;">
+            <input type="text" class="form-control" name="applyTime"
+                   onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"
+                   placeholder="请选择开始时间"
+                   data-expression="isEmpty"
+                   data-error="开始时间不能为空"/>
+        </div>
+        <div class="col-md-2 right" style="margin: 8px 0;width: 12.3%;padding:0;">
+            <strong class="must" style="color: red">*</strong><strong>结束时间:</strong>
+        </div>
+        <div class="col-md-3" style="width: 23%;">
+            <input type="text" class="form-control" name="expireTime"
+                   onclick="laydate({ min: laydate.now(), format: 'YYYY-MM-DD'})"
+                   placeholder="请选择结束时间"
+                   data-expression="isEmpty"
+                   data-error="结束时间不能为空"/>
+        </div>
+        <!-- endregion 开始时间、结束时间 -->
+
+        <!-- region 政策内容 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>政策内容:</strong>
+        </div>
+        <div class="col-md-7">
+            <textarea type="text" class="form-control" name="policyContent" rows="4"
+                      placeholder="请输入政策内容，限制500个字数" maxlength="500"
+                      data-expression="isEmpty"
+                      data-error="政策内容不能为空"></textarea>
+        </div>
+        <!-- endregion 政策内容 -->
+
+    </div>
+    <!-- endregion 新增政策 -->
+
+    <!-- region 选择产品组合 -->
+    <div class="col-md-12 productInfo">
+        <div class="query-row">
+            <div class="col-md-12">
+                <select class="form-control queryWelfareTypeId">
+                    <option value="1">生日维系</option>
+                    <option value="2">2转4维系</option>
+                    <option value="3">场景关怀</option>
+                    <option value="4">优惠到期</option>
+                    <option value="5">普通福利</option>
+                </select>
+                <select class="form-control queryProductTypeId"></select>
+                <input type="text" class="form-control queryProductName" placeholder="产品名称">
+                <button class="queryBtn"><i class="fa fa-search"></i>搜索</button>
+            </div>
+        </div>
+        <div class="productInfoTitle">
+            <div class="selectLefTitle">可选产品</div>
+            <div class="selectMiddleTitle"></div>
+            <div class="selectRightTitle">已选产品</div>
+        </div>
+        <div class="shuttleBox">
+            <div class="selectLeft">
+                <select name="from[]" class="form-control multiLeftSelect" size="8" multiple="multiple">
+                    <option>111</option>
+                    <option>222</option>
+                </select>
+            </div>
+
+            <div class="selectBtn">
+                <button class="btn btn-block rightAll"><i class="fa fa-forward"></i></button>
+                <button class="btn btn-block rightSign"><i class="fa fa-chevron-right"></i></button>
+                <button class="btn btn-block leftSign"><i class="fa fa-chevron-left"></i></button>
+                <button class="btn btn-block leftAll"><i class="fa fa-backward"></i></button>
+            </div>
+
+            <div class="selectRight">
+                <select name="to[]" class="form-control multiRightSelect" size="8" multiple="multiple"></select>
+            </div>
+        </div>
+
+    </div>
+    <!-- endregion 选择产品组合 -->
+
+    <!-- region 查看政策详情 -->
+    <div class="col-md-12 policyDetailInfo" data-autoVerify="true">
+        <!-- region 政策内容 -->
+        <div class="col-md-3">
+            <span>政策内容：</span>
+        </div>
+        <div class="col-md-9">
+            <span class="detail_policyContent"></span>
+        </div>
+        <!-- endregion 政策内容 -->
+    </div>
+    <!-- endregion 查看政策详情 -->
+
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹出框 -->
+<div class="iMarket_Dialog">
+    <!-- region 新增、编辑目录 -->
+    <div id="addOrEdit_catalog_dialog" style="display: none"></div>
+    <!-- endregion 新增、编辑福利 -->
+
+    <!-- region 新增、编辑政策 -->
+    <div id="addOrEdit_policy_dialog" style="display: none"></div>
+    <!-- endregion 新增、编辑政策 -->
+
+    <!-- region 归属区域 -->
+    <div id="select_area_dialog" style="display: none"></div>
+    <!-- endregion 归属区域 -->
+
+    <!-- region 目录选择 -->
+    <div id="select_policy_dialog" style="display: none"></div>
+    <!-- endregion 目录选择 -->
+
+    <!-- region 关联产品 -->
+    <div id="select_product_dialog" style="display: none"></div>
+    <!-- endregion 关联产品 -->
+
+    <!-- region 查看政策详情 -->
+    <div id="detail_policy_dialog" style="display: none"></div>
+    <!-- endregion 查看政策详情 -->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="ext/otreetable/otreetable.js"></script>
+<script src="ext/multiselect/dist/js/multiselect.js"></script>
+<script src="js/ikeeper/policy_province.js"></script>
+<!-- endregion 脚本 -->

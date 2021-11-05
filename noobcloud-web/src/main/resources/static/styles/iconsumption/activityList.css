@@ -1,0 +1,17 @@
+/*日期筛选器*/
+.laydate_table {
+    display: none;
+}
+
+.laydate_top {
+    margin-bottom: 15px !important;
+}
+
+.updateRankType {
+    padding: 20px;
+}
+
+.updateRankType label {
+    margin-right: 20px;
+    font-size: 20px;
+}

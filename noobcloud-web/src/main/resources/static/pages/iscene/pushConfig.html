@@ -1,0 +1,85 @@
+<link href="ext/cmtable/css/cmtable.css" rel="stylesheet">
+<link href="styles/iscene/pushconfig.css" rel="stylesheet">
+
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写类型名称">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+        <button id="btnRefresh">
+            <i class="fa fa fa-refresh"></i>刷新
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+
+<!--弹出框-->
+<div class="cmTableContent" id="cmTableContent" style="display: none" data-autoVerify="true" >
+    <table class="table table-hover table-bordered cmTable">
+        <tbody>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>类型：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <select id="selType" class="form-control">
+                </select>
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>类型序号：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="txtTId" name="tId" placeholder="类型序号"  maxlength="11" data-expression="isNumber" data-error="类型序号要为数字">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>类型名称：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="txtName" name="name" placeholder="类型名称"  maxlength="50" data-expression="isEmpty" data-error="类型名称不为空">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>排序：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <input class="form-control" type="text" id="txtSort" name="sort" placeholder="排序"  maxlength="2" data-expression="isNumber" data-error="排序要为数字">
+            </td>
+        </tr>
+        <tr class="tdBg">
+            <td class="td-title">
+                <span class="must" style="color: red">*</span>
+                <strong>是否启用：</strong>
+            </td>
+            <td colspan="3" class="td-content">
+                <select id="selUsed" class="form-control">
+                    <option value="1" selected="selected">启用</option>
+                    <option value="0">不启用</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="ext/cmtable/js/cmtable.js"></script>
+<script src="js/iscene/pushconfig.js"></script>

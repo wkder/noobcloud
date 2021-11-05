@@ -1,0 +1,36 @@
+
+<style type="text/css">
+    .query_day{border-radius:6px 0px 0px 6px;font-size: 15px;}
+    .query_mon{border-radius:0px 6px 6px 0px;font-size: 15px;}
+    .paging_select span {padding: 2px 15px;text-align: center;display: inline-block;vertical-align: top;background: #fff;cursor: pointer;color: #666;height: 35px;line-height: 30px;font-size: 15px;border:1px solid #00B38B}
+    .paging_select span.active{ background: #00B38B;color: #fff}
+    .paging_select span.query_mon{ margin-left: -5px }
+</style>
+
+<!--搜索栏-->
+    <div class="row query-row ">
+    <div class="col-md-12">
+        <span>订购日期：</span>
+        <input type="text" id="orderTime" class="form-control orderTime"/>
+        <button id="queryOrderChannel" class="btn btn-success" style="width: 110px"><i class="fa fa-search">查询</i></button>
+    </div>
+</div>
+
+<!--分页查询-->
+<div class="paging_select" status="ready">
+    <span class="query_day active">按天查询<label class="day"></label></span>
+    <span class="query_mon ">按月查询<label class="mon"></label></span>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+        cellspacing="0">
+        </table>
+    </div>
+</div>
+
+
+<script src="ext/My97DatePicker/WdatePicker.js"></script>
+<script src="js/istatistics/orderChannel.js"></script>

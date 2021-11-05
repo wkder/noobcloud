@@ -1,0 +1,136 @@
+<!-- region 样式 -->
+<!--<link rel="stylesheet" href="ext/laydate-v5.0.9/theme/default/laydate.css">-->
+<link rel="stylesheet" href="styles/iicecream/icecreamTask.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12">
+            <!--<input type="text" class="form-control queryMonthId" style="border: 1px solid #ccc;background-color: #fff;"-->
+            <!--readonly/>-->
+            <div>
+                <input type="text" class="form-control queryYear"
+                       onkeyup="this.value=this.value.replace(/\D/g,'')"
+                       onafterpaste="this.value=this.value.replace(/\D/g,'')"
+                       autocomplete="off" maxlength="4"/>
+            </div>
+                <!--<div>-->
+                    <!--<input type="text" class="form-control queryMonth"-->
+                           <!--onkeyup="this.value=this.value.replace(/\D/g,'')"-->
+                           <!--onafterpaste="this.value=this.value.replace(/\D/g,'')"-->
+                           <!--autocomplete="off" maxlength="2"/>-->
+                <!--</div>-->
+            <div>
+                <select class="form-control queryMonth">
+                    <option value="01">一月</option>
+                    <option value="02">二月</option>
+                    <option value="03">三月</option>
+                    <option value="04">四月</option>
+                    <option value="05">五月</option>
+                    <option value="06">六月</option>
+                    <option value="07">七月</option>
+                    <option value="08">八月</option>
+                    <option value="09">九月</option>
+                    <option value="10">十月</option>
+                    <option value="11">十一月</option>
+                    <option value="12">十二月</option>
+                </select>
+            </div>
+            <!--<input type="text" class="form-control queryName" placeholder="产品名称">-->
+            <!--<select class="form-control queryStatus">-->
+            <!--<option value="0">请选择状态</option>-->
+            <!--<option value="1">待发送</option>-->
+            <!--<option value="2">已发送</option>-->
+            <!--</select>-->
+            <button class="searchBtn"><i class="fa fa-search"></i>搜索</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0">
+            </table>
+        </div>
+    </div>
+
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 页面内容 -->
+<div class="iMarket_Content" style="display: none;">
+    <!-- region 编辑任务 -->
+    <div class="col-md-12 taskInfo" data-autoVerify="true">
+        <!-- region 记录操作状态 隐藏域 -->
+        <input class="operate" type="hidden">
+        <!-- endregion 记录操作状态 隐藏域 -->
+
+        <!-- region 数据ID 隐藏域 -->
+        <input name="id" type="hidden">
+        <!-- endregion 数据ID 隐藏域 -->
+
+        <!-- region 月份 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>月份:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="monthId" disabled="disabled"/>
+        </div>
+        <!-- endregion 月份 -->
+
+        <!-- region 产品编码 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>产品编码:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="productId" disabled="disabled"/>
+        </div>
+        <!-- endregion 产品编码 -->
+
+        <!-- region 产品名称 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>产品名称:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="productName" disabled="disabled"/>
+        </div>
+        <!-- endregion 产品名称 -->
+
+        <!-- region 用户数 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>用户数:</strong>
+        </div>
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="numCount" disabled="disabled"/>
+        </div>
+        <!-- endregion 用户数 -->
+
+        <!-- region 短信内容 -->
+        <div class="col-md-3 right">
+            <strong class="must" style="color: red">*</strong><strong>短信内容:</strong>
+        </div>
+        <div class="col-md-7">
+            <textarea class="form-control" name="content"
+                      placeholder="短信内容可修改"
+                      data-expression="isEmpty"
+                      data-error="短信内容不能为空"></textarea>
+        </div>
+        <!-- endregion 归属区域 -->
+    </div>
+    <!-- endregion 编辑任务 -->
+</div>
+<!-- endregion 页面内容 -->
+
+<!-- region 弹出框 -->
+<div class="iMarket_Dialog">
+    <!-- region 编辑任务 -->
+    <div id="edit_task_dialog" style="display: none"></div>
+    <!-- endregion 编辑任务 -->
+</div>
+<!-- endregion 弹出框 -->
+
+<!-- region 脚本 -->
+<script src="js/icommon/dateUtil.js"></script>
+<!--<script src="ext/laydate-v5.0.9/laydate.js"></script>-->
+<script src="js/iicecream/icecreamTask.js"></script>
+<!-- endregion 脚本 -->

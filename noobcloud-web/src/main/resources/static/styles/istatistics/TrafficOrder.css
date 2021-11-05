@@ -1,0 +1,20 @@
+
+/*
+ * 流量包订购统计报表统一样式
+ */
+table tr:nth-child(odd) td{
+        background-color: #f9f9fb !important;
+}
+
+#dataTable .tableName{
+        font-size:17px;
+        font-weight:bold;
+        vertical-align: middle;
+        height: 55px ;
+}
+
+#dataTable .vertical{
+        vertical-align: middle !important;
+}
+
+

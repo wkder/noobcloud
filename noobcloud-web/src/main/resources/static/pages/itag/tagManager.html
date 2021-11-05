@@ -1,0 +1,251 @@
+<link rel="stylesheet" href="styles/itag/tagManager.css">
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写标签名称">
+        <button id="btnQuery">
+            <i class="fa fa-search"></i>搜索
+        </button>
+        <button id="btnAdd">
+            <i class="fa fa-plus"></i>新增
+        </button>
+    </div>
+</div>
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+
+<!--弹出框-->
+<!--标签-->
+<div id="divTag" data-autoVerify="true" style="display: none;">
+    <div class="cmTableContent">
+        <table class="table table-hover table-bordered cmTable">
+            <tbody>
+            <!--标签名称-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>标签名称：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input name="name" type="text" class="form-control" maxlength="20" placeholder="标签名称"
+                           data-expression="isEmpty"
+                           data-error="标签名称不能为空">
+                </td>
+            </tr>
+            <!--数据库模式-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>数据库模式：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select name="dbSchema" class="form-control" data-expression="isChoose"
+                            data-error="请选择一个数据库模式"></select>
+                </td>
+            </tr>
+            <!--表名称-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>表名称：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select name="tableName" class="form-control" data-expression="isChoose"
+                            data-error="请选择一个表名称"></select>
+                </td>
+            </tr>
+            <!--手机号字段-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>手机号字段：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select name="phoneColumnName" class="form-control" data-expression="isChoose"
+                            data-error="请选择一个手机号字段"></select>
+                </td>
+            </tr>
+            <!--筛选字段-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>筛选字段：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" name="areaColumnName" class="form-control layerInput" placeholder="筛选字段"
+                           readonly="readonly">
+                    <button id="btnFilterField" class="layerBtn">选择</button>
+                </td>
+            </tr>
+            <!--是否自动取数-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>是否自动取数：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <label class="radio-inline">
+                        <input type="radio" name="needAutoFetch" value="0" autoCheck="false"> 是
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="needAutoFetch" value="1" autoCheck="true"> 否
+                    </label>
+                </td>
+            </tr>
+            <!--服务器连接-->
+            <tr class="tdBg" style="display: none;" data-display="1">
+                <td class="td-title">
+                    <strong>服务器连接：</strong>
+                </td>
+                <td colspan="2" class="td-content">
+                    <select name="remoteServerId" class="form-control layerSelect"></select>
+                    <button id="btnAddConnection" class="layerBtn">新增</button>
+                </td>
+            </tr>
+            <!--文件路径-->
+            <tr class="tdBg" style="display: none;" data-display="1">
+                <td class="td-title">
+                    <strong>文件路径：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input name="remoteFile" type="text" class="form-control" maxlength="50" placeholder="文件路径">
+                </td>
+            </tr>
+            <!--读取时间-->
+            <tr class="tdBg" style="display: none;" data-display="1">
+                <td class="td-title">
+                    <strong>读取时间：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input id="txtExecuteTime" name="executeTime" type="text" class="form-control" maxlength="20"
+                           placeholder="读取时间"
+                           onclick="laydate({istime: false, format: 'YYYY-MM-DD hh:mm:ss',istoday: true})">
+                </td>
+            </tr>
+            <!--时间间隔-->
+            <tr class="tdBg" style="display: none;" data-display="1">
+                <td class="td-title">
+                    <strong>时间间隔：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input name="intervalTime" type="text" class="form-control layerInput" maxlength="5"
+                           placeholder="时间间隔">
+                    <select name="intervalType" class="form-control" style="display: inline;width:70px ;float: right;">
+                        <option value="d">天</option>
+                        <option value="w">周</option>
+                        <option value="m">月</option>
+                    </select>
+                </td>
+            </tr>
+            <!--备注-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>备注：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <textarea name="remarks" class="form-control" rows="3" maxlength="50" placeholder="备注"></textarea>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="hidden" name="id">
+    </div>
+</div>
+
+<!--字段-->
+<div id="divField" style="display: none;">
+    <div class="cmTableContent">
+        <div id="divFilterField" class="col-md-12" style="margin: 20px 0;padding: 0 4px;"></div>
+    </div>
+</div>
+
+<!--远程服务器-->
+<div id="divRemoteServer" style="display: none;">
+    <div class="cmTableContent">
+        <table class="table table-hover table-bordered cmTable">
+            <tbody>
+            <!--服务器名称-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>服务器名称：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" name="name" class="form-control" maxlength="20" placeholder="服务器名称">
+                </td>
+            </tr>
+            <!--主机IP-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>主机IP：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" name="serverIp" class="form-control" maxlength="15" placeholder="主机IP">
+                </td>
+            </tr>
+            <!--连接方式-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>连接方式：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <select name="connectType" class="form-control">
+                        <option value="sftp">SFTP</option>
+                        <option value="ftp">FTP</option>
+                    </select>
+                </td>
+            </tr>
+            <!--端口号-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>端口号：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" name="port" class="form-control" maxlength="8" placeholder="端口号">
+                </td>
+            </tr>
+            <!--用户名-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>用户名：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="text" name="serverUser" class="form-control" maxlength="20" placeholder="用户名">
+                </td>
+            </tr>
+            <!--密码-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>密码：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <input type="password" name="password" class="form-control" maxlength="20" placeholder="密码">
+                </td>
+            </tr>
+            <!--备注-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>备注：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <textarea name="remarks" class="form-control" rows="3" maxlength="50" placeholder="备注"></textarea>
+                </td>
+            </tr>
+            <!--测试连接-->
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>测试连接：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <button id="btnTestConnection" class="layerBtn" style="float: left;">连接</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--数据库模式-->
+<div id="divTable" style="display:none;"></div>
+
+<script src="js/itag/tagManager.js"></script>

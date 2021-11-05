@@ -1,0 +1,30 @@
+/*导入弹窗样式*/
+.importNetworkMgr {
+    padding: 20px 0;
+}
+
+.importNetworkMgr .info {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.importNetworkMgr .info span {
+    display: block;
+    color: red;
+    line-height: 24px;
+}
+
+.plupload_container {
+    padding: 0 15px;
+}
+
+.plupload_container .plupload_header {
+    display: none;
+}
+
+
+
+
+
+
+

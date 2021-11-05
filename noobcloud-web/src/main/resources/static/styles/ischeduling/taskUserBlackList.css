@@ -1,0 +1,84 @@
+/** 弹窗 */
+.userBlackListInfo {
+    padding: 30px 15px;
+}
+
+.userBlackListInfo .right {
+    text-align: right;
+}
+
+.userBlackListInfo div.col-md-3,
+.userBlackListInfo div.col-md-7 {
+    margin: 8px 0;
+}
+
+/*导入弹窗样式*/
+.importUserBlackList {
+    padding: 20px 0;
+}
+
+.importUserBlackList .importForm .meatOperate {
+    margin-left: 25px;
+}
+
+.importUserBlackList .importForm .meatOperate .fileUploadName {
+    width: 220px;
+    display: inline;
+    border: 1px solid #ccc;
+}
+
+.importUserBlackList .importForm .meatOperate a.file,
+.importUserBlackList .importForm .meatOperate div.btnUpload {
+    margin-right: 10px;
+    background: #00B38B;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+.importUserBlackList .importForm .meatOperate a.file {
+    position: relative;
+    top: 0;
+    overflow: hidden;
+    text-indent: 0;
+}
+
+.importUserBlackList .importForm .meatOperate a.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    width: 180px;
+    margin: 0 5px;
+    outline: none;
+    border-radius: 2px !important;
+}
+
+.importUserBlackList .importForm .meatOperate div.btnUpload {
+    width: 80px;
+}
+
+.importUserBlackList .importForm .meatOperate a.templateBtn {
+    border-radius: 2px;
+    background: #00B38B;
+    border: none;
+    font-size: 16px;
+}
+
+.importUserBlackList .importForm .info {
+    margin-top: 20px;
+    margin-left: 26px;
+}
+
+.importUserBlackList .importForm .info span {
+    display: block;
+    color: red;
+    line-height: 24px;
+
+}
+
+.importForm div.retMessage {
+    height: 60px;
+    border: aliceblue;
+}

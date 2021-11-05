@@ -1,0 +1,96 @@
+<style type="text/css">
+    .must{
+        display: inline-block;
+    }
+    .popUpProductName{
+        width: 50%
+    }
+    .productTxt{
+        display: flex;
+    }
+    .col-md-12{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+</style>
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+
+        <input type="text" id="productName" class="form-control productName" placeholder="产品名称"/>
+
+        <button id="productManageQueryBtn" class="btn btn-success"><i class="fa fa-search"></i>查询</button>
+        <button id="productManageAddPopUp" class="btn btn-primary"><i class="fa fa-plus"></i>新增</button>
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+<!--弹窗-->
+<div class="popUpTable" style="display: none">
+
+</div>
+
+<!--产品管理新增或修改弹窗-->
+<div class="productManageAddOrEditBtnPopUp" style="display: none">
+    <div class="col-md-12 productManageInfo">
+
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>产品名称：</strong></div>
+            <div class="col-md-10 productTxt"><input class="form-control popUpProductName" type="text" data-expression="isEmpty" title="产品名称不为空"><strong class="must" style="color: red">*</strong></div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>支持系统：</strong></div>
+
+            <div class="col-md-5 popUpBSSContent">
+                <input class="popUpBSSCheck"  product-type = "1" name="popUpBSSCheck" type="checkbox" value="1" ><span>BSS</span>
+                <strong>产品编码：</strong>
+                <div class="productTxt"><input class="form-control popUpProductCodeBSS" type="text" disabled="disabled" maxlength="20" title="产品编码不为空"><strong class="must" style="color: red">*</strong></div>
+                <strong>包编码：</strong>
+                <input class="form-control popUpPackageCodeBSS" type="text" disabled="disabled" maxlength="20">
+
+                <strong>资费编码：</strong>
+                <div class="productTxt"><input class="form-control popUpExpenseCodeBSS" type="text" disabled="disabled" title="资费编码不为空" maxlength="20"><strong class="must" style="color: red">*</strong></div>
+            </div>
+
+            <div class="col-md-5 popUpCBSSContent">
+                <input class="popUpCBSSCheck" product-type = "2" name="popUpCBSSCheck" type="checkbox" value="2"><span>CBSS</span>
+
+                <strong>产品编码：</strong>
+                <div class="productTxt"><input class="form-control popUpProductCodeCBSS" type="text" disabled="disabled" title="产品编码不为空" maxlength="20"><strong class="must" style="color: red">*</strong></div>
+
+                <strong>包编码：</strong>
+                <input class="form-control popUpPackageCodeCBSS" type="text" disabled="disabled" maxlength="20">
+
+                <strong>资费编码：</strong>
+                <div class="productTxt"><input class="form-control popUpElementCodeCBSS" type="text" disabled="disabled" title="资费编码不为空" maxlength="20"><strong class="must" style="color: red">*</strong></div>
+            </div>
+        </div>
+
+
+        <!--<div class="col-md-12">-->
+            <!--<div class="col-md-2"><strong>订购编码：</strong></div>-->
+            <!--<div class="col-md-10 productTxt"><input class="form-control popUpOrderCode" type="text" data-expression="isEmpty" title="订购编码不为空"><strong class="must" style="color: red">*</strong></div>-->
+        <!--</div>-->
+
+        <div class="col-md-12">
+            <div class="col-md-2"><strong> 成功短信：</strong></div>
+            <div class="col-md-10"><textarea class="popUpSucMsg" maxlength="500"></textarea></div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-2"><strong>产品说明：</strong></div>
+            <div class="col-md-10"><textarea class="popUpProductInfo" maxlength="500"></textarea></div>
+        </div>
+    </div>
+</div>
+
+<script src="js/iflow/productManage.js"></script>

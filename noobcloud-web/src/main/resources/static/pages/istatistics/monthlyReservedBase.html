@@ -1,0 +1,124 @@
+
+<link href="styles/istatistics/insightAnalysis.css" rel="stylesheet"/>
+<div class="iMarket_MonthlyReservedBase">
+    <div class="iMarket_MonthlyReservedBase_Body">
+        <div class="dateSelect">
+            <div class="year">
+                <span class="yearSelect">年份选择：</span>
+                <select class="year"></select>
+            </div>
+            <div class="month">
+                <span class="monthSelect">月份选择：</span>
+                <select class="month">
+                    <option value="1">1月</option>
+                    <option value="2">2月</option>
+                    <option value="3">3月</option>
+                    <option value="4">4月</option>
+                    <option value="5">5月</option>
+                    <option value="6">6月</option>
+                    <option value="7">7月</option>
+                    <option value="8">8月</option>
+                    <option value="9">9月</option>
+                    <option value="10">10月</option>
+                    <option value="11">11月</option>
+                    <option value="12">12月</option>
+                </select>
+            </div>
+            <div class="city">
+                <span class="citySelect">城市选择：</span>
+                <select class="city">
+                    <option value="北海">北海</option>
+                    <option value="南宁">南宁</option>
+                    <option value="崇左">崇左</option>
+                    <option value="来宾">来宾</option>
+                    <option value="柳州">柳州</option>
+                    <option value="桂林">桂林</option>
+                    <option value="梧州">梧州</option>
+                    <option value="河池">河池</option>
+                    <option value="玉林">玉林</option>
+                    <option value="百色">百色</option>
+                    <option value="贵港">贵港</option>
+                    <option value="贺州">贺州</option>
+                    <option value="钦州">钦州</option>
+                    <option value="防城">防城</option>
+                </select>
+            </div>
+            <input class="queryValue" type="hidden"/>
+            <button id="btnQuery"><i class="fa fa-search"></i>查询</button>
+        </div>
+        <div class="meatOperate">
+            <div class="extensionalBtn downloadBaseMonthlyReserved"><i class="fa fa-download"></i>下载</div>
+            <div class="downloadFrame">
+                <iframe name="frameName" style="display:none;"></iframe>
+                <form action="downloadBaseMonthlyReserved.view" method="post" target="frameName"
+                      style="display: none;">
+                    <input class="yearMonth" name="yearMonth" type="hidden" value="">
+                    <input class="cityId" name="cityId" type="hidden" value="">
+                </form>
+            </div>
+        </div>
+        <div class="baseMonthlyReservedData">
+            <table class="tableOne" cellspacing="0" border="0" cellpadding="3" width="100%">
+                <thead>
+                <tr>
+                    <th rowspan="2" width="30%">用户属性</th>
+                    <th>拍照用户</th>
+                    <th>拍照收入</th>
+                    <th rowspan="2">用户保有率</th>
+                    <th rowspan="2">收入保有率</th>
+                </tr>
+                <tr>
+                    <th style="border-bottom: none;">(万户)</th>
+                    <th style="border-right:none;border-bottom: none;">(万元)</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <table class="tableTwo" cellspacing="0" border="0" cellpadding="3" width="100%">
+                <thead>
+                <tr>
+                    <th rowspan="2" width="30%">用户属性</th>
+                    <th>拍照用户</th>
+                    <th rowspan="2">终端合约年内到期用户</th>
+                    <th rowspan="2">终端合约当前累计到期用户</th>
+                    <th rowspan="2">终端合约到期续约率</th>
+                    <th rowspan="2">高价值单卡用户数</th>
+                    <th rowspan="2">高价值单卡签约率</th>
+                </tr>
+                <tr>
+                    <th style="border-right:none;border-bottom: none;">(万户)</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="iMarket_MonthlyReservedBase_Template" style="display: none;">
+        <script id="baseMonthlyReservedResultTemplate" type="text/html">
+            {{each list as reservedResult index}}
+            <tr>
+                <td>{{reservedResult.ProfName}}</td>
+                <td>{{reservedResult.userCount}}</td>
+                <td>{{reservedResult.income}}</td>
+                <td>{{reservedResult.userReserved}}</td>
+                <td>{{reservedResult.incomeReserved}}</td>
+            </tr>
+            {{/each}}
+        </script>
+        <script id="baseMonthlyReservedProcessTemplate" type="text/html">
+            {{each list as reservedProcess index}}
+            <tr>
+                <td>{{reservedProcess.ProfName}}</td>
+                <td>{{reservedProcess.userCount}}</td>
+                <td>{{reservedProcess.expiresDuringYearUserCount}}</td>
+                <td>{{reservedProcess.expiresCumulativeUserCount}}</td>
+                <td>{{reservedProcess.expiresRenewalRate}}</td>
+                <td>{{reservedProcess.singleCardUserCount}}</td>
+                <td>{{reservedProcess.singleCardUserRate}}</td>
+            </tr>
+            {{/each}}
+        </script>
+    </div>
+</div>
+<script src="ext/template.js"></script>
+<script src="js/istatistics/monthlyReservedBase.js"></script>

@@ -1,0 +1,23 @@
+.userInfo form >.row{margin: 5px 0;}
+.permissions{border:1px solid silver;border-radius: 4px;}
+input.specificHide{position: absolute;width: 0;border: 0;outline: 0;height: 0;margin: 0;padding: 0;top: 0;right: 0}
+.auditUserTab td >a{margin: 0 5px;}
+.businessHallTable.table >thead{display: none;}
+.distributionSearch select {width: 193px !important;margin-right: 20px;}
+.distributionSearch select:last-child{margin-right: 0;}
+.willBusinessHallList,.doneBusinessHall{height: 370px;width: 320px;}
+.willBusinessHallList >div,.doneBusinessHall >div{padding: 5px 10px;font-size: 16px;font-weight: bold;text-align: center;}
+.willBusinessHallList{margin-left: 15px;}
+.doneBusinessHall{margin-right: 15px;float: right;}
+.changeBtn {width:86px;margin-left: 17px;margin-right: 17px;}
+/*.distributionBox{margin:0 20px;}*/
+.distributionBox >div{display: inline-block;vertical-align: middle;}
+.willBusinessHallList ul,.doneBusinessHall ul{height: 100%;margin: 0;padding: 0;overflow-y: auto;border: 1px solid #ccc;border-radius: 4px;}
+.willBusinessHallList ul li,.doneBusinessHall ul li{margin:2px 10px;font-size: 14px;cursor: pointer;white-space: nowrap;list-style-type: none;padding: 2px 5px;overflow: hidden;}
+.willBusinessHallList ul li:hover,.doneBusinessHall ul li:hover{ background: #00B38B;color: #fff;}
+.willBusinessHallList ul li.active,.doneBusinessHall ul li.active{ background: #00B38B;color: #fff;}
+.changeBtn >div{font-size: 30px;cursor: pointer;border: 1px solid;text-align: center;height: 30px;width: 45px;margin: 10px auto}
+.changeBtn >div i{vertical-align: top}
+
+
+

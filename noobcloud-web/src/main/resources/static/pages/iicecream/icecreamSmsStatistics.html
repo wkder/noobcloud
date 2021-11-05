@@ -1,0 +1,60 @@
+<!-- region 样式 -->
+<link rel="stylesheet" href="styles/iicecream/icecreamSmsStatistics.css">
+<!-- endregion 样式 -->
+
+<!-- region 页面主体 -->
+<div class="iMarket_Body">
+    <div class="row query-row">
+        <div class="col-md-12 form-inline">
+            <div>
+                <input type="text" class="form-control queryYear"
+                       onkeyup="this.value=this.value.replace(/\D/g,'')"
+                       onafterpaste="this.value=this.value.replace(/\D/g,'')"
+                       autocomplete="off" maxlength="4"/>
+            </div>
+            <div>
+                <select class="form-control queryMonth">
+                    <option value="01">一月</option>
+                    <option value="02">二月</option>
+                    <option value="03">三月</option>
+                    <option value="04">四月</option>
+                    <option value="05">五月</option>
+                    <option value="06">六月</option>
+                    <option value="07">七月</option>
+                    <option value="08">八月</option>
+                    <option value="09">九月</option>
+                    <option value="10">十月</option>
+                    <option value="11">十一月</option>
+                    <option value="12">十二月</option>
+                </select>
+            </div>
+            <div class="inputPhone">
+                <input type="phone" class="form-control queryPhone" maxlength="11" placeholder="输入手机号码" id="queryPhone">
+            </div>
+            <button class="btn btn-success searchBtn"><i class="fa fa-search"></i>搜索</button>
+        </div>
+    </div>
+    <div class="row list-row">
+        <div class="col-md-12">
+            <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+                   cellspacing="0">
+            </table>
+        </div>
+        <div class="col-md-6" style="padding: 0">
+            <div class="funnel" style="height: 450px"></div>
+            <div class="funnel-empty-data" style="display: none">暂无相关数据</div>
+        </div>
+        <div class="col-md-6">
+            <div class="pie" style="height: 450px;"></div>
+            <div class="pie-empty-data" style="display: none">暂无相关数据</div>
+        </div>
+    </div>
+</div>
+<!-- endregion 页面主体 -->
+
+<!-- region 脚本 -->
+<script src="js/icommon/dateUtil.js"></script>
+<script src="ext/echarts/echarts4.0.min.js"></script>
+<script src="js/iicecream/icecreamSmsStatistics.js"></script>
+<!-- endregion 脚本 -->
+

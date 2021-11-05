@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="styles/iflow/upgrade4G.css" >
+
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+
+        <input type="text" id="customerPhone" class="form-control telephone" placeholder="请输入手机号码"/>
+        <button id="activityListQueryBtn" class="btn btn-success"><i class="fa fa-search"></i>查询</button>
+
+    </div>
+</div>
+
+<!--dataTable-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0">
+        </table>
+    </div>
+</div>
+
+<!--弹窗-->
+<div class="assistNetworkDialog" style="display: none"></div>
+
+<!--弹窗文本-->
+<div class="assistNetworkContent" style="display: none">
+    <div class="assistNetwork">
+        <div class="col-md-12 col-xs-7 assistNetworkCode">
+            <div class="col-md-7">
+                <input id="verificationCode" type="text" class="form-control text-center" placeholder="请输入验证码" title="请输入验证码"
+                       maxlength="6"
+                       onkeyup="this.value=this.value.replace(/\D/g,'')"
+                       onafterpaste="this.value=this.value.replace(/\D/g,'')"/>
+            </div>
+            <div class="col-lg-5">
+                <button class="sendVerification btn btn-default">获取验证码</button>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-xs-5">
+            <div class="col-md-7">
+                <input id="channelCoding" class="form-control text-center" type="text" placeholder="请输入7位渠道编码" title="请输入7位渠道编码" maxlength="7"/>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-7">
+                <input id="employeeNumber" class="form-control text-center" type="text" placeholder="请输员工手机号" title="请输员工手机号" maxlength="11"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/iflow/upgrade4GActivityQuery.js"></script>
+
+
+

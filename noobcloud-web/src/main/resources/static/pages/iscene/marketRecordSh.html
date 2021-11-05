@@ -1,0 +1,42 @@
+<style type="text/css">
+    #txtQuery, #txtContent, #txtBaseCode {
+        width: 140px;
+    }
+
+    #startTime, #endTime {
+        width: 110px;
+        border: 1px solid #ccc;
+        background: #fff;
+    }
+
+    #startTime {
+        margin-right: 0;
+    }
+
+    .sign {
+        margin: 4px 0;
+    }
+</style>
+<!--搜索栏-->
+<div class="row query-row">
+    <div class="col-md-12">
+        <input id="txtQuery" class="form-control" placeholder="请填写手机号" data-expression="isNumber" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" >
+        <input id="txtBaseCode" class="form-control" placeholder="请填写营业厅编码">
+        <input type="text" id="startTime" class="form-control startTime"
+               onclick="laydate({istime: false, format: 'YYYY-MM-DD',istoday: true})" readonly/>
+        <button id="btnQuery"><i class="fa fa-search"></i>查询</button>
+    </div>
+</div>
+<!--END 搜索栏-->
+
+<!--列表栏-->
+<div class="row list-row">
+    <div class="col-md-12">
+        <table id="dataTable" class="table iDataTable table-hover table-condensed table-bordered"
+               cellspacing="0"></table>
+    </div>
+</div>
+<!--END 列表栏-->
+
+<script src="js/icommon/dateUtil.js"></script>
+<script src="js/iscene/marketRecordSh.js"></script>

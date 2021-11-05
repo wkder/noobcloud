@@ -1,0 +1,101 @@
+/*图表栏 start*/
+#positionChart {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    margin-bottom: 19px;
+    display: none;
+}
+
+#positionChart > div > .title {
+
+    padding: 0;
+
+    margin: 0;
+
+    display: block;
+
+    width: 100%;
+
+    height: 39px;
+
+    overflow: hidden;
+
+    color: #696767;
+
+    box-sizing: border-box;
+
+    font-weight: 400;
+
+    line-height: 39px;
+
+    font-size: 17px;
+
+    border-bottom: 1px solid #dcdcdc;
+
+    padding-left: 21px;
+}
+
+#positionChart > div > .showArea {
+
+}
+
+/*地图坐标打点 start*/
+#positionChart > .mapAreaShow {
+
+    width: 45%;
+
+    height: 406px;
+
+    float: left;
+
+    margin: 0;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+}
+
+/*地图坐标打点 end*/
+
+/*饼图显示区域 start*/
+#positionChart > .barAreaShow {
+
+    padding: 0;
+
+    margin: 0;
+
+    margin-left: 2%;
+
+    width: 53%;
+
+    float: left;
+
+    height: 406px;
+}
+
+/*饼图显示区域 end*/
+
+/*图表栏 end*/
+
+/* 删除失效营业厅 弹窗*/
+.deletePositionBaseSegment {
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.deletePositionBaseSegment div {
+    margin-bottom: 15px;
+}
+
+.iMarket_PosiBase_Dialog .layui-layer {
+    background-color: #F8F8F8 !important;
+}
