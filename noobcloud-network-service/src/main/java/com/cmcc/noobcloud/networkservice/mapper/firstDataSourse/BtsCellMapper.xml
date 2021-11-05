@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmcc.noobcloud.networkservice.mapper.firstDataSourse.BtsCellMapper">
+
+    <select id="queryAllBtsCellsByPage" resultType="com.cmcc.noobcloud.networkservice.pojo.BtsCell">
+        select
+            cell_id                as           cellId,
+            gnodeb_id              as           gnodebId,
+            ncgi                   as           ncgi,
+            cell_mark              as           cellMark,
+            bts_name               as           btsName,
+            cell_name              as           cellName,
+            tac                    as           tac,
+            pci                    as           pci,
+            longitude              as           longitude,
+            latitude               as           latitude,
+            bore                   as           bore,
+            high                   as           high,
+            manufaer               as           manufaer,
+            type                   as           type,
+            apart                  as           apart,
+            leve                   as           leve,
+            ip                     as           ip,
+            radius                 as           radius,
+            cover_rate             as           coverRate
+        from cm_bts_cell
+        where 1=1
+        <if test="ncgi != '' and ncgi != null">
+            and ncgi like concat('%',#{ncgi},'%')
+        </if>
+        <if test="btsName != '' and btsName != null">
+            and bts_name like concat('%',#{btsName},'%')
+        </if>
+        <if test="cellName != '' and cellName != null">
+            and cell_name like concat('%',#{cellName},'%')
+        </if>
+        <if test="ip != '' and ip != null">
+            and ip = #{ip}
+        </if>
+        <if test="type != '' and type != null and type != 0">
+            and type = #{type}
+        </if>
+            and leve = 4
+        order by cell_id asc
+        limit #{limit} offset #{offset}
+    </select>
+
+    <select id="countAllBtsCells" resultType="java.lang.Integer">
+        select
+            count(1)
+        from cm_bts_cell
+        where 1=1
+        <if test="ncgi != '' and ncgi != null">
+            and ncgi like concat('%',#{ncgi},'%')
+        </if>
+        <if test="btsName != '' and btsName != null">
+            and bts_name like concat('%',#{btsName},'%')
+        </if>
+        <if test="cellName != '' and cellName != null">
+            and cell_name like concat('%',#{cellName},'%')
+        </if>
+        <if test="ip != '' and ip != null">
+            and ip = #{ip}
+        </if>
+        <if test="type != '' and type != null and type != 0">
+            and type = #{type}
+        </if>
+            and leve = 4
+    </select>
+
+    <select id="queryBtsCellsByCellId" resultType="com.cmcc.noobcloud.networkservice.pojo.BtsCell">
+        select
+        cell_id                as           cellId,
+        gnodeb_id              as           gnodebId,
+        ncgi                   as           ncgi,
+        cell_mark              as           cellMark,
+        bts_name               as           btsName,
+        cell_name              as           cellName,
+        tac                    as           tac,
+        pci                    as           pci,
+        longitude              as           longitude,
+        latitude               as           latitude,
+        bore                   as           bore,
+        high                   as           high,
+        manufaer               as           manufaer,
+        type                   as           type,
+        apart                  as           apart,
+        leve                   as           leve,
+        ip                     as           ip,
+        radius                 as           radius,
+        cover_rate             as           coverRate
+        from cm_bts_cell
+        where 1=1
+        and cell_id = #{cellId}
+    </select>
+
+    <select id="query5GBtsCellsByLonAndLatRange" resultType="com.cmcc.noobcloud.networkservice.pojo.BtsCell">
+        select
+        cell_id                as           cellId,
+        gnodeb_id              as           gnodebId,
+        ncgi                   as           ncgi,
+        cell_mark              as           cellMark,
+        bts_name               as           btsName,
+        cell_name              as           cellName,
+        tac                    as           tac,
+        pci                    as           pci,
+        longitude              as           longitude,
+        latitude               as           latitude,
+        bore                   as           bore,
+        high                   as           high,
+        manufaer               as           manufaer,
+        type                   as           type,
+        apart                  as           apart,
+        leve                   as           leve,
+        ip                     as           ip,
+        radius                 as           radius,
+        cover_rate             as           coverRate
+        from cm_bts_cell
+        where leve = 5
+        and type = 1
+        and (longitude between #{lonBefore} and #{lonAfter})
+        and (latitude between #{latBefore} and #{latAfter})
+    </select>
+
+    <update id="batchUpdateBtsCell">
+        update cm_bts_cell
+        set gnodeb_id = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.gnodebId}
+            </foreach>
+            end,
+            ncgi = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.ncgi}
+            </foreach>
+            end,
+            cell_mark = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.cellMark}
+            </foreach>
+            end,
+            bts_name = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.btsName}
+            </foreach>
+            end,
+            cell_name = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.cellName}
+            </foreach>
+            end,
+            tac = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.tac}
+            </foreach>
+            end,
+            pci = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.pci}
+            </foreach>
+            end,
+            longitude = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.longitude}
+            </foreach>
+            end,
+            latitude = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.latitude}
+            </foreach>
+            end,
+            bore = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.bore}
+            </foreach>
+            end,
+            high = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.high}
+            </foreach>
+            end,
+            manufaer = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.manufaer}
+            </foreach>
+            end,
+            type = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.type}
+            </foreach>
+            end,
+            apart = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.apart}
+            </foreach>
+            end,
+            leve = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.leve}
+            </foreach>
+            end,
+            ip = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.ip}
+            </foreach>
+            end,
+            radius = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.radius}
+            </foreach>
+            end,
+            cover_rate = case cell_id
+            <foreach collection="list" item="item" index="index" open="" separator="" close="">
+                when #{item.cellId} then #{item.coverRate}
+            </foreach>
+            end
+        where cell_id in
+            <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+              #{item.cellId}
+            </foreach>
+    </update>
+
+    <select id="queryAllBtsCells"  parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        cell_id                as           小区ID_0,
+        gnodeb_id              as           GnodeBId_1,
+        ncgi                   as           NCGI_2,
+        cell_mark              as           小区标识_3,
+        bts_name               as           基站名称_4,
+        cell_name              as           小区名称_5,
+        tac                    as           TAC_6,
+        pci                    as           PCI_7,
+        longitude              as           基站经度_8,
+        latitude               as           基站纬度_9,
+        bore                   as           天线角度_10,
+        high                   as           天线高度_11,
+        manufaer               as           设备厂家_12,
+        type                  as            基站类型_13,
+        apart                  as           所在分区_14,
+        leve                   as           负载业务_15,
+        ip                     as           基站ip_16,
+        radius                 as           覆盖半径_17,
+        cover_rate             as           覆盖率_18
+        from cm_bts_cell
+        where 1=1
+        <if test="ncgi != '' and ncgi != null">
+            and ncgi like concat('%',#{ncgi},'%')
+        </if>
+        <if test="btsName != '' and btsName != null">
+            and bts_name like concat('%',#{btsName},'%')
+        </if>
+        <if test="cellName != '' and cellName != null">
+            and cell_name like concat('%',#{cellName},'%')
+        </if>
+        <if test="ip != '' and ip != null">
+            and ip = #{ip}
+        </if>
+        <if test="type != '' and type != null and type != 0">
+            and type = #{type}
+        </if>
+        and leve = 4
+        order by cover_rate asc
+    </select>
+</mapper>

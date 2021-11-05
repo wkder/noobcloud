@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmcc.noobcloud.networkservice.mapper.firstDataSourse.NetworkMapper">
+
+    <select id="queryAllNetworksByPage" resultType="com.cmcc.noobcloud.networkservice.pojo.Network">
+        SELECT
+            network_id                                                  AS            networkId,
+            asset_code                                                  AS            assetCode,
+            network_name                                                AS            networkName,
+            catogory                                                    AS            catogory,
+            manage_ip                                                   AS            manageIp,
+            site                                                        AS            site,
+            room                                                        AS            room,
+            location                                                    AS            location,
+            status                                                      AS            status,
+            service_field                                               AS            serviceField,
+            manufacturer                                                AS            manufacturer,
+            city                                                        AS            city,
+            login_info                                                  AS            loginInfo,
+            login_catogory                                              AS            loginCatogory,
+            support_stuff                                               AS            supportStuff,
+            support_telephone                                           AS            supportTelephone,
+            prov_chager                                                 AS            provChager,
+            prov_telephone                                              AS            provTelephone,
+            date_format(create_time, '%Y-%m-%d %H:%i:%s')               AS            createTime,
+            date_format(update_time, '%Y-%m-%d %H:%i:%s')               AS            updateTime
+        FROM cm_network
+        WHERE 1=1
+        <if test="assetCode != '' and assetCode != null">
+            AND asset_code = #{assetCode}
+        </if>
+        <if test="networkName != '' and networkName != null">
+            AND network_name LIKE concat('%',#{networkName},'%')
+        </if>
+        <if test="manageIp != '' and manageIp != null">
+            AND manage_ip = #{manageIp}
+        </if>
+        <if test="location != '' and location != null">
+            AND location LIKE concat('%',#{location},'%')
+        </if>
+        <if test="status != '' and status != null and status != 0">
+            AND status = #{status}
+        </if>
+        ORDER BY create_time DESC
+        limit #{limit} offset #{offset}
+    </select>
+
+    <select id="countAllNetworks" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM cm_network
+        WHERE 1=1
+        <if test="assetCode != '' and assetCode != null">
+            AND asset_code = #{assetCode}
+        </if>
+        <if test="networkName != '' and networkName != null">
+            AND network_name LIKE concat('%',#{networkName},'%')
+        </if>
+        <if test="manageIp != '' and manageIp != null">
+            AND manage_ip = #{manageIp}
+        </if>
+        <if test="status != '' and status != null">
+            AND status = #{status}
+        </if>
+    </select>
+
+    <select id="queryNetworkInfoByNetworkId"  parameterType="com.cmcc.noobcloud.networkservice.pojo.Network" resultType="java.util.Map">
+        SELECT
+            n.network_id                                                  AS            networkId,
+            n.asset_code                                                  AS            assetCode,
+            n.network_name                                                AS            networkName,
+            n.catogory                                                    AS            catogory,
+            n.manage_ip                                                   AS            manageIp,
+            n.site                                                        AS            site,
+            n.room                                                        AS            room,
+            n.location                                                    AS            location,
+            n.status                                                      AS            status,
+            n.service_field                                               AS            serviceField,
+            n.manufacturer                                                AS            manufacturer,
+            n.city                                                        AS            city,
+            n.login_info                                                  AS            loginInfo,
+            n.login_catogory                                              AS            loginCatogory,
+            n.support_stuff                                               AS            supportStuff,
+            n.support_telephone                                           AS            supportTelephone,
+            n.prov_chager                                                 AS            provChager,
+            n.prov_telephone                                              AS            provTelephone,
+            date_format(n.create_time, '%Y-%m-%d %H:%i:%s')               AS            createTime,
+            date_format(n.update_time, '%Y-%m-%d %H:%i:%s')               AS            updateTime,
+            n.is_redirect                                                 AS            isRedirect,
+			a.account_id                                                  AS            accountId,
+			a.user_id													  AS			userId,
+			a.account_4a                                                  AS            account4a,
+			a.password_4a                                                 AS            password4a,
+			a.account                                                     AS            account,
+			a.password                                                    AS            password,
+			a.login_code_4a                                               AS            loginCode4a,
+			a.account_type												  AS		    accountType,
+			c.command_id                                                  AS            commandId,
+			c.command                                                     AS            command,
+			c.command_code												  AS 			commandCode,
+			c.command_type                                                AS            commandType
+        FROM  cm_network n
+        LEFT JOIN cm_network_account a ON n.network_id = a.network_id
+        LEFT JOIN cm_network_command c ON a.network_id = c.network_id
+        WHERE 1 = 1
+            AND a.account_type = 0
+        <if test="commandCode != '' and commandCode != null">
+            AND c.command_code = #{commandCode}
+        </if>
+            AND n.network_id = #{networkId}
+    </select>
+
+    <insert id="batchInsertNetworkVpn" parameterType="java.util.List">
+        INSERT INTO cm_network_vpn
+        (network_id, sysname, vpn, create_time)
+        VALUES
+        <foreach collection ="list" item="item" index= "index" separator =",">
+            (
+            #{item.networkId},
+            #{item.sysname},
+            #{item.vpn},
+            now()
+            )
+        </foreach >
+    </insert>
+
+    <insert id="batchInsertNetworkRoute" parameterType="java.util.List">
+        INSERT INTO cm_network_route
+        (network_id, sysname, route, create_time)
+        VALUES
+        <foreach collection ="list" item="item" index= "index" separator =",">
+            (
+            #{item.networkId},
+            #{item.sysname},
+            #{item.route},
+            now()
+            )
+        </foreach >
+    </insert>
+
+    <insert id="batchInsertNetworkPrefix" parameterType="java.util.List">
+        INSERT INTO cm_network_prefix
+        (network_id, sysname, prefix, create_time)
+        VALUES
+        <foreach collection ="list" item="item" index= "index" separator =",">
+            (
+            #{item.networkId},
+            #{item.sysname},
+            #{item.prefix},
+            now()
+            )
+        </foreach >
+    </insert>
+
+    <insert id="batchInsertNetworkInteface" parameterType="java.util.List">
+        INSERT INTO cm_network_inteface
+        (network_id, sysname, inteface, create_time)
+        VALUES
+        <foreach collection ="list" item="item" index= "index" separator =",">
+            (
+            #{item.networkId},
+            #{item.sysname},
+            #{item.inteface},
+            now()
+            )
+        </foreach >
+    </insert>
+
+    <insert id="batchInsertNetworkBfd" parameterType="java.util.List">
+        INSERT INTO cm_network_bfd
+        (network_id, sysname, bfd, create_time)
+        VALUES
+        <foreach collection ="list" item="item" index= "index" separator =",">
+            (
+            #{item.networkId},
+            #{item.sysname},
+            #{item.bfd},
+            now()
+            )
+        </foreach >
+    </insert>
+
+    <delete id="deleteNetworkVpnByNetworkId">
+        delete from cm_network_vpn where network_id = #{networkId};
+    </delete>
+
+    <delete id="deleteNetworkRouteByNetworkId">
+        delete from cm_network_route where network_id = #{networkId};
+    </delete>
+
+    <delete id="deleteNetworkPrefixByNetworkId">
+        delete from cm_network_prefix where network_id = #{networkId};
+    </delete>
+
+    <delete id="deleteNetworkIntefaceByNetworkId">
+        delete from cm_network_inteface where network_id = #{networkId};
+    </delete>
+
+    <delete id="deleteNetworkBfdByNetworkId">
+        delete from cm_network_bfd where network_id = #{networkId};
+    </delete>
+
+    <insert id="batchInsertNetworkLog" parameterType="java.util.List">
+        INSERT INTO cm_network_log
+        (network_id, sysname, log, create_time)
+        VALUES
+        <foreach collection ="list" item="item" index= "index" separator =",">
+            (
+            #{item.networkId},
+            #{item.sysname},
+            #{item.log},
+            now()
+            )
+        </foreach >
+    </insert>
+
+    <delete id="deleteNetworkLogByNetworkId">
+        delete from cm_network_log where network_id = #{networkId};
+    </delete>
+
+</mapper>

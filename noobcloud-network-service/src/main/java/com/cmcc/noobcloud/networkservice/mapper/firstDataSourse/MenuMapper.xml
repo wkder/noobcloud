@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmcc.noobcloud.networkservice.mapper.firstDataSourse.MenuMapper">
+
+	<select id="getMenuList" resultType="com.cmcc.noobcloud.networkservice.pojo.MenuInfo">
+        SELECT
+                m.MENU_ID,
+                m.NAME,
+                m.ICON,
+                m.LEVEL,
+                m.STATUS,
+                m.PARENT_ID,
+                m.URL,
+                m.code,
+                m.CREATE_DATE,
+                m.SORT,
+                m.UPDATE_DATE,
+                m.IS_CATEGORY
+            FROM
+                cm_menu m
+            INNER JOIN cm_role_menu rm
+                ON m.MENU_ID = rm.MENU_ID
+            INNER JOIN cm_role r
+                ON rm.role_id = r.role_id
+            INNER JOIN cm_user_role ur
+                ON r.role_id = ur.role_id
+            WHERE
+                m. STATUS = 0
+            AND ur.user_id = #{userId}
+            ORDER BY
+                m.PARENT_ID ASC,m.SORT ASC
+    </select>
+
+    <select id="getAllMenuList" resultType="com.cmcc.noobcloud.networkservice.pojo.MenuInfo">
+        SELECT
+                m.MENU_ID,
+                m.NAME,
+                m.ICON,
+                m.LEVEL,
+                m.STATUS,
+                m.PARENT_ID,
+                m.URL,
+                m.code,
+                m.CREATE_DATE,
+                m.SORT,
+                m.UPDATE_DATE,
+                m.IS_CATEGORY
+            FROM
+                cm_menu m
+            WHERE
+                m.STATUS = 0
+            ORDER BY
+                m.PARENT_ID ASC,m.SORT ASC
+    </select>
+
+    <select id="getTopMenuList" resultType="com.cmcc.noobcloud.networkservice.pojo.MenuInfo">
+        SELECT
+                m.MENU_ID,
+                m.NAME,
+                m.ICON,
+                m.LEVEL,
+                m.STATUS,
+                m.PARENT_ID,
+                m.URL,
+                m.CREATE_DATE,
+                m.SORT,
+                m.UPDATE_DATE,
+                m.IS_CATEGORY
+            FROM
+                cm_menu m
+            INNER JOIN cm_role_menu rm
+                ON m.MENU_ID = rm.MENU_ID
+            INNER JOIN cm_role r
+                ON rm.role_id = r.role_id
+            INNER JOIN cm_user_role ur
+                ON r.role_id = ur.role_id
+            WHERE
+                m.PARENT_ID = 0
+            AND ur.user_id = #{userId}
+            ORDER BY
+                m.PARENT_ID ASC,m.SORT ASC,m.MENU_ID ASC
+    </select>
+
+    <select id="getMenuByParentId" resultType="com.cmcc.noobcloud.networkservice.pojo.MenuInfo">
+        SELECT
+                c.MENU_ID,
+                c.NAME,
+                c.ICON,
+                c.LEVEL,
+                c.STATUS,
+                c.PARENT_ID,
+                c.URL,
+                c.CREATE_DATE,
+                c.SORT,
+                c.UPDATE_DATE,
+                c.IS_CATEGORY
+            FROM
+                cm_menu c
+            INNER JOIN cm_role_menu rm ON c.MENU_ID = rm.MENU_ID
+            INNER JOIN cm_role r ON rm.role_id = r.role_id
+            INNER JOIN cm_user_role ur ON r.role_id = ur.role_id
+            WHERE
+                c.parent_id = #{parentId}
+            AND ur.user_id = #{userId}
+            ORDER BY
+                c.SORT ASC
+    </select>
+
+    <select id="queryMenuById" resultType="com.cmcc.noobcloud.networkservice.pojo.MenuInfo">
+        SELECT
+            m.MENU_ID,
+            m.NAME,
+            m.ICON,
+            m.LEVEL,
+            m.STATUS,
+            m.PARENT_ID,
+            m.URL,
+            m.CREATE_DATE,
+            m.SORT,
+            m.UPDATE_DATE,
+            m.IS_CATEGORY
+        FROM
+            cm_menu m
+        WHERE
+            m.MENU_ID = menuId
+    </select>
+
+
+
+</mapper>

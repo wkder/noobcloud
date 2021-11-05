@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmcc.noobcloud.networkservice.mapper.firstDataSourse.UserMapper">
+
+    <select id="findUserByName" resultType="com.cmcc.noobcloud.networkservice.pojo.UserInfo">
+        select
+            user_id as userId,
+        	user_name as userName,
+            password as password,
+            type as type,
+	        status as status,
+            telephone as telephone,
+            zip_code as zipCode,
+            address as address,
+            mail as mail,
+            isrepeat_password as isrepeatPassword,
+            create_date as createDate,
+            update_date as updateDate,
+            in_white_list as inWhiteList,
+            identity_type as identityType
+        from cm_user
+        where user_name = #{userName};
+    </select>
+
+</mapper>

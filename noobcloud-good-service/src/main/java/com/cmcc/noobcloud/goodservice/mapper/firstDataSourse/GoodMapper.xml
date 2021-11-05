@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmcc.noobcloud.goodservice.mapper.firstDataSourse.GoodMapper">
+
+    <!--<resultMap id ="GoodInfoMap" type="com.cmcc.noobcloud.goodservice.pojo.Good">
+        <result column="id" property="id"/>
+        <result column="GOODS_CODE" property="GOODS_CODE"/>
+        <result column="age" property="age"/>
+        <result column="class_no" property="classNo"/>
+    </resultMap>-->
+
+    <select id="findGoodsByCompanyCode" resultType="com.cmcc.noobcloud.goodservice.pojo.Good">
+        SELECT * FROM `goods`where company_code = #{company_code} limit 1
+    </select>
+
+</mapper>
