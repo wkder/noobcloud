@@ -117,14 +117,14 @@ var network = function () {
         })
     };
     /**
-     * 预览任务
+     * 预览网元详情
      * @param id
      */
     obj.viewNetwork = function (id) {
         obj.methods.initDialog(2);
         obj.initNetworkDetailValue(id, "preview", null, null);
         $("#taskMgrDetailDialog").hide();
-        $("#NetworkDetailDialog").show();
+        $("#networkDetailDialog").show();
         $plugin.iModal({
             title: '预览炒店任务',
             content: $("#commonPage"),
@@ -2022,12 +2022,7 @@ var network = function () {
             }
             globalRequest.queryNetworkById(true, {id: id}, function (data) {
                 var NetworkDomainObj = data.NetworkDomain, marketContentText = NetworkDomainObj.marketContentText;
-                var $NetworkDetailInfo = $("#NetworkDetailDialog div.NetworkDetailInfo");
-                if (province === $system.PROVINCE_ENUM.SH) {
-                    $NetworkDetailInfo.find(".detail_segment_row").show();
-                    $NetworkDetailInfo.find(".detail_segmentNames").text(NetworkDomainObj.marketSegmentNames || "空");
-                    $NetworkDetailInfo.find(".detail_marketUserText").text("监控类型");
-                }
+                var $NetworkDetailInfo = $("#networkDetailDialog div.viewNetworkDetailInfo");
                 $NetworkDetailInfo.find(".detail_id").val(NetworkDomainObj.id);
                 $NetworkDetailInfo.find(".detail_taskName").text(NetworkDomainObj.taskName);
                 $NetworkDetailInfo.find(".detail_businessName").text(NetworkDomainObj.businessName);

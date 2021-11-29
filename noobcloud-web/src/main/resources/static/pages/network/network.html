@@ -44,7 +44,7 @@
 <div class="iMarket_network_Dialog">
     <div id="createNetworkDialog" style="display: none"></div>
     <div id="shopBaseInfoDialog" style="height:100%;display: none;"></div>
-    <div id="marketContentDialog" style="display: none"></div>
+    <div id="networkDetailDialog" style="display: none"></div>
     <div id="numberSmsContentDialog" style="display: none"></div>
     <div id="importAppointDialog" style="display: none"></div>
     <div id="importBlackDialog" style="display: none"></div>
@@ -466,51 +466,135 @@
     </div>
     <!-- endregion 新建炒店任务 -->
 
-    <!-- region 选择炒店 弹窗 -->
-    <div class="shopBaseInfoSegment">
-        <div class="query-row conditionSearch" status="ready">
-            <div class="col-md-12">
-                <select class="select form-control baseAreaType"
-                        style="display: inline;width: 176px;margin-left: 5px;border-radius: 2px;"></select>
-                <input type="text" class="form-control name" id="d-baseId" placeholder="营业厅编码" style="display: none;">
-                <input type="text" class="form-control name" id="d-baseName" placeholder="营业厅名称">
-                <button class="searchButton extensionalBtn "><i class="fa fa-search"></i>搜索</button>
-            </div>
-        </div>
+    <!--预览区域弹框 start-->
+    <div class="viewNetworkDetailInfo">
+        <!--隐藏域 存放CELL-ID-->
+        <input class="networkId" type="hidden">
+        <table class="table table-hover table-bordered cmTable">
+            <tbody>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>网元名称：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="networkName"></span>
+                </td>
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>资产编码：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="assetCode"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>设备IP：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="manageIp"></span>
+                </td>
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>类别：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="catogory"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>城市：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="city"></span>
+                </td>
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>所在机房：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="location"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <span class="must" style="color: red">*</span>
+                    <strong>房间：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="room"></span>
+                </td>
+                <td class="td-title">
+                    <strong>坐标：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="site"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>设备状态：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="status"></span>
+                </td>
+                <td class="td-title">
+                    <strong>归属业务：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="serviceField"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>厂家：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="manufacturer"></span>
+                </td>
+                <td class="td-title">
+                    <strong>入网时间：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="createTime"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>厂家支撑人员：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="supportStuff"></span>
+                </td>
+                <td class="td-title">
+                    <strong>厂家支撑人员电话：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="supportTelephone"></span>
+                </td>
+            </tr>
+            <tr class="tdBg">
+                <td class="td-title">
+                    <strong>包机人：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="provChager"></span>
+                </td>
+                <td class="td-title">
+                    <strong>包机人联系方式：</strong>
+                </td>
+                <td colspan="3" class="td-content">
+                    <span class="provTelephone"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-        <div class="baseInfoDesc">
-            <div class="selectLeftDesc">
-                可选营业厅
-            </div>
-            <div class="selectMiddleDesc"></div>
-            <div class="selectRightDesc">
-                已选营业厅
-            </div>
-        </div>
-        <div class="baseInfo">
-            <div class="selectLeft">
-                <select name="from[]" class="js-multiselect form-control" size="8" multiple="multiple"></select>
-            </div>
-
-            <div class="selectBtn">
-                <button id="btnRightAll" class="btn btn-block">
-                    <i class="fa fa-forward"></i>
-                </button>
-                <button id="btnRightSign" class="btn btn-block">
-                    <i class="fa fa-chevron-right"></i></button>
-                <button id="btnLeftSign" class="btn btn-block">
-                    <i class="fa fa-chevron-left"></i></button>
-                <button id="btnLeftAll" class="btn btn-block">
-                    <i class="fa fa-backward"></i>
-                </button>
-            </div>
-
-            <div class="selectRight">
-                <select name="to[]" id="multiselectRight" class="form-control" size="8" multiple="multiple"></select>
-            </div>
-        </div>
     </div>
-    <!-- endregion 选择炒店 弹窗 -->
+    <!--预览区域弹框 end-->
 
     <!-- region 选择短信内容 弹窗 -->
     <div class="contentInfoSegment">
