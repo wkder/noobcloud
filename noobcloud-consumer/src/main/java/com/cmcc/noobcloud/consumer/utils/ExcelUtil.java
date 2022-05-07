@@ -2,20 +2,18 @@ package com.cmcc.noobcloud.consumer.utils;
 
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.BorderStyle;
-import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.HorizontalAlignment;
-import org.apache.poi.ss.usermodel.VerticalAlignment;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
+import java.math.BigDecimal;
 import java.net.URLEncoder;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.*;
 
 
 /**
@@ -99,5 +97,118 @@ public class ExcelUtil {
         }
         return workbook;
     }
+
+    /*public static List<Map<String, Object>> importExcel(File file, String sheetName) throws IOException, InvalidFormatException {
+        String name = file.getName();
+        Workbook workbook = null;
+        List<Map<String, Object>> list = new ArrayList<>();
+        try (InputStream is = new FileInputStream(file)) {
+            // 创建excel操作对象
+            if (name.contains(".xlsx") || name.contains(".xls")) {
+                //使用工厂方法创建.
+                workbook = WorkbookFactory.create(is);
+            }
+            Sheet sheet = workbook.getSheet(sheetName);
+            //获得数据的总行数
+            int totalRowNum = sheet.getLastRowNum();
+            //获得总列数
+            int cellLength = sheet.getRow(0).getPhysicalNumberOfCells();
+            //获取表头
+            Row firstRow = sheet.getRow(0);
+            List<String> keys = new ArrayList<>();
+            for (int i = 0; i < cellLength; i++) {
+                Cell cell = firstRow.getCell(i);
+                keys.add(String.valueOf(getCellValue(cell)));
+            }
+            //从第i行开始获取
+            for (int i = 1; i <= totalRowNum; i++) {
+                Map<String, Object> map = new LinkedHashMap<>();
+                //获得第i行对象
+                Row row = sheet.getRow(i);
+                // 遇到空行则结束
+                if (row == null) {
+                    break;
+                }
+                //如果一行里的所有单元格都为空则不放进list里面
+                int a = 0;
+                for (int j = 0; j < cellLength; j++) {
+                    Cell cell = row.getCell(j);
+                    if (cell == null) {
+                        continue;
+                    }
+                    // 获取列值
+                    Object value = getCellValue(cell);
+                    map.put(keys.get(j), value);
+                }
+                if (!checkNullMap(map)) {
+                    list.add(map);
+                }
+            }
+        } finally {
+            if (workbook != null) {
+                workbook.close();
+            }
+        }
+        return list;
+    }
+
+    //如果map存储的value都是null返回true
+    private static boolean checkNullMap(Map<String, Object> map) {
+        for (Object value : map.values()) {
+            if (Objects.nonNull(value))
+                return false;
+        }
+        return true;
+    }
+
+    private static Object getCellValue(Cell cell) {
+        CellType cellType = cell.getCellType();
+        Object cellValue = null;
+
+        if (cellType == CellType._NONE) {
+            cellValue = null;
+        } else if (cellType == CellType.NUMERIC) {
+            // 数值型
+            if (DateUtil.isCellDateFormatted(cell)) {
+                // 日期类型
+                Date d = cell.getDateCellValue();
+                cellValue = dateTimeFormatter.format(LocalDateTime.ofInstant(d.toInstant(), ZoneId.systemDefault()));
+            } else {
+                double numericCellValue = cell.getNumericCellValue();
+                BigDecimal bdVal = new BigDecimal(numericCellValue);
+                if ((bdVal + ".0").equals(Double.toString(numericCellValue))) {
+                    // 整型
+                    cellValue = bdVal;
+                } else if (String.valueOf(numericCellValue).contains("E10")) {
+                    // 科学记数法
+                    cellValue = new BigDecimal(numericCellValue).toPlainString();
+                } else {
+                    // 浮点型
+                    cellValue = numericCellValue;
+                }
+            }
+        } else if (cellType == CellType.STRING) {
+            // 字符串型
+            cellValue = cell.getStringCellValue();
+            if (cellValue != null) {
+                cellValue = cellValue.toString().trim();
+            }
+        } else if (cellType == CellType.FORMULA) {
+            // 公式型
+            cellValue = cell.getCellFormula();
+        } else if (cellType == CellType.BLANK) {
+            // 空值
+            cellValue = "";
+        } else if (cellType == CellType.BOOLEAN) {
+            // 布尔型
+            cellValue = cell.getBooleanCellValue();
+        } else if (cellType == CellType.ERROR) {
+            // 错误
+            cellValue = cell.getErrorCellValue();
+        }
+
+        logger.info("cellType={}, cellValue={}", cellType.name(), cellValue);
+        return cellValue;
+    }*/
 
 }
